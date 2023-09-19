@@ -5,7 +5,7 @@ import java.util.List;
 public class Pokemon {
     private String nombre;
     private Integer nivel;
-    private Enum<> tipo;
+    private Tipo tipo;
     private String historia;
     private Integer vidaMaxima;
     private Integer vidaActual;
