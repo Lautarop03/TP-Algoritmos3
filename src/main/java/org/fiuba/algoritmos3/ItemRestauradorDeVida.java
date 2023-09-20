@@ -1,6 +1,6 @@
 package org.fiuba.algoritmos3;
 
-public class ItemRestauradorDeVida extends Item implements ModificacionVida{
+public class ItemRestauradorDeVida extends Item implements ModificacionVida {
 
     private Integer cantidadDeCura;
 
@@ -10,8 +10,7 @@ public class ItemRestauradorDeVida extends Item implements ModificacionVida{
         this.cantidadDeCura = cantidadDeCura;
     }
 
-    public curar(){
-
+    public void curar(){
+        return;
     }
-
 }

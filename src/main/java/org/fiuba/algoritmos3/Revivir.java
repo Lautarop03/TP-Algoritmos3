@@ -7,8 +7,8 @@ public class Revivir extends Item implements ModificacionVida{
 
     }
 
-    public revivir() {
-
+    public void revivir() {
+        return;
     }
 
 }

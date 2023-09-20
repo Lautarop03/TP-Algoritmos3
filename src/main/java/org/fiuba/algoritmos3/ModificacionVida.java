@@ -2,7 +2,7 @@ package org.fiuba.algoritmos3;
 
 public interface ModificacionVida{
 
-    public void modificarVida(Pokemon pokemon){
+    public default void modificarVida(Pokemon pokemon, Integer cantidadVida){
 
     }
 

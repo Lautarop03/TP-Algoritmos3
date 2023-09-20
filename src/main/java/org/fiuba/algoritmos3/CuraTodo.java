@@ -6,7 +6,7 @@ public class CuraTodo extends Item{
         super(cantidad);
     }
 
-    public quitarEstadoActual(){
-
+    public void quitarEstadoActual(){
+        return;
     }
 }

@@ -2,7 +2,7 @@ package org.fiuba.algoritmos3;
 
 public interface ModificacionAtaque {
 
-    public void modificarAtaque(Pokemon pokemon){
+    public default void modificarAtaque(Pokemon pokemon){
 
     }
 }
