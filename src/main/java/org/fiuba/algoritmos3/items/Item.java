@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3;
+package org.fiuba.algoritmos3.items;
 
 public class Item{
     private Integer cantidad;

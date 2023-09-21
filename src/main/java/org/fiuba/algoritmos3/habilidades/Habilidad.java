@@ -1,4 +1,6 @@
-package org.fiuba.algoritmos3;
+package org.fiuba.algoritmos3.habilidades;
+
+import org.fiuba.algoritmos3.Tipo;
 
 public class Habilidad {
     private String nombre;

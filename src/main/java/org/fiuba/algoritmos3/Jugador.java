@@ -1,5 +1,7 @@
 package org.fiuba.algoritmos3;
 
+import org.fiuba.algoritmos3.items.Item;
+
 import java.util.List;
 
 public class Jugador {

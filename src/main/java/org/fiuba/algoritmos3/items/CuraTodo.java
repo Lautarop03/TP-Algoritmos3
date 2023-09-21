@@ -1,6 +1,8 @@
-package org.fiuba.algoritmos3;
+package org.fiuba.algoritmos3.items;
 
-public class CuraTodo extends Item{
+import org.fiuba.algoritmos3.items.Item;
+
+public class CuraTodo extends Item {
 
     public CuraTodo(Integer cantidad) {
         super(cantidad);

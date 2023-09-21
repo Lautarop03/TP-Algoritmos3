@@ -1,4 +1,7 @@
-package org.fiuba.algoritmos3;
+package org.fiuba.algoritmos3.habilidades;
+
+import org.fiuba.algoritmos3.Estado;
+import org.fiuba.algoritmos3.Tipo;
 
 public class HabilidadDeEstado extends Habilidad {
     private Estado estado;

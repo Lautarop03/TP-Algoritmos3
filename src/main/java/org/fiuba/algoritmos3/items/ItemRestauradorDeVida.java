@@ -1,4 +1,7 @@
-package org.fiuba.algoritmos3;
+package org.fiuba.algoritmos3.items;
+
+import org.fiuba.algoritmos3.ModificacionVida;
+import org.fiuba.algoritmos3.items.Item;
 
 public class ItemRestauradorDeVida extends Item implements ModificacionVida {
 
