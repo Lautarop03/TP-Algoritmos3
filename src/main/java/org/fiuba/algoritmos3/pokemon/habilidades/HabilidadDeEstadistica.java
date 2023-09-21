@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3.habilidades;
+package org.fiuba.algoritmos3.pokemon.habilidades;
 
 import org.fiuba.algoritmos3.Tipo;
 

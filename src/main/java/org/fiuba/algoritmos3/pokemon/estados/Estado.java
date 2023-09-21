@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3;
+package org.fiuba.algoritmos3.pokemon.estados;
 
 public class Estado extends Pokemon{
     private int cantidadTurnos;

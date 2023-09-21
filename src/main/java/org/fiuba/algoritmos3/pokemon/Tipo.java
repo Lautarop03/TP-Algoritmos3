@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3;
+package org.fiuba.algoritmos3.pokemon;
 
 public enum Tipo {
     Agua(0),

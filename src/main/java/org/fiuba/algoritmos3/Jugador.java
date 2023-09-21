@@ -11,6 +11,11 @@ public class Jugador {
 
     private List<Item> items;
 
+    public Jugador(List<Pokemon> pokemones, List<Item> items) {
+        this.pokemones = pokemones;
+        this.items = items
+    }
+
     public void usarHabilidad() {
         return;
     }
