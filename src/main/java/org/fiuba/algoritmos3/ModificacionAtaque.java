@@ -4,5 +4,6 @@ public interface ModificacionAtaque {
 
     public default void modificarAtaque(Pokemon pokemon){
 
+
     }
 }

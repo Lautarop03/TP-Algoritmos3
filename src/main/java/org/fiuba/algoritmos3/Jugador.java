@@ -1,6 +1,7 @@
 package org.fiuba.algoritmos3;
 
 import org.fiuba.algoritmos3.items.Item;
+import org.fiuba.algoritmos3.pokemon.Pokemon;
 
 import java.util.List;
 
@@ -10,10 +11,9 @@ public class Jugador {
 
     private List<Item> items;
 
-    public void usarHabilidad(){
+    public void usarHabilidad() {
         return;
     }
-
     public void usarItem() {
         return;
     }

@@ -1,6 +1,8 @@
 package org.fiuba.algoritmos3;
 
 import org.fiuba.algoritmos3.habilidades.Habilidad;
+import org.fiuba.algoritmos3.estados.Estado;
+
 
 import java.util.List;
 
