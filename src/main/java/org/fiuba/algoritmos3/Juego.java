@@ -1,5 +1,5 @@
 package org.fiuba.algoritmos3;
-import java.util.list;
+import java.util.List;
 
 public class Juego {
     private List<Jugador> jugadores;
@@ -10,16 +10,6 @@ public class Juego {
     }
 
     public void iniciarJuego() {
-    }
-
-    public void comprobarVictoria() {
-        Jugador ganador;
-        int j = 0;
-        while (j < jugadores.length()) {
-            if (jugadores[j].derrotado()) {
-                ganador = jugadores[ (j + 1) % jugadores.length() ]
-            }
-        }
     }
 
     public void comprobarJugadores(){

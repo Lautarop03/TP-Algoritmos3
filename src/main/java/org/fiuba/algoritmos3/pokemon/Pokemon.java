@@ -1,7 +1,7 @@
 package org.fiuba.algoritmos3.pokemon;
 
 import org.fiuba.algoritmos3.pokemon.Tipo;
-import org.fiuba.algoritmos3.habilidades.Habilidad;
+import org.fiuba.algoritmos3.pokemon.habilidades.Habilidad;
 import org.fiuba.algoritmos3.pokemon.estados.Estado;
 
 

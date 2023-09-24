@@ -13,7 +13,7 @@ public class Jugador {
 
     public Jugador(List<Pokemon> pokemones, List<Item> items) {
         this.pokemones = pokemones;
-        this.items = items
+        this.items = items;
     }
 
     public void usarHabilidad() {

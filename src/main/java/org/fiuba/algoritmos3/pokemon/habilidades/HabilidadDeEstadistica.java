@@ -1,6 +1,6 @@
 package org.fiuba.algoritmos3.pokemon.habilidades;
 
-import org.fiuba.algoritmos3.Tipo;
+import org.fiuba.algoritmos3.pokemon.Tipo;
 
 public class HabilidadDeEstadistica extends Habilidad {
     private Integer nuevoValorAtributo;

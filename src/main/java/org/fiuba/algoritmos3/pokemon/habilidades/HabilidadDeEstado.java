@@ -1,7 +1,7 @@
 package org.fiuba.algoritmos3.pokemon.habilidades;
 
-import org.fiuba.algoritmos3.Estado;
-import org.fiuba.algoritmos3.Tipo;
+import org.fiuba.algoritmos3.pokemon.estados.Estado;
+import org.fiuba.algoritmos3.pokemon.Tipo;
 
 public class HabilidadDeEstado extends Habilidad {
     private Estado estado;
