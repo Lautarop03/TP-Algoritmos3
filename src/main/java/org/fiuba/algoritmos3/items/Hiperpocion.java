@@ -1,11 +1,10 @@
 package org.fiuba.algoritmos3.items;
 
-import org.fiuba.algoritmos3.items.ItemRestauradorDeVida;
-
 public class Hiperpocion extends ItemRestauradorDeVida {
 
-    public Hiperpocion(Integer cantidad, Integer cantidadDeCura) {
-        super(cantidad, cantidadDeCura);
-
+    public Hiperpocion(Integer cantidad) {
+        super(cantidad);
+        this.cantidadDeCura = 100;
+        this.nombre = "HiperPoción";
     }
 }

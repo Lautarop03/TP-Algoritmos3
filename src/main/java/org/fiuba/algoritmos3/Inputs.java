@@ -15,7 +15,9 @@ public class Inputs {
 
         reader = LineReaderBuilder.builder()
                 .terminal(terminal)
-                .build();}
+                .build();
+    }
+
     public String pedirNombre() {
         while (true) {
             String nombre = reader.readLine("Ingrese nombre de jugador: ");
@@ -47,5 +49,4 @@ public class Inputs {
             }
         }
     }
-
 }

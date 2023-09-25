@@ -4,7 +4,5 @@ import org.fiuba.algoritmos3.pokemon.Pokemon;
 
 public interface ModificacionDefensa {
 
-    public default void modificarDefensa(Pokemon pokemon){
-
-    }
+    public  void modificarDefensa(Pokemon pokemon);
 }

@@ -9,5 +9,6 @@ public class Main {
         String nombre = input.pedirNombre();
         System.out.println("Opcion: " + opcion);
         System.out.println("Nombre: " + nombre);
+
     }
 }

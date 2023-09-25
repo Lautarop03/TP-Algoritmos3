@@ -1,8 +1,10 @@
 package org.fiuba.algoritmos3;
 
+import org.fiuba.algoritmos3.items.*;
 import org.fiuba.algoritmos3.pokemon.Pokemon;
 import org.fiuba.algoritmos3.pokemon.Tipo;
 import org.fiuba.algoritmos3.pokemon.habilidades.Habilidad;
+
 
 import java.util.List;
 
@@ -23,6 +25,16 @@ public class AdministradorDeJuego {
 
         List<Pokemon> pokemones = List.of(pikachu,charmander,bulbasur,squirtle,pidgey,nidoran);
         return pokemones;
+    }
+
+    public List<Item> asignarItems(){
+        ItemModificadorAtaque modificadorAtaque = new ItemModificadorAtaque(10);
+        Pocion pocion = new Pocion(5);
+        Revivir revivir = new Revivir(8);
+        CuraTodo curaTodo = new CuraTodo(6);
+        List<Item> items = List.of(modificadorAtaque, pocion, revivir, curaTodo);
+
+        return items;
     }
 
 }

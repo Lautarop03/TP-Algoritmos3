@@ -1,20 +1,20 @@
 package org.fiuba.algoritmos3.items;
 
-public class Item{
-    private Integer cantidad;
+public abstract class Item{
+    protected Integer cantidadDeItems;
 
-    private String nombre;
+    protected String nombre;
 
-    public Item(Integer cantidad){
-        this.cantidad = cantidad;
+    public Item(Integer cantidadDeItems){
+        this.cantidadDeItems = cantidadDeItems;
     }
 
     public void seleccionar(){
-        this.cantidad = this.cantidad - 1;
+        this.cantidadDeItems = this.cantidadDeItems - 1;
     }
 
     public Integer getCantidad() {
-        return cantidad;
+        return cantidadDeItems;
     }
     public String getNombre() {
         return nombre;

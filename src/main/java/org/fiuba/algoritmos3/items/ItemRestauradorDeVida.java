@@ -1,19 +1,23 @@
 package org.fiuba.algoritmos3.items;
 
 import org.fiuba.algoritmos3.ModificacionVida;
-import org.fiuba.algoritmos3.items.Item;
+import org.fiuba.algoritmos3.pokemon.Pokemon;
 
-public class ItemRestauradorDeVida extends Item implements ModificacionVida {
+public abstract class ItemRestauradorDeVida extends Item implements ModificacionVida {
 
-    private Integer cantidadDeCura;
+    protected Integer cantidadDeCura;
 
 
-    public ItemRestauradorDeVida(Integer cantidad, Integer cantidadDeCura) {
-        super(cantidad);
-        this.cantidadDeCura = cantidadDeCura;
+    public ItemRestauradorDeVida(Integer cantidadDeItems) {
+        super(cantidadDeItems);
     }
 
-    public void curar(){
-        return;
+    public void modificarVida(Pokemon pokemon) {
+        int nuevaCantidadVida = this.cantidadDeCura + pokemon.getVidaActual();
+        if (nuevaCantidadVida > pokemon.getVidaMaxima()){
+            pokemon.setVidaActual(pokemon.getVidaMaxima());
+        }else{
+           pokemon.setVidaActual(nuevaCantidadVida);
+        }
     }
 }
