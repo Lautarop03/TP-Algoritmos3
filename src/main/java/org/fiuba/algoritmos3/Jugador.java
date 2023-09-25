@@ -16,6 +16,18 @@ public class Jugador {
         this.items = items;
     }
 
+    public void asignarPokemones(List<Pokemon> pokemones) {
+        this.pokemones = pokemones;
+    }
+
+    public List<Pokemon> getPokemones() {
+        return pokemones;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
     public void usarHabilidad() {
         return;
     }

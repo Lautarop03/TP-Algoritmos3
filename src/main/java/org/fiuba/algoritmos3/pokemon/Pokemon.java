@@ -17,8 +17,22 @@ public class Pokemon {
     private Integer velocidad;
     private Integer defensa;
     private Integer ataque;
-    private Estado estado;
+    //private Estado estado;
     private List<Habilidad> habilidades;
+
+    public Pokemon(String nombre, Integer nivel, Tipo tipo, String historia, Integer vidaMaxima, Integer vidaActual, Integer velocidad, Integer defensa, Integer ataque, List<Habilidad> habilidades) {
+        this.nombre = nombre;
+        this.nivel = nivel;
+        this.tipo = tipo;
+        this.historia = historia;
+        this.vidaMaxima = vidaMaxima;
+        this.vidaActual = vidaActual;
+        this.velocidad = velocidad;
+        this.defensa = defensa;
+        this.ataque = ataque;
+        //this.estado = estado;
+        this.habilidades = habilidades;
+    }
 
     public String getNombre() {
         return nombre;
@@ -56,9 +70,9 @@ public class Pokemon {
         return ataque;
     }
 
-    public Estado getEstado() {
-        return estado;
-    }
+    //public Estado getEstado() {
+    //    return estado;
+    //}
 
     public List<Habilidad> getHabilidades() {
         return habilidades;

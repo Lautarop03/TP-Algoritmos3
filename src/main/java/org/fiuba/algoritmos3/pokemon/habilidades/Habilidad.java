@@ -12,4 +12,12 @@ public class Habilidad {
         this.cantidadDeUsos = cantidadDeUsos;
         this.tipo = tipo;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Integer getCantidadDeUsos() {
+        return cantidadDeUsos;
+    }
 }

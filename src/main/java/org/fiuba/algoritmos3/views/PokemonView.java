@@ -1,22 +1,21 @@
 package org.fiuba.algoritmos3.views;
 
 import org.fiuba.algoritmos3.pokemon.Pokemon;
+import org.fiuba.algoritmos3.pokemon.habilidades.Habilidad;
+
+import java.util.List;
 
 public class PokemonView {
-
-    private Pokemon pokemon;
-
-    public void imprimirPokemon(){
-        System.out.printf("Pokemon: : %s",pokemon.getNombre());
+    public void imprimirPokemon(Pokemon pokemon){
+        System.out.printf("Nombre: : %s",pokemon.getNombre());
         System.out.printf("Nivel: %d",pokemon.getNivel());
-        System.out.printf("Tipo: %s",pokemon.getTipo());
-        System.out.printf("Vida Maxima: %d",pokemon.getVidaMaxima());
-        System.out.printf("Vida actual: %d",pokemon.getVidaActual());
-        System.out.printf("Velocidad: %d",pokemon.getVelocidad());
-        System.out.printf("Defensa: %d",pokemon.getDefensa());
-        System.out.printf("Ataque: %d",pokemon.getAtaque());
-        //System.out.printf("Estado: %d",pokemon.getEstado());
-        //System.out.printf("Habilidades: %d",pokemon.getHabilidades());
+        //System.out.printf("Estado: %d",pokemon.getEstado()); SOLO EN CASO QUE NO SEA ESTADO NORMAL
+        System.out.printf("Vida restante: %d",pokemon.getVidaActual());
     }
-
+    public void mostrarHabilidades(Pokemon pokemon) {
+        List<Habilidad> habilidades = pokemon.getHabilidades();
+        for (Habilidad habilidad : habilidades) {
+            System.out.println(habilidad.getNombre()+" Usos: " + habilidad.getCantidadDeUsos());
+        }
+    }
 }

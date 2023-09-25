@@ -8,7 +8,7 @@ import org.jline.terminal.TerminalBuilder;
 import java.io.IOException;
 
 public class Inputs {
-    private LineReader reader;
+    private final LineReader reader;
     public Inputs() throws IOException {
 
         Terminal terminal = TerminalBuilder.terminal();
