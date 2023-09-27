@@ -3,6 +3,7 @@ package org.fiuba.algoritmos3.pokemon;
 import org.fiuba.algoritmos3.pokemon.estados.Estado;
 import org.fiuba.algoritmos3.pokemon.habilidades.Habilidad;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Pokemon {
@@ -15,7 +16,7 @@ public class Pokemon {
     private Integer velocidad;
     private Integer defensa;
     private Integer ataque;
-    private Estado estado;
+    private List<Estado> estados;
     private List<Habilidad> habilidades;
 
     public Pokemon(String nombre, Integer nivel, Tipo tipo, String historia, Integer vidaMaxima, Integer vidaActual, Integer velocidad, Integer defensa, Integer ataque, List<Habilidad> habilidades) {
@@ -28,7 +29,7 @@ public class Pokemon {
         this.velocidad = velocidad;
         this.defensa = defensa;
         this.ataque = ataque;
-        // this.estado = estado;
+        this.estados = Collections.emptyList();
         this.habilidades = habilidades;
     }
 
@@ -104,12 +105,16 @@ public class Pokemon {
         this.ataque = ataque;
     }
 
-    public Estado getEstado() {
-        return estado;
+    public List<Estado> getEstados() {
+        return estados;
     }
 
     public void setEstado(Estado estado) {
-        this.estado = estado;
+        if (!this.estados.contains(estado)) { //si no funciona: 'getClass()' o 'instanceof'
+            this.estados.add(estado);
+        } else {
+            //todo: hacer excepcion
+        }
     }
 
     public List<Habilidad> getHabilidades() {

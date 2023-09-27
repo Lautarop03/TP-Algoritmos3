@@ -1,14 +1,21 @@
 package org.fiuba.algoritmos3.pokemon.estados;
 
 import org.fiuba.algoritmos3.pokemon.Pokemon;
-import org.fiuba.algoritmos3.pokemon.Tipo;
-import org.fiuba.algoritmos3.pokemon.habilidades.Habilidad;
 
-import java.util.List;
+public abstract class Estado {
+    protected String nombre;
+    protected int cantidadTurnos;
 
-public class Estado {
-    private int cantidadTurnos;
+    protected Estado estado;
 
     public Estado(int cantidadTurnos) {
+        this.cantidadTurnos = cantidadTurnos;
+    }
+
+    void aplicarEfecto(Pokemon pokemon, Estado estadoNuevo){
+        pokemon.setEstado(estadoNuevo);
+    }
+    void aumentarTurnos (){
+        cantidadTurnos++;
     }
 }

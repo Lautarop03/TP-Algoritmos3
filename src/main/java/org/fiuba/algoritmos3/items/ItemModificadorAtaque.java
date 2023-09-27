@@ -12,6 +12,6 @@ public class ItemModificadorAtaque extends ItemDeEstadistica implements Modifica
     }
 
     public void modificarAtaque(Pokemon pokemon) {
-        pokemon.setAtaque((pokemon.getAtaque() + (pokemon.getAtaque()/this.porcentajeDeModificacion)));
+        pokemon.setAtaque((pokemon.getAtaque() + ((pokemon.getAtaque()/100)*this.porcentajeDeModificacion)));
     }
 }

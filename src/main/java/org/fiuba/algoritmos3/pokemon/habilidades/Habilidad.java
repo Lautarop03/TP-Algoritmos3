@@ -5,7 +5,7 @@ import org.fiuba.algoritmos3.pokemon.Tipo;
 public class Habilidad {
     private String nombre;
     private Integer cantidadDeUsos;
-    private Tipo tipo;
+    protected Tipo tipo;
 
     public Habilidad(String nombre, Integer cantidadDeUsos, Tipo tipo) {
         this.nombre = nombre;
@@ -17,7 +17,16 @@ public class Habilidad {
         return nombre;
     }
 
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+
     public Integer getCantidadDeUsos() {
         return cantidadDeUsos;
+    }
+
+    public void usarHabilidad(){
+        cantidadDeUsos--;
     }
 }

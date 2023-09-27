@@ -2,15 +2,11 @@ package org.fiuba.algoritmos3.pokemon.habilidades;
 
 import org.fiuba.algoritmos3.pokemon.Tipo;
 
-public class HabilidadDeEstadistica extends Habilidad {
-    private Integer nuevoValorAtributo;
+public  abstract class HabilidadDeEstadistica extends Habilidad{
+    protected Integer porcentajeDeModificacion;
 
-    public HabilidadDeEstadistica(String nombre, Integer cantidadDeUsos, Tipo tipo, Integer nuevoValorAtributo) {
+    public HabilidadDeEstadistica(String nombre, Integer cantidadDeUsos, Tipo tipo, Integer porcentajeDeModificacion) {
         super(nombre, cantidadDeUsos, tipo);
-        this.nuevoValorAtributo = nuevoValorAtributo;
-    }
-
-    public void modificarAtributo() {
-        return;
+        this.porcentajeDeModificacion = porcentajeDeModificacion;
     }
 }

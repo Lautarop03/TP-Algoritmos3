@@ -10,15 +10,16 @@ public class Revivir extends Item implements ModificacionVida {
     }
 
     public boolean revivir(Pokemon pokemon){
-        if (pokemon.getVidaActual() <= 0){
-            this.modificarVida(pokemon);
-            this.seleccionar();
-            return true;
+        if (pokemon.getVidaActual() > 0) {
+            return false;
         }
-        return false;
+        Integer modificadorDeVida = pokemon.getVidaMaxima() / 2;
+        this.modificarVida( pokemon, modificadorDeVida);
+        this.seleccionar();
+        return true;
     }
 
-    public void modificarVida(Pokemon pokemon) {
+    public void modificarVida(Pokemon pokemon, Integer modificadorDeVida) {
         pokemon.setVidaActual(pokemon.getVidaMaxima()/2);
     }
 }

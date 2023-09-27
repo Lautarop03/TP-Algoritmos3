@@ -1,8 +1,23 @@
 package org.fiuba.algoritmos3.pokemon.estados;
 
-public class Envenenado extends Estado{
+import org.fiuba.algoritmos3.ModificacionVida;
+import org.fiuba.algoritmos3.pokemon.Pokemon;
+
+public class Envenenado extends Estado implements ModificacionVida {
+    private Integer porcentajeDeVidaABajar = 5;
 
     public Envenenado(int cantidadTurnos) {
         super(cantidadTurnos);
+        this.nombre = "Envenenado";
+    }
+
+
+    public void envenenar(Pokemon pokemon){
+        Integer modificadorDeVida = pokemon.getVidaActual()- pokemon.getVidaActual()/100 * this.porcentajeDeVidaABajar;
+        this.modificarVida(pokemon, modificadorDeVida);
+    }
+
+    public void modificarVida(Pokemon pokemon, Integer modificadorDeVida) {
+        pokemon.setVidaActual(modificadorDeVida);
     }
 }

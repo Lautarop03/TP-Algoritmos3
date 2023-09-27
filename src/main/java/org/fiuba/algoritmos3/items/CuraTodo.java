@@ -10,7 +10,7 @@ public class CuraTodo extends Item {
     }
 
     public void quitarEstadoActual(Pokemon pokemon){
-        if(pokemon.getEstado() != null){
+        if(pokemon.getEstados() != null){
             pokemon.setEstado(null);
         }
     }

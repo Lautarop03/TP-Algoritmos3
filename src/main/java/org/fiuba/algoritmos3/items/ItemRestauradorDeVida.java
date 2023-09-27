@@ -12,12 +12,19 @@ public abstract class ItemRestauradorDeVida extends Item implements Modificacion
         super(cantidadDeItems);
     }
 
-    public void modificarVida(Pokemon pokemon) {
+    public void actualizarVida(Pokemon pokemon) {
         int nuevaCantidadVida = this.cantidadDeCura + pokemon.getVidaActual();
+        modificarVida(pokemon, nuevaCantidadVida);
+    }
+
+    public void modificarVida(Pokemon pokemon, Integer nuevaCantidadVida) {
         if (nuevaCantidadVida > pokemon.getVidaMaxima()){
             pokemon.setVidaActual(pokemon.getVidaMaxima());
         }else{
            pokemon.setVidaActual(nuevaCantidadVida);
         }
+        //todo no se puede usar la pocion y tirar excepcion
+
+
     }
 }
