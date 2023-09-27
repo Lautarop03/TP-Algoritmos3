@@ -7,10 +7,7 @@ import java.util.List;
 
 public class PokemonView {
     public void imprimirPokemon(Pokemon pokemon){
-        System.out.printf("Nombre: : %s",pokemon.getNombre());
-        System.out.printf("Nivel: %d",pokemon.getNivel());
-        //System.out.printf("Estado: %d",pokemon.getEstado()); SOLO EN CASO QUE NO SEA ESTADO NORMAL
-        System.out.printf("Vida restante: %d",pokemon.getVidaActual());
+        System.out.println(pokemon.getNombre() + " Nivel:" + pokemon.getNivel() + " Vida restante:" + pokemon.getVidaActual());
     }
     public void mostrarHabilidades(Pokemon pokemon) {
         List<Habilidad> habilidades = pokemon.getHabilidades();
