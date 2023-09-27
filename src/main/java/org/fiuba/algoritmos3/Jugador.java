@@ -8,10 +8,11 @@ import java.util.List;
 public class Jugador {
 
     private List<Pokemon> pokemones;
-
+    private String nombre;
     private List<Item> items;
 
-    public Jugador(List<Pokemon> pokemones, List<Item> items) {
+    public Jugador(String nombre,List<Pokemon> pokemones, List<Item> items) {
+        this.nombre = nombre;
         this.pokemones = pokemones;
         this.items = items;
     }
@@ -24,6 +25,13 @@ public class Jugador {
         return pokemones;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Pokemon getPokemonActual() {
+        return pokemones.get(0);
+    }
     public List<Item> getItems() {
         return items;
     }
