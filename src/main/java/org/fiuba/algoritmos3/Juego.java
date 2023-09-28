@@ -17,7 +17,9 @@ public class Juego {
 
     public void aplicarEfecto() {
     }
-
+    public void cambiarTurno() {
+        administradorDeTurno.pasarTurno();
+    }
     public List<Jugador> getJugadores() {
         return jugadores;
     }

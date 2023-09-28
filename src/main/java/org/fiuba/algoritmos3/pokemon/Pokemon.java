@@ -117,6 +117,10 @@ public class Pokemon {
         }
     }
 
+    public boolean estaVivo() {
+        return this.vidaActual > 0;
+    }
+
     public List<Habilidad> getHabilidades() {
         return habilidades;
     }
