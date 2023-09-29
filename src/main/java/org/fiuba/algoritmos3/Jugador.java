@@ -55,6 +55,6 @@ public class Jugador {
         return;
     }
     public void rendirse() {
-        return;
+        this.pokemones.clear();
     }
 }

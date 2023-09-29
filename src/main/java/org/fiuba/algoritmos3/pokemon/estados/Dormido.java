@@ -13,7 +13,8 @@ public class Dormido extends Estado {
         this.nombre = "Dormido";
     }
 
-    public boolean modificarTurnos(Pokemon pokemon){
+    @Override
+    public boolean aplicarEfecto(Pokemon pokemon) {
         double probabilidad = ProbabilidadDeDespertarse + cantidadTurnos * ProbabilidadDeDespertarse;
         Random random = new Random();
         double numeroAleatorio = random.nextDouble();

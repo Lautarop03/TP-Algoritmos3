@@ -1,5 +1,8 @@
 package org.fiuba.algoritmos3.items;
 
+import org.fiuba.algoritmos3.pokemon.Pokemon;
+
+
 public abstract class Item{
     protected Integer cantidadDeItems;
 
@@ -9,8 +12,11 @@ public abstract class Item{
         this.cantidadDeItems = cantidadDeItems;
     }
 
-    public void seleccionar(){
+    /*Intenta aplicar un item al pokemon recibido
+     Devuelve true si se pudo aplicar, false si no.*/
+    public boolean aplicarItem(Pokemon pokemon){
         this.cantidadDeItems = this.cantidadDeItems - 1;
+        return true;
     }
 
     public Integer getCantidad() {

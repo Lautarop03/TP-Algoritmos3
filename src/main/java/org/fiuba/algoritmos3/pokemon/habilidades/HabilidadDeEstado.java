@@ -9,7 +9,9 @@ public class HabilidadDeEstado extends Habilidad {
         super(nombre, cantidadDeUsos, tipo);
     }
 
-    public void aplicarEstado(Pokemon pokemon, Estado estado) {
+
+    public void usarHabilidad(Pokemon pokemon, Estado estado){
         pokemon.setEstado(estado);
+        cantidadDeUsos--;
     }
 }

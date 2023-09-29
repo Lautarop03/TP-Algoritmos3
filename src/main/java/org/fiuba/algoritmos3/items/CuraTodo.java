@@ -9,9 +9,14 @@ public class CuraTodo extends Item {
         this.nombre = "Curatodo";
     }
 
-    public void quitarEstadoActual(Pokemon pokemon){
-        if(pokemon.getEstados() != null){
-            pokemon.setEstado(null);
+    @Override
+    public boolean aplicarItem(Pokemon pokemon){
+        if(pokemon.getEstados() == null){
+            return false;
+            //Todo: lanzar excepcion si el pokemon no tiene estado
         }
+        pokemon.quitarEstados();
+        super.aplicarItem(pokemon);
+        return true;
     }
 }

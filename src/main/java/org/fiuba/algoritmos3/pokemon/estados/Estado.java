@@ -12,9 +12,10 @@ public abstract class Estado {
         this.cantidadTurnos = cantidadTurnos;
     }
 
-    void aplicarEfecto(Pokemon pokemon, Estado estadoNuevo){ pokemon.setEstado(estadoNuevo);
+    public boolean aplicarEfecto(Pokemon pokemon){
+        return true;
     }
-    void aumentarTurnos (){
+    public void aumentarTurnos (){
         cantidadTurnos++;
     }
 }

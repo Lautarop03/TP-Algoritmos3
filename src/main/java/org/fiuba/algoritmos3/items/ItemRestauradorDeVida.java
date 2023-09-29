@@ -3,28 +3,23 @@ package org.fiuba.algoritmos3.items;
 import org.fiuba.algoritmos3.ModificacionVida;
 import org.fiuba.algoritmos3.pokemon.Pokemon;
 
-public abstract class ItemRestauradorDeVida extends Item implements ModificacionVida {
+import java.io.EOFException;
+
+public abstract class ItemRestauradorDeVida extends Item {
 
     protected Integer cantidadDeCura;
-
 
     public ItemRestauradorDeVida(Integer cantidadDeItems) {
         super(cantidadDeItems);
     }
 
-    public void actualizarVida(Pokemon pokemon) {
-        int nuevaCantidadVida = this.cantidadDeCura + pokemon.getVidaActual();
-        modificarVida(pokemon, nuevaCantidadVida);
-    }
-
-    public void modificarVida(Pokemon pokemon, Integer nuevaCantidadVida) {
-        if (nuevaCantidadVida > pokemon.getVidaMaxima()){
-            pokemon.setVidaActual(pokemon.getVidaMaxima());
-        }else{
-           pokemon.setVidaActual(nuevaCantidadVida);
+    public boolean aplicarItem(Pokemon pokemon){
+        if (pokemon.tieneVidaLlena()) {
+            return false;
         }
-        //todo no se puede usar la pocion y tirar excepcion
-
-
+        pokemon.sumarVida(this.cantidadDeCura);
+        super.aplicarItem(pokemon);
+        return true;
     }
 }
+

@@ -11,10 +11,11 @@ public class Envenenado extends Estado implements ModificacionVida {
         this.nombre = "Envenenado";
     }
 
-
-    public void envenenar(Pokemon pokemon){
+    @Override
+    public boolean aplicarEfecto(Pokemon pokemon){
         Integer modificadorDeVida = pokemon.getVidaActual()- pokemon.getVidaActual()/100 * this.porcentajeDeVidaABajar;
         this.modificarVida(pokemon, modificadorDeVida);
+        return true;
     }
 
     public void modificarVida(Pokemon pokemon, Integer modificadorDeVida) {

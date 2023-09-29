@@ -86,6 +86,7 @@ public class Inputs {
             System.out.printf("%d. ",(i+1));
             habilidadView.mostrarHabilidad(habilidades.get(i));
         }
+        System.out.println("6. Volver al menu de acciones");
 
         return validarOpcion(habilidades.size());
     }

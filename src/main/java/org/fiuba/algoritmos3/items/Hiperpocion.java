@@ -7,4 +7,6 @@ public class Hiperpocion extends ItemRestauradorDeVida {
         this.cantidadDeCura = 100;
         this.nombre = "HiperPoción";
     }
+
+
 }

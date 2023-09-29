@@ -16,4 +16,10 @@ public class Paralizado extends Estado{
         double numeroAleatorio = random.nextDouble();
         return numeroAleatorio <= probabilidad;
     }
+
+    @Override
+    public boolean aplicarEfecto(Pokemon pokemon) {
+        super.aplicarEfecto(pokemon);
+        return true;
+    }
 }

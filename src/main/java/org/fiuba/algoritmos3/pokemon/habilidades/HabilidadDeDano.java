@@ -7,13 +7,20 @@ import org.fiuba.algoritmos3.pokemon.Tipo;
 
 
 
-public class HabilidadDeDano extends Habilidad implements ModificacionVida {
+public class HabilidadDeDano extends Habilidad{
 
     private Integer potencia;
 
     public HabilidadDeDano(String nombre, Integer cantidadDeUsos, Tipo tipo, Integer potencia) {
         super(nombre, cantidadDeUsos, tipo);
         this.potencia = potencia;
+    }
+
+    @Override
+    public void usarHabilidad(Pokemon pokemonActual, Pokemon pokemonEnemigo) {
+        double dano = this.calcularDano(pokemonEnemigo, pokemonActual);
+        pokemonEnemigo.bajarVida((int)dano);
+        super.usarHabilidad(pokemonActual, pokemonEnemigo);
     }
 
     private double calcularDano(Pokemon pokemonActual, Pokemon pokemonEnemigo) {
@@ -24,14 +31,6 @@ public class HabilidadDeDano extends Habilidad implements ModificacionVida {
         return danoFinal;
     }
 
-    public void modificarVida(Pokemon pokemonEnemigo, Integer modificadorDeVida) {
-         pokemonEnemigo.setVidaActual(pokemonEnemigo.getVidaActual() - modificadorDeVida);
-    }
-
-    public void atacar(Pokemon pokemonActual, Pokemon pokemonEnemigo){
-        double dano = this.calcularDano(pokemonEnemigo, pokemonActual);
-        this.modificarVida(pokemonEnemigo, (int)dano);
-    }
 
     private double STAB(Pokemon pokemonActual) {
         double stab = 1;

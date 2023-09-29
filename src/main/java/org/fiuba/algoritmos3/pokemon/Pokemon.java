@@ -81,6 +81,34 @@ public class Pokemon {
         this.vidaActual = vidaActual;
     }
 
+    public void sumarVida(Integer vidaAgregada) {
+        Integer vidaNueva = this.vidaActual + vidaAgregada;
+        if (vidaNueva > this.vidaActual){
+            vidaNueva = this.vidaMaxima;
+        } else {
+            this.setVidaActual(vidaNueva);
+        }
+    }
+
+    public void bajarVida(Integer vidaQuitada){
+        Integer vidaNueva = this.vidaActual - vidaQuitada;
+        if (vidaNueva < 0) {
+            this.vidaActual = 0;
+        } else {
+            this.setVidaActual(vidaNueva);
+        }
+
+    }
+
+    public boolean estaMuerto(){
+        return (this.vidaActual == 0);
+    }
+
+
+    public Boolean tieneVidaLlena() {
+        return (this.vidaActual == this.vidaMaxima);
+    }
+
     public Integer getVelocidad() {
         return velocidad;
     }
@@ -109,11 +137,15 @@ public class Pokemon {
         return estados;
     }
 
+    public void quitarEstados(){
+        this.estados.clear();
+    }
+
     public void setEstado(Estado estado) {
         if (!this.estados.contains(estado)) { //si no funciona: 'getClass()' o 'instanceof'
             this.estados.add(estado);
         } else {
-            //todo: hacer excepcion
+            //todo: hacer excepcion porque ya contiene al estado
         }
     }
 

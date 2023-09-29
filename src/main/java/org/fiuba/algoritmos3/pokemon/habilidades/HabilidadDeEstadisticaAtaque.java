@@ -9,6 +9,12 @@ public class HabilidadDeEstadisticaAtaque extends HabilidadDeEstadistica impleme
         super(nombre, cantidadDeUsos, tipo, porcentajeDeModificacion);
     }
 
+    @Override
+    public void usarHabilidad(Pokemon pokemon) {
+        super.usarHabilidad(pokemon);
+        modificarAtaque(pokemon);
+    }
+
     public void modificarAtaque(Pokemon pokemon) {
         double ataqueActual = pokemon.getAtaque();
         double nuevoAtaque = ataqueActual + (ataqueActual/100) * this.porcentajeDeModificacion;
