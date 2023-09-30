@@ -24,4 +24,8 @@ public class Dormido extends Estado {
         contadorDeTurnos++;
         return false;
     }
+
+    public Estado clonarEstado(Estado estado) {
+        return new Dormido(this.cantidadTurnos);
+    }
 }

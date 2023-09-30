@@ -18,4 +18,9 @@ public abstract class Estado {
     public void aumentarTurnos (){
         cantidadTurnos++;
     }
+    public abstract Estado clonarEstado(Estado estado);
+
+    public int getCantidadTurnos(){
+        return this.cantidadTurnos;
+    }
 }

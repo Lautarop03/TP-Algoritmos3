@@ -10,9 +10,11 @@ public class HabilidadDeEstadisticaDefensa extends  HabilidadDeEstadistica imple
     }
 
     @Override
-    public void usarHabilidad(Pokemon pokemon) {
-        super.usarHabilidad(pokemon);
-        modificarDefensa(pokemon);
+    public boolean usarHabilidad(Pokemon pokemon, Pokemon pokemonAModificar){
+        super.usarHabilidad(pokemon, pokemonAModificar);
+        modificarDefensa(pokemonAModificar);
+        return true;
+
     }
     @Override
     public void modificarDefensa(Pokemon pokemon) {

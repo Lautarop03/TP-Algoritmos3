@@ -141,11 +141,12 @@ public class Pokemon {
         this.estados.clear();
     }
 
-    public void setEstado(Estado estado) {
+    public boolean setEstado(Estado estado) {
         if (!this.estados.contains(estado)) { //si no funciona: 'getClass()' o 'instanceof'
             this.estados.add(estado);
+            return true;
         } else {
-            //todo: hacer excepcion porque ya contiene al estado
+            return false;
         }
     }
 

@@ -10,7 +10,7 @@ public class Paralizado extends Estado{
         super(cantidadTurnos);
         this.nombre = "Paralizado";
     }
-    public boolean modificarTurnos(Pokemon pokemon){
+    public boolean modificarTurnos(Pokemon pokemon) {
         double probabilidad =  ProbabilidadParalidazo;
         Random random = new Random();
         double numeroAleatorio = random.nextDouble();
@@ -21,5 +21,9 @@ public class Paralizado extends Estado{
     public boolean aplicarEfecto(Pokemon pokemon) {
         super.aplicarEfecto(pokemon);
         return true;
+    }
+
+    public Estado clonarEstado(Estado estado) {
+        return new Paralizado(this.cantidadTurnos);
     }
 }

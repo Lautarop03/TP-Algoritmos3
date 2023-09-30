@@ -10,8 +10,10 @@ public  abstract class HabilidadDeEstadistica extends Habilidad{
         super(nombre, cantidadDeUsos, tipo);
         this.porcentajeDeModificacion = porcentajeDeModificacion;
     }
+    @Override
+    public boolean usarHabilidad(Pokemon pokemon, Pokemon pokemonAModificar){
+        super.usarHabilidad(pokemon, pokemonAModificar);
+        return true;
 
-    public void usarHabilidad(Pokemon pokemon) {
-        cantidadDeUsos--;
     }
 }

@@ -17,10 +17,12 @@ public class HabilidadDeDano extends Habilidad{
     }
 
     @Override
-    public void usarHabilidad(Pokemon pokemonActual, Pokemon pokemonEnemigo) {
+    public boolean usarHabilidad(Pokemon pokemonActual, Pokemon pokemonEnemigo) {
         double dano = this.calcularDano(pokemonEnemigo, pokemonActual);
         pokemonEnemigo.bajarVida((int)dano);
         super.usarHabilidad(pokemonActual, pokemonEnemigo);
+        return true;
+
     }
 
     private double calcularDano(Pokemon pokemonActual, Pokemon pokemonEnemigo) {

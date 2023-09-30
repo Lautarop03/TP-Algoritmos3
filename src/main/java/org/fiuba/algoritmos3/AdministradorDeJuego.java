@@ -3,18 +3,22 @@ package org.fiuba.algoritmos3;
 import org.fiuba.algoritmos3.items.*;
 import org.fiuba.algoritmos3.pokemon.Pokemon;
 import org.fiuba.algoritmos3.pokemon.Tipo;
+import org.fiuba.algoritmos3.pokemon.estados.Dormido;
 import org.fiuba.algoritmos3.pokemon.habilidades.Habilidad;
-
+import org.fiuba.algoritmos3.pokemon.habilidades.HabilidadDeDano;
+import org.fiuba.algoritmos3.pokemon.habilidades.HabilidadDeEstado;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdministradorDeJuego {
     public ArrayList<Pokemon> asignarPokemones() {
-        Habilidad patada = new Habilidad("Patada",10,Tipo.Lucha);
-        Habilidad trueno = new Habilidad("Trueno",8,Tipo.Electrico);
-        Habilidad fuego = new Habilidad("Fuego",6,Tipo.Fuego);
-        Habilidad agua = new Habilidad("Agua", 4, Tipo.Agua);
+        Habilidad patada = new HabilidadDeDano("Patada",10,Tipo.Lucha, 80);
+        Habilidad trueno = new HabilidadDeDano("Trueno",8,Tipo.Electrico, 70);
+        Habilidad fuego = new HabilidadDeDano("Fuego",6,Tipo.Fuego, 100);
+        Habilidad agua = new HabilidadDeDano("Agua", 4, Tipo.Agua, 50);
+        Habilidad dormite = new HabilidadDeEstado("Agua", 4, Tipo.Agua, new Dormido(5));
+
         List<Habilidad> habilidades = List.of(patada,trueno,fuego,agua);
 
         Pokemon pikachu = new Pokemon("Pikachu",15, Tipo.Electrico, "asd", 500,500,20,20,20,habilidades);

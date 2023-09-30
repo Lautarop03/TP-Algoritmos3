@@ -10,9 +10,11 @@ public class HabilidadDeEstadisticaVida extends HabilidadDeEstadistica {
     }
 
     @Override
-    public void usarHabilidad(Pokemon pokemon) {
-        super.usarHabilidad(pokemon);
-        actualizarVida(pokemon);
+    public boolean usarHabilidad(Pokemon pokemon, Pokemon pokemonAModificar){
+        super.usarHabilidad(pokemonAModificar, pokemon);
+        actualizarVida(pokemonAModificar);
+        return true;
+
     }
     public void actualizarVida(Pokemon pokemon){
         double vidaActual = pokemon.getVidaActual();

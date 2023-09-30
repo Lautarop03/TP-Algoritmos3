@@ -12,7 +12,7 @@ public class Envenenado extends Estado implements ModificacionVida {
     }
 
     @Override
-    public boolean aplicarEfecto(Pokemon pokemon){
+    public boolean aplicarEfecto(Pokemon pokemon) {
         Integer modificadorDeVida = pokemon.getVidaActual()- pokemon.getVidaActual()/100 * this.porcentajeDeVidaABajar;
         this.modificarVida(pokemon, modificadorDeVida);
         return true;
@@ -20,5 +20,9 @@ public class Envenenado extends Estado implements ModificacionVida {
 
     public void modificarVida(Pokemon pokemon, Integer modificadorDeVida) {
         pokemon.setVidaActual(modificadorDeVida);
+    }
+
+    public Estado clonarEstado(Estado estado) {
+        return new Envenenado(this.cantidadTurnos);
     }
 }
