@@ -1,9 +1,6 @@
 package org.fiuba.algoritmos3;
 
-import org.fiuba.algoritmos3.pokemon.Pokemon;
-
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {

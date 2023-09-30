@@ -5,7 +5,7 @@ import org.fiuba.algoritmos3.pokemon.Pokemon;
 import java.util.List;
 
 public class AdministradorDeTurno {
-    private List<Jugador> jugadores;
+    private final List<Jugador> jugadores;
     private int indiceJugadorActual;
     public int definirTurno() {
         int velocidadMax = 0;

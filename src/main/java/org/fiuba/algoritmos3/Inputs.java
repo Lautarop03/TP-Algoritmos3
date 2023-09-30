@@ -6,6 +6,7 @@ import org.fiuba.algoritmos3.pokemon.habilidades.Habilidad;
 import org.fiuba.algoritmos3.views.HabilidadView;
 import org.fiuba.algoritmos3.views.ItemView;
 import org.fiuba.algoritmos3.views.PokemonView;
+import org.fiuba.algoritmos3.views.ViewControlador;
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
@@ -16,20 +17,15 @@ import java.util.List;
 
 public class Inputs {
     private final LineReader reader;
-    private final ItemView itemView;
-    private final PokemonView pokemonView;
-    private final HabilidadView habilidadView;
+    private final ViewControlador viewControlador;
     public Inputs() throws IOException {
-        this.pokemonView = new PokemonView();
-        this.itemView = new ItemView();
-        this.habilidadView = new HabilidadView();
+        this.viewControlador = new ViewControlador();
         Terminal terminal = TerminalBuilder.terminal();
 
         reader = LineReaderBuilder.builder()
                 .terminal(terminal)
                 .build();
     }
-
     public String pedirNombre() {
         while (true) {
             String nombre = reader.readLine("Ingrese nombre de jugador: ");
@@ -65,17 +61,17 @@ public class Inputs {
     public int pedirItem(List<Item> items) {
         for (int i = 0; i < items.size(); i++) {
             System.out.printf("%d. ",(i+1));
-            itemView.mostrarItem(items.get(i));
+            viewControlador.mostrarItem(items.get(i));
         }
-        return validarOpcion(items.size())-1;
+        return validarOpcion(items.size())-1; // TODO: VER QUE ITEM DEVUELVE
     }
 
     public int pedirPokemon(List<Pokemon> pokemones) {
         System.out.print("PokemonActual: ");
-        pokemonView.mostrarPokemon(pokemones.get(0));
+        viewControlador.mostrarPokemon(pokemones.get(0));
         for (int i = 1; i < pokemones.size(); i++) {
             System.out.printf("%d. ",(i));
-            pokemonView.mostrarPokemon(pokemones.get(i));
+            viewControlador.mostrarPokemon(pokemones.get(i));
         }
         System.out.println("6. Volver al menu de acciones");
         return validarOpcion(pokemones.size()+1);
@@ -84,10 +80,10 @@ public class Inputs {
     public int pedirHabilidad(List<Habilidad> habilidades) {
         for (int i = 0; i < habilidades.size(); i++) {
             System.out.printf("%d. ",(i+1));
-            habilidadView.mostrarHabilidad(habilidades.get(i));
+            viewControlador.mostrarHabilidad(habilidades.get(i));
         }
         System.out.println("6. Volver al menu de acciones");
 
-        return validarOpcion(habilidades.size());
+        return validarOpcion(habilidades.size()-1); // TODO: VER QUE HABILIDAD DEVUELVE
     }
 }

@@ -9,10 +9,4 @@ public class ItemView {
     public void mostrarItem(Item item) {
         System.out.println(item.getNombre()+ " Cantidad:" + item.getCantidad());
     }
-
-    public void mostrarItems(List<Item> listaDeItems) {
-        for (Item item : listaDeItems) {
-            mostrarItem(item);
-        }
-    }
 }

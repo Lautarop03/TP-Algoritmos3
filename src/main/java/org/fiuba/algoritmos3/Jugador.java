@@ -45,15 +45,6 @@ public class Jugador {
         }
     }
 
-    public void usarHabilidad() {
-        return;
-    }
-    public void usarItem() {
-        return;
-    }
-    public void cambiarPokemon(){
-        return;
-    }
     public void rendirse() {
         this.pokemones.clear();
     }
