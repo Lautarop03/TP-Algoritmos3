@@ -17,7 +17,8 @@ public class AdministradorDeJuego {
         Habilidad trueno = new HabilidadDeDano("Trueno",8,Tipo.Electrico, 70);
         Habilidad fuego = new HabilidadDeDano("Fuego",6,Tipo.Fuego, 100);
         Habilidad agua = new HabilidadDeDano("Agua", 4, Tipo.Agua, 50);
-        Habilidad dormite = new HabilidadDeEstado("Agua", 4, Tipo.Agua, new Dormido(5));
+        Habilidad dormite = new HabilidadDeEstado("Dormite", 4, Tipo.Agua, new Dormido(5));
+
 
         List<Habilidad> habilidades = List.of(patada,trueno,fuego,agua);
 
@@ -39,11 +40,15 @@ public class AdministradorDeJuego {
     }
 
     public List<Item> asignarItems(){
-        ItemModificadorAtaque modificadorAtaque = new ItemModificadorAtaque(10);
         Pocion pocion = new Pocion(5);
+        MegaPocion megaPocion = new MegaPocion(5);
+        Hiperpocion hiperPocion = new Hiperpocion(5);
         Revivir revivir = new Revivir(8);
         CuraTodo curaTodo = new CuraTodo(6);
-        List<Item> items = List.of(modificadorAtaque, pocion, revivir, curaTodo);
+        ItemModificadorDefensa modificadorDefensa = new ItemModificadorDefensa(10);
+        ItemModificadorAtaque modificadorAtaque = new ItemModificadorAtaque(10);
+
+        List<Item> items = List.of(modificadorAtaque,modificadorDefensa, pocion, revivir, curaTodo, megaPocion, hiperPocion);
 
         return items;
     }

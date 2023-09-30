@@ -31,4 +31,6 @@ public class AdministradorDeTurno {
     public Jugador getJugadorActual() {
         return jugadores.get(indiceJugadorActual);
     }
+    public Jugador getOponente() {return jugadores.get((indiceJugadorActual+1) % jugadores.size());}
+
 }

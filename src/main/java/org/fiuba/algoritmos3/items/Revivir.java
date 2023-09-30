@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3.items;
 
-import org.fiuba.algoritmos3.ModificacionVida;
 import org.fiuba.algoritmos3.pokemon.Pokemon;
 
 public class Revivir extends Item{
@@ -8,13 +7,11 @@ public class Revivir extends Item{
         super(cantidadDeItems);
         this.nombre = "Revivir";
     }
-
     @Override
     public boolean aplicarItem(Pokemon pokemon){
         //Todo: que no se pueda aplicar el revivir al pokemon en el campo de juego
         if (!pokemon.estaMuerto()){
             return false;
-            //Todo: lanzar excepcion cuando el pokemon tiene vida
         }
         Integer nuevaVida = pokemon.getVidaMaxima() / 2;
         pokemon.sumarVida(nuevaVida);

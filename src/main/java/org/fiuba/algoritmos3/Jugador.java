@@ -19,12 +19,9 @@ public class Jugador {
         this.items = items;
         this.pokemonActual = pokemones.get(0);
     }
-
-
     public ArrayList<Pokemon> getPokemones() {
         return pokemones;
     }
-
     public String getNombre() {
         return nombre;
     }
@@ -36,7 +33,6 @@ public class Jugador {
     }
     public Boolean intercambiarPokemon(Pokemon nuevoPokemon){
         if (!nuevoPokemon.estaVivo()) {
-            System.out.println("Error, pokemon sin vida.");
             return false;
         } else {
             pokemonActual = nuevoPokemon;
@@ -44,7 +40,6 @@ public class Jugador {
             return true;
         }
     }
-
     public void rendirse() {
         this.pokemones.clear();
     }
