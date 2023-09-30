@@ -45,32 +45,12 @@ public class Pokemon {
         return nivel;
     }
 
-    public void setNivel(Integer nivel) {
-        this.nivel = nivel;
-    }
-
     public Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getHistoria() {
-        return historia;
-    }
-
-    public void setHistoria(String historia) {
-        this.historia = historia;
-    }
-
     public Integer getVidaMaxima() {
         return vidaMaxima;
-    }
-
-    public void setVidaMaxima(Integer vidaMaxima) {
-        this.vidaMaxima = vidaMaxima;
     }
 
     public Integer getVidaActual() {
@@ -83,10 +63,14 @@ public class Pokemon {
 
     public void sumarVida(Integer vidaAgregada) {
         Integer vidaNueva = this.vidaActual + vidaAgregada;
-        if (vidaNueva > this.vidaActual){
+        if (vidaNueva > this.vidaMaxima) {
             vidaNueva = this.vidaMaxima;
-        } else {
-            this.setVidaActual(vidaNueva);
+        }
+        this.setVidaActual(vidaNueva);
+    }
+    public void aplicarEstado() {
+        for (Estado estado : this.estados) {
+            estado.aplicarEfecto(this);
         }
     }
 
@@ -97,7 +81,6 @@ public class Pokemon {
         } else {
             this.setVidaActual(vidaNueva);
         }
-
     }
 
     public boolean estaMuerto(){
@@ -111,10 +94,6 @@ public class Pokemon {
 
     public Integer getVelocidad() {
         return velocidad;
-    }
-
-    public void setVelocidad(Integer velocidad) {
-        this.velocidad = velocidad;
     }
 
     public Integer getDefensa() {

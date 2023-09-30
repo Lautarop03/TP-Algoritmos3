@@ -18,7 +18,6 @@ public class Main {
         while (!juego.terminado()) {
             controladorDeJuego.jugarTurno();
         }
-
         System.out.println("Juego terminado!");
     }
 }

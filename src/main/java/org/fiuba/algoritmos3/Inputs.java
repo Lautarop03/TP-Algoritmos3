@@ -3,9 +3,6 @@ package org.fiuba.algoritmos3;
 import org.fiuba.algoritmos3.items.Item;
 import org.fiuba.algoritmos3.pokemon.Pokemon;
 import org.fiuba.algoritmos3.pokemon.habilidades.Habilidad;
-import org.fiuba.algoritmos3.views.HabilidadView;
-import org.fiuba.algoritmos3.views.ItemView;
-import org.fiuba.algoritmos3.views.PokemonView;
 import org.fiuba.algoritmos3.views.ViewControlador;
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
@@ -36,12 +33,12 @@ public class Inputs {
             }
         }
     }
-    private int validarOpcion(int cantidad) {
+    private int validarOpcion(int limiteSuperior) {
         while (true) {
             String input = reader.readLine("Ingrese numero de la opcion deseada: \n");
             try {
                 int opcion = Integer.parseInt(input);
-                if (opcion >= 1 && opcion <= cantidad) {
+                if (opcion >= 0 && opcion <= limiteSuperior) {
                     return opcion;
                 } else {
                     System.out.println("Opcion no valida. Por favor, ingrese un numero valido.");
@@ -59,31 +56,42 @@ public class Inputs {
         return validarOpcion(acciones.length);
     }
     public int pedirItem(List<Item> items) {
+        System.out.println("0. Volver al menu de acciones");
         for (int i = 0; i < items.size(); i++) {
-            System.out.printf("%d. ",(i+1));
+            System.out.printf("%d. ", (i + 1));
             viewControlador.mostrarItem(items.get(i));
         }
-        return validarOpcion(items.size())-1; // TODO: VER QUE ITEM DEVUELVE
+        return validarOpcion(items.size()) - 1;
     }
 
-    public int pedirPokemon(List<Pokemon> pokemones) {
+    public int pedirPokemonIntercambio(List<Pokemon> pokemones) {
         System.out.print("PokemonActual: ");
         viewControlador.mostrarPokemon(pokemones.get(0));
+        System.out.println("0. Volver al menu de acciones");
         for (int i = 1; i < pokemones.size(); i++) {
             System.out.printf("%d. ",(i));
             viewControlador.mostrarPokemon(pokemones.get(i));
         }
-        System.out.println("6. Volver al menu de acciones");
-        return validarOpcion(pokemones.size()+1);
+        return validarOpcion(pokemones.size());
     }
+
+    public int pedirPokemon(List<Pokemon> pokemones) {
+        System.out.println("0. Volver al menu de acciones");
+        for (int i = 0; i < pokemones.size(); i++) {
+            System.out.printf("%d. ",(i + 1));
+            viewControlador.mostrarPokemon(pokemones.get(i));
+        }
+        return validarOpcion(pokemones.size()) - 1;
+    }
+
 
     public int pedirHabilidad(List<Habilidad> habilidades) {
         for (int i = 0; i < habilidades.size(); i++) {
             System.out.printf("%d. ",(i+1));
             viewControlador.mostrarHabilidad(habilidades.get(i));
         }
-        System.out.println("6. Volver al menu de acciones");
+        System.out.println("0. Volver al menu de acciones");
 
-        return validarOpcion(habilidades.size()-1); // TODO: VER QUE HABILIDAD DEVUELVE
+        return validarOpcion(habilidades.size()-1);
     }
 }
