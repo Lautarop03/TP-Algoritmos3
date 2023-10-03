@@ -1,7 +1,10 @@
 package org.fiuba.algoritmos3;
 
+import org.fiuba.algoritmos3.pokemon.habilidades.Habilidad;
+
 import java.io.IOException;
 import java.util.List;
+
 
 public class Main {
     public static void main(String[] args) throws IOException {

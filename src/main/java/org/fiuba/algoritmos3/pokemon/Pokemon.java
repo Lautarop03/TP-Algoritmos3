@@ -3,7 +3,6 @@ package org.fiuba.algoritmos3.pokemon;
 import org.fiuba.algoritmos3.pokemon.estados.Estado;
 import org.fiuba.algoritmos3.pokemon.habilidades.Habilidad;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Pokemon {
@@ -16,7 +15,7 @@ public class Pokemon {
     private Integer velocidad;
     private Integer defensa;
     private Integer ataque;
-    private List<Estado> estados;
+    private Estado estado;
     private List<Habilidad> habilidades;
 
     public Pokemon(String nombre, Integer nivel, Tipo tipo, String historia, Integer vidaMaxima, Integer vidaActual, Integer velocidad, Integer defensa, Integer ataque, List<Habilidad> habilidades) {
@@ -29,7 +28,7 @@ public class Pokemon {
         this.velocidad = velocidad;
         this.defensa = defensa;
         this.ataque = ataque;
-        this.estados = Collections.emptyList();
+        this.estado = null;
         this.habilidades = habilidades;
     }
 
@@ -68,10 +67,8 @@ public class Pokemon {
         }
         this.setVidaActual(vidaNueva);
     }
-    public void aplicarEstado() {
-        for (Estado estado : this.estados) {
-            estado.aplicarEfecto(this);
-        }
+    public boolean aplicarEstado() {
+        return estado.aplicarEfecto(this);
     }
 
     public void bajarVida(Integer vidaQuitada){
@@ -112,17 +109,17 @@ public class Pokemon {
         this.ataque = ataque;
     }
 
-    public List<Estado> getEstados() {
-        return estados;
+    public Estado getEstado() {
+        return estado;
     }
 
-    public void quitarEstados(){
-        this.estados.clear();
+    public void quitarEstado(){
+        this.estado = null;
     }
 
     public boolean setEstado(Estado estado) {
-        if (!this.estados.contains(estado)) { //si no funciona: 'getClass()' o 'instanceof'
-            this.estados.add(estado);
+        if (this.estado == null) { //si no funciona: 'getClass()' o 'instanceof'
+            this.estado = estado;
             return true;
         } else {
             return false;

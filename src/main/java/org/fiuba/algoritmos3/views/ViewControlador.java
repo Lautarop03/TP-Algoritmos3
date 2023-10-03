@@ -48,6 +48,14 @@ public class ViewControlador {
     public void mostrarAccion(Habilidad habilidad,Pokemon pokemonActual, Pokemon pokemonEnemigo){
         habilidadView.mostrarAccion(habilidad,pokemonActual,pokemonEnemigo);
     }
+    public void mostrarEfectoEstado(){
+        System.out.println("Estado aplicado");//ACA HICE CAMBIOSS MATEX
+    }
+
+    public void mostrarPokemonMuerto(Pokemon pokemon){
+        System.out.println(pokemon + " la quedo");//ACA HICE CAMBIOSS MATEX
+
+    }
 
     public void mostrarCampo(List<Jugador> jugadores) {
         for (Jugador jugador : jugadores) {

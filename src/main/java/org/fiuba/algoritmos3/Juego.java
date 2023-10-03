@@ -7,6 +7,9 @@ import org.fiuba.algoritmos3.views.ViewControlador;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import java.util.LinkedList;
+
 
 public class Juego {
     final int volverAlMenu = -1;
@@ -14,12 +17,15 @@ public class Juego {
     private final Inputs inputs;
     private final List<Jugador> jugadores;
     private final ViewControlador viewControlador;
+    protected Queue<Habilidad> colaDeAtaques;
+
 
     public Juego(List<Jugador> jugadores) throws IOException {
         this.inputs = new Inputs();
         this.viewControlador = new ViewControlador();
         this.jugadores = jugadores;
         this.administradorDeTurno = new AdministradorDeTurno(jugadores);
+        this.colaDeAtaques = new LinkedList<Habilidad>();
     }
 
     public boolean terminado() {
@@ -29,19 +35,42 @@ public class Juego {
                 viewControlador.mostrarGanador(jugadores.get((i+1)%2));
                 return true;
             }
+            Integer contador = 1; //ACA HICE CAMBIOSS MATEX
             for (Pokemon pokemon : jugadores.get(i).getPokemones()) {
                 if (!pokemon.estaMuerto()) {
                     break;
                 }
-                viewControlador.mostrarGanador(jugadores.get((i+1)%2));
-                return true;
+                if (contador == jugadores.get(i).getPokemones().size()){
+                    viewControlador.mostrarGanador(jugadores.get((i+1)%2));
+                    return true;
+                }
+                contador++;
             }
         }
         return false;
     }
-    public void aplicarEstados() {// TODO : Aplicar efectos de un pokemon
+
+    public boolean comprobarPokemonActualEstaVivo(){
         Pokemon pokemon = getJugadorActual().getPokemonActual();
-        pokemon.aplicarEstado();
+        if (!pokemon.estaVivo()){
+            viewControlador.mostrarPokemonMuerto(pokemon);
+            return false;
+        }
+        return true;
+    }
+
+
+    public boolean aplicarEstado() {// TODO : Aplicar efectos de un pokemon
+        Pokemon pokemon = getJugadorActual().getPokemonActual();//ACA HICE CAMBIOSS MATEX
+        boolean aplicado = false;
+        if (pokemon.getEstado() != null){
+            aplicado = pokemon.aplicarEstado();
+            if (aplicado){
+                this.colaDeAtaques.remove();
+                viewControlador.mostrarEfectoEstado();
+            }
+        }
+        return aplicado;
     }
     public void cambiarTurno() {
         administradorDeTurno.pasarTurno();
@@ -108,7 +137,7 @@ public class Juego {
     public boolean atacar() {
         Jugador jugadorActual = getJugadorActual();
         Pokemon pokemonActual = jugadorActual.getPokemonActual();
-        Pokemon pokemonEnemigo = getOponente().getPokemonActual();
+        Pokemon pokemonEnemigo = getOponente().getPokemonActual();//ACA HICE CAMBIOSS MATEX
         while(true){
             int numeroHabilidad = inputs.pedirHabilidad(pokemonActual.getHabilidades());
             if (numeroHabilidad == volverAlMenu) {
@@ -118,10 +147,19 @@ public class Juego {
             if (habilidad.getCantidadDeUsos() == 0){ //ver como comprobar de manera decente (no como hice yo) que la habilidad tenga usos restantes
                 System.out.println("Habilidad sin usos, elegir otra");
             } else { // TODO: Aplicar el estado correspondiente
-                habilidad.usarHabilidad(pokemonActual,pokemonEnemigo);
-                viewControlador.mostrarAccion(habilidad,pokemonActual,pokemonEnemigo);
+                this.colaDeAtaques.add(habilidad);
                 return true;
             }
+        }
+    }
+    public void realizarAtaque(){//ACA HICE CAMBIOSS MATEX
+        Jugador jugadorActual = getJugadorActual();
+        Pokemon pokemonActual = jugadorActual.getPokemonActual();
+        Pokemon pokemonEnemigo = getOponente().getPokemonActual();
+        if (!colaDeAtaques.isEmpty()){
+            Habilidad habilidad = colaDeAtaques.poll();
+            habilidad.usarHabilidad(pokemonActual,pokemonEnemigo);
+            viewControlador.mostrarAccion(habilidad,pokemonActual,pokemonEnemigo);
         }
     }
 }

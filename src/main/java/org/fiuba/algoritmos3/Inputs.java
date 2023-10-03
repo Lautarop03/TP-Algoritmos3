@@ -86,12 +86,12 @@ public class Inputs {
 
 
     public int pedirHabilidad(List<Habilidad> habilidades) {
+        System.out.println("0. Volver al menu de acciones");
         for (int i = 0; i < habilidades.size(); i++) {
             System.out.printf("%d. ",(i+1));
             viewControlador.mostrarHabilidad(habilidades.get(i));
         }
-        System.out.println("0. Volver al menu de acciones");
 
-        return validarOpcion(habilidades.size()-1);
+        return validarOpcion(habilidades.size())-1;
     }
 }

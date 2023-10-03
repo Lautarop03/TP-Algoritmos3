@@ -20,7 +20,7 @@ public class AdministradorDeJuego {
         Habilidad dormite = new HabilidadDeEstado("Dormite", 4, Tipo.Agua, new Dormido(5));
 
 
-        List<Habilidad> habilidades = List.of(patada,trueno,fuego,agua);
+        List<Habilidad> habilidades = List.of(patada,trueno,fuego,agua, dormite);
 
         Pokemon pikachu = new Pokemon("Pikachu",15, Tipo.Electrico, "asd", 500,500,20,20,20,habilidades);
         Pokemon charmander = new Pokemon("Charmander",20, Tipo.Fuego, "asd", 600,0,25,10,15,habilidades);

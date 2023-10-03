@@ -10,6 +10,9 @@ public class HabilidadView{
     }
 
     public void mostrarAccion(Habilidad habilidad, Pokemon pokemonActual, Pokemon pokemonEnemigo){
+        System.out.println("El pokemon " + pokemonActual.getNombre()
+                + " ha utilizado " + habilidad.getNombre()
+                + " en " + pokemonEnemigo.getNombre());
     }
 
     public void mostrarAccion(HabilidadDeDano habilidad, Pokemon pokemonActual, Pokemon pokemonEnemigo){
