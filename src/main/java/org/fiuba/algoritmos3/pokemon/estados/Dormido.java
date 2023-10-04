@@ -8,24 +8,24 @@ public class Dormido extends Estado {
     final Double ProbabilidadDeDespertarse = 0.25;
     private int contadorDeTurnos = 0;
 
-    public Dormido(int cantidadTurnos) {
-        super(cantidadTurnos);
+    public Dormido() {
         this.nombre = "Dormido";
     }
 
     @Override
     public boolean aplicarEfecto(Pokemon pokemon) {
-        double probabilidad = ProbabilidadDeDespertarse + cantidadTurnos * ProbabilidadDeDespertarse;
+        double probabilidad = ProbabilidadDeDespertarse + contadorDeTurnos * ProbabilidadDeDespertarse;
         Random random = new Random();
         double numeroAleatorio = random.nextDouble();
-        if (numeroAleatorio <= probabilidad){
-            return true;
+        if (numeroAleatorio <= probabilidad) {
+            pokemon.quitarEstado();
+            return false;
         }
         contadorDeTurnos++;
-        return false;
+        return true;
     }
 
     public Estado clonarEstado(Estado estado) {
-        return new Dormido(this.cantidadTurnos);
+        return new Dormido();
     }
 }

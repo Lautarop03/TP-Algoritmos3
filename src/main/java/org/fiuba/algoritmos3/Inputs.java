@@ -15,6 +15,7 @@ import java.util.List;
 public class Inputs {
     private final LineReader reader;
     private final ViewControlador viewControlador;
+
     public Inputs() throws IOException {
         this.viewControlador = new ViewControlador();
         Terminal terminal = TerminalBuilder.terminal();
@@ -23,6 +24,7 @@ public class Inputs {
                 .terminal(terminal)
                 .build();
     }
+
     public String pedirNombre() {
         while (true) {
             String nombre = reader.readLine("Ingrese nombre de jugador: ");
@@ -33,12 +35,13 @@ public class Inputs {
             }
         }
     }
-    private int validarOpcion(int limiteSuperior) {
+
+    private int validarOpcion(int limiteInferior, int limiteSuperior) {
         while (true) {
             String input = reader.readLine("Ingrese numero de la opcion deseada: \n");
             try {
                 int opcion = Integer.parseInt(input);
-                if (opcion >= 0 && opcion <= limiteSuperior) {
+                if (opcion >= limiteInferior && opcion <= limiteSuperior) {
                     return opcion;
                 } else {
                     System.out.println("Opcion no valida. Por favor, ingrese un numero valido.");
@@ -48,42 +51,41 @@ public class Inputs {
             }
         }
     }
+
     public int pedirAccion() {
         String[] acciones = {"Rendirse","Ver el campo de batalla","Intercambiar Pokemon","Aplicar item","Ataque"};
         for (int i = 0; i < acciones.length; i++) {
             System.out.println((i+1) + ". " + acciones[i]);
         }
-        return validarOpcion(acciones.length);
+        return validarOpcion(1,acciones.length);
     }
+
     public int pedirItem(List<Item> items) {
         System.out.println("0. Volver al menu de acciones");
         for (int i = 0; i < items.size(); i++) {
             System.out.printf("%d. ", (i + 1));
             viewControlador.mostrarItem(items.get(i));
         }
-        return validarOpcion(items.size()) - 1;
+        return validarOpcion(0,items.size()) - 1;
     }
 
-    public int pedirPokemonIntercambio(List<Pokemon> pokemones) {
-        System.out.print("PokemonActual: ");
+    public int pedirPokemonMuerto(List<Pokemon> pokemones) {
+        System.out.print("Pokemon Actual: ");
         viewControlador.mostrarPokemon(pokemones.get(0));
-        System.out.println("0. Volver al menu de acciones");
         for (int i = 1; i < pokemones.size(); i++) {
             System.out.printf("%d. ",(i));
             viewControlador.mostrarPokemon(pokemones.get(i));
         }
-        return validarOpcion(pokemones.size());
+        return validarOpcion(1,pokemones.size()-1);
     }
 
     public int pedirPokemon(List<Pokemon> pokemones) {
-        System.out.println("0. Volver al menu de acciones");
         for (int i = 0; i < pokemones.size(); i++) {
             System.out.printf("%d. ",(i + 1));
             viewControlador.mostrarPokemon(pokemones.get(i));
         }
-        return validarOpcion(pokemones.size()) - 1;
+        return validarOpcion(0,pokemones.size())-1;
     }
-
 
     public int pedirHabilidad(List<Habilidad> habilidades) {
         System.out.println("0. Volver al menu de acciones");
@@ -91,7 +93,6 @@ public class Inputs {
             System.out.printf("%d. ",(i+1));
             viewControlador.mostrarHabilidad(habilidades.get(i));
         }
-
-        return validarOpcion(habilidades.size())-1;
+        return validarOpcion(0,habilidades.size())-1;
     }
 }

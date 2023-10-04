@@ -7,8 +7,7 @@ import java.util.Random;
 public class Paralizado extends Estado{
     final Double ProbabilidadParalidazo = 0.5;
 
-    public Paralizado(int cantidadTurnos) {
-        super(cantidadTurnos);
+    public Paralizado() {
         this.nombre = "Paralizado";
     }
 
@@ -21,6 +20,6 @@ public class Paralizado extends Estado{
     }
 
     public Estado clonarEstado(Estado estado) {
-        return new Paralizado(this.cantidadTurnos);
+        return new Paralizado();
     }
 }

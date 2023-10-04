@@ -10,7 +10,6 @@ public class ControladorDeJuego {
     private final Inputs inputs;
 
 
-
     public ControladorDeJuego(Juego juego, Inputs inputs) {
         this.juego = juego;
         this.inputs = inputs;
@@ -19,23 +18,26 @@ public class ControladorDeJuego {
     public void jugarTurno() {
         System.out.println("Turno de: " + juego.getJugadorActual().getNombre());
         boolean repetir = true;
+        boolean intercambioPokemon = true;
+
         do {
-            if (!juego.comprobarPokemonActualEstaVivo()){
-                juego.cambiarPokemon();//ACA HICE CAMBIOSS MATEX
-            }
+            juego.comprobarPokemonActualEstaVivo();
             int accion = inputs.pedirAccion();
             switch (accion) {
                 case rendirse -> repetir = juego.rendirse();
                 case verCampoDeBatalla -> repetir = juego.verCampo();
-                case intercambiarPokemon -> repetir = juego.cambiarPokemon();
+                case intercambiarPokemon -> {
+                    repetir = juego.cambiarPokemon();
+                    intercambioPokemon = false;
+                }
                 case item -> repetir = juego.usarItem();
                 case ataque -> repetir = juego.atacar();
             }
         } while (!repetir);
-
-        if (!juego.aplicarEstado()){//ACA HICE CAMBIOSS MATEX
+        if (intercambioPokemon && !juego.aplicarEstado()){
             juego.realizarAtaque();
         }
+
         juego.cambiarTurno();
     }
 }

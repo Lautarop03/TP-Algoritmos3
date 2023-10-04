@@ -18,14 +18,18 @@ public class HabilidadDeEstado extends Habilidad {
     @Override
     public boolean usarHabilidad(Pokemon pokemon, Pokemon pokemonAModificar){
         super.usarHabilidad(pokemon, pokemonAModificar);
-        if (!pokemon.setEstado(this.crearNuevoEstado())){
+        if (!pokemonAModificar.setEstado(this.crearNuevoEstado())){
             return false;
         }
         return true;
 
     }
 
+
+
     private Estado crearNuevoEstado() {
-        return this.estado.clonarEstado(this.estado);
+        Estado estadoAnterior = this.estado;
+        Estado estadoNuevo = this.estado.clonarEstado(this.estado);
+        return estadoNuevo;
     }
 }

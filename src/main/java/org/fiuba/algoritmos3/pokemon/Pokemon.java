@@ -85,7 +85,7 @@ public class Pokemon {
     }
 
 
-    public Boolean tieneVidaLlena() {
+    public boolean tieneVidaLlena() {
         return (this.vidaActual == this.vidaMaxima);
     }
 
@@ -119,6 +119,7 @@ public class Pokemon {
 
     public boolean setEstado(Estado estado) {
         if (this.estado == null) { //si no funciona: 'getClass()' o 'instanceof'
+
             this.estado = estado;
             return true;
         } else {

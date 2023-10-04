@@ -6,8 +6,7 @@ import org.fiuba.algoritmos3.pokemon.Pokemon;
 public class Envenenado extends Estado implements ModificacionVida {
     private Integer porcentajeDeVidaABajar = 5;
 
-    public Envenenado(int cantidadTurnos) {
-        super(cantidadTurnos);
+    public Envenenado() {
         this.nombre = "Envenenado";
     }
 
@@ -23,6 +22,6 @@ public class Envenenado extends Estado implements ModificacionVida {
     }
 
     public Estado clonarEstado(Estado estado) {
-        return new Envenenado(this.cantidadTurnos);
+        return new Envenenado();
     }
 }

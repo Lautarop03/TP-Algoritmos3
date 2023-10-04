@@ -4,16 +4,19 @@ import org.fiuba.algoritmos3.Jugador;
 import org.fiuba.algoritmos3.items.Item;
 import org.fiuba.algoritmos3.pokemon.Pokemon;
 import org.fiuba.algoritmos3.pokemon.habilidades.Habilidad;
+import org.fiuba.algoritmos3.pokemon.estados.Estado;
 import java.util.List;
 
 public class ViewControlador {
     private PokemonView pokemonView;
-    private HabilidadView habilidadView;
+    private FactoryHabilidadView habilidadFactory;
+    private FactoryEstadoView estadoFactory;
     private ItemView itemView;
 
     public ViewControlador() {
         this.pokemonView = new PokemonView();
-        this.habilidadView = new HabilidadView();
+        this.estadoFactory = new FactoryEstadoView();
+        this.habilidadFactory = new FactoryHabilidadView();
         this.itemView = new ItemView();
     }
 
@@ -29,9 +32,11 @@ public class ViewControlador {
         itemView.mostrarErrorUsoItem(item);
     }
 
-    public void errorIntercambiarPokemon(){
-        pokemonView.mostrarErrorIntercambiar();
+    public void errorIntercambiarPokemonSinVida(){
+        pokemonView.mostrarErrorIntercambiarSinVida();
     }
+
+    public void  errorPokemonActual(){ pokemonView.mostrarErrorIntercambiarMismo(); }
 
     public void mostrarCambioPokemon(Pokemon pokemon){
         pokemonView.mostrarCambioPokemon(pokemon);
@@ -42,19 +47,27 @@ public class ViewControlador {
     }
 
     public void mostrarHabilidad(Habilidad habilidad) {
+        HabilidadView habilidadView = habilidadFactory.createHabilidadView(habilidad);
         habilidadView.mostrarHabilidad(habilidad);
     }
 
     public void mostrarAccion(Habilidad habilidad,Pokemon pokemonActual, Pokemon pokemonEnemigo){
+        HabilidadView habilidadView = habilidadFactory.createHabilidadView(habilidad);
         habilidadView.mostrarAccion(habilidad,pokemonActual,pokemonEnemigo);
     }
-    public void mostrarEfectoEstado(){
-        System.out.println("Estado aplicado");//ACA HICE CAMBIOSS MATEX
+
+    public void opcionVolverAMenu(){
+        System.out.println("0. Volver al menu de acciones");
+    }
+
+    public void mostrarEfectoEstado(Estado estado, Pokemon pokemon, Boolean aplicado){
+        EstadoView estadoView = estadoFactory.createEstadoView(estado);
+        estadoView.mostrarEstado(pokemon,estado,aplicado);
+
     }
 
     public void mostrarPokemonMuerto(Pokemon pokemon){
-        System.out.println(pokemon + " la quedo");//ACA HICE CAMBIOSS MATEX
-
+        System.out.println(pokemon.getNombre() + " la quedo");
     }
 
     public void mostrarCampo(List<Jugador> jugadores) {
