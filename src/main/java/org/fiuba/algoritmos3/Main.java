@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        System.setProperty("org.jline.terminal.dumb", "true");
         Inputs input = new Inputs();
         AdministradorDeJuego admin = new AdministradorDeJuego();
         String nombre = input.pedirNombre();
