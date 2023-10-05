@@ -1,5 +1,8 @@
 package org.fiuba.algoritmos3;
 
+import org.fiuba.algoritmos3.model.Inputs;
+import org.fiuba.algoritmos3.model.Juego;
+
 public class ControladorDeJuego {
     final int rendirse = 1;
     final int verCampoDeBatalla = 2;

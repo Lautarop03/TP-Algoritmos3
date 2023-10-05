@@ -1,10 +1,15 @@
 package org.fiuba.algoritmos3.views;
 
-import org.fiuba.algoritmos3.Jugador;
-import org.fiuba.algoritmos3.items.Item;
-import org.fiuba.algoritmos3.pokemon.Pokemon;
-import org.fiuba.algoritmos3.pokemon.habilidades.Habilidad;
-import org.fiuba.algoritmos3.pokemon.estados.Estado;
+import org.fiuba.algoritmos3.model.Jugador;
+import org.fiuba.algoritmos3.model.items.Item;
+import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
+import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
+import org.fiuba.algoritmos3.views.estadoView.EstadoView;
+import org.fiuba.algoritmos3.views.estadoView.FactoryEstadoView;
+import org.fiuba.algoritmos3.views.habilidadView.FactoryHabilidadView;
+import org.fiuba.algoritmos3.views.habilidadView.HabilidadView;
+
 import java.util.List;
 
 public class ViewControlador {

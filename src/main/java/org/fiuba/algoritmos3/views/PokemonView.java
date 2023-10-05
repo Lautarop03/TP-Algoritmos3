@@ -1,7 +1,7 @@
 package org.fiuba.algoritmos3.views;
 
-import org.fiuba.algoritmos3.pokemon.Pokemon;
-import org.fiuba.algoritmos3.pokemon.estados.Estado;
+import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 
 public class PokemonView {
     public void mostrarPokemon(Pokemon pokemon){
