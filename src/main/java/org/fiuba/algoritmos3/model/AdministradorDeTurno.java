@@ -11,12 +11,10 @@ public class AdministradorDeTurno {
         int velocidadMax = 0;
         int indiceJugador = -1;
         for (int i = 0; i < jugadores.size();i++) {
-            List<Pokemon> pokemones = jugadores.get(i).getPokemones();
-            for (Pokemon pokemon : pokemones) {
-                if (pokemon.getVelocidad() > velocidadMax) {
-                    velocidadMax = pokemon.getVelocidad();
-                    indiceJugador = i;
-                }
+            Pokemon pokemon = jugadores.get(i).getPokemonActual();
+            if (pokemon.getVelocidad() > velocidadMax) {
+                velocidadMax = pokemon.getVelocidad();
+                indiceJugador = i;
             }
         }
         return indiceJugador;

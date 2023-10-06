@@ -19,6 +19,6 @@ public class HabilidadDeEstadisticaDefensa extends  HabilidadDeEstadistica imple
     public void modificarDefensa(Pokemon pokemon) {
         double defensaActual = pokemon.getAtaque();
         double nuevaDefensa = defensaActual + (defensaActual/100) * this.porcentajeDeModificacion;
-        pokemon.setDefensa((int)nuevaDefensa);
+        pokemon.setDefensa(nuevaDefensa);
     }
 }

@@ -13,12 +13,12 @@ public class Pokemon {
     private Integer vidaMaxima;
     private Integer vidaActual;
     private Integer velocidad;
-    private Integer defensa;
-    private Integer ataque;
+    private Double defensa;
+    private Double ataque;
     private Estado estado;
     private List<Habilidad> habilidades;
 
-    public Pokemon(String nombre, Integer nivel, Tipo tipo, String historia, Integer vidaMaxima, Integer vidaActual, Integer velocidad, Integer defensa, Integer ataque, List<Habilidad> habilidades) {
+    public Pokemon(String nombre, Integer nivel, Tipo tipo, String historia, Integer vidaMaxima, Integer vidaActual, Integer velocidad, Double defensa, Double ataque, List<Habilidad> habilidades) {
         this.nombre = nombre;
         this.nivel = nivel;
         this.tipo = tipo;
@@ -93,19 +93,19 @@ public class Pokemon {
         return velocidad;
     }
 
-    public Integer getDefensa() {
+    public Double getDefensa() {
         return defensa;
     }
 
-    public void setDefensa(Integer defensa) {
+    public void setDefensa(Double defensa) {
         this.defensa = defensa;
     }
 
-    public Integer getAtaque() {
+    public Double getAtaque() {
         return ataque;
     }
 
-    public void setAtaque(Integer ataque) {
+    public void setAtaque(Double ataque) {
         this.ataque = ataque;
     }
 

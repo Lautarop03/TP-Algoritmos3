@@ -17,18 +17,30 @@ public class HabilidadDeDano extends Habilidad{
 
     @Override
     public boolean usarHabilidad(Pokemon pokemonActual, Pokemon pokemonEnemigo) {
-        double dano = this.calcularDano(pokemonEnemigo, pokemonActual);
+        double dano = this.calcularDano(pokemonActual, pokemonEnemigo);
         pokemonEnemigo.bajarVida((int)dano);
         super.usarHabilidad(pokemonActual, pokemonEnemigo);
         return true;
-
     }
+
+    private double probabilidadCritico(){
+        double random = Math.random()* 100;
+        if (random < 9){
+            return 2.0;
+        } else {
+            return 1.0;
+        }
+    }
+
 
     private double calcularDano(Pokemon pokemonActual, Pokemon pokemonEnemigo) {
         double danoFinal;
         MatrizDeEfectividad matriz = new MatrizDeEfectividad();
-        danoFinal = (2 * pokemonActual.getNivel() * this.potencia * (pokemonActual.getAtaque()/pokemonEnemigo.getDefensa()))/5;
-        danoFinal = ((danoFinal + 2) / 50) * this.STAB(pokemonActual) * matriz.getMatriz()[this.tipo.getIndice()][pokemonEnemigo.getTipo().getIndice()] * Math.random()* 38 + 217;
+        danoFinal = 2 * pokemonActual.getNivel() * this.potencia * this.probabilidadCritico();
+        double AYD = (pokemonActual.getAtaque()/pokemonEnemigo.getDefensa());
+        danoFinal = ((danoFinal * AYD/5) + 2)/50;
+        danoFinal = danoFinal * this.STAB(pokemonActual) * matriz.getMatriz()[this.tipo.getIndice()][pokemonEnemigo.getTipo().getIndice()];
+        danoFinal = danoFinal * (Math.random()* 38 + 217)/255;
         return danoFinal;
     }
 

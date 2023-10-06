@@ -1,6 +1,7 @@
 package org.fiuba.algoritmos3.model;
 import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 import org.fiuba.algoritmos3.views.ViewControlador;
 
@@ -77,9 +78,10 @@ public class Juego {
     public boolean aplicarEstado() {
         Pokemon pokemon = getJugadorActual().getPokemonActual();
         boolean aplicado = false;
-        if (pokemon.getEstado() != null){
+        Estado estado = pokemon.getEstado();
+        if (estado != null){
             aplicado = pokemon.aplicarEstado();
-            viewControlador.mostrarEfectoEstado(pokemon.getEstado(),pokemon, aplicado);
+            viewControlador.mostrarEfectoEstado(estado, pokemon, aplicado);
             if (aplicado && !this.colaDeAtaques.isEmpty()){
                 this.colaDeAtaques.remove();
             }

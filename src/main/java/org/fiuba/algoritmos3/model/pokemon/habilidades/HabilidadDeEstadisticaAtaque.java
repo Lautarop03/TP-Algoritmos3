@@ -19,6 +19,6 @@ public class HabilidadDeEstadisticaAtaque extends HabilidadDeEstadistica impleme
     public void modificarAtaque(Pokemon pokemon) {
         double ataqueActual = pokemon.getAtaque();
         double nuevoAtaque = ataqueActual + (ataqueActual/100) * this.porcentajeDeModificacion;
-        pokemon.setAtaque((int)nuevoAtaque);
+        pokemon.setAtaque(nuevoAtaque);
     }
 }

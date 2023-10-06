@@ -9,9 +9,7 @@ public abstract class Estado {
     public Estado() {
     }
 
-    public boolean aplicarEfecto(Pokemon pokemon){
-        return true;
-    }
+    public abstract boolean aplicarEfecto(Pokemon pokemon);
 
     public abstract Estado clonarEstado(Estado estado);
 
