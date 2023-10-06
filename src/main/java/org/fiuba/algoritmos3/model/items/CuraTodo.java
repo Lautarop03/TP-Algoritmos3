@@ -13,7 +13,6 @@ public class CuraTodo extends Item {
     public boolean aplicarItem(Pokemon pokemon){
         if(pokemon.getEstado() == null){
             return false;
-            //Todo: lanzar excepcion si el pokemon no tiene estado
         }
         pokemon.quitarEstado();
         super.aplicarItem(pokemon);

@@ -25,8 +25,6 @@ public class HabilidadDeEstado extends Habilidad {
 
     }
 
-
-
     private Estado crearNuevoEstado() {
         return this.estado.clonarEstado(this.estado);
     }

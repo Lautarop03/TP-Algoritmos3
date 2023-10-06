@@ -9,7 +9,6 @@ public class Revivir extends Item{
     }
     @Override
     public boolean aplicarItem(Pokemon pokemon){
-        //Todo: que no se pueda aplicar el revivir al pokemon en el campo de juego
         if (!pokemon.estaMuerto()){
             return false;
         }

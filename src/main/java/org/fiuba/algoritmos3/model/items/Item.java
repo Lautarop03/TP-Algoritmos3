@@ -12,8 +12,6 @@ public abstract class Item{
         this.cantidadDeItems = cantidadDeItems;
     }
 
-    /*Intenta aplicar un item al pokemon recibido
-     Devuelve true si se pudo aplicar, false si no.*/
     public boolean aplicarItem(Pokemon pokemon){
         this.cantidadDeItems = this.cantidadDeItems - 1;
         return true;

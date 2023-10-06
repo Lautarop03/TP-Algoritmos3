@@ -26,7 +26,7 @@ public class Juego {
         this.viewControlador = new ViewControlador();
         this.jugadores = jugadores;
         this.administradorDeTurno = new AdministradorDeTurno(jugadores);
-        this.colaDeAtaques = new LinkedList<Habilidad>();
+        this.colaDeAtaques = new LinkedList<>();
     }
 
     public void cambiarTurno() {
@@ -44,7 +44,7 @@ public class Juego {
                 viewControlador.mostrarGanador(jugadores.get((i+1)%2));
                 return true;
             }
-            int contador = 1; //ACA HICE CAMBIOSS MATEX
+            int contador = 1;
             for (Pokemon pokemon : jugadores.get(i).getPokemones()) {
                 if (!pokemon.estaMuerto()) {
                     break;
@@ -104,12 +104,12 @@ public class Juego {
         ArrayList<Pokemon> pokemones = jugadorActual.getPokemones();
         while(true){
             int numeroItem = inputs.pedirItem(items);
-            if (numeroItem == volverAlMenu){ // El usuario vuelve atrás
+            if (numeroItem == volverAlMenu){
                 return false;
             }
             viewControlador.opcionVolverAMenu();
             int numeroPokemon = inputs.pedirPokemon(pokemones);
-            if (numeroPokemon == volverAlMenu){ // El usuario vuelve atrás
+            if (numeroPokemon == volverAlMenu){
                 return false;
             }
             Item item = items.get(numeroItem);
@@ -129,16 +129,16 @@ public class Juego {
         while (true) {
             viewControlador.opcionVolverAMenu();
             int numeroPokemon = inputs.pedirPokemon(pokemones);
-            if (numeroPokemon == volverAlMenu) { // VUELVE AL MENU
+            if (numeroPokemon == volverAlMenu) {
                 return false;
             }
             if (jugadorActual.getPokemonActual() == pokemones.get(numeroPokemon)){
-                viewControlador.errorPokemonActual(); // POKEMON ACTUAL
-                continue; //Eligió el mismo
+                viewControlador.errorPokemonActual();
+                continue;
             }
             boolean realizado = jugadorActual.intercambiarPokemon(pokemones.get(numeroPokemon));
             if (realizado) {
-                viewControlador.mostrarCambioPokemon(jugadorActual.getPokemonActual()); // INTERCAMBIO EXITOSO
+                viewControlador.mostrarCambioPokemon(jugadorActual.getPokemonActual());
                 return true;
             }
             viewControlador.errorIntercambiarPokemonSinVida();
@@ -154,9 +154,9 @@ public class Juego {
                 return false;
             }
             Habilidad habilidad = pokemonActual.getHabilidades().get(numeroHabilidad);
-            if (habilidad.getCantidadDeUsos() == 0){ //ver como comprobar de manera decente (no como hice yo) que la habilidad tenga usos restantes
+            if (habilidad.getCantidadDeUsos() == 0){
                 System.out.println("Habilidad sin usos, elegir otra");
-            } else { // TODO: Aplicar el estado correspondiente
+            } else {
                 this.colaDeAtaques.add(habilidad);
                 return true;
             }
