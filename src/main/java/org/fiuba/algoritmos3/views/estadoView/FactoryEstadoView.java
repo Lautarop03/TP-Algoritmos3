@@ -9,7 +9,7 @@ public class FactoryEstadoView {
             return new EstadoDormidoView();
         }
         if (estado.getClass() == Envenenado.class) {
-            return new EstadoDormidoView();
+            return new EstadoEnvenenadoView();
         }
         return new EstadoParalizadoView();
     }

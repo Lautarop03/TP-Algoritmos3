@@ -4,6 +4,8 @@ import org.fiuba.algoritmos3.model.items.*;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.Tipo;
 import org.fiuba.algoritmos3.model.pokemon.estados.Dormido;
+import org.fiuba.algoritmos3.model.pokemon.estados.Envenenado;
+import org.fiuba.algoritmos3.model.pokemon.estados.Paralizado;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeDano;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeEstadisticaAtaque;
@@ -17,8 +19,8 @@ public class AdministradorDeJuego {
     public List<Habilidad> asginarHabilidades(){
         Habilidad patada = new HabilidadDeDano("Patada",10,Tipo.Lucha, 80);
         Habilidad trueno = new HabilidadDeDano("Trueno",8,Tipo.Electrico, 70);
-        Habilidad fuego = new HabilidadDeDano("Fuego",6,Tipo.Fuego, 100);
-        Habilidad agua = new HabilidadDeDano("Agua", 4, Tipo.Agua, 50);
+        Habilidad fuego = new HabilidadDeEstado("Paralizar",6,Tipo.Fuego, new Paralizado());
+        Habilidad agua = new HabilidadDeEstado("Envenenar", 4, Tipo.Agua,new Envenenado());
         Habilidad buff = new HabilidadDeEstadisticaAtaque("Buffear", 4, Tipo.Normal, 10);
         Habilidad dormite = new HabilidadDeEstado("Dormite", 4, Tipo.Agua, new Dormido());
         return List.of(patada,trueno,fuego,agua,buff,dormite);

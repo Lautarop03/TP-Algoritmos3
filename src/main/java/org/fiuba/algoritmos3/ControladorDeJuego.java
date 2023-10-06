@@ -40,7 +40,7 @@ public class ControladorDeJuego {
         if (intercambioPokemon && !juego.aplicarEstado()){
             juego.realizarAtaque();
         }
-
+        juego.comprobarPokemonActualEstaVivo();
         juego.cambiarTurno();
     }
 }

@@ -28,8 +28,6 @@ public class HabilidadDeEstado extends Habilidad {
 
 
     private Estado crearNuevoEstado() {
-        Estado estadoAnterior = this.estado;
-        Estado estadoNuevo = this.estado.clonarEstado(this.estado);
-        return estadoNuevo;
+        return this.estado.clonarEstado(this.estado);
     }
 }

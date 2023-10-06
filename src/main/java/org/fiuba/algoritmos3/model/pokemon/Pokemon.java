@@ -118,8 +118,7 @@ public class Pokemon {
     }
 
     public boolean setEstado(Estado estado) {
-        if (this.estado == null) { //si no funciona: 'getClass()' o 'instanceof'
-
+        if (this.estado == null) {
             this.estado = estado;
             return true;
         } else {

@@ -38,7 +38,7 @@ public class Inputs {
 
     private int validarOpcion(int limiteInferior, int limiteSuperior) {
         while (true) {
-            String input = reader.readLine("Ingrese numero de la opcion deseada: \n");
+            String input = reader.readLine("Ingrese numero de la opcion deseada: ");
             try {
                 int opcion = Integer.parseInt(input);
                 if (opcion >= limiteInferior && opcion <= limiteSuperior) {

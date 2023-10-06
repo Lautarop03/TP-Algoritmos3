@@ -86,4 +86,8 @@ public class ViewControlador {
     public void mostrarGanador(Jugador jugador){
         System.out.println("El ganador es: " + jugador.getNombre());
     }
+
+    public void errorHabilidadEstado() {
+        System.out.println("No se puede aplicar el estado, el pokemon ya tiene uno");
+    }
 }
