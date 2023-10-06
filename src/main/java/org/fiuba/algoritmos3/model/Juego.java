@@ -46,7 +46,7 @@ public class Juego {
             }
             int contador = 1;
             for (Pokemon pokemon : jugadores.get(i).getPokemones()) {
-                if (!pokemon.estaMuerto()) {
+                if (pokemon.estaVivo()) {
                     break;
                 }
                 if (contador == jugadores.get(i).getPokemones().size()){

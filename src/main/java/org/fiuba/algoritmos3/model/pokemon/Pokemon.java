@@ -36,10 +36,6 @@ public class Pokemon {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public Integer getNivel() {
         return nivel;
     }
@@ -83,7 +79,6 @@ public class Pokemon {
     public boolean estaMuerto(){
         return (this.vidaActual == 0);
     }
-
 
     public boolean tieneVidaLlena() {
         return (this.vidaActual == this.vidaMaxima);
@@ -134,7 +129,4 @@ public class Pokemon {
         return habilidades;
     }
 
-    public void setHabilidades(List<Habilidad> habilidades) {
-        this.habilidades = habilidades;
-    }
 }
