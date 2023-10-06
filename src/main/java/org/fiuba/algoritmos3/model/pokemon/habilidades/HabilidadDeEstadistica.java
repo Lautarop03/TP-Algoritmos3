@@ -13,7 +13,7 @@ public  abstract class HabilidadDeEstadistica extends Habilidad{
     @Override
     public boolean usarHabilidad(Pokemon pokemon, Pokemon pokemonAModificar){
         super.usarHabilidad(pokemon, pokemonAModificar);
-        return true;
+        return false;
 
     }
 }

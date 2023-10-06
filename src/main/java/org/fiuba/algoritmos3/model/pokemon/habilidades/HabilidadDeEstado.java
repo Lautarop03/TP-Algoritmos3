@@ -9,7 +9,7 @@ import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 
 public class HabilidadDeEstado extends Habilidad {
 
-    private Estado estado;
+    private final Estado estado;
 
     public HabilidadDeEstado(String nombre, Integer cantidadDeUsos, Tipo tipo, Estado estado) {
         super(nombre, cantidadDeUsos, tipo);
@@ -18,10 +18,7 @@ public class HabilidadDeEstado extends Habilidad {
     @Override
     public boolean usarHabilidad(Pokemon pokemon, Pokemon pokemonAModificar){
         super.usarHabilidad(pokemon, pokemonAModificar);
-        if (!pokemonAModificar.setEstado(this.crearNuevoEstado())){
-            return false;
-        }
-        return true;
+        return !pokemonAModificar.setEstado(this.crearNuevoEstado());
 
     }
 

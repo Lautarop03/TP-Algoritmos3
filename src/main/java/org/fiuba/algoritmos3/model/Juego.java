@@ -170,7 +170,7 @@ public class Juego {
         Pokemon pokemonEnemigo = getOponente().getPokemonActual();
         if (!colaDeAtaques.isEmpty()){
             Habilidad habilidad = colaDeAtaques.poll();
-            if (!habilidad.usarHabilidad(pokemonActual,pokemonEnemigo)){
+            if (habilidad.usarHabilidad(pokemonActual, pokemonEnemigo)){
                 viewControlador.errorHabilidadEstado();
             } else {
             viewControlador.mostrarAccion(habilidad,pokemonActual,pokemonEnemigo);

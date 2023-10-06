@@ -13,7 +13,7 @@ public class HabilidadDeEstadisticaAtaque extends HabilidadDeEstadistica impleme
     public boolean usarHabilidad(Pokemon pokemon, Pokemon pokemonAModificar){
         super.usarHabilidad(pokemonAModificar, pokemon);
         modificarAtaque(pokemonAModificar);
-        return true;
+        return false;
     }
 
     public void modificarAtaque(Pokemon pokemon) {

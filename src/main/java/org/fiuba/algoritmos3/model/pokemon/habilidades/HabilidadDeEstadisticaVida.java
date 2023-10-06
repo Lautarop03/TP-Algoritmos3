@@ -12,7 +12,7 @@ public class HabilidadDeEstadisticaVida extends HabilidadDeEstadistica {
     public boolean usarHabilidad(Pokemon pokemon, Pokemon pokemonAModificar){
         super.usarHabilidad(pokemonAModificar, pokemon);
         actualizarVida(pokemonAModificar);
-        return true;
+        return false;
 
     }
     public void actualizarVida(Pokemon pokemon){

@@ -8,7 +8,7 @@ import org.fiuba.algoritmos3.model.pokemon.Tipo;
 
 public class HabilidadDeDano extends Habilidad{
 
-    private Integer potencia;
+    private final Integer potencia;
 
     public HabilidadDeDano(String nombre, Integer cantidadDeUsos, Tipo tipo, Integer potencia) {
         super(nombre, cantidadDeUsos, tipo);
@@ -20,7 +20,7 @@ public class HabilidadDeDano extends Habilidad{
         double dano = this.calcularDano(pokemonActual, pokemonEnemigo);
         pokemonEnemigo.bajarVida((int)dano);
         super.usarHabilidad(pokemonActual, pokemonEnemigo);
-        return true;
+        return false;
     }
 
     private double probabilidadCritico(){
