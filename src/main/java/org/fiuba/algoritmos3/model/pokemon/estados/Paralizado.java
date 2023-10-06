@@ -5,7 +5,6 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import java.util.Random;
 
 public class Paralizado extends Estado{
-    private final Double ProbabilidadParalidazo = 0.5;
 
     public Paralizado() {
         this.nombre = "Paralizado";
@@ -13,7 +12,7 @@ public class Paralizado extends Estado{
 
     @Override
     public boolean aplicarEfecto(Pokemon pokemon) {
-        double probabilidad =  ProbabilidadParalidazo;
+        double probabilidad = 0.5;
         Random random = new Random();
         double numeroAleatorio = random.nextDouble();
         return numeroAleatorio <= probabilidad;
