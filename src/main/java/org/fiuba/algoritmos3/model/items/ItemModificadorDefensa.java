@@ -15,7 +15,7 @@ public class ItemModificadorDefensa extends ItemDeEstadistica implements Modific
     public boolean aplicarItem(Pokemon pokemon) {
         modificarDefensa(pokemon);
         super.aplicarItem(pokemon);
-        return true;
+        return false;
     }
     public void modificarDefensa(Pokemon pokemon) {
         pokemon.setDefensa((pokemon.getDefensa() + (pokemon.getDefensa()/100)*this.porcentajeDeModificacion));

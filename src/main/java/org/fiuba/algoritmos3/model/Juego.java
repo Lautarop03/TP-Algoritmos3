@@ -113,7 +113,7 @@ public class Juego {
                 return false;
             }
             Item item = items.get(numeroItem);
-            if (!item.aplicarItem(jugadorActual.getPokemones().get(numeroPokemon))) {
+            if (item.aplicarItem(jugadorActual.getPokemones().get(numeroPokemon))) {
                 viewControlador.errorUsoItem(item);
             } else {
                 viewControlador.mostrarUsoItem(jugadorActual, item, pokemones.get(numeroPokemon));

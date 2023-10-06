@@ -10,11 +10,11 @@ public class Revivir extends Item{
     @Override
     public boolean aplicarItem(Pokemon pokemon){
         if (!pokemon.estaMuerto()){
-            return false;
+            return true;
         }
         Integer nuevaVida = pokemon.getVidaMaxima() / 2;
         pokemon.sumarVida(nuevaVida);
         super.aplicarItem(pokemon);
-        return true;
+        return false;
     }
 }

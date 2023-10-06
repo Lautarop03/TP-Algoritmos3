@@ -15,7 +15,7 @@ public class ItemModificadorAtaque extends ItemDeEstadistica implements Modifica
     public boolean aplicarItem(Pokemon pokemon){
         modificarAtaque(pokemon);
         super.aplicarItem(pokemon);
-        return true;
+        return false;
     }
 
     public void modificarAtaque(Pokemon pokemon) {

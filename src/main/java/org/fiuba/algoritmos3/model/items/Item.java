@@ -14,7 +14,7 @@ public abstract class Item{
 
     public boolean aplicarItem(Pokemon pokemon){
         this.cantidadDeItems = this.cantidadDeItems - 1;
-        return true;
+        return false;
     }
 
     public Integer getCantidad() {
