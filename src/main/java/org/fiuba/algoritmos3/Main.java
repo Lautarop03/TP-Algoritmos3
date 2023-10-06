@@ -15,9 +15,9 @@ public class Main {
         Inputs input = new Inputs();
         AdministradorDeJuego admin = new AdministradorDeJuego();
         String nombre = input.pedirNombre();
-        Jugador jugador1 = new Jugador(nombre, admin.asignarPokemones(),admin.asignarItems());
+        Jugador jugador1 = new Jugador(nombre, admin.asignarPokemonesJugador1(),admin.asignarItems());
         String nombre2 = input.pedirNombre();
-        Jugador jugador2 = new Jugador(nombre2, admin.asignarPokemones2(),admin.asignarItems());
+        Jugador jugador2 = new Jugador(nombre2, admin.asignarPokemonesJugador2(),admin.asignarItems());
 
         Juego juego = new Juego(List.of(jugador1,jugador2));
         ControladorDeJuego controladorDeJuego = new ControladorDeJuego(juego,input);
