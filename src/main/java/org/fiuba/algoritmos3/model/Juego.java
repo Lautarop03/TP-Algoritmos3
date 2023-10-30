@@ -88,6 +88,7 @@ public class Juego {
         }
         return aplicado;
     }
+
     public boolean rendirse(){
         Jugador jugador = getJugadorActual();
         jugador.rendirse();

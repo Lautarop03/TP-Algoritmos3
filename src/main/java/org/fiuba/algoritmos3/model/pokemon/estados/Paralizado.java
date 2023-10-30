@@ -18,7 +18,5 @@ public class Paralizado extends Estado{
         return numeroAleatorio <= probabilidad;
     }
 
-    public Estado clonarEstado(Estado estado) {
-        return new Paralizado();
-    }
+    public Estado clonarEstado(Estado estado) {return new Paralizado();}
 }

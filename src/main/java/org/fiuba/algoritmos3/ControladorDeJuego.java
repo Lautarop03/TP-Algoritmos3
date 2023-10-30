@@ -27,6 +27,7 @@ public class ControladorDeJuego {
             juego.comprobarPokemonActualEstaVivo();
             int accion = inputs.pedirAccion();
             switch (accion) {
+                //TODO mover lógica de inputs (viewControlador) acá
                 case rendirse -> repetir = juego.rendirse();
                 case verCampoDeBatalla -> repetir = juego.verCampo();
                 case intercambiarPokemon -> {

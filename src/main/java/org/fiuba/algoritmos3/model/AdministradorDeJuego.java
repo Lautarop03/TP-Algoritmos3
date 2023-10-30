@@ -63,13 +63,14 @@ public class AdministradorDeJuego {
     public List<Item> asignarItems(){
         Pocion pocion = new Pocion(1);
         MegaPocion megaPocion = new MegaPocion(1);
-        Hiperpocion hiperPocion = new Hiperpocion(1);
+        Hiperpocion hiperPocion = new Hiperpocion(10);
+        PocionMolestaAlumnos posicionMolestaAlumnos = new PocionMolestaAlumnos(1);
         Revivir revivir = new Revivir(1);
         CuraTodo curaTodo = new CuraTodo(1);
         ItemModificadorDefensa modificadorDefensa = new ItemModificadorDefensa(1);
         ItemModificadorAtaque modificadorAtaque = new ItemModificadorAtaque(1);
 
-        List<Item> items = List.of(modificadorAtaque,modificadorDefensa, pocion, revivir, curaTodo, megaPocion, hiperPocion);
+        List<Item> items = List.of(modificadorAtaque,modificadorDefensa, pocion, revivir, curaTodo, megaPocion, hiperPocion, posicionMolestaAlumnos);
 
         return items;
     }
