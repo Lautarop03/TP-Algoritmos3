@@ -13,13 +13,8 @@ import static org.mockito.Mockito.*;
 public class RevivirTest {
     private Revivir revivir = new Revivir(1);
     private Pokemon pokemon = mock(Pokemon.class);
-
-
-    @BeforeEach
-    void inicializacion(){
-        this.revivir = new Revivir(1);
-        this.pokemon = mock(Pokemon.class);
-    }
+    private itemsRestauradoresDeVidaTest itemTest = new itemsRestauradoresDeVidaTest(revivir,
+            new Pokemon("",0, Tipo.Electrico, "", 100,100,0,0.0,0.0,null));
 
     @Test
     public void testRevivirPokemonYaVivo() {
@@ -46,5 +41,27 @@ public class RevivirTest {
         //Assert
         assertEquals(resultado, false);
         assertEquals(vidaFinal, pokemon.getVidaActual());
+    }
+
+    @Test
+    public void testRevivirCantidadDespuesDeUsoConVidaMaxima() {
+        itemTest.testItemCantidadDespuesDeUsoConVidaMaxima();
+    }
+
+    @Test
+    public void testRevivirCantidadDespuesDeUsoSinVidaMaxima() {
+        //Arrange
+        when(pokemon.estaVivo()).thenReturn(true);
+
+        //Act
+        Boolean resultado = revivir.aplicarItem(pokemon);
+
+        //Assert
+        assertEquals(true, resultado);
+    }
+
+    @Test
+    public void testRevivirCantidadDespuesDeUsoConVidaNula() {
+        itemTest.testItemCantidadDespuesDeUsoConVidaNula();
     }
 }

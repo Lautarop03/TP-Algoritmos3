@@ -9,30 +9,45 @@ public class PocionMolestaAlumnosTest {
 
     private Pokemon pokemon = new Pokemon("",0, Tipo.Electrico, "", 120,120,0,0.0,0.0,null);
     private PocionMolestaAlumnos pocionMolestaAlumnos = new PocionMolestaAlumnos(1);
-    private ItemsRestauradoresDeVidaTest itemTest = new ItemsRestauradoresDeVidaTest(pocionMolestaAlumnos, pokemon);
+    private itemsRestauradoresDeVidaTest itemTest = new itemsRestauradoresDeVidaTest(pocionMolestaAlumnos, pokemon);
 
     @Test
-    public void TestAplicarPocionConVidaBaja() {
+    public void testAplicarPocionMolestaAlumnosConVidaBaja() {
         Integer vidaActual = 10;
         Integer vidaResultado = 50;
 
-        itemTest.TestAplicarPocionConVidaBaja(vidaActual, vidaResultado);
+        itemTest.testAplicarItemConVidaBaja(vidaActual, vidaResultado);
     }
 
     @Test
-    public void TestAplicarPocionConVidaAlta(){
+    public void testAplicarPocionMolestaAlumnosConVidaAlta(){
         Integer vidaActual = 100;
 
-        itemTest.TestAplicarPocionConVidaAlta(vidaActual);
+        itemTest.testAplicarItemConVidaAlta(vidaActual);
     }
 
     @Test
-    public void TestAplicarPocionConVidaMaxima(){
-        itemTest.TestAplicarPocionConVidaMaxima();
+    public void testAplicarPocionMolestaAlumnosConVidaMaxima(){
+        itemTest.testAplicarItemConVidaMaxima();
     }
 
     @Test
-    public void TestAplicarPocionConVidaNula(){
-        itemTest.TestAplicarPocionConVidaNula();
+    public void testAplicarPocionMolestaAlumnosConVidaNula(){
+        itemTest.testAplicarItemConVidaNula();
+    }
+
+    @Test
+    public void testPocionMolestaAlumnosCantidadDespuesDeUsoConVidaMaxima(){
+        itemTest.testItemCantidadDespuesDeUsoConVidaMaxima();
+    }
+
+    @Test
+    public void testPocionMolestaAlumnosCantidadDespuesDeUsoSinVidaMaxima(){
+        itemTest.testItemCantidadDespuesDeUsoSinVidaMaxima();
+
+    }
+    @Test
+    public void testPocionMolestaAlumnosCantidadDespuesDeUsoConVidaNula(){
+        itemTest.testItemCantidadDespuesDeUsoConVidaNula();
     }
 }

@@ -4,22 +4,22 @@ import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
-public class ItemsRestauradoresDeVidaTest {
+public class itemsRestauradoresDeVidaTest {
 
     private Pokemon pokemon;
     private Item item;
 
-    public ItemsRestauradoresDeVidaTest(Item itemRestauradorDeVida, Pokemon pokemon) {
+    public itemsRestauradoresDeVidaTest(Item itemRestauradorDeVida, Pokemon pokemon) {
         this.pokemon = spy(pokemon);
         this.item = itemRestauradorDeVida;
     }
 
     @Test
-    public void TestAplicarPocionConVidaBaja(Integer vidaActual, Integer vidaFinal) {
+    public void testAplicarItemConVidaBaja(Integer vidaActual, Integer vidaFinal) {
         //Arrange
         pokemon.setVidaActual(vidaActual);
 
@@ -32,7 +32,7 @@ public class ItemsRestauradoresDeVidaTest {
     }
 
     @Test
-    public void TestAplicarPocionConVidaAlta(Integer vidaActual) {
+    public void testAplicarItemConVidaAlta(Integer vidaActual) {
         //Arrange
         pokemon.setVidaActual(vidaActual);
 
@@ -45,7 +45,7 @@ public class ItemsRestauradoresDeVidaTest {
     }
 
     @Test
-    public void TestAplicarPocionConVidaMaxima() {
+    public void testAplicarItemConVidaMaxima() {
         //Arrange
         when(pokemon.estaMuerto()).thenReturn(false);
         when(pokemon.tieneVidaLlena()).thenReturn(true);
@@ -59,7 +59,7 @@ public class ItemsRestauradoresDeVidaTest {
     }
 
     @Test
-    public void TestAplicarPocionConVidaNula() {
+    public void testAplicarItemConVidaNula() {
         //Arrange
         when(pokemon.estaMuerto()).thenReturn(true);
         when(pokemon.tieneVidaLlena()).thenReturn(false);
@@ -72,4 +72,45 @@ public class ItemsRestauradoresDeVidaTest {
         assertEquals((Integer)0,pokemon.getVidaActual());
         assertEquals(true, fueAplicado);
     }
+
+    @Test
+    public void testItemCantidadDespuesDeUsoConVidaMaxima() {
+        //Arrange
+        Integer cantInicial = item.getCantidad();
+
+        //Act
+        item.aplicarItem(pokemon);
+
+        //Assert
+        assertSame(item.getCantidad(), cantInicial);
+    }
+
+    @Test
+    public void testItemCantidadDespuesDeUsoSinVidaMaxima() {
+        //Arrange
+        Integer mitadVida = pokemon.getVidaMaxima()/2;
+        when(pokemon.getVidaActual()).thenReturn(mitadVida);
+        when(pokemon.tieneVidaLlena()).thenReturn(false);
+        Integer cantInicial = item.getCantidad();
+
+        //Act
+        item.aplicarItem(pokemon);
+
+        //Assert
+        assertEquals((int) item.getCantidad(), cantInicial - 1);
+    }
+
+    @Test
+    public void testItemCantidadDespuesDeUsoConVidaNula() {
+        //Arrange
+        Integer resultado = item.getCantidad();
+        when(pokemon.estaMuerto()).thenReturn(true);
+
+        //Act
+        item.aplicarItem(pokemon);
+
+        //Assert
+        assertSame(item.getCantidad(), item.getCantidad());
+    }
 }
+

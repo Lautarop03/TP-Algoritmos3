@@ -9,30 +9,46 @@ public class MegaPocionTest {
 
     private Pokemon pokemon = new Pokemon("",0, Tipo.Electrico, "", 100,100,0,0.0,0.0,null);
     private MegaPocion megapocion = new MegaPocion(1);
-    private ItemsRestauradoresDeVidaTest itemTest = new ItemsRestauradoresDeVidaTest(megapocion, pokemon);
+    private itemsRestauradoresDeVidaTest itemTest = new itemsRestauradoresDeVidaTest(megapocion, pokemon);
 
     @Test
-    public void TestAplicarPocionConVidaBaja() {
+    public void testAplicarMegaPocionConVidaBaja() {
         Integer vidaActual = 10;
         Integer vidaResultado = 60;
 
-        itemTest.TestAplicarPocionConVidaBaja(vidaActual, vidaResultado);
+        itemTest.testAplicarItemConVidaBaja(vidaActual, vidaResultado);
     }
 
     @Test
-    public void TestAplicarPocionConVidaAlta(){
+    public void testAplicarMegaPocionConVidaAlta(){
         Integer vidaActual = 90;
 
-        itemTest.TestAplicarPocionConVidaAlta(vidaActual);
+        itemTest.testAplicarItemConVidaAlta(vidaActual);
     }
 
     @Test
-    public void TestAplicarPocionConVidaMaxima(){
-        itemTest.TestAplicarPocionConVidaMaxima();
+    public void testAplicarMegaPocionConVidaMaxima(){
+        itemTest.testAplicarItemConVidaMaxima();
     }
 
     @Test
-    public void TestAplicarPocionConVidaNula(){
-        itemTest.TestAplicarPocionConVidaNula();
+    public void testAplicarMegaPocionConVidaNula(){
+        itemTest.testAplicarItemConVidaNula();
     }
+
+    @Test
+    public void testMegaPocionCantidadDespuesDeUsoConVidaMaxima(){
+        itemTest.testItemCantidadDespuesDeUsoConVidaMaxima();
+    }
+
+    @Test
+    public void testMegaPocionCantidadDespuesDeUsoSinVidaMaxima(){
+        itemTest.testItemCantidadDespuesDeUsoSinVidaMaxima();
+
+    }
+    @Test
+    public void testMegaPocionCantidadDespuesDeUsoConVidaNula(){
+        itemTest.testItemCantidadDespuesDeUsoConVidaNula();
+    }
+
 }
