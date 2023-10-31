@@ -117,14 +117,14 @@ public class Pokemon {
     public void quitarEstados(){
         this.estados = null;
     }
+    public void quitarEstado(Estado estado) {
+        estados.remove(estado);
+    }
 
     public boolean setEstado(Estado estado) {
-        for (Estado estadoActual : estados) {
-            if (estadoActual == estado) {
-                return true;
-            }
+        if (!estados.contains(estado)) {
+            estados.add(estado);
         }
-        estados.add(estado);
         return true;
     }
 

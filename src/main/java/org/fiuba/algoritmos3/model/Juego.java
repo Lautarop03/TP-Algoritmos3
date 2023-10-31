@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model;
 import org.fiuba.algoritmos3.Inputs;
+import org.fiuba.algoritmos3.clima.Clima;
 import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
@@ -20,6 +21,7 @@ public class Juego {
     private final List<Jugador> jugadores;
     private final ViewControlador viewControlador;
     protected Queue<Habilidad> colaDeAtaques;
+    private Clima clima;
 
 
     public Juego(List<Jugador> jugadores) throws IOException {
@@ -181,4 +183,11 @@ public class Juego {
             }
         }
     }
+
+    public void aplicarClima(){
+        Pokemon pokemonActual = getJugadorActual().getPokemonActual();
+        Pokemon pokemonEnemigo = getOponente().getPokemonActual();
+        clima.aplicarClima(pokemonActual,pokemonEnemigo);
+    }
 }
+
