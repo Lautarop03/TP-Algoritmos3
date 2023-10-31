@@ -5,7 +5,7 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import java.util.Random;
 
 public class Confuso extends Estado implements ModificacionVida {
-    final double probabilidadDeConfundirse = 0.15;
+    final double probabilidadDeConfundirse = 0.33;
     private int contadorDeTurnos = 0;
     private int turnosDeDuracion = 3;
 
@@ -16,11 +16,11 @@ public class Confuso extends Estado implements ModificacionVida {
         Random random = new Random();
         double numeroAleatorio = random.nextDouble();
         if (numeroAleatorio <= probabilidadDeConfundirse) {
-            //TODO lógica de Confuso
+            pokemon.bajarVida((pokemon.getVidaMaxima()*15)/100);
         }
         if (contadorDeTurnos == turnosDeDuracion) {
             Estado confuso = new Confuso();
-            pokemon.quitarEstado(confuso); // TODO: solo sacar el estado confuso
+            pokemon.quitarEstado(confuso);
             return false;
         }
         contadorDeTurnos++;
