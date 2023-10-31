@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3.model;
+package org.fiuba.algoritmos3;
 
 import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;

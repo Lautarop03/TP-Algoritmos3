@@ -37,4 +37,3 @@ build/
 
 ### Mac OS ###
 .DS_Store
-src/main/java/org/fiuba/algoritmos3/ControladorDeJuego.java

@@ -19,7 +19,7 @@ public class Confuso extends Estado implements ModificacionVida {
             //TODO lógica de Confuso
         }
         if (contadorDeTurnos == turnosDeDuracion) {
-            pokemon.quitarEstado();
+            pokemon.quitarEstado(); // TODO: solo sacar el estado confuso
             return false;
         }
         contadorDeTurnos++;

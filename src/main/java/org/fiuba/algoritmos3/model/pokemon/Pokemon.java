@@ -15,7 +15,7 @@ public class Pokemon {
     private Integer velocidad;
     private Double defensa;
     private Double ataque;
-    private Estado estado;
+    private List<Estado> estados;
     private List<Habilidad> habilidades;
 
     public Pokemon(String nombre, Integer nivel, Tipo tipo, String historia, Integer vidaMaxima, Integer vidaActual, Integer velocidad, Double defensa, Double ataque, List<Habilidad> habilidades) {
@@ -28,7 +28,7 @@ public class Pokemon {
         this.velocidad = velocidad;
         this.defensa = defensa;
         this.ataque = ataque;
-        this.estado = null;
+        this.estados = null;
         this.habilidades = habilidades;
     }
 
@@ -63,8 +63,14 @@ public class Pokemon {
         }
         this.setVidaActual(vidaNueva);
     }
-    public boolean aplicarEstado() {
-        return estado.aplicarEfecto(this);
+    public boolean aplicarEstados() {
+        boolean aplicado = false;
+        for (Estado estadoActual : estados) {
+            if (estadoActual.aplicarEfecto(this)) {
+                aplicado = true;
+            }
+        }
+        return aplicado;
     }
 
     public void bajarVida(Integer vidaQuitada){
@@ -104,21 +110,22 @@ public class Pokemon {
         this.ataque = ataque;
     }
 
-    public Estado getEstado() {
-        return estado;
+    public List<Estado> getEstados() {
+        return estados;
     }
 
-    public void quitarEstado(){
-        this.estado = null;
+    public void quitarEstados(){
+        this.estados = null;
     }
 
     public boolean setEstado(Estado estado) {
-        if (this.estado == null) {
-            this.estado = estado;
-            return true;
-        } else {
-            return false;
+        for (Estado estadoActual : estados) {
+            if (estadoActual == estado) {
+                return true;
+            }
         }
+        estados.add(estado);
+        return true;
     }
 
     public boolean estaVivo() {

@@ -11,10 +11,10 @@ public class CuraTodo extends Item {
 
     @Override
     public boolean aplicarItem(Pokemon pokemon){
-        if(pokemon.getEstado() == null){
+        if(pokemon.getEstados() == null){
             return true;
         }
-        pokemon.quitarEstado();
+        pokemon.quitarEstados();
         super.aplicarItem(pokemon);
         return false;
     }

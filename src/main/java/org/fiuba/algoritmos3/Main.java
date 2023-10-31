@@ -1,7 +1,6 @@
 package org.fiuba.algoritmos3;
 
 import org.fiuba.algoritmos3.model.AdministradorDeJuego;
-import org.fiuba.algoritmos3.model.Inputs;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.Jugador;
 

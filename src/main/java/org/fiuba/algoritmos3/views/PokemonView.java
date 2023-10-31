@@ -3,6 +3,8 @@ package org.fiuba.algoritmos3.views;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 
+import java.util.List;
+
 public class PokemonView {
     public void mostrarPokemon(Pokemon pokemon){
         String estado = verEstado(pokemon);
@@ -10,9 +12,11 @@ public class PokemonView {
     }
 
     private String verEstado(Pokemon pokemon) {
-        Estado estado = pokemon.getEstado();
-        if (estado != null) {
-            return (" Estado: " + estado.getNombre()) ;
+        List<Estado> estados = pokemon.getEstados();
+        if (estados != null) {
+            for(Estado estadoActual : estados) {
+                return (" Estado: " + estadoActual.getNombre());
+            }
         }
         return "";
     }

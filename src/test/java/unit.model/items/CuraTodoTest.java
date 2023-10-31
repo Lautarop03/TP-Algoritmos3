@@ -53,7 +53,7 @@ public class CuraTodoTest {
     @Test
     public void testCuraTodoSinEstado(){
         //Arrange
-        when(pokemon.getEstado()).thenReturn(null);
+        when(pokemon.getEstados()).thenReturn(null);
         //Act
         Boolean resultado = curaTodo.aplicarItem(pokemon);
 
