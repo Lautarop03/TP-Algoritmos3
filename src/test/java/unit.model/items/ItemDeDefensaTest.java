@@ -25,7 +25,7 @@ public class ItemDeDefensaTest {
 
         //Assert
         assertEquals(false, resultado);
-        assertTrue(nuevaDefensa == pokemon.getAtaque());
+        assertTrue(nuevaDefensa == pokemon.getDefensa());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class ItemDeDefensaTest {
 
         //Assert
         assertEquals(false, resultado);
-        assertTrue(nuevaDefensa == pokemon.getAtaque());
+        assertTrue(nuevaDefensa == pokemon.getDefensa());
     }
 
     @Test
