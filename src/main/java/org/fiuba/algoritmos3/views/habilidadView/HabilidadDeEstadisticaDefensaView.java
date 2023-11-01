@@ -9,12 +9,12 @@ public class HabilidadDeEstadisticaDefensaView extends HabilidadView {
         if (pokemonActual == pokemonTarget) {
             System.out.println("El pokemon " + pokemonActual.getNombre()
                     + " ha utilizado " + habilidad.getNombre()
-                    + " su nueva defensa es de" + pokemonTarget.getDefensa());
+                    + " su nueva defensa es de " + pokemonTarget.getDefensa());
         } else {
             System.out.println("El pokemon " + pokemonActual.getNombre()
                     + " ha utilizado " + habilidad.getNombre()
                     + " en " + pokemonTarget.getNombre()
-                    + " su nueva defensa es de" + pokemonTarget.getDefensa());
+                    + " su nueva defensa es de " + pokemonTarget.getDefensa());
         }
     }
 }

@@ -17,7 +17,7 @@ public class HabilidadDeEstadisticaDefensa extends  HabilidadDeEstadistica imple
     }
     @Override
     public void modificarDefensa(Pokemon pokemon) {
-        double defensaActual = pokemon.getAtaque();
+        double defensaActual = pokemon.getDefensa();
         double nuevaDefensa = defensaActual + (defensaActual/100) * this.porcentajeDeModificacion;
         pokemon.setDefensa(nuevaDefensa);
     }

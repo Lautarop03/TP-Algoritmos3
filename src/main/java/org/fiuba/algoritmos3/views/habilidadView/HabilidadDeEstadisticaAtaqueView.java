@@ -9,7 +9,7 @@ public class HabilidadDeEstadisticaAtaqueView extends HabilidadView {
         if (pokemonActual == pokemonTarget) {
             System.out.println("El pokemon " + pokemonActual.getNombre()
                     + " ha utilizado " + habilidad.getNombre()
-                    + " su nuevo ataque es de" + pokemonTarget.getAtaque());
+                    + " su nuevo ataque es de " + pokemonTarget.getAtaque());
         } else {
             System.out.println("El pokemon " + pokemonActual.getNombre()
                     + " ha utilizado " + habilidad.getNombre()

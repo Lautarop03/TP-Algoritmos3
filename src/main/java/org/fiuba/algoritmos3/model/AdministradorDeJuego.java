@@ -5,10 +5,7 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.Tipo;
 import org.fiuba.algoritmos3.model.pokemon.estados.Dormido;
 import org.fiuba.algoritmos3.model.pokemon.estados.Envenenado;
-import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
-import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeDano;
-import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeEstadisticaAtaque;
-import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeEstado;
+import org.fiuba.algoritmos3.model.pokemon.habilidades.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +16,9 @@ public class AdministradorDeJuego {
         Habilidad trueno = new HabilidadDeDano("Trueno",8,Tipo.Electrico, 70);
         Habilidad envenenar = new HabilidadDeEstado("Envenenar",6,Tipo.Veneno, new Envenenado());
         Habilidad debuff = new HabilidadDeEstadisticaAtaque("Debuffear", 4, Tipo.Normal, -10);
+        Habilidad escudo = new HabilidadDeEstadisticaDefensa("Escudo",3,Tipo.Electrico,30);
         Habilidad dormir = new HabilidadDeEstado("Dormir", 4, Tipo.Fantasma, new Dormido());
-        return List.of(trueno,envenenar,debuff,dormir);
+        return List.of(trueno,envenenar,debuff,dormir,escudo);
     }
 
     public ArrayList<Pokemon> asignarPokemonesJugador1() {
