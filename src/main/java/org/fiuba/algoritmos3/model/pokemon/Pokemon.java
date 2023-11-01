@@ -3,6 +3,7 @@ package org.fiuba.algoritmos3.model.pokemon;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pokemon {
@@ -16,7 +17,7 @@ public class Pokemon {
     private Double defensa;
     private Double ataque;
     private List<Estado> estados;
-    private List<Habilidad> habilidades;
+    private final List<Habilidad> habilidades;
 
     public Pokemon(String nombre, Integer nivel, Tipo tipo, String historia, Integer vidaMaxima, Integer vidaActual, Integer velocidad, Double defensa, Double ataque, List<Habilidad> habilidades) {
         this.nombre = nombre;
@@ -28,7 +29,7 @@ public class Pokemon {
         this.velocidad = velocidad;
         this.defensa = defensa;
         this.ataque = ataque;
-        this.estados = null;
+        this.estados = new ArrayList<Estado>();
         this.habilidades = habilidades;
     }
 
@@ -124,8 +125,9 @@ public class Pokemon {
     public boolean setEstado(Estado estado) {
         if (!estados.contains(estado)) {
             estados.add(estado);
+            return true;
         }
-        return true;
+        return false;
     }
 
     public boolean estaVivo() {
