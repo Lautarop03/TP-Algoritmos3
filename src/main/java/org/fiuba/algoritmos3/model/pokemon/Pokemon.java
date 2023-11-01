@@ -123,11 +123,13 @@ public class Pokemon {
     }
 
     public boolean setEstado(Estado estado) {
-        if (!estados.contains(estado)) {
-            estados.add(estado);
-            return true;
+        for (Estado estadoActual : estados) {
+            if (estadoActual.getClass() == estado.getClass()) {
+                return false;
+            }
         }
-        return false;
+        estados.add(estado);
+        return true;
     }
 
     public boolean estaVivo() {
