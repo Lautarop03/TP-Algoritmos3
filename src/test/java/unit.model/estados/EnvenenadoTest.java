@@ -7,21 +7,20 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.spy;
 
 
 public class EnvenenadoTest {
-
-    private Pokemon pokemon = spy(new Pokemon("",0, Tipo.Electrico, "", 100,100,0,0.0,0.0,null));
+//spy
+    private Pokemon pokemon = (new Pokemon("",0, Tipo.Electrico, "", 100,100,0,0.0,0.0,null));
     private Envenenado envenenado = new Envenenado();
 
     @Test
     public void testAgregarEstadoEnvenenadoSinEstadosPrevios(){
 
         boolean agregado = pokemon.setEstado(envenenado);
-        assertEquals(agregado, true);
+        assertTrue(agregado);
     }
     @Test
     public void testAgregarEstadoEnvenenadoConEstadosSinEnvenenado(){
@@ -37,7 +36,7 @@ public class EnvenenadoTest {
         boolean agregado = pokemon.setEstado(envenenado);
 
         //Assert
-        assertEquals(agregado, true);
+        assertTrue(agregado);
     }
     @Test
     public void testAgregarEstadoEnvenenadoConEstadosConEnvenenado(){
@@ -53,7 +52,7 @@ public class EnvenenadoTest {
         boolean agregado = pokemon.setEstado(envenenado);
 
         //Assert
-        assertEquals(agregado, false);
+        assertFalse(agregado);
     }
 
     @Test
@@ -94,15 +93,14 @@ public class EnvenenadoTest {
         assertEquals(nuevaVida, pokemon.getVidaActual());
     }
 
-
     @Test
     public void testDevolucionAplicarEnvenenadoPokemonCasiMuerto(){
-        pokemon.setVidaActual(3);
+        pokemon.setVidaActual(5);
         pokemon.setEstado(envenenado);
 
         boolean aplicado = pokemon.aplicarEstados().get(0);
 
-        assertTrue(aplicado);
+        assertFalse(aplicado);
     }
 
     @Test

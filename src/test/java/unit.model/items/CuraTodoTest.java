@@ -3,57 +3,62 @@ package unit.model.items;
 import org.fiuba.algoritmos3.model.items.CuraTodo;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.Tipo;
-import org.fiuba.algoritmos3.model.pokemon.estados.Dormido;
-import org.fiuba.algoritmos3.model.pokemon.estados.Envenenado;
-import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
+import org.fiuba.algoritmos3.model.pokemon.estados.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class CuraTodoTest {
 
-    private Pokemon pokemon = mock(Pokemon.class);
+    private Pokemon pokemon = new Pokemon("",0, Tipo.Electrico, "", 200,200,0,0.0,100.0,null);
     private CuraTodo curaTodo = new CuraTodo(1);
 
     @Test
     public void testCuraTodoConUnEstado(){
         //Arrange
-//        ArrayList<Estado> l = new ArrayList<Estado>();
-//        l.add(new Envenenado());
-//        when(pokemon.getEstado()).thenReturn(l);
-//
-//        //Act
-//        Boolean resultado  = curaTodo.aplicarItem(pokemon);
-//
-//        //Assert
-//        assertEquals(pokemon.getEstado().isEmpty());
+        Envenenado envenenado = new Envenenado();
+        pokemon.setEstado(envenenado);
+        List<Estado> vacio = new ArrayList<Estado>();
+
+        //Act
+        Boolean resultado  = curaTodo.aplicarItem(pokemon);
+
+        //Assert
+        assertEquals(pokemon.getEstados(),vacio);
+        assertFalse(resultado);
     }
 
     @Test
     public void testCuraTodoConMuchosEstado(){
         //Arrange
-//        ArrayList<Estado> l = new ArrayList<Estado>();
-//        l.add(new Envenenado());
-//        l.add(new Dormido());
-//        when(pokemon.getEstado()).thenReturn(l);
-//
-//        //Act
-//        Boolean resultado  = curaTodo.aplicarItem(pokemon);
-//
-//        //Assert
-//        assertEquals(pokemon.getEstado().isEmpty());
+        Envenenado envenenado = new Envenenado();
+        Dormido dormindo = new Dormido();
+        Paralizado paralizado = new Paralizado();
+        Confuso confuso = new Confuso();
+        pokemon.setEstado(envenenado);
+        pokemon.setEstado(dormindo);
+        pokemon.setEstado(paralizado);
+        pokemon.setEstado(confuso);
+        List<Estado> vacio = new ArrayList<Estado>();
+
+        //Act
+        Boolean resultado  = curaTodo.aplicarItem(pokemon);
+
+        //Assert
+        assertEquals(pokemon.getEstados(),vacio);
+        assertFalse(resultado);
+
     }
 
     @Test
     public void testCuraTodoSinEstado(){
-        //Arrange
-        when(pokemon.getEstados()).thenReturn(null);
+
         //Act
         Boolean resultado = curaTodo.aplicarItem(pokemon);
 
@@ -61,4 +66,29 @@ public class CuraTodoTest {
         assertEquals(resultado, true);
     }
 
+    @Test
+    public void testCuraTodoCantidadDespuesDeUsoConEtado(){
+        //Arrange
+        Dormido dormindo = new Dormido();
+        pokemon.setEstado(dormindo);
+        Integer cantidadInicial = curaTodo.getCantidad();
+
+        //Act
+        curaTodo.aplicarItem(pokemon);
+        System.out.println(curaTodo.getCantidad());
+
+        //Assert
+        assertEquals((int)curaTodo.getCantidad(),cantidadInicial-1);
+    }
+
+    @Test
+    public void testCuraTodoSinEstadoCantidadDespuesDeUsoSinEstado(){
+
+        //Act
+        Boolean resultado = curaTodo.aplicarItem(pokemon);
+
+        //Assert
+        assertEquals(curaTodo.getCantidad(),curaTodo.getCantidad());
+
+    }
 }

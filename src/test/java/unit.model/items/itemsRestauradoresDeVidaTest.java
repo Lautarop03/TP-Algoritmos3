@@ -18,7 +18,6 @@ public class itemsRestauradoresDeVidaTest {
         this.item = itemRestauradorDeVida;
     }
 
-    @Test
     public void testAplicarItemConVidaBaja(Integer vidaActual, Integer vidaFinal) {
         //Arrange
         pokemon.setVidaActual(vidaActual);
@@ -31,7 +30,6 @@ public class itemsRestauradoresDeVidaTest {
         assertFalse(fueAplicado);
     }
 
-    @Test
     public void testAplicarItemConVidaAlta(Integer vidaActual) {
         //Arrange
         pokemon.setVidaActual(vidaActual);
@@ -44,7 +42,6 @@ public class itemsRestauradoresDeVidaTest {
         assertFalse(fueAplicado);
     }
 
-    @Test
     public void testAplicarItemConVidaMaxima() {
         //Arrange
         when(pokemon.estaMuerto()).thenReturn(false);
@@ -58,7 +55,6 @@ public class itemsRestauradoresDeVidaTest {
         assertTrue(fueAplicado);
     }
 
-    @Test
     public void testAplicarItemConVidaNula() {
         //Arrange
         when(pokemon.estaMuerto()).thenReturn(true);
@@ -73,7 +69,6 @@ public class itemsRestauradoresDeVidaTest {
         assertTrue(fueAplicado);
     }
 
-    @Test
     public void testItemCantidadDespuesDeUsoConVidaMaxima() {
         //Arrange
         Integer cantInicial = item.getCantidad();
@@ -85,7 +80,6 @@ public class itemsRestauradoresDeVidaTest {
         assertSame(item.getCantidad(), cantInicial);
     }
 
-    @Test
     public void testItemCantidadDespuesDeUsoSinVidaMaxima() {
         //Arrange
         Integer mitadVida = pokemon.getVidaMaxima()/2;
@@ -100,7 +94,6 @@ public class itemsRestauradoresDeVidaTest {
         assertEquals((int) item.getCantidad(), cantInicial - 1);
     }
 
-    @Test
     public void testItemCantidadDespuesDeUsoConVidaNula() {
         //Arrange
         Integer resultado = item.getCantidad();

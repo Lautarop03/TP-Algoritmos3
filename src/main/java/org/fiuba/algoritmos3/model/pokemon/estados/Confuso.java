@@ -31,8 +31,7 @@ public class Confuso extends Estado implements ModificacionVida {
         pokemon.bajarVida(modificadorDeVida);
     }
 
-    @Override
     public Estado clonarEstado(Estado estado) {
-        return null;
+        return new Confuso();
     }
 }
