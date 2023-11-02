@@ -10,49 +10,75 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertFalse;
 
 public class HabilidadDeEstadisticaVidaTest {
-        private Pokemon pokemon = new Pokemon("",0, Tipo.Electrico, "", 200,100,0,0.0,100.0,null);
-        private Pokemon pokemonEnemigo = new Pokemon("",0, Tipo.Electrico, "", 200,100,0,0.0,100.0,null);
+    private Pokemon pokemon = new Pokemon("",0, Tipo.Electrico, "", 200,100,0,0.0,100.0,null);
+    private Pokemon pokemonEnemigo = new Pokemon("",0, Tipo.Electrico, "", 200,100,0,0.0,100.0,null);
 
-        private HabilidadDeEstadisticaVida habilidadDeEstadisticaVida = new HabilidadDeEstadisticaVida("",1,Tipo.Electrico,50);
+    private HabilidadDeEstadisticaVida habilidadDeEstadisticaVidaBuff = new HabilidadDeEstadisticaVida("",1,Tipo.Electrico,50);
+    private HabilidadDeEstadisticaVida habilidadDeEstadisticaVidaNerf = new HabilidadDeEstadisticaVida("",1,Tipo.Electrico,-50);
 
 
-        @Test
-        public void testUsarHabilidadDeEstadisticaVidaEnSiMismo(){
-            //Arrange
-            Integer vidaResultado = 150;
+    @Test
+    public void testUsarHabilidadDeEstadisticaVidaEnSiMismoAFavor(){
+        //Arrange
+        Integer vidaResultado = 150;
 
-            //Act
-            Boolean fueUsado = habilidadDeEstadisticaVida.usarHabilidad(pokemon,pokemon);
+        //Act
+        Boolean fueUsado = habilidadDeEstadisticaVidaBuff.usarHabilidad(pokemon,pokemon);
 
-            //Assert
-            assertEquals(pokemon.getVidaActual(),vidaResultado);
-            assertFalse(fueUsado);
+        //Assert
+        assertEquals(pokemon.getVidaActual(),vidaResultado);
+        assertFalse(fueUsado);
 
-        }
+    }
+    @Test
+    public void testUsarHabilidadDeEstadisticaVidaEnSiMismoEnContra(){
+        //Arrange
+        Integer vidaResultado = 50;
 
-        @Test
-        public void testUsarHabilidadDeEstadisticaVidaEnPokemonEnemigo(){
-            //Arrange
-            Integer vidaResultado = 150;
+        //Act
+        Boolean fueUsado = habilidadDeEstadisticaVidaNerf.usarHabilidad(pokemon,pokemon);
 
-            //Act
-            Boolean fueUsado = habilidadDeEstadisticaVida.usarHabilidad(pokemon,pokemonEnemigo);
+        //Assert
+        assertEquals(pokemon.getVidaActual(),vidaResultado);
+        assertFalse(fueUsado);
+    }
 
-            //Assert
-            assertEquals(pokemonEnemigo.getVidaActual(),vidaResultado);
-            assertFalse(fueUsado);
-        }
+    @Test
+    public void testUsarHabilidadDeEstadisticaVidaEnPokemonEnemigoAFavor(){
+        //Arrange
+        Integer vidaResultado = 150;
 
-        @Test
-        public void testUsarHabilidadDeEstadisticaVidaCantidadDespuesDeUso(){
-            //Arrange
-            Integer resultado = habilidadDeEstadisticaVida.getCantidadDeUsos();
+        //Act
+        Boolean fueUsado = habilidadDeEstadisticaVidaBuff.usarHabilidad(pokemon,pokemonEnemigo);
 
-            //Act
-            Boolean fueUsado = habilidadDeEstadisticaVida.usarHabilidad(pokemon,pokemonEnemigo);
+        //Assert
+        assertEquals(pokemonEnemigo.getVidaActual(),vidaResultado);
+        assertFalse(fueUsado);
+    }
 
-            //Assert
-            assertSame(habilidadDeEstadisticaVida.getCantidadDeUsos(),resultado-1);
-            assertFalse(fueUsado);
-        }
+    @Test
+    public void testUsarHabilidadDeEstadisticaVidaEnPokemonEnemigoEnContra(){
+        //Arrange
+        Integer vidaResultado = 50;
+
+        //Act
+        Boolean fueUsado = habilidadDeEstadisticaVidaNerf.usarHabilidad(pokemon,pokemonEnemigo);
+
+        //Assert
+        assertEquals(pokemonEnemigo.getVidaActual(),vidaResultado);
+        assertFalse(fueUsado);
+    }
+
+    @Test
+    public void testUsarHabilidadDeEstadisticaVidaCantidadDespuesDeUso(){
+        //Arrange
+        Integer resultado = habilidadDeEstadisticaVidaBuff.getCantidadDeUsos();
+
+        //Act
+        Boolean fueUsado = habilidadDeEstadisticaVidaBuff.usarHabilidad(pokemon,pokemonEnemigo);
+
+        //Assert
+        assertSame(habilidadDeEstadisticaVidaBuff.getCantidadDeUsos(),resultado-1);
+        assertFalse(fueUsado);
+    }
 }
