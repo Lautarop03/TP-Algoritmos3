@@ -13,16 +13,29 @@ public class HabilidadDeEstadisticaDefensaTest {
     private Pokemon pokemon = new Pokemon("",0, Tipo.Electrico, "", 200,200,0,100.0,0.0,null);
     private Pokemon pokemonEnemigo = new Pokemon("",0, Tipo.Electrico, "", 200,200,0,100.0,0.0,null);
 
-    private HabilidadDeEstadisticaDefensa habilidadDeEstadisticaDefensa = new HabilidadDeEstadisticaDefensa("Acorazado",1,Tipo.Electrico,50);
+    private HabilidadDeEstadisticaDefensa habilidadDeEstadisticaDefensaBuff = new HabilidadDeEstadisticaDefensa("Acorazado",1,Tipo.Electrico,50);
+    private HabilidadDeEstadisticaDefensa habilidadDeEstadisticaDefensaNerf = new HabilidadDeEstadisticaDefensa("Acorazado",1,Tipo.Electrico,-50);
 
 
     @Test
-    public void testUsarHabilidadDeEstadisticaDefensaEnSiMismo(){
+    public void testUsarHabilidadDeEstadisticaDefensaEnSiMismoAFavor(){
         //Arrange
         Double defensaResultado = 150.0;
 
         //Act
-        Boolean fueUsado = habilidadDeEstadisticaDefensa.usarHabilidad(pokemon,pokemon);
+        Boolean fueUsado = habilidadDeEstadisticaDefensaBuff.usarHabilidad(pokemon,pokemon);
+
+        //Assert
+        assertEquals(pokemon.getDefensa(),defensaResultado);
+        assertFalse(fueUsado);
+    }
+    @Test
+    public void testUsarHabilidadDeEstadisticaDefensaEnSiMismoEnContra(){
+        //Arrange
+        Double defensaResultado = 50.0;
+
+        //Act
+        Boolean fueUsado = habilidadDeEstadisticaDefensaNerf.usarHabilidad(pokemon,pokemon);
 
         //Assert
         assertEquals(pokemon.getDefensa(),defensaResultado);
@@ -30,12 +43,25 @@ public class HabilidadDeEstadisticaDefensaTest {
     }
 
     @Test
-    public void testUsarHabilidadDeEstadisticaDefensaEnPokemonEnemigo(){
+    public void testUsarHabilidadDeEstadisticaDefensaEnPokemonEnemigoAFavor(){
         //Arrange
         Double defensaResultado = 150.0;
 
         //Act
-        Boolean fueUsado = habilidadDeEstadisticaDefensa.usarHabilidad(pokemon,pokemonEnemigo);
+        Boolean fueUsado = habilidadDeEstadisticaDefensaBuff.usarHabilidad(pokemon,pokemonEnemigo);
+
+        //Assert
+        assertEquals(pokemonEnemigo.getDefensa(),defensaResultado);
+        assertFalse(fueUsado);
+    }
+
+    @Test
+    public void testUsarHabilidadDeEstadisticaDefensaEnPokemonEnemigoEncContra(){
+        //Arrange
+        Double defensaResultado = 50.0;
+
+        //Act
+        Boolean fueUsado = habilidadDeEstadisticaDefensaNerf.usarHabilidad(pokemon,pokemonEnemigo);
 
         //Assert
         assertEquals(pokemonEnemigo.getDefensa(),defensaResultado);
@@ -45,14 +71,15 @@ public class HabilidadDeEstadisticaDefensaTest {
     @Test
     public void testUsarHabilidadDeEstadisticaDefensaCantidadDespuesDeUso(){
         //Arrange
-        Integer resultado = habilidadDeEstadisticaDefensa.getCantidadDeUsos();
+        Integer resultado = habilidadDeEstadisticaDefensaBuff.getCantidadDeUsos();
 
         //Act
-        Boolean fueUsado = habilidadDeEstadisticaDefensa.usarHabilidad(pokemon,pokemonEnemigo);
+        Boolean fueUsado = habilidadDeEstadisticaDefensaBuff.usarHabilidad(pokemon,pokemonEnemigo);
 
         //Assert
-        assertSame(habilidadDeEstadisticaDefensa.getCantidadDeUsos(),resultado-1);
+        assertSame(habilidadDeEstadisticaDefensaBuff.getCantidadDeUsos(),resultado-1);
         assertFalse(fueUsado);
     }
+
 }
 

@@ -19,7 +19,6 @@ public class ConfusoTest {
 
     @Test
     public void testAgregarEstadoConfusoSinEstadosPrevios(){
-
         boolean agregado = pokemon.setEstado(confuso);
         assertTrue(agregado);
     }

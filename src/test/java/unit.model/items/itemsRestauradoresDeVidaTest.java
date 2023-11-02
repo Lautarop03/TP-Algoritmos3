@@ -28,7 +28,7 @@ public class itemsRestauradoresDeVidaTest {
 
         //Assert
         assertEquals(vidaFinal, pokemon.getVidaActual());
-        assertEquals(false, fueAplicado);
+        assertFalse(fueAplicado);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class itemsRestauradoresDeVidaTest {
 
         //Assert
         assertEquals(pokemon.getVidaMaxima(), pokemon.getVidaActual());
-        assertEquals(false, fueAplicado);
+        assertFalse(fueAplicado);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class itemsRestauradoresDeVidaTest {
 
         //Assert
         assertEquals(pokemon.getVidaMaxima(),pokemon.getVidaActual());
-        assertEquals(true, fueAplicado);
+        assertTrue(fueAplicado);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class itemsRestauradoresDeVidaTest {
 
         //Assert
         assertEquals((Integer)0,pokemon.getVidaActual());
-        assertEquals(true, fueAplicado);
+        assertTrue(fueAplicado);
     }
 
     @Test
