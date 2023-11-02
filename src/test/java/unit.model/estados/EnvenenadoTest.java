@@ -7,8 +7,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.spy;
 
 
@@ -21,7 +20,7 @@ public class EnvenenadoTest {
     public void testAgregarEstadoEnvenenadoSinEstadosPrevios(){
 
         boolean agregado = pokemon.setEstado(envenenado);
-        assertEquals(agregado, true);
+        assertTrue(agregado);
     }
     @Test
     public void testAgregarEstadoEnvenenadoConEstadosSinEnvenenado(){
@@ -37,7 +36,7 @@ public class EnvenenadoTest {
         boolean agregado = pokemon.setEstado(envenenado);
 
         //Assert
-        assertEquals(agregado, true);
+        assertTrue(agregado);
     }
     @Test
     public void testAgregarEstadoEnvenenadoConEstadosConEnvenenado(){
@@ -53,7 +52,7 @@ public class EnvenenadoTest {
         boolean agregado = pokemon.setEstado(envenenado);
 
         //Assert
-        assertEquals(agregado, false);
+        assertFalse(agregado);
     }
 
     @Test

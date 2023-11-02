@@ -3,7 +3,6 @@ package org.fiuba.algoritmos3.model.pokemon;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 
-import javax.swing.text.StyledEditorKit;
 import java.util.ArrayList;
 import java.util.List;
 
