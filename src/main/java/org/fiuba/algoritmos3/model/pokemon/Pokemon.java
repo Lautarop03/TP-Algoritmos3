@@ -68,7 +68,17 @@ public class Pokemon {
     public List<Boolean> aplicarEstados() {
         List<Boolean> aplicados = new ArrayList<>();
         boolean aplicado;
-        for (Estado estadoActual : estados) { //Revisar que cuando muere el pokemon ya no puedo iterar mas aca, al mostrar en Juego tambien va a dar error
+        Integer iterador = 0;
+        while(this.estaVivo() && iterador < estados.size()){
+            aplicado = false;
+            Estado estadoActual = estados.get(iterador);
+            if (estadoActual.aplicarEfecto(this)) {
+                aplicado = true;
+            }
+            aplicados.add(aplicado);
+            iterador += 1;
+        }
+/*        for (Estado estadoActual : estados) { //Revisar que cuando muere el pokemon ya no puedo iterar mas aca, al mostrar en Juego tambien va a dar error
             aplicado = false;
             if (estadoActual.aplicarEfecto(this)) {
                 aplicado = true;
@@ -77,7 +87,7 @@ public class Pokemon {
             if (this.estaMuerto()){
                 break;
             }
-        }
+        }*/
         return aplicados;
     }
 

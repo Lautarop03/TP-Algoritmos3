@@ -18,7 +18,7 @@ public class Dormido extends Estado {
         Random random = new Random();
         double numeroAleatorio = random.nextDouble();
         if (numeroAleatorio <= probabilidad) {
-            pokemon.quitarEstados();
+            pokemon.quitarEstado(this);
             return false;
         }
         contadorDeTurnos++;

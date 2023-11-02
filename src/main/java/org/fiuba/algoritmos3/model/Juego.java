@@ -81,7 +81,7 @@ public class Juego {
     public boolean aplicarEstados() {
         Pokemon pokemon = getJugadorActual().getPokemonActual();
         List<Boolean> estadosAplicados;
-        List<Estado> estados = pokemon.getEstados();
+        List<Estado> estados = new ArrayList<>(pokemon.getEstados());
         boolean aplicado = false;
         Integer contador = 0;
         if (!estados.isEmpty()){

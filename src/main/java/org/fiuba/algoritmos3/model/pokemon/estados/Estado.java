@@ -4,8 +4,6 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 public abstract class Estado {
     protected String nombre;
-    protected Estado estado;
-
     public Estado() {
     }
 
