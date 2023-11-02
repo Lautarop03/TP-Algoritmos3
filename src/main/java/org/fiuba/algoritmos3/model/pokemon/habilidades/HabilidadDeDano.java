@@ -47,7 +47,7 @@ public class HabilidadDeDano extends Habilidad{
     private double STAB(Pokemon pokemonActual) {
         double stab = 1;
         if (pokemonActual.getTipo() == this.getTipo()){
-            return stab = 1.5;
+            stab = 1.5;
         }
         return  stab;
     }

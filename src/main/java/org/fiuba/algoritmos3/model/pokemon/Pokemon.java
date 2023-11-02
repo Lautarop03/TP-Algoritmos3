@@ -3,6 +3,7 @@ package org.fiuba.algoritmos3.model.pokemon;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 
+import javax.swing.text.StyledEditorKit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,20 +65,27 @@ public class Pokemon {
         }
         this.setVidaActual(vidaNueva);
     }
-    public boolean aplicarEstados() {
-        boolean aplicado = false;
-        for (Estado estadoActual : estados) {
+    public List<Boolean> aplicarEstados() {
+        List<Boolean> aplicados = new ArrayList<>();
+        boolean aplicado;
+        for (Estado estadoActual : estados) { //Revisar que cuando muere el pokemon ya no puedo iterar mas aca, al mostrar en Juego tambien va a dar error
+            aplicado = false;
             if (estadoActual.aplicarEfecto(this)) {
                 aplicado = true;
             }
+            aplicados.add(aplicado);
+            if (this.estaMuerto()){
+                break;
+            }
         }
-        return aplicado;
+        return aplicados;
     }
 
     public void bajarVida(Integer vidaQuitada){
         int vidaNueva = this.vidaActual - vidaQuitada;
-        if (vidaNueva < 0) {
+        if (vidaNueva <= 0) {
             this.vidaActual = 0;
+            this.quitarEstados();
         } else {
             this.setVidaActual(vidaNueva);
         }
@@ -116,7 +124,7 @@ public class Pokemon {
     }
 
     public void quitarEstados(){
-        this.estados = null;
+        this.estados.clear();
     }
     public void quitarEstado(Estado estado) {
         estados.remove(estado);

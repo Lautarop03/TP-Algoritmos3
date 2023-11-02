@@ -38,7 +38,9 @@ public class ControladorDeJuego {
             }
         } while (!repetir);
         if (intercambioPokemon && !juego.aplicarEstados()){
+
             juego.realizarAtaque();
+
         }
         juego.comprobarPokemonActualEstaVivo();
         juego.cambiarTurno();

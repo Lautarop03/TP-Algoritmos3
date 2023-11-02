@@ -80,15 +80,20 @@ public class Juego {
     }
     public boolean aplicarEstados() {
         Pokemon pokemon = getJugadorActual().getPokemonActual();
-        boolean aplicado = false;
+        List<Boolean> estadosAplicados;
         List<Estado> estados = pokemon.getEstados();
-        if (estados != null){
-            aplicado = pokemon.aplicarEstados();
-            for(Estado estadoActual : estados) {
-                viewControlador.mostrarEfectoEstado(estadoActual, pokemon, aplicado);
+        boolean aplicado = false;
+        Integer contador = 0;
+        if (!estados.isEmpty()){
+            estadosAplicados = pokemon.aplicarEstados();
+            for(Boolean estadoAplicado : estadosAplicados) {
+                Estado estadoActual = estados.get(contador);
+                viewControlador.mostrarEfectoEstado(estadoActual, pokemon, estadoAplicado);
+                contador += 1;
             }
-            if (aplicado && !this.colaDeAtaques.isEmpty()){
+            if (estadosAplicados.contains(true) && !this.colaDeAtaques.isEmpty()){
                 this.colaDeAtaques.remove();
+                aplicado = true;
             }
         }
         return aplicado;

@@ -68,7 +68,6 @@ public class ViewControlador {
     public void mostrarEfectoEstado(Estado estado, Pokemon pokemon, Boolean aplicado){
         EstadoView estadoView = estadoFactory.createEstadoView(estado);
         estadoView.mostrarEstado(pokemon,estado,aplicado);
-
     }
 
     public void mostrarPokemonMuerto(Pokemon pokemon){

@@ -13,7 +13,7 @@ public class Envenenado extends Estado implements ModificacionVida {
     public boolean aplicarEfecto(Pokemon pokemon) {
         Integer modificadorDeVida = (int) (pokemon.getVidaMaxima() * 0.05);
         this.modificarVida(pokemon, modificadorDeVida);
-        return pokemon.estaMuerto();
+        return false;
     }
 
     public void modificarVida(Pokemon pokemon, Integer modificadorDeVida) {
