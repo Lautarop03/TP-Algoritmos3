@@ -7,6 +7,7 @@ import java.util.Random;
 public class Dormido extends Estado {
     final Double ProbabilidadDeDespertarse = 0.25;
     private int contadorDeTurnos = 0;
+    private Random random = new Random();
 
     public Dormido() {
         this.nombre = "Dormido";
@@ -15,7 +16,7 @@ public class Dormido extends Estado {
     @Override
     public boolean aplicarEfecto(Pokemon pokemon) {
         double probabilidad = ProbabilidadDeDespertarse + contadorDeTurnos * ProbabilidadDeDespertarse;
-        Random random = new Random();
+        Random random = this.random;
         double numeroAleatorio = random.nextDouble();
         if (numeroAleatorio <= probabilidad) {
             pokemon.quitarEstado(this);
@@ -23,6 +24,10 @@ public class Dormido extends Estado {
         }
         contadorDeTurnos++;
         return true;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
     }
 
     public Estado clonarEstado(Estado estado) {

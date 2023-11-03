@@ -1,4 +1,4 @@
-package unit.model.Juego;
+package integration.model.Juego;
 
 import org.fiuba.algoritmos3.model.AdministradorDeJuego;
 import org.fiuba.algoritmos3.model.Juego;
@@ -9,6 +9,9 @@ import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.items.Revivir;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.Tipo;
+import org.fiuba.algoritmos3.model.pokemon.estados.Envenenado;
+import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
+import org.fiuba.algoritmos3.model.pokemon.estados.Paralizado;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeDano;
 import org.junit.Test;
@@ -132,6 +135,4 @@ public class IntegracionJuegoTest {
         assertEquals(pokemonVida, pokemonVidaNueva);
         assertTrue(aplicado);
     }
-
-
 }

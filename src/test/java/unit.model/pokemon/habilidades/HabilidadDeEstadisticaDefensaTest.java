@@ -1,4 +1,4 @@
-package unit.model.habilidades;
+package unit.model.pokemon.habilidades;
 
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.Tipo;

@@ -1,4 +1,4 @@
-package unit.model.estados;
+package unit.model.pokemon.estados;
 
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.Tipo;

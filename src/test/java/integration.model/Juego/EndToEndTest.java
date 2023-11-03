@@ -1,4 +1,4 @@
-package unit.model.Juego;
+package integration.model.Juego;
 
 import org.fiuba.algoritmos3.model.AdministradorDeJuego;
 import org.fiuba.algoritmos3.model.Juego;
@@ -160,4 +160,5 @@ public class EndToEndTest {
         //Assert
         assertTrue(juego.terminado());
     }
+
 }
