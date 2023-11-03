@@ -1,10 +1,6 @@
 package org.fiuba.algoritmos3.views.habilidadView;
 
-import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
-import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeEstadisticaVida;
-import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeEstadisticaDefensa;
-import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeEstadisticaAtaque;
-import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeEstado;
+import org.fiuba.algoritmos3.model.pokemon.habilidades.*;
 
 public class FactoryHabilidadView {
 
@@ -20,6 +16,9 @@ public class FactoryHabilidadView {
         }
         if (habilidad.getClass() == HabilidadDeEstado.class) {
             return new HabilidadDeEstadoView();
+        }
+        if (habilidad.getClass() == HabilidadDeClima.class) {
+            return new HabilidadDeClimaView();
         }
         return new HabilidadDeDanoView();
     }

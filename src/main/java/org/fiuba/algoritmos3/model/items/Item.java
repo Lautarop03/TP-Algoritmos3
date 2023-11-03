@@ -13,6 +13,9 @@ public abstract class Item{
     }
 
     public boolean aplicarItem(Pokemon pokemon){
+        if(this.cantidadDeItems == 0) {
+            return true;
+        }
         this.cantidadDeItems = this.cantidadDeItems - 1;
         return false;
     }

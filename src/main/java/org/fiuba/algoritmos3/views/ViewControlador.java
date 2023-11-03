@@ -89,4 +89,7 @@ public class ViewControlador {
     public void errorHabilidadEstado() {
         System.out.println("No se puede aplicar el estado, el pokemon ya tiene uno de la misma clase");
     }
+    public void errorHabilidadSinUsos() {
+        System.out.println("Habilidad sin usos, elegir otra");
+    }
 }

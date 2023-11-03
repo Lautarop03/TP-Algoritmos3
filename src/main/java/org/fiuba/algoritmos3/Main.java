@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3;
 
-import org.fiuba.algoritmos3.model.AdministradorDeJuego;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.Jugador;
 
@@ -12,7 +11,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.setProperty("org.jline.terminal.dumb", "true");
         Inputs input = new Inputs();
-        AdministradorDeJuego admin = new AdministradorDeJuego();
+        CargarPokemons admin = new CargarPokemons();
         String nombre = input.pedirNombre();
         Jugador jugador1 = new Jugador(nombre, admin.asignarPokemonesJugador1(),admin.asignarItems());
         String nombre2 = input.pedirNombre();

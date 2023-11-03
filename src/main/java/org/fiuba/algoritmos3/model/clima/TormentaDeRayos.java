@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3.clima;
+package org.fiuba.algoritmos3.model.clima;
 
 import org.fiuba.algoritmos3.model.pokemon.Tipo;
 

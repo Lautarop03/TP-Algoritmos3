@@ -15,8 +15,10 @@ public abstract class ItemRestauradorDeVida extends Item {
         if (pokemon.tieneVidaLlena() || pokemon.estaMuerto()) {
             return true;
         }
+        if (super.aplicarItem(pokemon)) {
+            return true;
+        }
         pokemon.sumarVida(this.cantidadDeCura);
-        super.aplicarItem(pokemon);
         return false;
     }
 }

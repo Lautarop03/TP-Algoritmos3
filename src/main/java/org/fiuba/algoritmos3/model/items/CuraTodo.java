@@ -14,8 +14,10 @@ public class CuraTodo extends Item {
         if(pokemon.getEstados().isEmpty()){
             return true;
         }
+        if (super.aplicarItem(pokemon)) {
+            return true;
+        }
         pokemon.quitarEstados();
-        super.aplicarItem(pokemon);
         return false;
     }
 }

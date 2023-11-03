@@ -13,8 +13,10 @@ public class ItemModificadorAtaque extends ItemDeEstadistica implements Modifica
 
     @Override
     public boolean aplicarItem(Pokemon pokemon){
+        if (super.aplicarItem(pokemon)) {
+            return true;
+        }
         modificarAtaque(pokemon);
-        super.aplicarItem(pokemon);
         return false;
     }
 

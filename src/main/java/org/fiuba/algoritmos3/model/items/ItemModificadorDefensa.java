@@ -13,8 +13,10 @@ public class ItemModificadorDefensa extends ItemDeEstadistica implements Modific
 
     @Override
     public boolean aplicarItem(Pokemon pokemon) {
+        if (super.aplicarItem(pokemon)) {
+            return true;
+        }
         modificarDefensa(pokemon);
-        super.aplicarItem(pokemon);
         return false;
     }
     public void modificarDefensa(Pokemon pokemon) {

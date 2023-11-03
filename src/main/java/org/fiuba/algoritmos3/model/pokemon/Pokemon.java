@@ -77,16 +77,6 @@ public class Pokemon {
             aplicados.add(aplicado);
             iterador += 1;
         }
-/*        for (Estado estadoActual : estados) { //Revisar que cuando muere el pokemon ya no puedo iterar mas aca, al mostrar en Juego tambien va a dar error
-            aplicado = false;
-            if (estadoActual.aplicarEfecto(this)) {
-                aplicado = true;
-            }
-            aplicados.add(aplicado);
-            if (this.estaMuerto()){
-                break;
-            }
-        }*/
         return aplicados;
     }
 

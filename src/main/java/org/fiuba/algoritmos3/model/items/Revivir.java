@@ -12,9 +12,11 @@ public class Revivir extends Item{
         if (pokemon.estaVivo()) {
             return true;
         }
+        if (super.aplicarItem(pokemon)) {
+            return true;
+        }
         Integer nuevaVida = pokemon.getVidaMaxima() / 2;
         pokemon.sumarVida(nuevaVida);
-        super.aplicarItem(pokemon);
         return false;
     }
 }

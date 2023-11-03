@@ -15,6 +15,9 @@ public abstract class ItemRestauradorDeVidaPorcentual extends Item {
         if (pokemon.tieneVidaLlena() || pokemon.estaMuerto()) {
             return true;
         }
+        if (super.aplicarItem(pokemon)) {
+            return true;
+        }
         float vidaASumar = (pokemon.getVidaMaxima() * porcentajeDeCura);
         pokemon.sumarVida((int)vidaASumar);
         super.aplicarItem(pokemon);
