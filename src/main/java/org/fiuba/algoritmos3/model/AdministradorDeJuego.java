@@ -100,10 +100,6 @@ public class AdministradorDeJuego {
         viewControlador.mostrarUsoItem(jugadorActual, item, pokemon);
     }
 
-    public void opcionVolverAMenu() {
-        viewControlador.opcionVolverAMenu();
-    }
-
     public void mostrarGanador(Jugador jugador){
         viewControlador.mostrarGanador(jugador);
     }
