@@ -75,7 +75,6 @@ public class CuraTodoTest {
 
         //Act
         curaTodo.aplicarItem(pokemon);
-        System.out.println(curaTodo.getCantidad());
 
         //Assert
         assertEquals((int)curaTodo.getCantidad(),cantidadInicial-1);

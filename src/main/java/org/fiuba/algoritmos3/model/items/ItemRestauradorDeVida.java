@@ -21,5 +21,9 @@ public abstract class ItemRestauradorDeVida extends Item {
         pokemon.sumarVida(this.cantidadDeCura);
         return false;
     }
+
+    public Integer getcantidadDeCura(){
+        return this.cantidadDeCura;
+    }
 }
 

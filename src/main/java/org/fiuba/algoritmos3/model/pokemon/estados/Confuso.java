@@ -8,13 +8,16 @@ public class Confuso extends Estado implements ModificacionVida {
     final double probabilidadDeConfundirse = 0.33;
     private int contadorDeTurnos = 0;
     private int turnosDeDuracion = 3;
-    private Random random = new Random();
+    private Random random = null;
 
     public Confuso() { this.nombre = "Confuso"; }
 
     @Override
     public boolean aplicarEfecto(Pokemon pokemon) {
         Random random = this.random;
+        if (random == null) {
+            random = new Random();
+        }
         double numeroAleatorio = random.nextDouble();
         if (numeroAleatorio <= probabilidadDeConfundirse) {
             modificarVida(pokemon, (pokemon.getVidaMaxima()*15)/100);

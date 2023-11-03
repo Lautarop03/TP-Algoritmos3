@@ -17,6 +17,9 @@ public class Dormido extends Estado {
     public boolean aplicarEfecto(Pokemon pokemon) {
         double probabilidad = ProbabilidadDeDespertarse + contadorDeTurnos * ProbabilidadDeDespertarse;
         Random random = this.random;
+        if (random == null) {
+            random = new Random();
+        }
         double numeroAleatorio = random.nextDouble();
         if (numeroAleatorio <= probabilidad) {
             pokemon.quitarEstado(this);

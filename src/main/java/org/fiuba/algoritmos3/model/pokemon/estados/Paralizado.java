@@ -15,6 +15,9 @@ public class Paralizado extends Estado{
     public boolean aplicarEfecto(Pokemon pokemon) {
         double probabilidad = 0.5;
         Random random = this.random;
+        if (random == null) {
+            random = new Random();
+        }
         double numeroAleatorio = random.nextDouble();
         return numeroAleatorio <= probabilidad;
     }
