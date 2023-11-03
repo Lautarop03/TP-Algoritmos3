@@ -221,4 +221,8 @@ public class Juego {
     public void setAdministradorDeJuego(AdministradorDeJuego administradorDeJuego) {
         this.administradorDeJuego = administradorDeJuego;
     }
+
+    public Clima getClima() {
+        return clima;
+    }
 }
