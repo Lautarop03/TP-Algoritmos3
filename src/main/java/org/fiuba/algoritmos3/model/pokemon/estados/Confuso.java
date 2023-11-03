@@ -16,7 +16,7 @@ public class Confuso extends Estado implements ModificacionVida {
         Random random = new Random();
         double numeroAleatorio = random.nextDouble();
         if (numeroAleatorio <= probabilidadDeConfundirse) {
-            pokemon.bajarVida((pokemon.getVidaMaxima()*15)/100);
+            modificarVida(pokemon, (pokemon.getVidaMaxima()*15)/100);
         }
         contadorDeTurnos++;
         if (contadorDeTurnos == turnosDeDuracion) {
