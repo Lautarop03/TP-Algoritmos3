@@ -9,10 +9,13 @@ import org.fiuba.algoritmos3.model.pokemon.Tipo;
 public class HabilidadDeDano extends Habilidad{
 
     private final Integer potencia;
+    private final double[] arrayEfectividad;
 
     public HabilidadDeDano(String nombre, Integer cantidadDeUsos, Tipo tipo, Integer potencia) {
         super(nombre, cantidadDeUsos, tipo);
+        MatrizDeEfectividad matrizDeEfectividad = new MatrizDeEfectividad();
         this.potencia = potencia;
+        this.arrayEfectividad = matrizDeEfectividad.getArrayTipo(tipo);
     }
 
     @Override
@@ -35,11 +38,11 @@ public class HabilidadDeDano extends Habilidad{
 
     private double calcularDano(Pokemon pokemonActual, Pokemon pokemonEnemigo) {
         double danoFinal;
-        MatrizDeEfectividad matriz = new MatrizDeEfectividad();
+
         danoFinal = 2 * pokemonActual.getNivel() * this.potencia * this.probabilidadCritico();
         double AYD = (pokemonActual.getAtaque()/pokemonEnemigo.getDefensa());
         danoFinal = ((danoFinal * AYD/5) + 2)/50;
-        danoFinal = danoFinal * this.STAB(pokemonActual) * matriz.getMatriz()[this.tipo.getIndice()][pokemonEnemigo.getTipo().getIndice()];
+        danoFinal = danoFinal * this.STAB(pokemonActual) * this.arrayEfectividad[pokemonEnemigo.getTipo().getIndice()];
         danoFinal = danoFinal * (Math.random()* 38 + 217)/255;
         return danoFinal;
     }
