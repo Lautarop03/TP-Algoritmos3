@@ -164,20 +164,21 @@ public class EndToEndTest2 {
         assertEquals(juego.getClima().getClass(), TormentaDeRayos.class);
         assertEquals(vidaResultado, j1.getPokemonActual().getVidaActual());
 
-
         when(administradorDeJuego.pedirItem(items1)).thenReturn(new PaqueteDeRespuesta<>(true, 0));
-        when(administradorDeJuego.pedirPokemon(j1.getPokemones())).thenReturn(new PaqueteDeRespuesta<>(true, 1));
+        when(administradorDeJuego.pedirPokemon(j1.getPokemones())).thenReturn(new PaqueteDeRespuesta<>(true, 0));
 
         Boolean seUsoElItem2 = juego.usarItem();
 
-
         //Assert uso Item
-        assertFalse(seUsoElItem2);
-
+        assertTrue(seUsoElItem2);
+        assertEquals(List.of(),j1.getPokemonActual().getEstados());
 
         //- - - - - - - - - - Turno de j2 (p3) - - - - - - - - - -
         juego.cambiarTurno();
+        juego.rendirse();
 
-
+        //Assert terminar juego
+        assertEquals(List.of(),j2.getPokemones());
+        assertTrue(juego.terminado());
     }
 }
