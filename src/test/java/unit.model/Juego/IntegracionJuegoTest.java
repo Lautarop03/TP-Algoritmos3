@@ -4,6 +4,9 @@ import org.fiuba.algoritmos3.model.AdministradorDeJuego;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.PaqueteDeRespuesta;
+import org.fiuba.algoritmos3.model.items.Hiperpocion;
+import org.fiuba.algoritmos3.model.items.Item;
+import org.fiuba.algoritmos3.model.items.Revivir;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.Tipo;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
@@ -93,4 +96,42 @@ public class IntegracionJuegoTest {
         assertEquals(PokActualNuevo.getNombre(),"p2");
         assertEquals(PokEnemigoNuevo.getNombre(),"p4");
     }
+
+    @Test
+    public void testUsarItem() throws IOException{
+        //Arrange
+        Pokemon poke1 = new Pokemon("poke1", 20, Tipo.Agua, "Erase una vez", 200, 0, 50, 40.0, 45.0,null);
+        Pokemon poke2 = new Pokemon("poke2", 20, Tipo.Agua, "Erase una vez", 200, 200, 50, 40.0, 45.0,null);
+        ArrayList<Pokemon> pokes2 = new ArrayList<Pokemon>();
+        pokes2.add(poke2);
+        Revivir revivir = new Revivir(1);
+        ArrayList<Pokemon> pokes = new ArrayList<Pokemon>();
+        pokes.add(poke1);
+        ArrayList<Item> items = new ArrayList<Item>();
+        items.add(revivir);
+        Jugador j1 = new Jugador("Pepe", pokes, items);
+        Jugador j2 = new Jugador("Carlos", pokes2, null);
+
+        Juego juego = new Juego(List.of(j1,j2));
+
+
+        //Act
+        AdministradorDeJuego administradorDeJuego = mock(AdministradorDeJuego.class);
+        juego.setAdministradorDeJuego(administradorDeJuego);
+
+        when(administradorDeJuego.pedirItem(items)).thenReturn(new PaqueteDeRespuesta<>(true,0));
+        when(administradorDeJuego.pedirPokemon(pokes)).thenReturn(new PaqueteDeRespuesta<>(true,0));
+
+        Integer pokemonVida = j1.getPokemonActual().getVidaMaxima() / 2;
+
+        boolean aplicado = juego.usarItem();
+
+        Integer pokemonVidaNueva = j1.getPokemonActual().getVidaActual();
+
+        //Assert
+        assertEquals(pokemonVida, pokemonVidaNueva);
+        assertTrue(aplicado);
+    }
+
+
 }
