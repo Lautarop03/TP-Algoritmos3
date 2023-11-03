@@ -18,11 +18,11 @@ public class Confuso extends Estado implements ModificacionVida {
         if (numeroAleatorio <= probabilidadDeConfundirse) {
             pokemon.bajarVida((pokemon.getVidaMaxima()*15)/100);
         }
+        contadorDeTurnos++;
         if (contadorDeTurnos == turnosDeDuracion) {
             pokemon.quitarEstado(this);
             return false;
         }
-        contadorDeTurnos++;
         return true;
     }
 

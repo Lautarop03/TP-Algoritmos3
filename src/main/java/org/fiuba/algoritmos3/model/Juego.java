@@ -17,7 +17,7 @@ public class Juego {
     private final List<Jugador> jugadores;
     protected Queue<Habilidad> colaDeAtaques;
     private Clima clima;
-    private final AdministradorDeJuego administradorDeJuego;
+    private AdministradorDeJuego administradorDeJuego;
 
 
     public Juego(List<Jugador> jugadores) throws IOException {
@@ -218,4 +218,7 @@ public class Juego {
         this.clima = climaNuevo;
     }
 
+    public void setAdministradorDeJuego(AdministradorDeJuego administradorDeJuego) {
+        this.administradorDeJuego = administradorDeJuego;
+    }
 }

@@ -2,11 +2,11 @@ package unit.model.estados;
 
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.Tipo;
-import org.fiuba.algoritmos3.model.pokemon.estados.Confuso;
-import org.fiuba.algoritmos3.model.pokemon.estados.Dormido;
-import org.fiuba.algoritmos3.model.pokemon.estados.Envenenado;
-import org.fiuba.algoritmos3.model.pokemon.estados.Paralizado;
+import org.fiuba.algoritmos3.model.pokemon.estados.*;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.spy;
@@ -54,5 +54,21 @@ public class DormidoTest {
 
         //Assert
         assertFalse(agregado);
+    }
+
+    @Test
+    public void testAplicarEstadoDormidoSeDespiertaLuegoDe4Turnos() {
+        pokemon.setEstado(dormido);
+
+        //Luego de 4 veces aplicado el estado, se va automaticamente
+        pokemon.aplicarEstados();
+        pokemon.aplicarEstados();
+        pokemon.aplicarEstados();
+        pokemon.aplicarEstados();
+
+
+        List<Estado> estados = pokemon.getEstados();
+
+        assertEquals(estados,new ArrayList<Estado>());
     }
 }

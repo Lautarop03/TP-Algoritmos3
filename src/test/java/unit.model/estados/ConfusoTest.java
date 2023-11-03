@@ -2,19 +2,20 @@ package unit.model.estados;
 
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.Tipo;
-import org.fiuba.algoritmos3.model.pokemon.estados.Confuso;
-import org.fiuba.algoritmos3.model.pokemon.estados.Dormido;
-import org.fiuba.algoritmos3.model.pokemon.estados.Envenenado;
-import org.fiuba.algoritmos3.model.pokemon.estados.Paralizado;
+import org.fiuba.algoritmos3.model.pokemon.estados.*;
 import org.junit.Test;
+import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.spy;
+
 
 
 public class ConfusoTest {
 
-    private Pokemon pokemon = spy(new Pokemon("",0, Tipo.Electrico, "", 100,100,0,0.0,0.0,null));
+    private Pokemon pokemon = (new Pokemon("",0, Tipo.Electrico, "", 100,100,0,0.0,0.0,null));
     private Confuso confuso = new Confuso();
 
     @Test
@@ -54,4 +55,21 @@ public class ConfusoTest {
         //Assert
         assertFalse(agregado);
     }
+
+    @Test
+    public void testAplicarEstadoConfusoSeCuraAutomaticamenteCon3Turnos() {
+        pokemon.setEstado(confuso);
+
+        //Luego de 3 veces aplicado el estado, se va automaticamente
+        pokemon.aplicarEstados();
+        pokemon.aplicarEstados();
+        pokemon.aplicarEstados();
+
+
+        List<Estado> estados = pokemon.getEstados();
+
+        assertEquals(estados,new ArrayList<Estado>());
+    }
+
+
 }
