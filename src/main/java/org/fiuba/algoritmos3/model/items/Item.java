@@ -26,4 +26,12 @@ public abstract class Item{
     public String getNombre() {
         return nombre;
     }
+
+    public void setCantidadDeItems(Integer cantidadDeItems) {
+        this.cantidadDeItems = cantidadDeItems;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

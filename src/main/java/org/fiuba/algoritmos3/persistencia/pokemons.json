@@ -3,13 +3,13 @@
     "nombre": "Pikachu",
     "id": 1,
     "nivel": 50,
-    "tipo": "Eléctrico",
+    "tipo": "Electrico",
     "historia": "asd",
     "vidaMaxima": 35,
     "velocidad": 35,
     "defensa": 90,
     "ataque": 40.0,
-    "habilidades": []
+    "habilidades": [1,2,3,4,5]
   },
   {
     "nombre": "Charizard",
@@ -21,7 +21,7 @@
     "velocidad": 78,
     "defensa": 100,
     "ataque": 78.0,
-    "habilidades": []
+    "habilidades": [1,2,3,4,5]
   },
   {
     "nombre": "Venusaur",
@@ -33,7 +33,7 @@
     "velocidad": 80,
     "defensa": 80,
     "ataque": 83.0,
-    "habilidades": []
+    "habilidades": [1,2,3,4,5]
   },
   {
     "nombre": "Blastoise",
@@ -45,7 +45,7 @@
     "velocidad": 79,
     "defensa": 78,
     "ataque": 100.0,
-    "habilidades": []
+    "habilidades": [1,2,3,4,5]
   },
   {
     "nombre": "Pidgeot",
@@ -57,7 +57,7 @@
     "velocidad": 83,
     "defensa": 101,
     "ataque": 75.0,
-    "habilidades": []
+    "habilidades": [1,2,3,4,5]
   },
   {
     "nombre": "Nidoqueen",
@@ -69,7 +69,7 @@
     "velocidad": 90,
     "defensa": 76,
     "ataque": 87.0,
-    "habilidades": []
+    "habilidades": [1,2,3,4,5]
   },
   {
     "nombre": "Poliwrath",
@@ -81,43 +81,43 @@
     "velocidad": 70,
     "defensa": 95,
     "ataque": 95.0,
-    "habilidades": []
+    "habilidades": [1,2,3,4,5]
   },
   {
     "nombre": "Alakazam",
     "id": 8,
     "nivel": 50,
-    "tipo": "Psíquico",
+    "tipo": "Psiquico",
     "historia": "asd",
     "vidaMaxima": 55,
     "velocidad": 120,
     "defensa": 45,
     "ataque": 50.0,
-    "habilidades": []
+    "habilidades": [1,2,3,4,5]
   },
   {
     "nombre": "Electrode",
     "id": 9,
     "nivel": 50,
-    "tipo": "Eléctrico",
+    "tipo": "Electrico",
     "historia": "asd",
     "vidaMaxima": 60,
     "velocidad": 140,
     "defensa": 70,
     "ataque": 50.0,
-    "habilidades": []
+    "habilidades": [1,2,3,4,5]
   },
   {
     "nombre": "Rayquaza",
     "id": 10,
     "nivel": 50,
-    "tipo": "Dragón",
+    "tipo": "Dragon",
     "historia": "asd",
     "vidaMaxima": 105,
     "velocidad": 95,
     "defensa": 90,
     "ataque": 150.0,
-    "habilidades": []
+    "habilidades": [1,2,3,4,5]
   },
   {
     "nombre": "Sceptile",
@@ -129,7 +129,7 @@
     "velocidad": 120,
     "defensa": 65,
     "ataque": 85.0,
-    "habilidades": []
+    "habilidades": [1,2,3,4,5]
   },
   {
     "nombre": "Lanturn",
@@ -141,6 +141,6 @@
     "velocidad": 67,
     "defensa": 58,
     "ataque": 58.0,
-    "habilidades": []
+    "habilidades": [1,2,3,4,5]
   }
 ]
