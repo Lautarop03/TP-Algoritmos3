@@ -37,47 +37,7 @@ public class Pokemon {
     public void setHabilidades(List<Habilidad> habilidades) {
         this.habilidades = habilidades;
     }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("Nombre: ").append(nombre).append("\n");
-        sb.append("Nivel: ").append(nivel).append("\n");
-        sb.append("Tipo: ").append(tipo).append("\n");
-        sb.append("Historia: ").append(historia).append("\n");
-        sb.append("Vida Máxima: ").append(vidaMaxima).append("\n");
-        sb.append("Vida Actual: ").append(vidaActual).append("\n");
-        sb.append("Velocidad: ").append(velocidad).append("\n");
-        sb.append("Defensa: ").append(defensa).append("\n");
-        sb.append("Ataque: ").append(ataque).append("\n");
-
-        sb.append("Estados: ");
-        if (estados == null || estados.isEmpty()) {
-            sb.append("Ninguno");
-        } else {
-            for (Estado estado : estados) {
-                sb.append(estado).append(", ");
-            }
-            sb.delete(sb.length() - 2, sb.length());  // Elimina la coma y el espacio al final
-        }
-        sb.append("\n");
-
-        sb.append("Habilidades: ");
-        if (habilidades == null || habilidades.isEmpty()) {
-            sb.append("Ninguna");
-        } else {
-            for (Habilidad habilidad : habilidades) {
-                sb.append(habilidad).append(", ");
-            }
-            sb.delete(sb.length() - 2, sb.length());  // Elimina la coma y el espacio al final
-        }
-        sb.append("\n");
-
-        return sb.toString();
-    }
-
-
+    
     public String getNombre() {
         return nombre;
     }
