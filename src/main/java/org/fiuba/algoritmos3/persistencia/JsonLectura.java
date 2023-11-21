@@ -183,7 +183,7 @@ public class JsonLectura {
 
             for (JsonObject jsonJugador : jsonJugadores) {
                 String nombre = jsonJugador.get("nombre").getAsString();
-                Map<Integer, Integer> mapaItems = obtenerMapaItems(jsonJugador.getAsJsonObject("items")); // diccionario de items "id":"cant"
+                Map<Integer, Integer> mapaItems = obtenerMapaItems(jsonJugador.getAsJsonObject("org/fiuba/algoritmos3/items")); // diccionario de items "id":"cant"
                 JsonArray arrayPokemons = jsonJugador.get("pokemons").getAsJsonArray(); // lista de pokemones
 
                 List<Item> itemsJugador = crearItems(mapaItems,mapItemsJson);

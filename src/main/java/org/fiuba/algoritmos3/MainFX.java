@@ -12,15 +12,12 @@ import java.io.IOException;
 public class MainFX extends Application {
     @Override
     public void start(Stage stage) throws IOException{
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("battleMain.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load(),450,600);
-//        stage.setTitle("Hello World!");
-//        stage.setScene(scene);
-//        stage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("battleMain.fxml"));
+        VBox root = loader.load();
 
-        stage.setTitle("Hello World!");
-        StackPane root = new StackPane();
-        stage.setScene(new Scene(root, 300, 250));
+        Scene scene = new Scene(root, 640, 700);
+        stage.setScene(scene);
+
         stage.show();
 
     }
