@@ -9,7 +9,7 @@ public class PocionMolestaAlumnos extends ItemRestauradorDeVidaPorcentual{
     public PocionMolestaAlumnos(Integer cantidad) {
         super(cantidad);
         this.porcentajeDeCura = 1/3f;
-        this.nombre = "Poción Molesta Alumnos";
+        this.nombre = "Pocion Molesta Alumnos";
     }
 
 }
