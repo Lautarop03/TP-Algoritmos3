@@ -7,5 +7,6 @@ module TP.Algoritmos {
 
     opens org.fiuba.algoritmos3 to javafx.fxml;
     exports org.fiuba.algoritmos3;
+    exports org.fiuba.algoritmos3.controller;
     exports org.fiuba.algoritmos3.model.pokemon;
 }
