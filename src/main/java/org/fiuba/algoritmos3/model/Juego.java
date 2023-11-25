@@ -225,4 +225,8 @@ public class Juego {
     public Clima getClima() {
         return clima;
     }
+
+    public List<Jugador> getJugadores(){
+        return jugadores;
+    }
 }

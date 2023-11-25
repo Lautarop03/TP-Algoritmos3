@@ -46,7 +46,5 @@ public class MainFX extends Application {
         Background bg = new Background(bgImage);
         pelea.setBackground(bg);
 
-        stage.show();
-
     }
 }
