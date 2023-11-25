@@ -1,16 +1,25 @@
 package org.fiuba.algoritmos3.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import org.fiuba.algoritmos3.MainFX;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 
 public class JuegoController {
@@ -45,6 +54,9 @@ public class JuegoController {
     private Label nivel_actual_pk2;
 
     private Juego juego;
+
+    public MainFX mainFX;
+    public Stage stage;
 
     //TODO: terminar de definir los atributos
 
@@ -87,6 +99,23 @@ public class JuegoController {
     }
 
     public void handleHuirBtn(MouseEvent mouseEvent) {
+    }
+
+    public void setMainFX(MainFX mainFX) {
+        this.mainFX = mainFX;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void cambiarAEscenaMochila(ActionEvent evento) throws IOException {
+//        System.out.println(stage.getClass().getResource("mochila.fxml"));
+        Parent root = FXMLLoader.load(mainFX.getClass().getResource("mochila.fxml"));
+        Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
+        Scene scene =  new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 

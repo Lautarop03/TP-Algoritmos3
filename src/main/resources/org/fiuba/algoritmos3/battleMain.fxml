@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.JuegoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.JuegoController">
    <children>
       <HBox id="batalla" fx:id="fondo" prefHeight="364.0" prefWidth="600.0" style="-fx-background-image: url('background/battlebgroute.jpg'); -fx-background-repeat: no-repeat; -fx-background-size: cover; ">
          <children>
@@ -156,7 +147,7 @@
                               <Insets />
                            </opaqueInsets>
                         </Button>
-                        <Button fx:id="btn_mochila" minWidth="110.0" mnemonicParsing="false" onMouseClicked="#handleMochilaBtn" style="-fx-background-color: eee96d; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" text="Mochila" GridPane.columnIndex="1">
+                        <Button fx:id="btn_mochila" minWidth="110.0" mnemonicParsing="false" onAction="#cambiarAEscenaMochila" onMouseClicked="#handleMochilaBtn" style="-fx-background-color: eee96d; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" text="Mochila" GridPane.columnIndex="1">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
