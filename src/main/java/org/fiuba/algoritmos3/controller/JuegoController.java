@@ -11,6 +11,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.MainFX;
 import org.fiuba.algoritmos3.model.Juego;
@@ -120,10 +121,16 @@ public class JuegoController {
 
     public void cambiarAEscenaMochila(ActionEvent evento) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/mochila.fxml"));
+
         Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
         Scene scene =  new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/mochila.fxml"));
+        VBox root2 = loader.load();
+        mochilaController mochilaController = loader.getController();
+        mochilaController.setItems(juego.getJugadorActual().getItems());
     }
 
     public void cambiarAEscenaSeleccionPokemon(ActionEvent evento) throws IOException {
