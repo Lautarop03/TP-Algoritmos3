@@ -21,13 +21,10 @@ public class MainFX extends Application {
         JsonLectura jsonLectura = new JsonLectura();
         List<Jugador> jugadores = jsonLectura.inicializarPartida();
         Juego juego = new Juego(jugadores);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("plantillas/battleMain.fxml"));
-        VBox root = loader.load();
-        JuegoController juegoController = loader.getController();
-        juegoController.setJuego(juego);
-        juegoController.setMainFX(this);
+        JuegoController juegoController = new JuegoController();
         juegoController.setStage(stage);
-
+        juegoController.setJuego(juego);
+        /*
         Scene scene = new Scene(root, 600, 450);
 
         stage.setScene(scene);
@@ -46,7 +43,7 @@ public class MainFX extends Application {
         );
 
         Background bg = new Background(bgImage);
-        pelea.setBackground(bg);
+        pelea.setBackground(bg);*/
 
     }
 }
