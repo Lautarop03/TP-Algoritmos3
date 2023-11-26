@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -21,7 +20,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 
-public class battleMainController {
+public class BattleMainController {
 
     @FXML
     private HBox fondoBattleMain;
@@ -61,6 +60,7 @@ public class battleMainController {
 
     private Juego juego;
 
+    private JuegoController juegoController;
 
     public Scene setJuego(Juego juego) throws IOException {
 
@@ -113,8 +113,8 @@ public class battleMainController {
         this.vida_actual_max_pk2.setText(pk2.getVidaActual()+"/" + pk2.getVidaMaxima());
         this.barra_vida_pk1.setProgress(porcentajeVidaPokemon(pk1));
         this.barra_vida_pk2.setProgress(porcentajeVidaPokemon(pk2));
-        this.nivel_actual_pk1.setText("Nv " + pk1.getNivel());
-        this.nivel_actual_pk2.setText("Nv " + pk2.getNivel());
+        this.nivel_actual_pk1.setText("Nv:" + pk1.getNivel());
+        this.nivel_actual_pk2.setText("Nv:" + pk2.getNivel());
         Image pk1Image = new Image(getClass().getResource("/org/fiuba/algoritmos3/pokemonBack/" + pk1.getNombre() +"_back.png").toString());
         this.img_pk1.setImage(pk1Image);
         Image pk2Image = new Image(getClass().getResource("/org/fiuba/algoritmos3/pokemonFront/" + pk2.getNombre() +"_front.png").toString());
@@ -135,20 +135,25 @@ public class battleMainController {
     }
 
     public void handleAtaqueBtn(MouseEvent mouseEvent) {
+        juegoController.cambiarAEscenaAtacar(mouseEvent);
     }
 
-    public void handleMochilaBtn(MouseEvent mouseEvent) {
+    public void handleMochilaBtn(MouseEvent mouseEvent) throws IOException {
+        juegoController.cambiarAEscenaMochila(mouseEvent);
+
     }
 
-    public void handlePokemonBtn(MouseEvent mouseEvent) {
+    public void handlePokemonBtn(MouseEvent mouseEvent) throws IOException{
+        juegoController.cambiarAEscenaSeleccionPokemon(mouseEvent);
     }
 
     public void handleHuirBtn(MouseEvent mouseEvent) {
+        juegoController.cambiarAEscenaHuir(mouseEvent);
     }
 
-    public void cambiarAEscenaMochila(ActionEvent actionEvent) {
-    }
 
-    public void cambiarAEscenaSeleccionPokemon(ActionEvent actionEvent) {
+
+    public void setJuegoController(JuegoController juegoController) {
+        this.juegoController = juegoController;
     }
 }
