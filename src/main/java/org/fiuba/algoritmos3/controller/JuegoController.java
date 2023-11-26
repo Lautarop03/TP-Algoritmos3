@@ -1,26 +1,18 @@
 package org.fiuba.algoritmos3.controller;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.MainFX;
 import org.fiuba.algoritmos3.model.Juego;
-import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
 
 
 public class JuegoController {
@@ -59,24 +51,27 @@ public class JuegoController {
     public MainFX mainFX;
 
     public Stage stage;
-    public battleMainController battleController;
+    public BattleMainController battleController;
     public Scene battleMain;
     public Scene mochila;
+//    private HBox fondoBattleMain;
 
     public Scene seleccionarPokemon;
 
     //TODO: terminar de definir los atributos
 
+
+
     public void setJuego(Juego juego) throws IOException {
         this.juego = juego;
-        battleController = new battleMainController();
+        battleController = new BattleMainController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
         VBox root = loader.load();
         Scene scene = new Scene(root, 600, 450);
         stage.setScene(scene);
         stage.show();
 
-        battleMainController battleController = loader.getController();
+        BattleMainController battleController = loader.getController();
         battleMain = battleController.setJuego(juego);
 //        List<Jugador> jugadores = juego.getJugadores();
 //        Jugador jugador1 = jugadores.get(0);
@@ -95,6 +90,7 @@ public class JuegoController {
 //        this.img_pk1.setImage(pk1Image);
 //        Image pk2Image = new Image(getClass().getResource("/org/fiuba/algoritmos3/pokemonFront/" + pk2.getNombre() +"_front.png").toString());
 //        this.img_pk2.setImage(pk2Image);
+        battleController.setJuegoController(this);
         // TODO: aca seteo todos los datos de la pantalla
     }
 
@@ -125,7 +121,7 @@ public class JuegoController {
         this.stage = stage;
     }
 
-    public void cambiarAEscenaMochila(ActionEvent evento) throws IOException {
+    public void cambiarAEscenaMochila(MouseEvent evento) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/mochila.fxml"));
 
         Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
@@ -135,11 +131,11 @@ public class JuegoController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/mochila.fxml"));
         VBox root2 = loader.load();
-        mochilaController mochilaController = loader.getController();
+        MochilaController mochilaController = loader.getController();
         mochilaController.setItems(juego.getJugadorActual().getItems());
     }
 
-    public void cambiarAEscenaSeleccionPokemon(ActionEvent evento) throws IOException {
+    public void cambiarAEscenaSeleccionPokemon(MouseEvent evento) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/seleccionPokemon.fxml"));
         Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
         Scene scene =  new Scene(root);
@@ -147,15 +143,9 @@ public class JuegoController {
         stage.show();
     }
 
-    public void cambiarAEscenaAbattleMain(ActionEvent evento) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
-        Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
-        Scene scene =  new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void cambiarAEscenaHuir(MouseEvent mouseEvent) {
     }
 
-
-
-    //TODO: una funcion setItems-Mochila-etc.. por cada escena que tengamos
+    public void cambiarAEscenaAtacar(MouseEvent mouseEvent) {
+    }
 }

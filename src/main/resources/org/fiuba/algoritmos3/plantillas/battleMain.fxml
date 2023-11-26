@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.battleMainController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.BattleMainController">
    <children>
       <HBox id="batalla" fx:id="fondoBattleMain" prefHeight="364.0" prefWidth="600.0" style="-fx-background-image: url('background/battlebgroute.jpg'); -fx-background-repeat: no-repeat; -fx-background-size: cover; ">
          <children>
@@ -148,17 +148,17 @@
                               <Insets />
                            </opaqueInsets>
                         </Button>
-                        <Button fx:id="btn_mochila" minWidth="110.0" mnemonicParsing="false" onAction="#cambiarAEscenaMochila" onMouseClicked="#handleMochilaBtn" style="-fx-background-color: eee96d; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" text="Mochila" GridPane.columnIndex="1">
+                        <Button fx:id="btn_mochila" minWidth="110.0" mnemonicParsing="false" onMouseClicked="#handleMochilaBtn" style="-fx-background-color: eee96d; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" stylesheets="@../styles.css" text="Mochila" GridPane.columnIndex="1">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_pokemon" minWidth="110.0" mnemonicParsing="false" onAction="#cambiarAEscenaSeleccionPokemon" onMouseClicked="#handlePokemonBtn" style="-fx-background-color: bff4a1; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" text="Pokemon" GridPane.rowIndex="1">
+                        <Button fx:id="btn_pokemon" minWidth="110.0" mnemonicParsing="false" onMouseClicked="#handlePokemonBtn" style="-fx-background-color: bff4a1; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" stylesheets="@../styles.css" text="Pokemon" GridPane.rowIndex="1">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_huir" minWidth="110.0" mnemonicParsing="false" onMouseClicked="#handleHuirBtn" style="-fx-background-color: cdcdf9; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" text="Huir" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button fx:id="btn_huir" minWidth="110.0" mnemonicParsing="false" onMouseClicked="#handleHuirBtn" style="-fx-background-color: cdcdf9; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" stylesheets="@../styles.css" text="Huir" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>

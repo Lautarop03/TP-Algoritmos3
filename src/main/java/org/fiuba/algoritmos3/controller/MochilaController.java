@@ -4,14 +4,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import org.fiuba.algoritmos3.model.items.Item;
 
 import java.io.IOException;
 import java.util.List;
 
-public class mochilaController {
+public class MochilaController {
 
     @FXML
     public Label labelItem1;
@@ -31,7 +30,7 @@ public class mochilaController {
         boton.setPrefHeight(50);
         boton.setMinHeight(50);
         itemsContainer.getChildren().addAll(boton);
-        System.out.println("itemsss");
+//        System.out.println("itemsss");
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/mochila.fxml"));
         VBox root2 = loader.load();
