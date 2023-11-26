@@ -110,8 +110,7 @@ public class JuegoController {
     }
 
     public void cambiarAEscenaMochila(ActionEvent evento) throws IOException {
-//        System.out.println(stage.getClass().getResource("mochila.fxml"));
-        Parent root = FXMLLoader.load(mainFX.getClass().getResource("mochila.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/mochila.fxml"));
         Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
         Scene scene =  new Scene(root);
         stage.setScene(scene);

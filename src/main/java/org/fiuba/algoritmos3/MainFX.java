@@ -12,6 +12,7 @@ import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.persistencia.JsonLectura;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 public class MainFX extends Application {
@@ -20,7 +21,7 @@ public class MainFX extends Application {
         JsonLectura jsonLectura = new JsonLectura();
         List<Jugador> jugadores = jsonLectura.inicializarPartida();
         Juego juego = new Juego(jugadores);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("battleMain.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("plantillas/battleMain.fxml"));
         VBox root = loader.load();
         JuegoController juegoController = loader.getController();
         juegoController.setJuego(juego);
