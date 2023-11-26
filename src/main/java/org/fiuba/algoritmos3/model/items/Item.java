@@ -9,7 +9,9 @@ public abstract class Item{
     protected String nombre;
 
     public Item(Integer cantidadDeItems){
-        this.cantidadDeItems = cantidadDeItems;
+        if (cantidadDeItems > 0) {
+            this.cantidadDeItems = cantidadDeItems;
+        }
     }
 
     public boolean aplicarItem(Pokemon pokemon){

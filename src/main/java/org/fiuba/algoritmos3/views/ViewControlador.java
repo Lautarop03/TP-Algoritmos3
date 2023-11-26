@@ -1,6 +1,7 @@
 package org.fiuba.algoritmos3.views;
 
 import org.fiuba.algoritmos3.model.Jugador;
+import org.fiuba.algoritmos3.model.clima.Clima;
 import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
@@ -17,12 +18,14 @@ public class ViewControlador {
     private FactoryHabilidadView habilidadFactory;
     private FactoryEstadoView estadoFactory;
     private ItemView itemView;
+    private ClimaView climaView;
 
     public ViewControlador() {
         this.pokemonView = new PokemonView();
         this.estadoFactory = new FactoryEstadoView();
         this.habilidadFactory = new FactoryHabilidadView();
         this.itemView = new ItemView();
+        this.climaView = new ClimaView();
     }
 
     public void mostrarItem(Item item) {
@@ -74,7 +77,10 @@ public class ViewControlador {
         System.out.println(pokemon.getNombre() + " la quedo");
     }
 
-    public void mostrarCampo(List<Jugador> jugadores) {
+    public void mostrarCampo(List<Jugador> jugadores, Clima clima) {
+        if (clima != null) {
+            climaView.mostrarClima(clima);
+        }
         for (Jugador jugador : jugadores) {
             System.out.println("Pokemon de: " + jugador.getNombre());
             Pokemon pokemon = jugador.getPokemonActual();

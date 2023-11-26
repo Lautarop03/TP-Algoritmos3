@@ -6,7 +6,7 @@ public class CuraTodo extends Item {
 
     public CuraTodo(Integer cantidadDeItems) {
         super(cantidadDeItems);
-        this.nombre = "Curatodo";
+        this.nombre = "CuraTodo";
     }
 
     @Override

@@ -14,11 +14,13 @@ public class PokemonView {
     private String verEstado(Pokemon pokemon) {
         List<Estado> estados = pokemon.getEstados();
         StringBuilder res = new StringBuilder();
-        if (estados != null) {
+        if (estados != null && !estados.isEmpty()) {
             res.append(" Estado: ");
             for(Estado estadoActual : estados) {
                 res.append(estadoActual.getNombre()).append(" ");
             }
+        } else {
+            return "";
         }
         return res.toString();
     }

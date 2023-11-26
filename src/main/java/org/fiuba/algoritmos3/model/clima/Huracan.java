@@ -7,6 +7,7 @@ import java.util.List;
 public class Huracan extends ClimaDeDano{
     public Huracan() {
         super();
+        setNombre("Huracan");
         this.tiposBeneficiados = List.of(Tipo.Volador);
     }
 }

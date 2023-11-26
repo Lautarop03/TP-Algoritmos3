@@ -8,6 +8,8 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.*;
 import org.fiuba.algoritmos3.persistencia.Deserializers.*;
+import org.fiuba.algoritmos3.persistencia.Deserializers.Habilidades.*;
+import org.fiuba.algoritmos3.persistencia.Deserializers.Items.*;
 
 import java.io.FileReader;
 import java.util.*;
@@ -31,6 +33,12 @@ public class JsonLectura {
                 .registerTypeAdapter(HabilidadDeEstado.class,new HabilidadDeEstadoDeserializer())
                 .registerTypeAdapter(Estado.class, new EstadoDeserializer())
                 .registerTypeAdapter(Clima.class, new ClimaDeserializer())
+                .registerTypeAdapter(Hiperpocion.class, new HiperPocionDeserializer())
+                .registerTypeAdapter(ItemModificadorAtaque.class, new ItemModificadorAtaqueDeserializer())
+                .registerTypeAdapter(ItemModificadorDefensa.class, new ItemModificadorDefensaDeserializer())
+                .registerTypeAdapter(MegaPocion.class, new MegaPocionDeserializer())
+                .registerTypeAdapter(PocionMolestaAlumnos.class, new MolestaAlumnosDeserializer())
+                .registerTypeAdapter(Pocion.class, new PocionDeserializer())
                 .setPrettyPrinting()
                 .excludeFieldsWithoutExposeAnnotation()
                 .create();
@@ -132,6 +140,7 @@ public class JsonLectura {
             Integer cantidad = entry.getValue();
             Item item = gson.fromJson(mapJson.get(ID),obtenerClaseItem(mapJson.get(ID).get("nombre").getAsString()));
             item.setCantidadDeItems(cantidad);
+            item.setNombre(mapJson.get(ID).get("nombre").getAsString());
             listaItems.add(item);
         }
 

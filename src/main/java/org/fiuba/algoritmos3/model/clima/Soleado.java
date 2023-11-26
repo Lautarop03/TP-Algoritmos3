@@ -7,6 +7,7 @@ import java.util.List;
 public class Soleado extends Clima{
     public Soleado() {
         super();
+        setNombre("Soleado");
         this.tiposBeneficiados = List.of(Tipo.Fuego);
     }
 }

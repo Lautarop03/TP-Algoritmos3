@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3.persistencia.Deserializers;
+package org.fiuba.algoritmos3.persistencia.Deserializers.Habilidades;
 
 import com.google.gson.*;
 import com.google.gson.annotations.JsonAdapter;

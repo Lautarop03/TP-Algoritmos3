@@ -1,16 +1,16 @@
-package org.fiuba.algoritmos3.persistencia.Deserializers;
+package org.fiuba.algoritmos3.persistencia.Deserializers.Habilidades;
 
 import com.google.gson.*;
 import com.google.gson.annotations.JsonAdapter;
 import org.fiuba.algoritmos3.model.pokemon.Tipo;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeDano;
-import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeEstadisticaDefensa;
+import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeEstadisticaVida;
 
 import java.lang.reflect.Type;
 
-@JsonAdapter(HabilidadDeEstadisticaDefensa.class)
-public class HabilidadDeEstadisticaDefensaDeserializer implements JsonDeserializer<HabilidadDeEstadisticaDefensa> {
-    public HabilidadDeEstadisticaDefensa deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+@JsonAdapter(HabilidadDeEstadisticaVida.class)
+public class HabilidadDeEstadisticaVidaDeserializer implements JsonDeserializer<HabilidadDeEstadisticaVida> {
+    public HabilidadDeEstadisticaVida deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
 
         String nombre = jsonObject.get("nombre").getAsString();
@@ -18,6 +18,6 @@ public class HabilidadDeEstadisticaDefensaDeserializer implements JsonDeserializ
         Tipo tipo = context.deserialize(jsonObject.get("tipo"), Tipo.class);
         Integer porcentajeDeModificacion = jsonObject.get("porcentajeDeModificacion").getAsInt();
 
-        return new HabilidadDeEstadisticaDefensa(nombre,cantidadDeUsos,tipo,porcentajeDeModificacion);
+        return new HabilidadDeEstadisticaVida(nombre,cantidadDeUsos,tipo,porcentajeDeModificacion);
     }
 }

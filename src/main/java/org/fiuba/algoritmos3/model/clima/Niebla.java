@@ -7,6 +7,7 @@ import java.util.List;
 public class Niebla extends Clima{
     public Niebla() {
         super();
+        setNombre("Niebla");
         this.tiposBeneficiados = List.of(Tipo.Fantasma,Tipo.Psiquico);
     }
 }
