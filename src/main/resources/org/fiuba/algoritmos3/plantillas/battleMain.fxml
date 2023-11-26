@@ -40,20 +40,16 @@
                                     </Label>
                                  </children>
                               </Pane>
-                              <Label fx:id="nivel_actual_pk2" layoutX="171.0" layoutY="7.0" prefHeight="21.0" prefWidth="44.0" text="Nivel">
+                              <Label fx:id="nivel_actual_pk2" layoutX="144.0" layoutY="7.0" prefHeight="21.0" prefWidth="71.0" text="Nivel 50">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Label>
-                              <HBox layoutX="167.0" layoutY="61.0" prefHeight="20.0" prefWidth="97.0">
-                                 <children>
-                                    <Label fx:id="vida_actual_max_pk2" prefHeight="17.0" prefWidth="71.0" text="Vida/vidaMax">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
+                              <Label fx:id="vida_actual_max_pk2" layoutX="193.0" layoutY="63.0" prefHeight="17.0" prefWidth="96.0" text="Vida/vidaMax">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </Pane>
                      </children></Pane>
@@ -90,20 +86,16 @@
                                     </Label>
                                  </children>
                               </Pane>
-                              <Label fx:id="nivel_actual_pk1" layoutX="171.0" layoutY="7.0" prefHeight="21.0" prefWidth="44.0" text="Nivel">
+                              <Label fx:id="nivel_actual_pk1" layoutX="144.0" layoutY="7.0" prefHeight="21.0" prefWidth="71.0" text="Nivel 50">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Label>
-                              <HBox layoutX="145.0" layoutY="61.0" prefHeight="20.0" prefWidth="97.0">
-                                 <children>
-                                    <Label fx:id="vida_actual_max_pk1" prefHeight="17.0" prefWidth="91.0" text="Vida/vidaMax">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
+                              <Label fx:id="vida_actual_max_pk1" layoutX="194.0" layoutY="63.0" prefHeight="17.0" prefWidth="91.0" text="Vida/vidaMax">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </Pane>
                      </children></Pane>

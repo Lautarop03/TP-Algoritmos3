@@ -113,8 +113,8 @@ public class battleMainController {
         this.vida_actual_max_pk2.setText(pk2.getVidaActual()+"/" + pk2.getVidaMaxima());
         this.barra_vida_pk1.setProgress(porcentajeVidaPokemon(pk1));
         this.barra_vida_pk2.setProgress(porcentajeVidaPokemon(pk2));
-        this.nivel_actual_pk1.setText("Lv:" + pk1.getNivel());
-        this.nivel_actual_pk2.setText("Lv:" + pk2.getNivel());
+        this.nivel_actual_pk1.setText("Nv " + pk1.getNivel());
+        this.nivel_actual_pk2.setText("Nv " + pk2.getNivel());
         Image pk1Image = new Image(getClass().getResource("/org/fiuba/algoritmos3/pokemonBack/" + pk1.getNombre() +"_back.png").toString());
         this.img_pk1.setImage(pk1Image);
         Image pk2Image = new Image(getClass().getResource("/org/fiuba/algoritmos3/pokemonFront/" + pk2.getNombre() +"_front.png").toString());
