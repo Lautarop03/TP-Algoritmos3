@@ -19,6 +19,7 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 
 public class JuegoController {
@@ -55,6 +56,15 @@ public class JuegoController {
     private Juego juego;
 
     public MainFX mainFX;
+
+    public Scene battleMain;
+
+    public Scene mochila;
+
+    public Scene seleccionarPokemon;
+
+
+
     public Stage stage;
 
     //TODO: terminar de definir los atributos
@@ -87,7 +97,7 @@ public class JuegoController {
     }
 
     public void handleAtaqueBtn(MouseEvent mouseEvent) {
-        Image pk1Image = new Image(getClass().getResource("/org/fiuba/algoritmos3/pokemonBack/" + juego.getOponente().getPokemones().get(1).getNombre() +"_back.png").toString());
+        Image pk1Image = new Image(getClass().getResource("/org/fiuba/algoritmos3/pokemonBack/" + juego.getOponente().getPokemones().get(3).getNombre() +"_back.png").toString());
         this.img_pk1.setImage(pk1Image);
     }
 
@@ -109,13 +119,29 @@ public class JuegoController {
     }
 
     public void cambiarAEscenaMochila(ActionEvent evento) throws IOException {
-        //System.out.println(mainFX.getClass().getResource("mochila.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/mochila.fxml"));
         Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
         Scene scene =  new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
+    public void cambiarAEscenaSeleccionPokemon(ActionEvent evento) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/seleccionPokemon.fxml"));
+        Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
+        Scene scene =  new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void cambiarAEscenaAbattleMain(ActionEvent evento) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
+        Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
+        Scene scene =  new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
 
     //TODO: una funcion setItems-Mochila-etc.. por cada escena que tengamos

@@ -152,7 +152,7 @@
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_pokemon" minWidth="110.0" mnemonicParsing="false" onMouseClicked="#handlePokemonBtn" style="-fx-background-color: bff4a1; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" text="Pokemon" GridPane.rowIndex="1">
+                        <Button fx:id="btn_pokemon" minWidth="110.0" mnemonicParsing="false" onAction="#cambiarAEscenaSeleccionPokemon" onMouseClicked="#handlePokemonBtn" style="-fx-background-color: bff4a1; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" text="Pokemon" GridPane.rowIndex="1">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>

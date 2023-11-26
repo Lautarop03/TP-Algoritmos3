@@ -17,7 +17,7 @@
                <content>
                   <VBox prefHeight="266.0" prefWidth="383.0">
                      <children>
-                        <HBox prefHeight="47.0" prefWidth="355.0">
+                        <HBox minHeight="50.0" prefHeight="47.0" prefWidth="355.0">
                            <children>
                               <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="236.0" text="Objeto" />
                               <Pane prefHeight="47.0" prefWidth="117.0">
@@ -26,7 +26,7 @@
                                  </children></Pane>
                            </children>
                         </HBox>
-                        <HBox prefHeight="47.0" prefWidth="355.0">
+                        <HBox minHeight="50.0" prefHeight="47.0" prefWidth="355.0">
                            <children>
                               <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="236.0" text="Objeto" />
                               <Pane prefHeight="47.0" prefWidth="117.0">
@@ -36,7 +36,7 @@
                               </Pane>
                            </children>
                         </HBox>
-                        <HBox prefHeight="47.0" prefWidth="355.0">
+                        <HBox minHeight="50.0" prefHeight="47.0" prefWidth="355.0">
                            <children>
                               <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="236.0" text="Objeto" />
                               <Pane prefHeight="47.0" prefWidth="117.0">
@@ -46,7 +46,7 @@
                               </Pane>
                            </children>
                         </HBox>
-                        <HBox prefHeight="47.0" prefWidth="355.0">
+                        <HBox minHeight="50.0" prefHeight="47.0" prefWidth="355.0">
                            <children>
                               <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="236.0" text="Objeto" />
                               <Pane prefHeight="47.0" prefWidth="117.0">
@@ -56,7 +56,17 @@
                               </Pane>
                            </children>
                         </HBox>
-                        <HBox prefHeight="47.0" prefWidth="355.0">
+                        <HBox minHeight="50.0" prefHeight="47.0" prefWidth="355.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="236.0" text="Objeto" />
+                              <Pane prefHeight="47.0" prefWidth="117.0">
+                                 <children>
+                                    <Label layoutY="6.0" prefHeight="37.0" prefWidth="73.0" text="Cantidad" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                        <HBox minHeight="50.0" prefHeight="47.0" prefWidth="355.0">
                            <children>
                               <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="236.0" text="Objeto" />
                               <Pane prefHeight="47.0" prefWidth="117.0">

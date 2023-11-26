@@ -1,10 +1,12 @@
 package org.fiuba.algoritmos3.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
@@ -70,5 +72,10 @@ public class battleMainController {
     public double porcentajeVidaPokemon(Pokemon pokemon){
         double porcentaje = (double)pokemon.getVidaActual()/(double)pokemon.getVidaMaxima();
         return porcentaje;
+    }
+
+    public void handleAtaqueBtn(MouseEvent mouseEvent) {
+        Image pk1Image = new Image(getClass().getResource("/org/fiuba/algoritmos3/pokemonBack/" + juego.getOponente().getPokemones().get(3).getNombre() +"_back.png").toString());
+        this.img_pk1.setImage(pk1Image);
     }
 }
