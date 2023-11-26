@@ -50,7 +50,7 @@
                      </children></Pane>
                   <ImageView fx:id="img_pk1" fitHeight="182.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@pokemonBack/Aerodactyl_back.png" />
+                        <Image url="@../pokemonBack/Aerodactyl_back.png" />
                      </image>
                   </ImageView>
                </children>
@@ -59,7 +59,7 @@
                <children>
                   <ImageView fx:id="img_pk2" fitHeight="113.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@pokemonFront/Arbok_front.png" />
+                        <Image url="@../pokemonFront/Arbok_front.png" />
                      </image>
                   </ImageView>
                   <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="175.0" prefWidth="295.0">
@@ -139,7 +139,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btn_ataque" alignment="CENTER" minWidth="110.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#handleAtaqueBtn" style="-fx-background-color: f9d0ce; -fx-border-color: black; -fx-background-radius: 10; -fx-border-width: 4; -fx-border-radius: 10;" stylesheets="@styles.css" text="Ataque">
+                        <Button fx:id="btn_ataque" alignment="CENTER" minWidth="110.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#handleAtaqueBtn" style="-fx-background-color: f9d0ce; -fx-border-color: black; -fx-background-radius: 10; -fx-border-width: 4; -fx-border-radius: 10;" stylesheets="@../styles.css" text="Ataque">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
