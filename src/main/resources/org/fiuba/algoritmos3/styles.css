@@ -10,3 +10,4 @@
     -fx-font-size: 17px;}
 .button:pressed{
     -fx-background-color: linear-gradient(to bottom, rgba(200,155,234,1) 0%, rgba(32,124,229,1) 100%);}
+

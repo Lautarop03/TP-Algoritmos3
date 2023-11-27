@@ -1,0 +1,23 @@
+.scroll-pane{
+    -fx-background-color:transparent;
+}
+
+.scroll-pane > .viewport {  //not .scrollpane but .scroll-pane
+-fx-background-color: transparent;
+}
+
+.button{
+    -fx-font-family: "Verdana";
+    -fx-font-size: 17px;
+    -fx-background-color: transparent;
+}
+
+.button:hover{
+    -fx-font-weight: bold;
+    -fx-font-family: "Verdana";
+    -fx-font-size: 16px;
+}
+
+.button:pressed{
+
+}
