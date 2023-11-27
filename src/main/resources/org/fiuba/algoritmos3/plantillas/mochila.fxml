@@ -17,7 +17,7 @@
                               <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="236.0" text="Objeto" />
                               <Pane prefHeight="47.0" prefWidth="117.0">
                                  <children>
-                                    <Label layoutY="6.0" prefHeight="37.0" prefWidth="73.0" text="Cantidad" />
+                                    <Label alignment="CENTER" layoutY="6.0" prefHeight="37.0" prefWidth="73.0" text="Cantidad" />
                                  </children></Pane>
                            </children>
                         </HBox>
