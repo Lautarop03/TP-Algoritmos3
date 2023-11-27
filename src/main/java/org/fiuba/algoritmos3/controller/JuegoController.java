@@ -132,7 +132,7 @@ public class JuegoController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/mochila.fxml"));
         VBox root2 = loader.load();
         MochilaController mochilaController = loader.getController();
-        mochilaController.setItems(juego.getJugadorActual().getItems());
+        mochilaController.setItems(juego.getJugadorActual().getItems(), stage);
     }
 
     public void cambiarAEscenaSeleccionPokemon(MouseEvent evento) throws IOException {
