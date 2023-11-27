@@ -73,12 +73,10 @@ public class MochilaController {
 
         Pane pane = new Pane();
         pane.setPrefSize(117,50);
-//        pane.setStyle("-fx-background-color: #009900");
-        Label label = new Label(item.getCantidad().toString());
+        Label label = new Label("x" + item.getCantidad().toString());
         label.setAlignment(Pos.CENTER);
         label.setLayoutY(6);
         label.setPrefSize(73, 37);
-//        label.setStyle("-fx-background-color: #000099");
 
         pane.getChildren().add(label);
         hbox.getChildren().addAll(boton, pane);
