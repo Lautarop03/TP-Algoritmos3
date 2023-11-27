@@ -131,29 +131,19 @@ public class SeleccionPokemonController {
         public JuegoController juegoController;
 
 
-        //@FXML
-        /*void cambiarDeEscena(MouseEvent event) throws IOException {
-            juegoController.cambiarAEscenaSeleccionPokemon(event);
-        }*/
-
         @FXML
-        void handleMochilaBtn(MouseEvent event) {
-
-        }
-
-        public JuegoController getJuegoController() {
-            return juegoController;
-        }
-
-        public void setJuegoController(JuegoController juegoController) {
-            this.juegoController = juegoController;
-        }
-
-        public void cambiarAEscenaAbattleMain(ActionEvent evento) throws IOException{
+        void handleMochilaBtn(MouseEvent evento) throws IOException {
                 Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
                 Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
                 Scene scene =  new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+                //TODO conoctar con la escena que estaba anterior
+
         }
+        public void setJuegoController(JuegoController juegoController) {
+            this.juegoController = juegoController;
+        }
+
+
     }

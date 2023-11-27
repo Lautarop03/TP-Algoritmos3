@@ -169,7 +169,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="96.0" prefWidth="173.0">
                <children>
-                  <Button fx:id="salir_items" alignment="CENTER" mnemonicParsing="false" onAction="#cambiarAEscenaAbattleMain" onMouseClicked="#handleMochilaBtn" prefHeight="53.0" prefWidth="87.0" text="Button" />
+                  <Button fx:id="salir_items" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#handleMochilaBtn" prefHeight="53.0" prefWidth="87.0" text="Salir" />
                </children>
             </HBox>
          </children>

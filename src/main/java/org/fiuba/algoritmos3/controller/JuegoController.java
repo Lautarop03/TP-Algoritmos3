@@ -148,4 +148,8 @@ public class JuegoController {
 
     public void cambiarAEscenaAtacar(MouseEvent mouseEvent) {
     }
+
+    public Scene getBattleMain() {
+        return battleMain;
+    }
 }
