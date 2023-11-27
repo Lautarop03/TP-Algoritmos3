@@ -12,12 +12,14 @@ public class Jugador {
     private final ArrayList<Pokemon> pokemones; // invariante, el pokemon actual siempre es el del indice 0
     private final String nombre;
     private final List<Item> items;
+    private Boolean ganador;
 
     public Jugador(String nombre,ArrayList<Pokemon> pokemones, List<Item> items) {
         this.nombre = nombre;
         this.pokemones = pokemones;
         this.items = items;
         this.pokemonActual = pokemones.get(0);
+        this.ganador = false;
     }
     public ArrayList<Pokemon> getPokemones() {
         return pokemones;
@@ -42,5 +44,12 @@ public class Jugador {
     }
     public void rendirse() {
         this.pokemones.clear();
+    }
+    public void setGanador(Boolean bool) {
+        this.ganador = bool;
+    }
+
+    public Boolean getGanador(){
+        return ganador;
     }
 }

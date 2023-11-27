@@ -19,6 +19,7 @@ public class Pokemon {
     private Double ataque;
     private List<Estado> estados;
     private List<Habilidad> habilidades;
+    private int ID;
 
     public Pokemon(String nombre, Integer nivel, Tipo tipo, String historia, Integer vidaMaxima, Integer vidaActual, Integer velocidad, Double defensa, Double ataque, List<Habilidad> habilidades) {
         this.nombre = nombre;
@@ -32,6 +33,14 @@ public class Pokemon {
         this.ataque = ataque;
         this.estados = new ArrayList<Estado>();
         this.habilidades = habilidades;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public void setHabilidades(List<Habilidad> habilidades) {

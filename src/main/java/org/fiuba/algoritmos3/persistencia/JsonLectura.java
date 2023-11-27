@@ -139,6 +139,7 @@ public class JsonLectura {
             Integer ID = entry.getKey();
             Integer cantidad = entry.getValue();
             Item item = gson.fromJson(mapJson.get(ID),obtenerClaseItem(mapJson.get(ID).get("nombre").getAsString()));
+            item.setID(ID);
             item.setCantidadDeItems(cantidad);
             item.setNombre(mapJson.get(ID).get("nombre").getAsString());
             listaItems.add(item);
@@ -162,12 +163,13 @@ public class JsonLectura {
         ArrayList<Pokemon> pokemones = new ArrayList<>();
 
         for(JsonElement id : arrayPokemon) {
-            Integer ID = id.getAsInt();
+            int ID = id.getAsInt();
             JsonObject jsonPokemon = mapPokemonJson.get(ID);
             JsonArray jsonHabilidades = jsonPokemon.get("habilidades").getAsJsonArray();
             List<Habilidad> habilidadesPokemon = crearHabilidades(jsonHabilidades,mapHabilidadesJson);
 
             Pokemon pokemon = gson.fromJson(jsonPokemon,Pokemon.class);
+            pokemon.setID(ID);
             pokemon.setHabilidades(habilidadesPokemon);
             pokemones.add(pokemon);
         }

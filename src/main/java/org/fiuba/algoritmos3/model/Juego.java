@@ -64,6 +64,7 @@ public class Juego {
             List<Pokemon> pokemones = jugadores.get(i).getPokemones();
             if (pokemones.isEmpty()) {
                 administradorDeJuego.mostrarGanador(jugadores.get((i+1)%2)); //TODO: MODELO ACOPLADO A LA VISTA
+                (jugadores.get((i+1)%2)).setGanador(true);
                 return true;
             }
             int contador = 1;
@@ -73,6 +74,7 @@ public class Juego {
                 }
                 if (contador == jugadores.get(i).getPokemones().size()){
                     administradorDeJuego.mostrarGanador(jugadores.get((i+1)%2));  //TODO: MODELO ACOPLADO A LA VISTA
+                    (jugadores.get((i+1)%2)).setGanador(true);
                     return true;
                 }
                 contador++;
