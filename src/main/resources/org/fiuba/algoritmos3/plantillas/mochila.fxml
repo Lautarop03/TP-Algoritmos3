@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox fx:id="contenedorPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" style="-fx-background-image: url('file:D:\Fiuba\ALGO3\TP1\TP-Algoritmos3\src\main\java\resources\imagenes\background\MochilaFondo.png');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.MochilaController">
+<VBox fx:id="contenedorPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.MochilaController"> <!--style="-fx-background-image: url('file:D:\Fiuba\ALGO3\TP1\TP-Algoritmos3\src\main\java\resources\imagenes\background\MochilaFondo.png');"-->
    <style>
       .scroll-pane{
       -fx-background-color:transparent;
@@ -25,22 +21,28 @@
    <children>
       <HBox fx:id="fondoMochila" alignment="TOP_RIGHT" prefHeight="419.0" prefWidth="600.0">
          <children>
-            <ScrollPane fx:id="contenedorItems" prefHeight="300.0" prefWidth="425.0" style="-fx-padding: 10;" stylesheets="@../mochila.css">
+            <ScrollPane fx:id="contenedorItems" prefHeight="322.0" prefWidth="376.0" style="-fx-padding: 10;" stylesheets="@../mochila.css">
                <content>
-                  <VBox fx:id="itemsContainer" alignment="TOP_RIGHT" prefHeight="266.0" prefWidth="383.0" style="-fx-background-color: f9f8c8; -fx-border-width: 5; -fx-border-color: d0b050; -fx-border-radius: 5; -fx-padding: 10;">
+                  <VBox fx:id="itemsContainer" alignment="TOP_RIGHT" prefHeight="266.0" prefWidth="344.0" style="-fx-padding: 10;">
                      <children>
-                        <HBox minHeight="50.0" prefHeight="47.0" prefWidth="355.0" style="-fx-background-color: transparent; -fx-background-image: transparent;">
+                        <HBox alignment="TOP_RIGHT" centerShape="false" minHeight="50.0" prefHeight="50.0" prefWidth="280.0" style="-fx-background-color: transparent" styleClass="hileraItem">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="236.0" text="Objeto" />
-                              <Pane prefHeight="47.0" prefWidth="117.0" style="-fx-background-color: transparent;">
+                              <Label alignment="CENTER" prefHeight="50.0" prefWidth="230.0" text="Objeto" />
+                              <Pane prefHeight="47.0" prefWidth="80.0" style="-fx-background-color: transparent;">
                                  <children>
                                     <Label alignment="CENTER" layoutY="6.0" prefHeight="37.0" prefWidth="73.0" text="Cantidad" />
                                  </children></Pane>
                            </children>
                         </HBox>
                      </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
                   </VBox>
                </content>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
             </ScrollPane>
          </children>
       </HBox>
@@ -48,16 +50,16 @@
          <children>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="128.0" prefWidth="202.0" style="-fx-border-color: black; -fx-border-width: 5; -fx-border-radius: 5;">
                <children>
-                  <ImageView fitHeight="88.0" fitWidth="94.0" layoutX="38.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagenItem" fitHeight="88.0" fitWidth="94.0" layoutX="38.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../items/HiperPoción.png" />
+                        <Image url="@../items/HiperPocion.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
             <Pane prefHeight="128.0" prefWidth="476.0" style="-fx-border-color: black; -fx-border-width: 5; -fx-border-radius: 5;">
                <children>
-                  <Label layoutX="29.0" layoutY="5.0" prefHeight="118.0" prefWidth="376.0" text="Descripcion">
+                  <Label fx:id="descripcionLabel" layoutX="29.0" layoutY="5.0" prefHeight="118.0" prefWidth="376.0" text="Descripcion" wrapText="true">
                      <font>
                         <Font name="Verdana" size="17.0" />
                      </font></Label>

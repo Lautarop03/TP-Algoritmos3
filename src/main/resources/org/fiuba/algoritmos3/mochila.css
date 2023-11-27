@@ -8,16 +8,38 @@
 
 .button{
     -fx-font-family: "Verdana";
-    -fx-font-size: 17px;
+    -fx-font-size: 14px;
     -fx-background-color: transparent;
 }
 
 .button:hover{
-    -fx-font-weight: bold;
-    -fx-font-family: "Verdana";
-    -fx-font-size: 16px;
 }
 
 .button:pressed{
 
+}
+
+.hileraItem {
+    -fx-alignment: TOP_RIGHT;
+}
+
+.hileraItem .label {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 14px;
+}
+
+.hileraItem:hover {
+    -fx-background-color: #d0b050;
+}
+.hileraItem:hover .label {
+    /*-fx-background-color: #d0b050;*/
+    -fx-font-weight: bold;
+    -fx-font-family: "Verdana";
+    -fx-font-size: 14px;
+}
+.hileraItem:hover .button {
+    /*-fx-background-color: #d0b050;*/
+    -fx-font-weight: bold;
+    -fx-font-family: "Verdana";
+    -fx-font-size: 14px;
 }
