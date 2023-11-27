@@ -10,12 +10,13 @@ public class ControladorDeJuego {
     private final Juego juego;
     private final Inputs inputs;
     private Accion accion;
-    private final List<Accion> acciones = List.of(new AccionRendirse(),new AccionVerCampo(),new AccionCambiarPokemon(), new AccionUsarItem(), new AccionAtacar());
+    private final List<Accion> acciones;
 
 
     public ControladorDeJuego(Juego juego, Inputs inputs) {
         this.juego = juego;
         this.inputs = inputs;
+        this.acciones = List.of(new AccionRendirse(),new AccionVerCampo(),new AccionCambiarPokemon(), new AccionUsarItem(), new AccionAtacar());
     }
     private void setAccion(int numeroAccion) {
         this.accion = this.acciones.get(numeroAccion-1);

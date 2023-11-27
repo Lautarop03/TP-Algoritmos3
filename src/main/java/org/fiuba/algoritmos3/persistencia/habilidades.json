@@ -33,5 +33,12 @@
   "cantidadDeUsos": "4",
   "tipo": "Electrico",
   "clima": "TormentaDeRayos"
+},{
+  "nombre": "Confundir",
+  "id": "6",
+  "tipoDeHabilidad": "HabilidadDeEstado",
+  "cantidadDeUsos": "4",
+  "tipo": "Normal",
+  "estado": "Confuso"
 }
 ]

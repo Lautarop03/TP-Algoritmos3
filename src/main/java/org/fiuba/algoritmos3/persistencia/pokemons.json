@@ -9,7 +9,7 @@
     "velocidad": 35,
     "defensa": 90,
     "ataque": 40.0,
-    "habilidades": [1,2,3,4,5]
+    "habilidades": [6,2,3,4,5]
   },
   {
     "nombre": "Charizard",

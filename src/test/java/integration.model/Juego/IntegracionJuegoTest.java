@@ -50,7 +50,7 @@ public class IntegracionJuegoTest {
         Pokemon actual = j1.getPokemonActual();
         Pokemon enemigo = j2.getPokemonActual();
 
-        juego.atacar();
+        juego.atacar(new PaqueteDeRespuesta<>(true,h1));
         juego.realizarAtaque();
 
 
@@ -86,9 +86,9 @@ public class IntegracionJuegoTest {
         Pokemon PokActual = j1.getPokemonActual();
         Pokemon PokActualenemigo = j2.getPokemonActual();
 
-        juego.cambiarPokemon();
+        juego.cambiarPokemon(1);
         juego.cambiarTurno();
-        juego.cambiarPokemon();
+        juego.cambiarPokemon(1);
 
         Pokemon PokActualNuevo = j1.getPokemonActual();
         Pokemon PokEnemigoNuevo = j2.getPokemonActual();
@@ -127,7 +127,9 @@ public class IntegracionJuegoTest {
 
         Integer pokemonVida = j1.getPokemonActual().getVidaMaxima() / 2;
 
-        boolean aplicado = juego.usarItem();
+        List<Item> itemss = juego.getJugadorActual().getItems();
+        Item item = itemss.get(0);
+        boolean aplicado = juego.usarItem(item,0);
 
         Integer pokemonVidaNueva = j1.getPokemonActual().getVidaActual();
 
