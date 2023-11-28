@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 
 import java.io.IOException;
 import java.net.URL;
@@ -54,6 +55,26 @@ public class BattleMainController {
     @FXML
     private Label nivel_actual_pk2;
 
+    @FXML
+    private Label habilidadLabel0;
+    @FXML
+    private Label habilidadLabel1;
+    @FXML
+    private Label habilidadLabel2;
+    @FXML
+    private Label habilidadLabel3;
+    @FXML
+    private Label tipoLabel;
+    @FXML
+    private Label usosRestantesLabel;
+    @FXML
+    private Label consola;
+    @FXML
+    private GridPane botonesContainer;
+    @FXML
+    private GridPane habilidadesContainer;
+    @FXML
+    private GridPane descripcionHabilidadesContainer;
 
 
     public Scene battleMainScene;
@@ -61,6 +82,9 @@ public class BattleMainController {
     private Juego juego;
 
     private JuegoController juegoController;
+
+    private List<Habilidad> habilidades;
+    private List<Label> labelsHabilidades;
 
     public Scene setJuego(Juego juego) throws IOException {
 
@@ -119,6 +143,8 @@ public class BattleMainController {
         this.img_pk1.setImage(pk1Image);
         Image pk2Image = new Image(getClass().getResource("/org/fiuba/algoritmos3/pokemonFront/" + pk2.getNombre() +"_front.png").toString());
         this.img_pk2.setImage(pk2Image);
+        this.habilidades = juego.getJugadorActual().getPokemonActual().getHabilidades();
+        this.labelsHabilidades = List.of(habilidadLabel0, habilidadLabel1, habilidadLabel2, habilidadLabel3);
         return scene;
         // TODO: aca seteo todos los datos de la pantalla
     }
@@ -135,7 +161,28 @@ public class BattleMainController {
     }
 
     public void handleAtaqueBtn(MouseEvent mouseEvent) {
-        juegoController.cambiarAEscenaAtacar(mouseEvent);
+//        juegoController.cambiarAEscenaAtacar(mouseEvent);
+        consola.setVisible(false);
+        botonesContainer.setVisible(false);
+        habilidadesContainer.setVisible(true);
+        descripcionHabilidadesContainer.setVisible(true);
+
+        for (int i = 0; i < habilidades.size(); i++) {
+            Label label = labelsHabilidades.get(i);
+            Habilidad habilidad = habilidades.get(i);
+            label.setText(habilidad.getNombre());
+        }
+    }
+
+    public void hoverHabilidad(MouseEvent mouseEvent) {
+        System.out.println(mouseEvent.getSource());
+        Label label = (Label) mouseEvent.getSource();
+        Integer idHabilidad = Integer.parseInt(label.getId().replace("habilidadLabel", ""));
+
+        Habilidad habilidad = habilidades.get(idHabilidad);
+
+        tipoLabel.setText("Tipo: " + habilidad.getTipo().toString());
+        usosRestantesLabel.setText("Usos restantes: " + habilidad.getCantidadDeUsos().toString());
     }
 
     public void handleMochilaBtn(MouseEvent mouseEvent) throws IOException {
