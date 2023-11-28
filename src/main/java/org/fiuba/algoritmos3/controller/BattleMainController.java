@@ -4,8 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -13,20 +11,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.PaqueteDeRespuesta;
-import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 public class BattleMainController {
 
@@ -120,8 +114,8 @@ public class BattleMainController {
 
         this.juego = juego;
         List<Jugador> jugadores = juego.getJugadores();
-        Jugador jugador1 = jugadores.get(0);
-        Jugador jugador2 = jugadores.get(1);
+        Jugador jugador1 = juego.getJugadorActual();
+        Jugador jugador2 = juego.getOponente();
         Pokemon pk1 = jugador1.getPokemonActual();
         Pokemon pk2 = jugador2.getPokemonActual();
         this.nombre_actual_pk1.setText(pk1.getNombre());
@@ -167,6 +161,12 @@ public class BattleMainController {
         }
     }
 
+    private void ocultarMenu() {
+        consola.setVisible(true);
+        botonesContainer.setVisible(true);
+        habilidadesContainer.setVisible(false);
+        descripcionHabilidadesContainer.setVisible(false);
+    }
     @FXML
     public void handleHabilidadLabelClick(MouseEvent event) throws IOException {
         Label source = (Label) event.getSource();
@@ -174,13 +174,20 @@ public class BattleMainController {
 
         int numeroHabilidad = Integer.parseInt(labelId.substring(labelId.length() - 1));
         Habilidad habilidad = juego.getJugadorActual().getPokemonActual().getHabilidades().get(numeroHabilidad);
-        juego.atacar(new PaqueteDeRespuesta<>(true,habilidad));
-        juego.realizarAtaque();
+        // TODO: toda la logica para realizar el ataque
+        if (habilidad.getCantidadDeUsos() == 0) {
+            //TODO: Imprimir en la pantalla habilidad sin usos y volver al menu
+            ocultarMenu();
+        } else {
+            juego.atacar(new PaqueteDeRespuesta<>(true,habilidad));
+            if (!juego.aplicarEstados()){
+                juego.realizarAtaque();
+            }
+            setJuego(juego);
+            ocultarMenu();
+        }
+        tipoLabel.fireEvent(new CambioTurnoEvent());
         setJuego(juego);
-        consola.setVisible(true);
-        botonesContainer.setVisible(true);
-        habilidadesContainer.setVisible(false);
-        descripcionHabilidadesContainer.setVisible(false);
     }
     public void hoverHabilidad(MouseEvent mouseEvent) {
         Label label = (Label) mouseEvent.getSource();

@@ -141,7 +141,6 @@ public class Juego {
     }
 
     public boolean atacar(PaqueteDeRespuesta<Habilidad> paqueteHabilidad) {
-        Jugador jugadorActual = getJugadorActual();
         if(!paqueteHabilidad.getError()){
             return false;
         }

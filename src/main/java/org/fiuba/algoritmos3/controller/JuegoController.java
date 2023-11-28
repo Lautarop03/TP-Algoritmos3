@@ -1,6 +1,6 @@
 package org.fiuba.algoritmos3.controller;
 
-import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.MainFX;
+import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
@@ -16,7 +17,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 
-public class JuegoController {
+public class JuegoController implements EventHandler<CambioTurnoEvent> {
     private Juego juego;
 
     public MainFX mainFX;
@@ -43,7 +44,7 @@ public class JuegoController {
         Scene scene = new Scene(root, 600, 450);
         stage.setScene(scene);
         stage.show();
-
+        root.addEventHandler(CambioTurnoEvent.CAMBIO_TURNO_EVENT, this);
         BattleMainController battleController = loader.getController();
         battleMain = battleController.setJuego(juego);
         battleController.setJuegoController(this);
@@ -91,7 +92,7 @@ public class JuegoController {
     }
 
     public void cambiarAEscenaSeleccionPokemon(MouseEvent evento) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/seleccionPokemon.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/fiuba/algoritmos3/plantillas/seleccionPokemon.fxml")));
         Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
         Scene scene =  new Scene(root);
         stage.setScene(scene);
@@ -107,4 +108,27 @@ public class JuegoController {
     public Scene getBattleMain() {
         return battleMain;
     }
+    @Override
+    public void handle(CambioTurnoEvent cambioTurnoEvent) {
+        juego.cambiarTurno();
+        comprobarPokemonActualEstaVivo();
+        juego.aplicarClima();
+        //TODO: ver si esta muerto?
+        //TODO: efectos se aplica antes en battlemain
+    }
+    public void comprobarPokemonActualEstaVivo(){
+        Pokemon pokemon = juego.getJugadorActual().getPokemonActual();
+        if (!pokemon.estaVivo()) {
+            //seleccionPokemonController
+            //TODO: Mandar a seleccionar pokemon y intercambiar (ahi? o aca?)
+        }
+    }
+
+
+    //TODO: Cuando termina la ronda{
+    // La ronda pasa cuando: *Aplico un item *Ataco *Cambio de pokemon
+    // }aplicar efectos y atacar en base a eso
+    //TODO: Aplicar Items
+    //TODO: Huir
+    //TODO:
 }
