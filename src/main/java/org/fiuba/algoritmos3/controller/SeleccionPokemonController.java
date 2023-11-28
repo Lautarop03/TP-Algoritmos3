@@ -14,6 +14,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
+import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
@@ -55,6 +57,7 @@ public class SeleccionPokemonController {
         public Label descripcionPokemon;
         private BattleMainController battleMainController;
         private Stage stage;
+        private Pokemon pokemon;
 
         public void setJuegoController(JuegoController juegoController) {
             this.juegoController = juegoController;
@@ -190,39 +193,34 @@ public class SeleccionPokemonController {
         }
 
         public void clickPokemon(MouseEvent mouseEvent, Pokemon pokemon){
-
                 Stage stage = (Stage) contenedorPrincipal.getScene().getWindow();
                 this.contenedorConfirmacion.setVisible(true);
-
-                /*Alert.AlertType tipo = Alert.AlertType.CONFIRMATION;
-                Alert alerta = new Alert(tipo, "");
-
-                alerta.initModality(Modality.APPLICATION_MODAL);
-                alerta.initOwner(stage);
-
-                alerta.getDialogPane().setHeaderText("Confirmar Intercambio");
-                alerta.getDialogPane().setContentText("Desea intercambar al " + this.pokemonActual.getNombre() +" por "+ pokemon.getNombre() );
-
-                Optional<ButtonType> resultado = alerta.showAndWait();
-                if (resultado.get() == ButtonType.OK) {
-                        System.out.println("Se seleccionó al Pokemon " + pokemon.getNombre());
-
-                }
-                else  if (resultado.get() == ButtonType.CANCEL) {
-                        System.out.println("No se selecciono ningun Pokemon");
-                }*/
+                this.pokemon = pokemon;
         }
 
         public void confirmarBtn() throws IOException {
                 this.contenedorConfirmacion.setVisible(false);
                 this.battleMainController.show();
                 this.stage.close();
-                //System.out.println("Se seleccionó al Pokemon " + pokemon.getNombre());
+                cambiarPokemon(pokemon);
+                handleMochilaBtn(null);
+                //contenedorPrincipal.fireEvent(new CambioTurnoEvent());
+                //TODO: Cambiar turno
         }
         public void cancelarBtn(){
                 this.contenedorConfirmacion.setVisible(false);
         }
 
+        public void cambiarPokemon(Pokemon pokemon) throws IOException {
+                Juego juego = SingletonJuego.getInstancia().getJuego();
+                boolean realizado = juego.getJugadorActual().intercambiarPokemon(pokemon);
+                if (realizado){
+                        //TODO: Mostrar Mensaje de cambio
+                } else {
+                        //TODO: Mostrar Mensaje De error Pokemon sin vida
+                }
+
+        }
 
         public void init(List<Pokemon> pokemones, Stage stage, BattleMainController battleMainController) {
                 setPokemones((ArrayList<Pokemon>) pokemones,stage,pokemones.get(0));

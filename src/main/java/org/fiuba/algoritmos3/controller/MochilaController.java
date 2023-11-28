@@ -143,23 +143,6 @@ public class MochilaController {
         confirmacionContainer.setVisible(true);
         descripcionContainer.setVisible(false);
         itemsContainer.setVisible(false);
-
-/*        Alert.AlertType tipo = Alert.AlertType.CONFIRMATION;
-        Alert alerta = new Alert(tipo, "");
-
-        alerta.initModality(Modality.APPLICATION_MODAL);
-        alerta.initOwner(stage);
-
-        alerta.getDialogPane().setContentText("Desea usar este ítem?");
-        alerta.getDialogPane().setHeaderText("Confirmar Uso de Ítem");
-
-        Optional<ButtonType> resultado = alerta.showAndWait();
-        if (resultado.get() == ButtonType.OK) {
-            System.out.println("Se seleccionó el item " + item.getNombre());
-        }
-        else  if (resultado.get() == ButtonType.CANCEL) {
-            System.out.println("No se seleccionó el item");
-        }*/
     }
     public void cancelarBtn(){
         confirmacionContainer.setVisible(false);
@@ -178,12 +161,6 @@ public class MochilaController {
     }
 
     public void volverBtn() throws IOException {
-//        Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
-//        Stage stage = (Stage)((Node) itemsContainer).getScene().getWindow();
-//        Scene scene =  new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//        System.out.println("Volver a pantalla principal");
            battleMainController.show();
            this.stage.close();
     }
