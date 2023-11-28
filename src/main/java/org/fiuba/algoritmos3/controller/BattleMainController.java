@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.PaqueteDeRespuesta;
@@ -23,6 +24,7 @@ import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
 
 public class BattleMainController {
 
@@ -116,8 +118,8 @@ public class BattleMainController {
 
         this.juego = juego;
         List<Jugador> jugadores = juego.getJugadores();
-        Jugador jugador1 = jugadores.get(0);
-        Jugador jugador2 = jugadores.get(1);
+        Jugador jugador1 = juego.getJugadorActual();
+        Jugador jugador2 = juego.getOponente();
         Pokemon pk1 = jugador1.getPokemonActual();
         Pokemon pk2 = jugador2.getPokemonActual();
         this.nombre_actual_pk1.setText(pk1.getNombre());
@@ -137,8 +139,6 @@ public class BattleMainController {
         return scene;
         // TODO: aca seteo todos los datos de la pantalla
     }
-
-
 
     public double porcentajeVidaPokemon(Pokemon pokemon){
         double porcentaje = (double)pokemon.getVidaActual()/(double)pokemon.getVidaMaxima();
@@ -169,14 +169,13 @@ public class BattleMainController {
     }
 
     @FXML
-    public void handleHabilidadLabelClick(MouseEvent event) throws IOException {
+    public void handleHabilidadLabelClick(MouseEvent event) throws IOException, InterruptedException {
         Label source = (Label) event.getSource();
         String labelId = source.getId();
 
         Habilidad habilidad = getHabilidadDeMouseEvent(event);;
         juego.atacar(new PaqueteDeRespuesta<>(true,habilidad));
         juego.realizarAtaque();
-        setJuego(juego);
 
         PauseTransition animacionAtaque = new PauseTransition(Duration.seconds(1));
         animacionAtaque.setOnFinished(e -> img_pk2.setEffect(null));
@@ -184,6 +183,21 @@ public class BattleMainController {
         MotionBlur motionBlur = new MotionBlur();
         img_pk2.setEffect(motionBlur);
         animacionAtaque.playFromStart();
+
+        // TODO: toda la logica para realizar el ataque
+        if (habilidad.getCantidadDeUsos() == 0) {
+            //TODO: Imprimir en la pantalla habilidad sin usos y volver al menu
+            toggleMenuHabilidades();
+        } else {
+            juego.atacar(new PaqueteDeRespuesta<>(true,habilidad));
+            if (!juego.aplicarEstados()){
+                juego.realizarAtaque();
+            }
+            setJuego(juego);
+        }
+        tipoLabel.fireEvent(new CambioTurnoEvent());
+
+        setJuego(juego);
 
         toggleMenuHabilidades();
     }
