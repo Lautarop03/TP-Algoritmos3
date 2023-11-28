@@ -97,14 +97,16 @@ public class SeleccionPokemonController {
 
         public HBox crearHbox(Pokemon pokemon,Integer id){
                 Pane paneIzquierdo = new Pane();
+                paneIzquierdo.setMaxWidth(150);
+                paneIzquierdo.setMinWidth(150);
+
                 String ruta = "/org/fiuba/algoritmos3/pokemonFront/"+pokemon.getNombre()+"_front.png";
                 ImageView imagePokemon = new ImageView(getClass().getResource(ruta).toString());
-                imagePokemon.setFitWidth(70);
+                imagePokemon.setFitWidth(65);
                 imagePokemon.setPreserveRatio(true);
                 imagePokemon.setLayoutX(-10);
-                imagePokemon.setTranslateY(-10);
+                imagePokemon.setTranslateY(-15);
 
-                //org/fiuba/algoritmos3/pokemonFront/Abra_front.png
                 Label labelNombre = new Label(pokemon.getNombre());
                 labelNombre.setLayoutX(80);
                 labelNombre.setStyle("-fx-font-size: 15px;");
@@ -115,11 +117,10 @@ public class SeleccionPokemonController {
 
                 paneIzquierdo.getChildren().addAll(imagePokemon, labelNombre, labelNivel);
 
-//________________________________
+
                 Pane paneDerecho = new Pane();
 
                 ImageView imageView = new ImageView(getClass().getResource("/org/fiuba/algoritmos3/background/ps.png").toString());
-
                 imageView.setFitWidth(25);
                 imageView.setPreserveRatio(true);
                 imageView.setLayoutX(35);
@@ -133,7 +134,7 @@ public class SeleccionPokemonController {
 
                 paneDerecho.getChildren().addAll(imageView, progressBar, labelVida);
 
-
+                
                 HBox hbox = new HBox(10);
                 hbox.getChildren().addAll(paneIzquierdo, paneDerecho);
                 hbox.setPadding(new Insets(10));
@@ -162,7 +163,6 @@ public class SeleccionPokemonController {
                 this.nivel_actual.setText("Nv: " + pokemonActual.getNivel());
                 this.vida_actual.setText(pokemonActual.getVidaActual()+"/"+ pokemonActual.getVidaMaxima());
                 this.barra_vida_actual.setProgress(porcentajeVidaPokemon(pokemonActual));
-                System.out.println(pokemonActual.getNombre());
                 String ruta = "/org/fiuba/algoritmos3/pokemonFront/"+pokemonActual.getNombre()+"_front.png";
                 Image image = new Image(getClass().getResource(ruta).toString());
                 this.img_actual.setImage(image);
