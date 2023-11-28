@@ -95,7 +95,7 @@ public class SeleccionPokemonController {
                 paneIzquierdo.setMaxWidth(150);
                 paneIzquierdo.setMinWidth(150);
 
-                String ruta = "/org/fiuba/algoritmos3/pokemonFront/"+pokemon.getNombre()+"_front.png";
+                String ruta = "/org/fiuba/algoritmos3/pokemonMiniSprite/"+pokemon.getNombre()+"_mini.gif";
                 ImageView imagePokemon = new ImageView(getClass().getResource(ruta).toString());
                 imagePokemon.setFitWidth(65);
                 imagePokemon.setPreserveRatio(true);
@@ -158,7 +158,7 @@ public class SeleccionPokemonController {
                 this.nivel_actual.setText("Nv: " + pokemonActual.getNivel());
                 this.vida_actual.setText(pokemonActual.getVidaActual()+"/"+ pokemonActual.getVidaMaxima());
                 this.barra_vida_actual.setProgress(porcentajeVidaPokemon(pokemonActual));
-                String ruta = "/org/fiuba/algoritmos3/pokemonFront/"+pokemonActual.getNombre()+"_front.png";
+                String ruta = "/org/fiuba/algoritmos3/pokemonMiniSprite/"+pokemonActual.getNombre()+"_mini.gif";
                 Image image = new Image(getClass().getResource(ruta).toString());
                 this.img_actual.setImage(image);
         }

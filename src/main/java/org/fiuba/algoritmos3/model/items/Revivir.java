@@ -6,7 +6,7 @@ public class Revivir extends Item{
     public Revivir(Integer cantidadDeItems) {
         super(cantidadDeItems);
         this.nombre = "Revivir";
-        this.descripcion = "Este ítem puede revivir cualquier pokémon que tenga cero de vida.";
+        this.descripcion = "Revive con mitad de vida a un pokemon.";
     }
     @Override
     public boolean aplicarItem(Pokemon pokemon){

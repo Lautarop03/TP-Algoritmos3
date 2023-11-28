@@ -7,7 +7,7 @@ public class CuraTodo extends Item {
     public CuraTodo(Integer cantidadDeItems) {
         super(cantidadDeItems);
         this.nombre = "CuraTodo";
-        this.descripcion = "Este Cura Todo cura todos los estados.";
+        this.descripcion = "Cura todos los estados negativos de un pokemon.";
     }
 
     @Override

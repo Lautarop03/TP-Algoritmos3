@@ -7,7 +7,7 @@ public class Hiperpocion extends ItemRestauradorDeVida {
         this.cantidadDeItems = verificarCantidad(cantidad);
         this.cantidadDeCura = 100;
         this.nombre = "HiperPoción";
-        this.descripcion = "Esta Hiperpocíon cura 100 de vida.";
+        this.descripcion = "Restaura 100 de vida.";
     }
 
     private Integer verificarCantidad(Integer cantidad) {

@@ -9,6 +9,8 @@ public class ItemModificadorDefensa extends ItemDeEstadistica implements Modific
         super(cantidadDeItems);
         this.nombre = "Modificador de defensa";
         this.porcentajeDeModificacion = 10;
+        this.descripcion = "Aumenta la defensa en un 10%";
+
     }
 
     @Override

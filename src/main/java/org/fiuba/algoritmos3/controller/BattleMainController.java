@@ -126,7 +126,9 @@ public class BattleMainController {
         this.vida_actual_max_pk1.setText(pk1.getVidaActual()+"/"+ pk1.getVidaMaxima());
         this.vida_actual_max_pk2.setText(pk2.getVidaActual()+"/" + pk2.getVidaMaxima());
         this.barra_vida_pk1.setProgress(porcentajeVidaPokemon(pk1));
+        this.barra_vida_pk1.setStyle(cambiarColorBarra(pk1));
         this.barra_vida_pk2.setProgress(porcentajeVidaPokemon(pk2));
+        this.barra_vida_pk2.setStyle(cambiarColorBarra(pk2));
         this.nivel_actual_pk1.setText("Nv:" + pk1.getNivel());
         this.nivel_actual_pk2.setText("Nv:" + pk2.getNivel());
         Image pk1Image = new Image(getClass().getResource("/org/fiuba/algoritmos3/pokemonBack/" + pk1.getNombre() +"_back.png").toString());
@@ -143,6 +145,22 @@ public class BattleMainController {
         double porcentaje = (double)pokemon.getVidaActual()/(double)pokemon.getVidaMaxima();
         return porcentaje;
     }
+
+
+    public String cambiarColorBarra(Pokemon pokemon) {
+        double rojo = 255;
+        double verde = 255;
+        double porcentaje = porcentajeVidaPokemon(pokemon);
+        double porcentajeAMultiplicar = (-Math.abs(2 * porcentaje - 1)) + 1;
+
+        if (porcentaje > 0.5) {
+            rojo = rojo * porcentajeAMultiplicar;
+        } else if (porcentaje < 0.5){
+            verde = verde *porcentajeAMultiplicar;
+        }
+        return "-fx-accent:  rgb(" + rojo + "," + verde + ",0) ";
+    }
+
 
 
     private void toggleMenuHabilidades() {
@@ -237,6 +255,7 @@ public class BattleMainController {
     }
 
     public void handleHuirBtn(MouseEvent mouseEvent) {
+        consola.setText("Eres un gallina McFly");
         //TODO: BOTON PARA RENDIRSE
     }
 
