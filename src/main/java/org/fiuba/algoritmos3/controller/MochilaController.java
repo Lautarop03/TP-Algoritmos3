@@ -8,10 +8,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -32,6 +29,8 @@ public class MochilaController {
 
     @FXML
     public Label labelItem1;
+    @FXML
+    public ScrollPane contenedorItems;
     @FXML
     public VBox itemsContainer;
     @FXML
@@ -67,10 +66,13 @@ public class MochilaController {
         Background bg = new Background(Collections.singletonList(bgf), Collections.singletonList(bgImage));
         fondoMochila.setBackground(bg);
 
+        int altura = 50;
         for (Integer i = 0; i < items.size(); i++) {
             Item item = items.get(i);
             mostrarHileraItem(item, i);
+            altura += 50;
         }
+        itemsContainer.setPrefHeight(altura);
 
         Scene scene =  new Scene(contenedorPrincipal);
         stage.setScene(scene);
@@ -111,6 +113,7 @@ public class MochilaController {
 
         pane.getChildren().add(labelCantidad);
         hbox.getChildren().addAll(labelNombreItem, pane);
+
 
         itemsContainer.getChildren().addAll(hbox);
     }

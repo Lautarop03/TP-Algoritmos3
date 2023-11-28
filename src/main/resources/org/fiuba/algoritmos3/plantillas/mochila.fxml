@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox fx:id="contenedorPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.MochilaController"> <!--style="-fx-background-image: url('file:D:\Fiuba\ALGO3\TP1\TP-Algoritmos3\src\main\java\resources\imagenes\background\MochilaFondo.png');"-->
+<VBox fx:id="contenedorPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.MochilaController"> <!--style="-fx-background-image: url('file:D:\Fiuba\ALGO3\TP1\TP-Algoritmos3\src\main\java\resources\imagenes\background\MochilaFondo.png');"-->
    <style>
       .scroll-pane{
       -fx-background-color:transparent;
@@ -21,29 +25,31 @@
    <children>
       <HBox fx:id="fondoMochila" alignment="TOP_RIGHT" prefHeight="419.0" prefWidth="600.0">
          <children>
-            <ScrollPane fx:id="contenedorItems" prefHeight="322.0" prefWidth="376.0" style="-fx-padding: 10;" stylesheets="@../mochila.css">
-               <content>
-                  <VBox fx:id="itemsContainer" alignment="TOP_RIGHT" prefHeight="266.0" prefWidth="344.0" style="-fx-padding: 10;">
-                     <children>
-                        <HBox alignment="TOP_RIGHT" centerShape="false" minHeight="50.0" prefHeight="50.0" prefWidth="280.0" style="-fx-background-color: transparent" styleClass="hileraItem">
+            <Pane prefHeight="322.0" prefWidth="391.0">
+               <children>
+                  <ScrollPane fx:id="contenedorItems" layoutX="20.0" layoutY="24.0" prefHeight="275.0" prefWidth="364.0" stylesheets="@../mochila.css">
+                     <content>
+                        <VBox fx:id="itemsContainer" alignment="TOP_RIGHT" prefHeight="261.0" prefWidth="345.0" style="-fx-padding: 10;">
                            <children>
-                              <Label alignment="CENTER" prefHeight="50.0" prefWidth="230.0" text="Objeto" />
-                              <Pane prefHeight="47.0" prefWidth="80.0" style="-fx-background-color: transparent;">
+                              <HBox alignment="TOP_RIGHT" centerShape="false" minHeight="50.0" prefHeight="50.0" prefWidth="280.0" style="-fx-background-color: transparent" styleClass="hileraItem">
                                  <children>
-                                    <Label alignment="CENTER" layoutY="6.0" prefHeight="37.0" prefWidth="73.0" text="Cantidad" />
-                                 </children></Pane>
+                                    <Label alignment="CENTER" prefHeight="50.0" prefWidth="230.0" text="Objeto" />
+                                    <Pane prefHeight="47.0" prefWidth="80.0" style="-fx-background-color: transparent;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutY="6.0" prefHeight="37.0" prefWidth="73.0" text="Cantidad" />
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </HBox>
                            </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
-                  </VBox>
-               </content>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </ScrollPane>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="225.0" prefWidth="600.0">
