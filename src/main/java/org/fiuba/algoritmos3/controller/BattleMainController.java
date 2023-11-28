@@ -29,7 +29,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-public class BattleMainController {
+public class BattleMainController extends Controller {
 
     @FXML
     private HBox fondoBattleMain;
@@ -90,7 +90,6 @@ public class BattleMainController {
 
     private Juego juego;
 
-    private JuegoController juegoController;
 
     private List<Habilidad> habilidades;
     private List<Label> labelsHabilidades;
@@ -193,49 +192,47 @@ public class BattleMainController {
 
     @FXML
     public void handleHabilidadLabelClick(MouseEvent event) throws IOException, InterruptedException {
-        botonesContainer.setDisable(true);
         Habilidad habilidad = getHabilidadDeMouseEvent(event);;
 
-        PauseTransition animacionAtaque = new PauseTransition(Duration.seconds(1));
-
-        animacionAtaque.setOnFinished((finalizado) -> {
-            img_pk2.setEffect(null);
-
-            PathTransition transitionDer = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2, vboxDerecho.getHeight()/2, 500);
-            PathTransition transitionIzq = animacionCambioDeTurno(vboxIzquierdo, vboxIzquierdo.getWidth()/2, vboxIzquierdo.getHeight()/2, -500);
-            transitionDer.play();
-            transitionIzq.play();
-
-            transitionIzq.setOnFinished((finalizado2) -> {
-                cambiarDeTurno();
-                botonesContainer.setDisable(false);
-
-                PathTransition transitionDerFin = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2 + 500, vboxDerecho.getHeight()/2, 150);
-                PathTransition transitionIzqFin = animacionCambioDeTurno(vboxIzquierdo, vboxIzquierdo.getWidth()/2 - 500, vboxIzquierdo.getHeight()/2, 150);
-                transitionDerFin.play();
-                transitionIzqFin.play();
-            });
-        });
-
-        MotionBlur motionBlur = new MotionBlur();
-        Blend blend = new Blend();
-        blend.setMode(BlendMode.RED);
-        blend.setBottomInput(motionBlur);
-
-        img_pk2.setEffect(blend);
-        animacionAtaque.playFromStart();
-
-        // TODO: toda la logica para realizar el ataque
         if (habilidad.getCantidadDeUsos() == 0) {
-            //TODO: Imprimir en la pantalla habilidad sin usos y volver al menu
-            toggleMenuHabilidades();
-            return;
+            //TODO: Imprimir en la pantalla habilidad sin usos
         } else {
+            botonesContainer.setDisable(true);
+
             juego.atacar(new PaqueteDeRespuesta<>(true,habilidad));
             if (!juego.aplicarEstados()){
                 juego.realizarAtaque();
             }
             setJuego(juego);
+
+            PauseTransition animacionAtaque = new PauseTransition(Duration.seconds(1));
+
+            animacionAtaque.setOnFinished((finalizado) -> {
+                img_pk2.setEffect(null);
+
+                PathTransition transitionDer = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2, vboxDerecho.getHeight()/2, 500);
+                PathTransition transitionIzq = animacionCambioDeTurno(vboxIzquierdo, vboxIzquierdo.getWidth()/2, vboxIzquierdo.getHeight()/2, -500);
+                transitionDer.play();
+                transitionIzq.play();
+
+                transitionIzq.setOnFinished((finalizado2) -> {
+                    cambiarDeTurno();
+                    botonesContainer.setDisable(false);
+
+                    PathTransition transitionDerFin = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2 + 500, vboxDerecho.getHeight()/2, 150);
+                    PathTransition transitionIzqFin = animacionCambioDeTurno(vboxIzquierdo, vboxIzquierdo.getWidth()/2 - 500, vboxIzquierdo.getHeight()/2, 150);
+                    transitionDerFin.play();
+                    transitionIzqFin.play();
+                });
+            });
+
+            MotionBlur motionBlur = new MotionBlur();
+            Blend blend = new Blend();
+            blend.setMode(BlendMode.RED);
+            blend.setBottomInput(motionBlur);
+
+            img_pk2.setEffect(blend);
+            animacionAtaque.playFromStart();
         }
 
         toggleMenuHabilidades();
@@ -311,7 +308,4 @@ public class BattleMainController {
         setJuego(SingletonJuego.getInstancia().getJuego());
     }
 
-    public void setJuegoController(JuegoController juegoController) {
-        this.juegoController = juegoController;
-    }
 }

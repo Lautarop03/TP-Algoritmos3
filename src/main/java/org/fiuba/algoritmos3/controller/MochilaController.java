@@ -1,12 +1,10 @@
 package org.fiuba.algoritmos3.controller;
 
-import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,16 +13,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.fiuba.algoritmos3.Inputs;
+import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
+import org.fiuba.algoritmos3.controller.Eventos.SeleccionPokemonEvent;
+import org.fiuba.algoritmos3.model.AdministradorDeJuego;
+import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.items.Item;
+import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.views.ViewControlador;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
-public class MochilaController {
+public class MochilaController extends Controller implements EventHandler<SeleccionPokemonEvent> {
 
     @FXML
     public Label labelItem1;
@@ -47,7 +50,10 @@ public class MochilaController {
 
     private List<Item> items;
     private Stage stage;
-    private BattleMainController battleMainController;
+    private Controller controller;
+    private Item item;
+
+
 
     public void mochilaController(){
     }
@@ -143,6 +149,7 @@ public class MochilaController {
         confirmacionContainer.setVisible(true);
         descripcionContainer.setVisible(false);
         itemsContainer.setVisible(false);
+        this.item = item;
     }
     public void cancelarBtn(){
         confirmacionContainer.setVisible(false);
@@ -155,21 +162,58 @@ public class MochilaController {
         confirmacionContainer.setVisible(false);
         descripcionContainer.setVisible(true);
         itemsContainer.setVisible(true);
-        battleMainController.show();
+        Pokemon pokemon = cambiarAPokemon(); // Si solo vuelve a la mochila, pokemon es NULL
+        if (pokemon!=null) {
+            Boolean aplicado = item.aplicarItem(pokemon);
+            if (!aplicado) {
+                AdministradorDeJuego administradorDeJuego = new AdministradorDeJuego(new Inputs(),new ViewControlador());
+                Juego juego = SingletonJuego.getInstancia().getJuego();
+                administradorDeJuego.mostrarUsoItem(juego.getJugadorActual(),item,pokemon);
+                //TODO: Mostrar que se uso el item
+                //TODO: Cambiar el turno
+                confirmacionContainer.fireEvent(new CambioTurnoEvent());
+            } else {
+                AdministradorDeJuego administradorDeJuego = new AdministradorDeJuego(new Inputs(),new ViewControlador());
+                Juego juego = SingletonJuego.getInstancia().getJuego();
+                administradorDeJuego.errorUsoItem(item);
+                //TODO: Mostrar erros uso item
+            }
+            controller.show();
+            this.stage.close();
+        }
+
+    }
+
+
+    public Pokemon cambiarAPokemon() throws IOException {
+        Juego juego = SingletonJuego.getInstancia().getJuego();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/seleccionPokemon.fxml"));
+        Parent root = loader.load();
+        SeleccionPokemonController controller = loader.getController();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        controller.init(juego.getJugadorActual().getPokemones(),stage,this);
         this.stage.close();
-        System.out.println("Se seleccionó el item, cambiar pantalla");
+        stage.showAndWait();
+        return controller.getPokemonSeleccionado();
     }
 
     public void volverBtn() throws IOException {
-           battleMainController.show();
+           controller.show();
            this.stage.close();
     }
     public void show() {
         this.stage.show();
     }
-    public void init(List<Item> items, Stage stage, BattleMainController battleMainController) throws IOException {
+    public void init(List<Item> items, Stage stage, Controller controller) throws IOException {
         setItems(items,stage);
         this.stage = stage;
-        this.battleMainController = battleMainController;
+        this.controller = controller;
+    }
+
+    @Override
+    public void handle(SeleccionPokemonEvent seleccionPokemonEvent) {
+
     }
 }

@@ -1,30 +1,29 @@
 package org.fiuba.algoritmos3.controller;
 
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
+import org.fiuba.algoritmos3.controller.Eventos.SeleccionPokemonEvent;
 import org.fiuba.algoritmos3.model.Juego;
-import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
+import java.util.concurrent.CountDownLatch;
 
-public class SeleccionPokemonController {
+public class SeleccionPokemonController extends Controller{
 
         @FXML
         private ProgressBar barra_vida_actual;
@@ -55,9 +54,10 @@ public class SeleccionPokemonController {
         public HBox contenedorConfirmacion;
         public VBox pokemonConteiner;
         public Label descripcionPokemon;
-        private BattleMainController battleMainController;
+        private Controller controller;
         private Stage stage;
         private Pokemon pokemon;
+        private String accion;
 
         public void setJuegoController(JuegoController juegoController) {
             this.juegoController = juegoController;
@@ -200,18 +200,21 @@ public class SeleccionPokemonController {
 
         public void confirmarBtn() throws IOException {
                 this.contenedorConfirmacion.setVisible(false);
-                this.battleMainController.show();
+                this.controller.show();
                 this.stage.close();
-                cambiarPokemon(pokemon);
-                handleMochilaBtn(null);
-                //contenedorPrincipal.fireEvent(new CambioTurnoEvent());
-                //TODO: Cambiar turno
+                if (Objects.equals(accion, "main")) {
+                        cambiarPokemon(pokemon);
+                        handleMochilaBtn(null);
+                        stage.fireEvent(new CambioTurnoEvent());
+                        //TODO: Cambiar turno
+                }
         }
         public void cancelarBtn(){
+                this.pokemon = null;
                 this.contenedorConfirmacion.setVisible(false);
         }
 
-        public void cambiarPokemon(Pokemon pokemon) throws IOException {
+        public void cambiarPokemon(Pokemon pokemon) throws IOException{
                 Juego juego = SingletonJuego.getInstancia().getJuego();
                 boolean realizado = juego.getJugadorActual().intercambiarPokemon(pokemon);
                 if (realizado){
@@ -220,16 +223,27 @@ public class SeleccionPokemonController {
                         //TODO: Mostrar Mensaje De error Pokemon sin vida
                 }
 
+                return;
         }
 
-        public void init(List<Pokemon> pokemones, Stage stage, BattleMainController battleMainController) {
+
+        public Pokemon getPokemonSeleccionado() {
+                return this.pokemon;
+        }
+
+        public void init(List<Pokemon> pokemones, Stage stage, Controller controller) {
                 setPokemones((ArrayList<Pokemon>) pokemones,stage,pokemones.get(0));
+                if (controller.getClass()==MochilaController.class) {
+                        this.accion = "mochila";
+                } else if (controller.getClass() == BattleMainController.class) {
+                        this.accion = "main";
+                }
                 this.stage = stage;
-                this.battleMainController = battleMainController;
+                this.controller = controller;
         }
         @FXML
         void handleMochilaBtn(MouseEvent evento) throws IOException {
-                battleMainController.show();
+                controller.show();
                 this.stage.close();
         }
 
