@@ -2,7 +2,7 @@
     -fx-background-color:transparent;
 }
 
-.scroll-pane > .viewport {  //not .scrollpane but .scroll-pane
+.scroll-pane > .viewport {
 -fx-background-color: transparent;
 }
 .scroll-bar:horizontal, .scroll-bar:vertical{
@@ -24,19 +24,42 @@
 }
 
 
-
-
-.button{
-    -fx-font-family: "Verdana";
-    -fx-font-size: 14px;
+.btnSalir.button{
+    -fx-font-family: "Monospaced";
     -fx-background-color: transparent;
+    -fx-font-size: 16px;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
 }
 
-.button:hover{
+.btnSalir.button:hover{
+    -fx-background-color: #F7AD47;
+    -fx-border-width: 5;
+}
+.btnSalir.button:pressed{
+    -fx-border-width: 5;
+    -fx-font-size: 13px;
+
 }
 
-.button:pressed{
+.btnInferior.button{
+    -fx-font-family: "Monospaced";
+    -fx-background-color: #73D6BE;
+    -fx-font-size: 16px;
+    -fx-border-radius: 2;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-background-radius: 2;
+    -fx-background-insets: 2;
+}
 
+.btnInferior.button:hover{
+    -fx-background-color: #265676;
+}
+
+.btnInferior.button:pressed {
+    -fx-border-width: 5;
+    -fx-font-size: 12px;
 }
 
 .hileraItem {

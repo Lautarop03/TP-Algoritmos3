@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -25,6 +27,11 @@
    <children>
       <HBox fx:id="fondoMochila" alignment="TOP_RIGHT" prefHeight="419.0" prefWidth="600.0">
          <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#volverBtn" prefHeight="39.0" prefWidth="192.0" styleClass="btnSalir" stylesheets="@../mochila.css" text="Volver al campo" />
+               </children>
+            </Pane>
             <Pane prefHeight="322.0" prefWidth="391.0">
                <children>
                   <ScrollPane fx:id="contenedorItems" layoutX="20.0" layoutY="24.0" prefHeight="275.0" prefWidth="364.0" stylesheets="@../mochila.css">
@@ -43,7 +50,7 @@
                               </HBox>
                            </children>
                            <padding>
-                              <Insets top="15.0" />
+                              <Insets left="30.0" />
                            </padding>
                         </VBox>
                      </content>
@@ -52,24 +59,53 @@
             </Pane>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="225.0" prefWidth="600.0">
+      <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="225.0" prefWidth="600.0" style="-fx-background-color: #2b639e; -fx-border-color: #203d57; -fx-border-width: 5;">
          <children>
-            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="128.0" prefWidth="202.0" style="-fx-border-color: black; -fx-border-width: 5; -fx-border-radius: 5;">
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="118.0" prefWidth="129.0">
                <children>
-                  <ImageView fx:id="imagenItem" fitHeight="88.0" fitWidth="94.0" layoutX="38.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagenItem" fitHeight="89.0" fitWidth="97.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../items/HiperPocion.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane prefHeight="128.0" prefWidth="476.0" style="-fx-border-color: black; -fx-border-width: 5; -fx-border-radius: 5;">
+            <StackPane prefHeight="118.0" prefWidth="473.0">
                <children>
-                  <Label fx:id="descripcionLabel" layoutX="29.0" layoutY="5.0" prefHeight="118.0" prefWidth="376.0" text="Descripcion" wrapText="true">
-                     <font>
-                        <Font name="Verdana" size="17.0" />
-                     </font></Label>
-               </children></Pane>
+                  <Pane fx:id="descripcionContainer" prefHeight="128.0" prefWidth="476.0">
+                     <children>
+                        <Label fx:id="descripcionLabel" layoutX="-1.0" layoutY="5.0" prefHeight="118.0" prefWidth="467.0" text="Descripcion" wrapText="true">
+                           <font>
+                              <Font name="Monospaced Regular" size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <VBox fx:id="confirmacionContainer" prefHeight="200.0" prefWidth="100.0" visible="false">
+                     <children>
+                        <Label prefHeight="133.0" prefWidth="578.0" text="Desea usar el item?">
+                           <font>
+                              <Font name="Monospaced Regular" size="17.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="63.0" prefWidth="467.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#cancelarBtn" prefHeight="25.0" prefWidth="411.0" styleClass="btnInferior" stylesheets="@../mochila.css" text="Cancelar">
+                                 <font>
+                                    <Font name="Monospaced Bold" size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#confirmarBtn" prefHeight="25.0" prefWidth="412.0" styleClass="btnInferior" stylesheets="@../mochila.css" text="Confirmar">
+                                 <font>
+                                    <Font name="Monospaced Bold" size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
          </children>
       </HBox>
    </children>

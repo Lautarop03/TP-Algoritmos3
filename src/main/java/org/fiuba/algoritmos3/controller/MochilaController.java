@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -27,6 +28,10 @@ public class MochilaController {
 
     @FXML
     public Label labelItem1;
+    @FXML
+    public Pane descripcionContainer;
+    @FXML
+    public VBox confirmacionContainer;
     @FXML
     public ScrollPane contenedorItems;
     @FXML
@@ -128,8 +133,11 @@ public class MochilaController {
 
     public void clickItem(MouseEvent mouseEvent, Item item) {
         Stage stage = (Stage) contenedorPrincipal.getScene().getWindow();
+        confirmacionContainer.setVisible(true);
+        descripcionContainer.setVisible(false);
+        itemsContainer.setVisible(false);
 
-        Alert.AlertType tipo = Alert.AlertType.CONFIRMATION;
+/*        Alert.AlertType tipo = Alert.AlertType.CONFIRMATION;
         Alert alerta = new Alert(tipo, "");
 
         alerta.initModality(Modality.APPLICATION_MODAL);
@@ -144,7 +152,30 @@ public class MochilaController {
         }
         else  if (resultado.get() == ButtonType.CANCEL) {
             System.out.println("No se seleccionó el item");
-        }
+        }*/
+    }
+    public void cancelarBtn(){
+        confirmacionContainer.setVisible(false);
+        descripcionContainer.setVisible(true);
+        itemsContainer.setVisible(true);
+
+    }
+
+    public void confirmarBtn(){
+        confirmacionContainer.setVisible(false);
+        descripcionContainer.setVisible(true);
+        itemsContainer.setVisible(true);
+        System.out.println("Se seleccionó el item, cambiar pantalla");
+    }
+
+    public void volverBtn() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
+        Stage stage = (Stage)((Node) itemsContainer).getScene().getWindow();
+        Scene scene =  new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        System.out.println("Volver a pantalla principal");
+
     }
 
 }
