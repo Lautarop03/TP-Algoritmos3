@@ -66,7 +66,7 @@
                <children>
                   <ImageView fx:id="imagenItem" fitHeight="89.0" fitWidth="97.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../items/HiperPocion.png" />
+                        <Image url="@../items/Hiperpocion.png" />
                      </image>
                   </ImageView>
                </children>

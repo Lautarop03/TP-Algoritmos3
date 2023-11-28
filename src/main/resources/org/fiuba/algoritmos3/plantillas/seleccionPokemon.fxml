@@ -22,7 +22,7 @@
                               <ImageView fx:id="img_actual" fitHeight="75.0" fitWidth="73.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
                               <Label fx:id="nombre_actual" layoutX="95.0" layoutY="23.0" prefHeight="32.0" prefWidth="118.0" text="Label" />
                               <Label fx:id="nivel_actual" layoutX="105.0" layoutY="55.0" prefHeight="32.0" prefWidth="118.0" text="Label" />
-                              <ProgressBar fx:id="barra_vida_actual" layoutX="52.0" layoutY="82.0" prefHeight="20.0" prefWidth="168.0" progress="0.0" />
+                              <ProgressBar fx:id="barra_vida_actual" layoutX="52.0" layoutY="82.0" prefHeight="20.0" prefWidth="168.0" progress="1.0" stylesheets="@../progressBar.css"/>
                               <ImageView fitHeight="24.0" fitWidth="28.0" layoutX="14.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../background/ps.png" />

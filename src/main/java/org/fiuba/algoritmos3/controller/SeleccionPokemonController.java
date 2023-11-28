@@ -100,7 +100,7 @@ public class SeleccionPokemonController {
                 imagePokemon.setFitWidth(65);
                 imagePokemon.setPreserveRatio(true);
                 imagePokemon.setLayoutX(-10);
-                imagePokemon.setTranslateY(-15);
+                imagePokemon.setTranslateY(-22.5);
 
                 Label labelNombre = new Label(pokemon.getNombre());
                 labelNombre.setLayoutX(80);
@@ -125,6 +125,7 @@ public class SeleccionPokemonController {
                 labelVida.setLayoutY(15);
 
                 ProgressBar progressBar = new ProgressBar(porcentajeVidaPokemon(pokemon));
+                progressBar.setStyle(cambiarColorBarra(pokemon));
                 progressBar.setLayoutX(60);
 
                 paneDerecho.getChildren().addAll(imageView, progressBar, labelVida);
@@ -134,7 +135,7 @@ public class SeleccionPokemonController {
                 hbox.getChildren().addAll(paneIzquierdo, paneDerecho);
                 hbox.setPadding(new Insets(10));
                 hbox.setStyle("-fx-background-color: #00A8BF; -fx-background-radius: 2;" +
-                        "-fx-border-color: black; -fx-border-width: 1;");
+                        "-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 2");
 
                 hbox.setId(id.toString());
                 hbox.setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -153,11 +154,26 @@ public class SeleccionPokemonController {
                 return hbox;
         }
 
+        public String cambiarColorBarra(Pokemon pokemon) {
+                double rojo = 255;
+                double verde = 255;
+                double porcentaje = porcentajeVidaPokemon(pokemon);
+                double porcentajeAMultiplicar = (-Math.abs(2 * porcentaje - 1)) + 1;
+
+                if (porcentaje > 0.5) {
+                        rojo = rojo * porcentajeAMultiplicar;
+                } else if (porcentaje < 0.5){
+                        verde = verde *porcentajeAMultiplicar;
+                }
+                return "-fx-accent:  rgb(" + rojo + "," + verde + ",0)";
+        }
+
         private void mostrarPokemonActual(){
                 this.nombre_actual.setText(pokemonActual.getNombre());
                 this.nivel_actual.setText("Nv: " + pokemonActual.getNivel());
                 this.vida_actual.setText(pokemonActual.getVidaActual()+"/"+ pokemonActual.getVidaMaxima());
                 this.barra_vida_actual.setProgress(porcentajeVidaPokemon(pokemonActual));
+                this.barra_vida_actual.setStyle(cambiarColorBarra(pokemonActual));
                 String ruta = "/org/fiuba/algoritmos3/pokemonMiniSprite/"+pokemonActual.getNombre()+"_mini.gif";
                 Image image = new Image(getClass().getResource(ruta).toString());
                 this.img_actual.setImage(image);
