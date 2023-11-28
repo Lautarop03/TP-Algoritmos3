@@ -1,167 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.SeleccionPokemonController">
+<VBox fx:id="contenedorPrincipal" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.SeleccionPokemonController">
    <children>
-      <HBox alignment="CENTER" prefHeight="393.0" prefWidth="688.0">
+      <HBox fx:id="seleccionPokemon" alignment="CENTER" prefHeight="393.0" prefWidth="688.0" style="-fx-background-color: &quot;#048F8F&quot;;">
          <children>
-            <VBox prefHeight="393.0" prefWidth="253.0">
+            <VBox prefHeight="393.0" prefWidth="392.0">
                <children>
-                  <VBox prefHeight="79.0" prefWidth="234.0" />
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <Pane prefHeight="590.0" prefWidth="311.0">
                      <children>
-                        <Pane prefHeight="200.0" prefWidth="200.0">
+                        <Pane layoutX="44.0" layoutY="45.0" prefHeight="166.0" prefWidth="224.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #87CEEB); -fx-border-color: grey; -fx-border-radius: 2; -fx-border-width: 3;">
                            <children>
-                              <ImageView fx:id="img_actual" fitHeight="75.0" fitWidth="73.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="nombre_actual" layoutX="102.0" layoutY="22.0" prefHeight="32.0" prefWidth="111.0" text="Label" />
-                              <Label fx:id="nivel_actual" layoutX="102.0" layoutY="55.0" prefHeight="32.0" prefWidth="111.0" text="Label" />
-                              <ProgressBar fx:id="barra_vida_actual" layoutX="51.0" layoutY="100.0" prefHeight="20.0" prefWidth="168.0" progress="0.0" />
-                              <ImageView fitHeight="24.0" fitWidth="28.0" layoutX="14.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="img_actual" fitHeight="75.0" fitWidth="73.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="nombre_actual" layoutX="95.0" layoutY="23.0" prefHeight="32.0" prefWidth="118.0" text="Label" />
+                              <Label fx:id="nivel_actual" layoutX="105.0" layoutY="55.0" prefHeight="32.0" prefWidth="118.0" text="Label" />
+                              <ProgressBar fx:id="barra_vida_actual" layoutX="52.0" layoutY="82.0" prefHeight="20.0" prefWidth="168.0" progress="0.0" />
+                              <ImageView fitHeight="24.0" fitWidth="28.0" layoutX="14.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../background/ps.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="vida_actual_actual" layoutX="69.0" layoutY="130.0" prefHeight="24.0" prefWidth="61.0" text="Label" />
-                              <Label fx:id="vida_max_actual" layoutX="130.0" layoutY="130.0" prefHeight="24.0" prefWidth="73.0" text="Label" />
+                              <Label fx:id="vida_actual" layoutX="103.0" layoutY="102.0" prefHeight="24.0" prefWidth="118.0" text="Label" />
                            </children>
                         </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox prefHeight="393.0" prefWidth="458.0">
+               <children>
+                  <VBox fx:id="pokemonConteiner" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="img_pk11" fitHeight="53.0" fitWidth="61.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label fx:id="nombre_pk11" layoutX="97.0" layoutY="16.0" prefHeight="32.0" prefWidth="61.0" />
+                                    <Label fx:id="nivel_pk11" layoutX="120.0" layoutY="60.0" prefHeight="24.0" prefWidth="42.0" />
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="vida_actual_pk11" layoutX="80.0" layoutY="69.0" prefHeight="24.0" prefWidth="61.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                </children>
             </VBox>
-            <VBox prefHeight="374.0" prefWidth="473.0">
-               <children>
-                  <GridPane prefHeight="375.0" prefWidth="458.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="354.0" minWidth="10.0" prefWidth="233.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.0" minWidth="10.0" prefWidth="225.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Pane prefHeight="63.0" prefWidth="240.0">
-                           <children>
-                              <ImageView fx:id="img_pk1" fitHeight="53.0" fitWidth="61.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="nombre_pk1" layoutX="65.0" layoutY="5.0" prefHeight="32.0" prefWidth="168.0" text="Label" />
-                              <Label fx:id="nivel_pk1" layoutX="78.0" layoutY="37.0" prefHeight="24.0" prefWidth="135.0" text="Label" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                           <children>
-                              <ImageView fx:id="img_pk2" fitHeight="53.0" fitWidth="61.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="nombre_pk2" layoutX="65.0" layoutY="6.0" prefHeight="32.0" prefWidth="168.0" text="Label" />
-                              <Label fx:id="nivel_pk2" layoutX="81.0" layoutY="37.0" prefHeight="24.0" prefWidth="135.0" text="Label" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-                           <children>
-                              <ImageView fx:id="img_pk3" fitHeight="53.0" fitWidth="61.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="nombre_pk3" layoutX="65.0" layoutY="6.0" prefHeight="32.0" prefWidth="168.0" text="Label" />
-                              <Label fx:id="nivel_pk3" layoutX="81.0" layoutY="37.0" prefHeight="24.0" prefWidth="135.0" text="Label" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
-                           <children>
-                              <ImageView fx:id="img_pk4" fitHeight="53.0" fitWidth="61.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="nombre_pk4" layoutX="65.0" layoutY="6.0" prefHeight="32.0" prefWidth="168.0" text="Label" />
-                              <Label fx:id="nivel_pk4" layoutX="81.0" layoutY="37.0" prefHeight="24.0" prefWidth="135.0" text="Label" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
-                           <children>
-                              <ImageView fitHeight="53.0" fitWidth="61.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="nombre_pk5" layoutX="65.0" layoutY="6.0" prefHeight="32.0" prefWidth="168.0" text="Label" />
-                              <Label fx:id="nivel_pk5" layoutX="81.0" layoutY="37.0" prefHeight="24.0" prefWidth="135.0" text="Label" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                           <children>
-                              <Label fx:id="vida_actual_pk1" layoutX="91.0" layoutY="37.0" prefHeight="24.0" prefWidth="61.0" text="Label" />
-                              <Label fx:id="vida_max_pk1" layoutX="152.0" layoutY="37.0" prefHeight="24.0" prefWidth="73.0" text="Label" />
-                              <ProgressBar fx:id="barra_vida_pk1" layoutX="44.0" layoutY="14.0" prefHeight="20.0" prefWidth="168.0" progress="0.0" />
-                              <ImageView fitHeight="24.0" fitWidth="28.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../background/ps.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <children>
-                              <Label fx:id="vida_actual_pk2" layoutX="91.0" layoutY="37.0" prefHeight="24.0" prefWidth="61.0" text="Label" />
-                              <Label fx:id="vida_max_pk2" layoutX="152.0" layoutY="37.0" prefHeight="24.0" prefWidth="73.0" text="Label" />
-                              <ProgressBar fx:id="barra_vida_pk2" layoutX="44.0" layoutY="14.0" prefHeight="20.0" prefWidth="168.0" progress="0.0" />
-                              <ImageView fitHeight="24.0" fitWidth="28.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../background/ps.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <children>
-                              <Label fx:id="vida_actual_pk3" layoutX="91.0" layoutY="37.0" prefHeight="24.0" prefWidth="61.0" text="Label" />
-                              <Label fx:id="vida_max_pk3" layoutX="152.0" layoutY="37.0" prefHeight="24.0" prefWidth="73.0" text="Label" />
-                              <ProgressBar fx:id="barra_vida_pk3" layoutX="44.0" layoutY="14.0" prefHeight="20.0" prefWidth="168.0" progress="0.0" />
-                              <ImageView fitHeight="24.0" fitWidth="28.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../background/ps.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <children>
-                              <Label fx:id="vida_actual_pk4" layoutX="91.0" layoutY="37.0" prefHeight="24.0" prefWidth="61.0" text="Label" />
-                              <Label fx:id="vida_max_pk4" layoutX="152.0" layoutY="37.0" prefHeight="24.0" prefWidth="73.0" text="Label" />
-                              <ProgressBar fx:id="barra_vida_pk4" layoutX="44.0" layoutY="14.0" prefHeight="20.0" prefWidth="168.0" progress="0.0" />
-                              <ImageView fitHeight="24.0" fitWidth="28.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../background/ps.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                           <children>
-                              <Label fx:id="vida_actual_pk5" layoutX="91.0" layoutY="37.0" prefHeight="24.0" prefWidth="61.0" text="Label" />
-                              <Label fx:id="vida_max_pk5" layoutX="152.0" layoutY="37.0" prefHeight="24.0" prefWidth="73.0" text="Label" />
-                              <ProgressBar fx:id="barra_vida_pk5" layoutX="44.0" layoutY="14.0" prefHeight="20.0" prefWidth="168.0" progress="0.0" />
-                              <ImageView fitHeight="24.0" fitWidth="28.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../background/ps.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                     </children>
-                  </GridPane>
-               </children>
-            </VBox>
          </children>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.01315789483487606" green="0.01315789483487606" blue="0.01315789483487606" />
+               </color>
+            </InnerShadow>
+         </effect>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="114.0" prefWidth="688.0">
+      <HBox alignment="CENTER" prefHeight="114.0" prefWidth="688.0" style="-fx-background-color: #048F8F;">
          <children>
-            <HBox prefHeight="110.0" prefWidth="525.0">
+            <HBox prefHeight="110.0" prefWidth="525.0" style="-fx-background-color: #FFFFE0;">
                <children>
-                  <Label fx:id="texto_items" prefHeight="87.0" prefWidth="522.0" text="Label" />
+                  <Label fx:id="descripcionPokemon" prefHeight="94.0" prefWidth="533.0" style="-fx-border-color: grey; -fx-border-width: 5; -fx-border-radius: 2;" text="Elegir un Pokémon." wrapText="true">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor></Label>
                </children>
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -173,6 +90,9 @@
                </children>
             </HBox>
          </children>
+         <effect>
+            <InnerShadow />
+         </effect>
       </HBox>
    </children>
 </VBox>
