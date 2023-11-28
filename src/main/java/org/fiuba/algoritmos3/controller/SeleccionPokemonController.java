@@ -14,10 +14,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class SeleccionPokemonController {
@@ -53,19 +55,9 @@ public class SeleccionPokemonController {
 
         public VBox pokemonConteiner;
         public Label descripcionPokemon;
+        private BattleMainController battleMainController;
+        private Stage stage;
 
-        @FXML
-        void handleMochilaBtn(MouseEvent evento) throws IOException {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
-                Parent root = loader.load();
-
-                BattleMainController controller = loader.getController();
-                controller.setJuego(SingletonJuego.getInstancia().getJuego());
-
-                Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.show();
-        }
         public void setJuegoController(JuegoController juegoController) {
             this.juegoController = juegoController;
         }
@@ -81,9 +73,12 @@ public class SeleccionPokemonController {
                 pokemonConteiner.setPrefHeight(350);
 
                 mostrarPokemonActual();
-                Scene scene =  new Scene(contenedorPrincipal);
-                stage.setScene(scene);
-                stage.show();
+
+                if (stage.getScene() == null) {
+                        Scene scene = new Scene(contenedorPrincipal);
+                        stage.setScene(scene);
+                        stage.show();
+                }
         }
 
 
@@ -198,6 +193,17 @@ public class SeleccionPokemonController {
                 else  if (resultado.get() == ButtonType.CANCEL) {
                         System.out.println("No se selecciono ningun Pokemon");
                 }
+        }
+
+        public void init(List<Pokemon> pokemones, Stage stage, BattleMainController battleMainController) {
+                setPokemones((ArrayList<Pokemon>) pokemones,stage,pokemones.get(0));
+                this.stage = stage;
+                this.battleMainController = battleMainController;
+        }
+        @FXML
+        void handleMochilaBtn(MouseEvent evento) throws IOException {
+                battleMainController.show();
+                this.stage.close();
         }
 
 }

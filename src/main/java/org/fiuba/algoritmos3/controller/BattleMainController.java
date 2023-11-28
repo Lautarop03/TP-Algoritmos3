@@ -4,6 +4,7 @@ import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -13,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
 import org.fiuba.algoritmos3.model.Juego;
@@ -24,7 +26,6 @@ import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
-import java.util.Timer;
 
 public class BattleMainController {
 
@@ -81,15 +82,13 @@ public class BattleMainController {
     @FXML
     private GridPane descripcionHabilidadesContainer;
 
-
-    public Scene battleMainScene;
-
     private Juego juego;
 
     private JuegoController juegoController;
 
     private List<Habilidad> habilidades;
     private List<Label> labelsHabilidades;
+    private Stage stage;
 
     public Scene setJuego(Juego juego) throws IOException {
 
@@ -145,9 +144,6 @@ public class BattleMainController {
         return porcentaje;
     }
 
-    public Scene getBattleMainScene() {
-        return battleMainScene;
-    }
 
     private void toggleMenuHabilidades() {
         boolean visibilidad = consola.isVisible();
@@ -157,8 +153,11 @@ public class BattleMainController {
         descripcionHabilidadesContainer.setVisible(visibilidad);
     }
 
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
     public void handleAtaqueBtn(MouseEvent mouseEvent) {
-//        juegoController.cambiarAEscenaAtacar(mouseEvent);
         toggleMenuHabilidades();
 
         for (int i = 0; i < habilidades.size(); i++) {
@@ -174,8 +173,6 @@ public class BattleMainController {
         String labelId = source.getId();
 
         Habilidad habilidad = getHabilidadDeMouseEvent(event);;
-        juego.atacar(new PaqueteDeRespuesta<>(true,habilidad));
-        juego.realizarAtaque();
 
         PauseTransition animacionAtaque = new PauseTransition(Duration.seconds(1));
         animacionAtaque.setOnFinished(e -> img_pk2.setEffect(null));
@@ -216,19 +213,36 @@ public class BattleMainController {
 
 
     public void handleMochilaBtn(MouseEvent mouseEvent) throws IOException {
-        juegoController.cambiarAEscenaMochila(mouseEvent);
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/mochila.fxml"));
+        Parent root = loader.load();
+        MochilaController controller = loader.getController();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        controller.init(juego.getJugadorActual().getItems(),stage,this);
+        stage.show();
+        this.stage.close();
     }
 
     public void handlePokemonBtn(MouseEvent mouseEvent) throws IOException{
-        juegoController.cambiarAEscenaSeleccionPokemon(mouseEvent);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/seleccionPokemon.fxml"));
+        Parent root = loader.load();
+        SeleccionPokemonController controller = loader.getController();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        controller.init(juego.getJugadorActual().getPokemones(),stage,this);
+        stage.show();
+        this.stage.close();
     }
 
     public void handleHuirBtn(MouseEvent mouseEvent) {
-        juegoController.cambiarAEscenaHuir(mouseEvent);
+        //TODO: BOTON PARA RENDIRSE
     }
 
-
+    public void show() {
+        this.stage.show();
+    }
 
     public void setJuegoController(JuegoController juegoController) {
         this.juegoController = juegoController;

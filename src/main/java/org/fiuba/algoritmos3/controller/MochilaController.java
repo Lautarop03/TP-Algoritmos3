@@ -46,6 +46,8 @@ public class MochilaController {
     public ImageView imagenItem;
 
     private List<Item> items;
+    private Stage stage;
+    private BattleMainController battleMainController;
 
     public void mochilaController(){
     }
@@ -77,7 +79,12 @@ public class MochilaController {
         }
         itemsContainer.setPrefHeight(altura);
 
-        Scene scene =  new Scene(contenedorPrincipal);
+
+        VBox newContenedorPrincipal = new VBox();
+        newContenedorPrincipal.getChildren().addAll(contenedorPrincipal.getChildren());
+        newContenedorPrincipal.setPrefSize(contenedorPrincipal.getPrefWidth(), contenedorPrincipal.getPrefHeight());
+
+        Scene scene = new Scene(newContenedorPrincipal);
         stage.setScene(scene);
         stage.show();
     }
@@ -169,13 +176,21 @@ public class MochilaController {
     }
 
     public void volverBtn() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
-        Stage stage = (Stage)((Node) itemsContainer).getScene().getWindow();
-        Scene scene =  new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        System.out.println("Volver a pantalla principal");
-
+//        Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
+//        Stage stage = (Stage)((Node) itemsContainer).getScene().getWindow();
+//        Scene scene =  new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+//        System.out.println("Volver a pantalla principal");
+           battleMainController.show();
+           this.stage.close();
     }
-
+    public void show() {
+        this.stage.show();
+    }
+    public void init(List<Item> items, Stage stage, BattleMainController battleMainController) throws IOException {
+        setItems(items,stage);
+        this.stage = stage;
+        this.battleMainController = battleMainController;
+    }
 }
