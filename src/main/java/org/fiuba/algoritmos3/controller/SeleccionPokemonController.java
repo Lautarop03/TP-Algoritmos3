@@ -133,13 +133,15 @@ public class SeleccionPokemonController {
 
         @FXML
         void handleMochilaBtn(MouseEvent evento) throws IOException {
-                Parent root = FXMLLoader.load(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
-                Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
-                Scene scene =  new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-                //TODO conoctar con la escena que estaba anterior
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
+                Parent root = loader.load();
 
+                BattleMainController controller = loader.getController();
+                controller.setJuego(SingletonJuego.getInstancia().getJuego());
+
+                Stage stage = (Stage)((Node) evento.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.show();
         }
         public void setJuegoController(JuegoController juegoController) {
             this.juegoController = juegoController;

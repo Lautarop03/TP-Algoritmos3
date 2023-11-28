@@ -16,9 +16,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.fiuba.algoritmos3.model.items.Hiperpocion;
 import org.fiuba.algoritmos3.model.items.Item;
-import org.fiuba.algoritmos3.model.items.ItemRestauradorDeVida;
 
 import java.io.IOException;
 import java.util.Collections;
