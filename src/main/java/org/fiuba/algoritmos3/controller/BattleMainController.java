@@ -1,7 +1,6 @@
 package org.fiuba.algoritmos3.controller;
 
-import javafx.animation.Animation;
-import javafx.animation.AnimationTimer;
+import javafx.animation.PathTransition;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
@@ -28,8 +28,6 @@ import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executors;
 
 public class BattleMainController {
 
@@ -85,6 +83,10 @@ public class BattleMainController {
     private GridPane habilidadesContainer;
     @FXML
     private GridPane descripcionHabilidadesContainer;
+    @FXML
+    private VBox vboxDerecho;
+    @FXML
+    private VBox vboxIzquierdo;
 
     private Juego juego;
 
@@ -198,13 +200,21 @@ public class BattleMainController {
 
         animacionAtaque.setOnFinished((finalizado) -> {
             img_pk2.setEffect(null);
-            tipoLabel.fireEvent(new CambioTurnoEvent());
-            try {
-                setJuego(juego);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            botonesContainer.setDisable(false);
+
+            PathTransition transitionDer = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2, vboxDerecho.getHeight()/2, 500);
+            PathTransition transitionIzq = animacionCambioDeTurno(vboxIzquierdo, vboxIzquierdo.getWidth()/2, vboxIzquierdo.getHeight()/2, -500);
+            transitionDer.play();
+            transitionIzq.play();
+
+            transitionIzq.setOnFinished((finalizado2) -> {
+                cambiarDeTurno();
+                botonesContainer.setDisable(false);
+
+                PathTransition transitionDerFin = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2 + 500, vboxDerecho.getHeight()/2, 150);
+                PathTransition transitionIzqFin = animacionCambioDeTurno(vboxIzquierdo, vboxIzquierdo.getWidth()/2 - 500, vboxIzquierdo.getHeight()/2, 150);
+                transitionDerFin.play();
+                transitionIzqFin.play();
+            });
         });
 
         MotionBlur motionBlur = new MotionBlur();
@@ -229,6 +239,28 @@ public class BattleMainController {
         }
 
         toggleMenuHabilidades();
+    }
+
+    private void cambiarDeTurno() {
+        tipoLabel.fireEvent(new CambioTurnoEvent());
+        try {
+            setJuego(juego);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private PathTransition animacionCambioDeTurno(VBox vbox, double posInicial, double posFinal, double destino) {
+        Path pathDerecho = new Path();
+        pathDerecho.getElements().add(new MoveTo(posInicial, posFinal));
+        pathDerecho.getElements().add(new HLineTo(destino));
+
+        PathTransition transicion = new PathTransition();
+        transicion.setNode(vbox);
+        transicion.setDuration(Duration.seconds(1));
+        transicion.setPath(pathDerecho);
+        transicion.setCycleCount(1);
+        return transicion;
     }
 
     public void hoverHabilidad(MouseEvent mouseEvent) {
