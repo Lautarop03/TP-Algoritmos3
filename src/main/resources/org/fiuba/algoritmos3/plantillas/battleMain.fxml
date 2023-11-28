@@ -98,9 +98,9 @@
          <children>
             <Pane prefHeight="92.0" prefWidth="385.0" style="-fx-padding: 10; -fx-background-color: white;">
                <children>
-                  <StackPane alignment="TOP_LEFT" layoutX="-1.0" layoutY="1.0" prefHeight="92.0" prefWidth="385.0">
+                  <StackPane alignment="TOP_LEFT" layoutX="-1.0" layoutY="1.0" prefHeight="92.0" prefWidth="350.0">
                      <children>
-                        <GridPane fx:id="habilidadesContainer" alignment="CENTER" prefHeight="92.0" prefWidth="349.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 5;" visible="false">
+                        <GridPane fx:id="habilidadesContainer" alignment="CENTER" prefHeight="92.0" prefWidth="349.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 5;" stylesheets="@../styles.css" visible="false">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -110,10 +110,10 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label fx:id="habilidadLabel0" alignment="CENTER_RIGHT" onMouseEntered="#hoverHabilidad" text="Habilidad 1" onMouseClicked="#handleHabilidadLabelClick" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                              <Label fx:id="habilidadLabel1" onMouseEntered="#hoverHabilidad" text="Habilidad 2" GridPane.columnIndex="1" onMouseClicked="#handleHabilidadLabelClick" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                              <Label fx:id="habilidadLabel2" alignment="CENTER_RIGHT" layoutX="15.0" layoutY="27.0" onMouseEntered="#hoverHabilidad" onMouseClicked="#handleHabilidadLabelClick" text="Habilidad 3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                              <Label fx:id="habilidadLabel3" layoutX="185.0" layoutY="27.0" onMouseEntered="#hoverHabilidad" text="Habilidad 4" onMouseClicked="#handleHabilidadLabelClick" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                              <Label fx:id="habilidadLabel0" alignment="CENTER_RIGHT" onMouseClicked="#handleHabilidadLabelClick" onMouseEntered="#hoverHabilidad" text="Habilidad 1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                              <Label fx:id="habilidadLabel1" onMouseClicked="#handleHabilidadLabelClick" onMouseEntered="#hoverHabilidad" text="Habilidad 2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                              <Label fx:id="habilidadLabel2" alignment="CENTER_RIGHT" layoutX="15.0" layoutY="27.0" onMouseClicked="#handleHabilidadLabelClick" onMouseEntered="#hoverHabilidad" text="Habilidad 3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                              <Label fx:id="habilidadLabel3" layoutX="185.0" layoutY="27.0" onMouseClicked="#handleHabilidadLabelClick" onMouseEntered="#hoverHabilidad" text="Habilidad 4" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                            </children>
                         </GridPane>
                         <Label fx:id="consola" ellipsisString="..fdh" prefHeight="92.0" prefWidth="389.0" style="-fx-border-color: Black; -fx-border-radius: 2; -fx-border-width: 5;" text="Lorem ipsum dolor sit amet consectetur adipiscing elit fermentum parturient ultrices enim" wrapText="true">
@@ -128,9 +128,9 @@
                   </StackPane>
                </children>
             </Pane>
-            <StackPane prefHeight="92.0" prefWidth="227.0">
+            <StackPane prefHeight="92.0" prefWidth="292.0">
                <children>
-                  <GridPane fx:id="botonesContainer" alignment="CENTER" prefHeight="92.0" prefWidth="261.0" style="-fx-border-color: black; -fx-border-radius: 1; -fx-border-width: 3;">
+                  <GridPane fx:id="botonesContainer" alignment="CENTER" prefHeight="92.0" prefWidth="261.0" style="-fx-border-color: black; -fx-border-radius: 1; -fx-border-width: 3;" stylesheets="@../styles.css">
                      <columnConstraints>
                         <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -165,7 +165,7 @@
                         </Button>
                      </children>
                   </GridPane>
-                  <GridPane fx:id="descripcionHabilidadesContainer" style="-fx-border-color: black; -fx-border-width: 5; -fx-border-radius: 5;" visible="false">
+                  <GridPane fx:id="descripcionHabilidadesContainer" style="-fx-border-color: black; -fx-border-width: 5; -fx-border-radius: 5;" stylesheets="@../styles.css" visible="false">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
