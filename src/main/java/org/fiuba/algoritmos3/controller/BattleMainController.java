@@ -240,8 +240,9 @@ public class BattleMainController {
         //TODO: BOTON PARA RENDIRSE
     }
 
-    public void show() {
+    public void show() throws IOException {
         this.stage.show();
+        setJuego(SingletonJuego.getInstancia().getJuego());
     }
 
     public void setJuegoController(JuegoController juegoController) {
