@@ -43,8 +43,6 @@ public class SeleccionPokemonController {
 
         @FXML
         private Label vida_actual;
-
-
         public JuegoController juegoController;
         private ArrayList<Pokemon> pokemones;
         private Pokemon pokemonActual;
@@ -52,7 +50,7 @@ public class SeleccionPokemonController {
         public VBox contenedorPrincipal;
 
         public HBox seleccionPokemon;
-
+        public HBox contenedorConfirmacion;
         public VBox pokemonConteiner;
         public Label descripcionPokemon;
         private BattleMainController battleMainController;
@@ -64,6 +62,7 @@ public class SeleccionPokemonController {
         public void setPokemones(ArrayList<Pokemon> pokemones, Stage stage, Pokemon pokemonActual) {
                 this.pokemones = pokemones;
                 this.pokemonActual = pokemonActual;
+                this.contenedorConfirmacion.setVisible(false);
                 for (Integer i = 0; i <pokemones.size(); i++) {
                         if (pokemones.get(i) != pokemonActual) {
                                 Pokemon pokemon = pokemones.get(i);
@@ -187,16 +186,15 @@ public class SeleccionPokemonController {
         public void hoverPokemon(MouseEvent mouseEvent, Integer id){
                 Pokemon pokemon = pokemones.get(id);
                 descripcionPokemon.setText(" Vas a seleccionar a "+ pokemon.getNombre());
-                descripcionPokemon.setStyle(" -fx-font-family: 'Arial'; -fx-font-size: 25; " +
-                        "-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 5");
-
+                descripcionPokemon.setStyle(" -fx-font-family: 'Arial'; -fx-font-size: 25; ");
         }
 
         public void clickPokemon(MouseEvent mouseEvent, Pokemon pokemon){
 
                 Stage stage = (Stage) contenedorPrincipal.getScene().getWindow();
+                this.contenedorConfirmacion.setVisible(true);
 
-                Alert.AlertType tipo = Alert.AlertType.CONFIRMATION;
+                /*Alert.AlertType tipo = Alert.AlertType.CONFIRMATION;
                 Alert alerta = new Alert(tipo, "");
 
                 alerta.initModality(Modality.APPLICATION_MODAL);
@@ -208,11 +206,23 @@ public class SeleccionPokemonController {
                 Optional<ButtonType> resultado = alerta.showAndWait();
                 if (resultado.get() == ButtonType.OK) {
                         System.out.println("Se seleccionó al Pokemon " + pokemon.getNombre());
+
                 }
                 else  if (resultado.get() == ButtonType.CANCEL) {
                         System.out.println("No se selecciono ningun Pokemon");
-                }
+                }*/
         }
+
+        public void confirmarBtn() throws IOException {
+                this.contenedorConfirmacion.setVisible(false);
+                this.battleMainController.show();
+                this.stage.close();
+                //System.out.println("Se seleccionó al Pokemon " + pokemon.getNombre());
+        }
+        public void cancelarBtn(){
+                this.contenedorConfirmacion.setVisible(false);
+        }
+
 
         public void init(List<Pokemon> pokemones, Stage stage, BattleMainController battleMainController) {
                 setPokemones((ArrayList<Pokemon>) pokemones,stage,pokemones.get(0));

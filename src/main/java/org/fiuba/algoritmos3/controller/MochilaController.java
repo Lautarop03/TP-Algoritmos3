@@ -168,10 +168,12 @@ public class MochilaController {
 
     }
 
-    public void confirmarBtn(){
+    public void confirmarBtn() throws IOException {
         confirmacionContainer.setVisible(false);
         descripcionContainer.setVisible(true);
         itemsContainer.setVisible(true);
+        battleMainController.show();
+        this.stage.close();
         System.out.println("Se seleccionó el item, cambiar pantalla");
     }
 
