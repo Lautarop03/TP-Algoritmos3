@@ -97,6 +97,12 @@ public class JuegoController implements EventHandler<CambioTurnoEvent> {
         Scene scene =  new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/seleccionPokemon.fxml"));
+        VBox root2 = loader.load();
+        SeleccionPokemonController seleccionPokemonController = loader.getController();
+        seleccionPokemonController.setPokemones(juego.getJugadorActual().getPokemones(), stage,juego.getJugadorActual().getPokemonActual());
+        seleccionPokemonController.setJuegoController(this);
     }
 
     public void cambiarAEscenaHuir(MouseEvent mouseEvent) {
