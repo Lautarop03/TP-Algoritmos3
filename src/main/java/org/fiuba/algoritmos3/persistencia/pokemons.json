@@ -108,7 +108,7 @@
     "habilidades": [1,2,3,4]
   },
   {
-    "nombre": "Rayquaza",
+    "nombre": "Golem",
     "id": 10,
     "nivel": 50,
     "tipo": "Dragon",
@@ -120,10 +120,10 @@
     "habilidades": [1,2,3,4]
   },
   {
-    "nombre": "Sceptile",
+    "nombre": "Charmander",
     "id": 11,
     "nivel": 50,
-    "tipo": "Planta",
+    "tipo": "Fuego",
     "historia": "asd",
     "vidaMaxima": 70,
     "velocidad": 120,
@@ -132,7 +132,7 @@
     "habilidades": [1,2,3,4]
   },
   {
-    "nombre": "Lanturn",
+    "nombre": "Eevee",
     "id": 12,
     "nivel": 50,
     "tipo": "Agua",
