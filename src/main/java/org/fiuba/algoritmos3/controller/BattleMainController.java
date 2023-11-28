@@ -175,7 +175,6 @@ public class BattleMainController {
     }
 
     public void hoverHabilidad(MouseEvent mouseEvent) {
-        System.out.println(mouseEvent.getSource());
         Label label = (Label) mouseEvent.getSource();
         Integer idHabilidad = Integer.parseInt(label.getId().replace("habilidadLabel", ""));
 
