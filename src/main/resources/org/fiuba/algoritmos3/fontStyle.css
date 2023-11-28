@@ -1,0 +1,17 @@
+@font-face {
+    src: url('fonts/pokemon-emerald.otf');
+}
+
+.label {
+    -fx-font-family: "Pokemon Emerald";
+}
+
+/*.text{
+    -fx-font-family: "Pokemon Emerald";
+    -fx-text-fill: black;
+    -fx-stroke-width: 1;
+}*/
+
+.button .text {
+    -fx-font-family: "Pokemon Emerald";
+}

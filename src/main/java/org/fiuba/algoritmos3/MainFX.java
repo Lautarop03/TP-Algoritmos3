@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.controller.JuegoController;
 import org.fiuba.algoritmos3.controller.SingletonJuego;
@@ -13,6 +14,7 @@ import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.persistencia.JsonLectura;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +26,7 @@ public class MainFX extends Application {
         List<Jugador> jugadores = jsonLectura.inicializarPartida();
         Juego juego = new Juego(jugadores);
         SingletonJuego.getInstancia().setJuego(juego);
+        Font.loadFont(getClass().getResourceAsStream("/org/fiuba/algoritmos3/fonts/pokemon-emerald.otf"),14);
         JuegoController juegoController = new JuegoController();
         juegoController.setStage(stage);
         juegoController.setJuego(juego);

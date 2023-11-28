@@ -13,24 +13,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="contenedorPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.MochilaController"> <!--style="-fx-background-image: url('file:D:\Fiuba\ALGO3\TP1\TP-Algoritmos3\src\main\java\resources\imagenes\background\MochilaFondo.png');"-->
-   <style>
-      .scroll-pane{
-      -fx-background-color:transparent;
-      }
-      .scroll-pane > .viewport {
-         -fx-background-color: transparent;
-      }
-      .scroll-pane .viewport {
-      -fx-background-color: transparent;
-      }
-   </style>
+<VBox fx:id="contenedorPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" stylesheets="@../fontStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.MochilaController">
    <children>
       <HBox fx:id="fondoMochila" alignment="TOP_RIGHT" prefHeight="419.0" prefWidth="600.0">
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#volverBtn" prefHeight="39.0" prefWidth="192.0" styleClass="btnSalir" stylesheets="@../mochila.css" text="Volver al campo" />
+                  <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#volverBtn" prefHeight="39.0" prefWidth="192.0" styleClass="btnSalir" stylesheets="@../mochila.css" text="Volver al campo">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Button>
                </children>
             </Pane>
             <Pane prefHeight="322.0" prefWidth="391.0">
@@ -66,31 +58,18 @@
                <children>
                   <ImageView fx:id="imagenItem" fitHeight="89.0" fitWidth="97.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../items/Hiperpocion.png" />
+                        <Image url="@../items/HiperPocion.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
             <StackPane prefHeight="118.0" prefWidth="473.0">
                <children>
-                  <Pane fx:id="descripcionContainer" prefHeight="128.0" prefWidth="476.0">
-                     <children>
-                        <Label fx:id="descripcionLabel" layoutX="-1.0" layoutY="5.0" prefHeight="118.0" prefWidth="467.0" styleClass="parrafo" text="Descripcion" wrapText="true">
-                           <font>
-                              <Font name="Monospaced Regular" size="17.0" />
-                           </font>
-                           <stylesheets>
-                              <URL value="@../styles.css" />
-                              <URL value="@../mochila.css" />
-                           </stylesheets>
-                        </Label>
-                     </children>
-                  </Pane>
                   <VBox fx:id="confirmacionContainer" prefHeight="200.0" prefWidth="100.0" visible="false">
                      <children>
                         <Label prefHeight="133.0" prefWidth="578.0" styleClass="parrafo" stylesheets="@../mochila.css" text="Desea usar el item?">
                            <font>
-                              <Font name="Monospaced Regular" size="17.0" />
+                              <Font name="Monospaced Regular" size="24.0" />
                            </font>
                         </Label>
                         <HBox prefHeight="63.0" prefWidth="467.0">
@@ -109,6 +88,19 @@
                         </HBox>
                      </children>
                   </VBox>
+                  <Pane fx:id="descripcionContainer" prefHeight="128.0" prefWidth="476.0">
+                     <children>
+                        <Label fx:id="descripcionLabel" layoutX="-1.0" layoutY="5.0" prefHeight="118.0" prefWidth="467.0" styleClass="parrafo" text="Descripcion" wrapText="true">
+                           <font>
+                              <Font name="Monospaced Regular" size="24.0" />
+                           </font>
+                           <stylesheets>
+                              <URL value="@../styles.css" />
+                              <URL value="@../mochila.css" />
+                           </stylesheets>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </StackPane>
          </children>

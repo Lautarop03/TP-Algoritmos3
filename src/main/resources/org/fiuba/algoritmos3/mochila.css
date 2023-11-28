@@ -14,6 +14,11 @@
     -fx-background-color: transparent;
     -fx-border-color: transparent;
 }
+.parrafo{
+    -fx-font-family: "Pokemon Emerald";
+    -fx-font-size: 28px;
+    -fx-text-fill: white;
+}
 
 
 
@@ -25,9 +30,9 @@
 
 
 .btnSalir.button{
-    -fx-font-family: "Monospaced";
+    -fx-font-family: "Pokemon Emerald";
     -fx-background-color: transparent;
-    -fx-font-size: 16px;
+    -fx-font-size: 22px;
     -fx-background-radius: 5;
     -fx-border-radius: 5;
 }
@@ -38,14 +43,14 @@
 }
 .btnSalir.button:pressed{
     -fx-border-width: 5;
-    -fx-font-size: 13px;
+    -fx-font-size: 18px;
 
 }
 
 .btnInferior.button{
-    -fx-font-family: "Monospaced";
+    -fx-font-family: "Pokemon Emerald";
     -fx-background-color: #73D6BE;
-    -fx-font-size: 16px;
+    -fx-font-size: 24px;
     -fx-border-radius: 2;
     -fx-border-width: 2;
     -fx-border-color: black;
@@ -59,7 +64,7 @@
 
 .btnInferior.button:pressed {
     -fx-border-width: 5;
-    -fx-font-size: 12px;
+    -fx-font-size: 21px;
 }
 
 .hileraItem {
@@ -67,8 +72,8 @@
 }
 
 .hileraItem .label {
-    -fx-font-family: "Verdana";
-    -fx-font-size: 14px;
+    -fx-font-family: "Pokemon Emerald";
+    -fx-font-size: 20px;
 }
 
 .hileraItem:hover {
@@ -77,12 +82,12 @@
 .hileraItem:hover .label {
     /*-fx-background-color: #d0b050;*/
     -fx-font-weight: bold;
-    -fx-font-family: "Verdana";
-    -fx-font-size: 14px;
+    -fx-font-family: "Pokemon Emerald";
+    -fx-font-size: 20px;
 }
 .hileraItem:hover .button {
     /*-fx-background-color: #d0b050;*/
     -fx-font-weight: bold;
-    -fx-font-family: "Verdana";
-    -fx-font-size: 14px;
+    -fx-font-family: "Pokemon Emerald";
+    -fx-font-size: 20px;
 }

@@ -1,44 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.BattleMainController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" stylesheets="@../fontStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.BattleMainController">
    <children>
-      <HBox id="batalla" fx:id="fondoBattleMain" prefHeight="364.0" prefWidth="600.0" style="-fx-background-image: url('background/battlebgroute.jpg'); -fx-background-repeat: no-repeat; -fx-background-size: cover; ">
+      <HBox id="batalla" fx:id="fondoBattleMain" prefHeight="364.0" prefWidth="600.0" style="-fx-background-repeat: no-repeat; -fx-background-size: cover;">
          <children>
             <VBox alignment="BOTTOM_CENTER" prefHeight="358.0" prefWidth="325.0">
                <children>
                   <Pane prefHeight="225.0" prefWidth="305.0">
                      <children>
-                        <Pane layoutX="33.0" layoutY="53.0" prefHeight="85.0" prefWidth="267.0" style="-fx-background-color: linear-gradient(to top,  e2eccd,  e3f5ea); -fx-border-color: grey; -fx-border-width: 2;">
+                        <Pane layoutX="33.0" layoutY="53.0" prefHeight="85.0" prefWidth="267.0" styleClass="datos" stylesheets="@../battleMain.css">
                            <children>
-                              <Label fx:id="nombre_actual_pk2" layoutX="14.0" layoutY="7.0" prefHeight="21.0" prefWidth="97.0" text="Nombre">
+                              <Label fx:id="nombre_actual_pk2" layoutX="14.0" layoutY="7.0" prefHeight="25.0" prefWidth="177.0" stylesheets="@../fontStyle.css" text="Nombre">
                                  <font>
-                                    <Font size="15.0" />
+                                    <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Pane layoutX="51.0" layoutY="38.0" prefHeight="15.0" prefWidth="210.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
+                              <Pane layoutX="84.0" layoutY="38.0" prefHeight="15.0" prefWidth="177.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
                                  <children>
-                                    <ProgressBar fx:id="barra_vida_pk2" layoutX="29.0" layoutY="2.0" prefHeight="11.0" prefWidth="177.0" progress="1.0" style="-fx-accent: #00FF00;" stylesheets="@../progressBar.css" />
-                                    <Label layoutX="5.0" layoutY="-1.0" prefHeight="18.0" prefWidth="28.0" text="PS" textFill="#deff08">
+                                    <ProgressBar fx:id="barra_vida_pk2" layoutX="29.0" layoutY="2.0" prefHeight="11.0" prefWidth="145.0" progress="1.0" style="-fx-accent: #00FF00;" stylesheets="@../progressBar.css" />
+                                    <Label layoutX="6.0" layoutY="-4.0" prefHeight="18.0" prefWidth="28.0" text="PS" textFill="#deff08">
                                        <font>
-                                          <Font name="System Bold" size="13.0" />
+                                          <Font name="System Bold" size="22.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </Pane>
-                              <Label fx:id="nivel_actual_pk2" layoutX="144.0" layoutY="7.0" prefHeight="21.0" prefWidth="71.0" text="Nivel 50">
+                              <Label fx:id="nivel_actual_pk2" layoutX="205.0" layoutY="7.0" prefHeight="25.0" prefWidth="56.0" text="Nv: 50">
                                  <font>
-                                    <Font name="System Bold" size="15.0" />
+                                    <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="vida_actual_max_pk2" layoutX="193.0" layoutY="63.0" prefHeight="17.0" prefWidth="96.0" text="Vida/vidaMax">
+                              <Label fx:id="vida_actual_max_pk2" layoutX="167.0" layoutY="53.0" prefHeight="17.0" prefWidth="96.0" text="Vida/vidaMax">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
                            </children>
@@ -60,31 +70,31 @@
                   </ImageView>
                   <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="175.0" prefWidth="295.0">
                      <children>
-                        <Pane layoutY="45.0" prefHeight="85.0" prefWidth="267.0" style="-fx-background-color: linear-gradient(to top,  e2eccd,  e3f5ea); -fx-border-color: gray; -fx-border-width: 2;">
+                        <Pane layoutY="45.0" prefHeight="85.0" prefWidth="267.0" styleClass="datos" stylesheets="@../battleMain.css">
                            <children>
-                              <Label fx:id="nombre_actual_pk1" layoutX="14.0" layoutY="7.0" prefHeight="21.0" prefWidth="97.0" text="Nombre">
+                              <Label fx:id="nombre_actual_pk1" layoutX="14.0" layoutY="7.0" prefHeight="25.0" prefWidth="168.0" text="Nombre">
                                  <font>
-                                    <Font size="15.0" />
+                                    <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Pane layoutX="51.0" layoutY="38.0" prefHeight="15.0" prefWidth="210.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
+                              <Pane layoutX="84.0" layoutY="38.0" prefHeight="15.0" prefWidth="177.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
                                  <children>
-                                    <ProgressBar fx:id="barra_vida_pk1" layoutX="29.0" layoutY="2.0" prefHeight="11.0" prefWidth="177.0" progress="1.0" style="-fx-accent: #00FF00;" stylesheets="@../progressBar.css" />
-                                    <Label layoutX="5.0" layoutY="-1.0" prefHeight="18.0" prefWidth="28.0" text="PS" textFill="#deff08">
+                                    <ProgressBar fx:id="barra_vida_pk1" layoutX="29.0" layoutY="2.0" prefHeight="11.0" prefWidth="145.0" progress="1.0" style="-fx-accent: #00FF00;" stylesheets="@../progressBar.css" />
+                                    <Label layoutX="6.0" layoutY="-4.0" prefHeight="18.0" prefWidth="28.0" text="PS" textFill="#deff08">
                                        <font>
-                                          <Font name="System Bold" size="13.0" />
+                                          <Font name="System Bold" size="22.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </Pane>
-                              <Label fx:id="nivel_actual_pk1" layoutX="144.0" layoutY="7.0" prefHeight="21.0" prefWidth="71.0" text="Nivel 50">
+                              <Label fx:id="nivel_actual_pk1" layoutX="205.0" layoutY="7.0" prefHeight="25.0" prefWidth="56.0" text="Nv: 50">
                                  <font>
-                                    <Font name="System Bold" size="15.0" />
+                                    <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="vida_actual_max_pk1" layoutX="194.0" layoutY="63.0" prefHeight="17.0" prefWidth="91.0" text="Vida/vidaMax">
+                              <Label fx:id="vida_actual_max_pk1" layoutX="167.0" layoutY="53.0" prefHeight="17.0" prefWidth="91.0" text="Vida/vidaMax">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
                            </children>
@@ -94,13 +104,13 @@
             </VBox>
          </children>
       </HBox>
-      <HBox fx:id="contenedorInferior" alignment="TOP_RIGHT" prefHeight="97.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to top,  e2eccd,  e3f5ea);">
+      <HBox fx:id="contenedorInferior" prefHeight="148.0" prefWidth="600.0" styleClass="FondoInferior" stylesheets="@../battleMain.css">
          <children>
-            <Pane prefHeight="92.0" prefWidth="385.0" style="-fx-padding: 0; -fx-background-color: white;">
+            <Pane prefHeight="107.0" prefWidth="350.0" styleClass="ParrafoFondo" stylesheets="@../battleMain.css">
                <children>
-                  <StackPane alignment="TOP_LEFT" prefHeight="92.0" prefWidth="350.0">
+                  <StackPane alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="107.0" prefWidth="343.0">
                      <children>
-                        <GridPane fx:id="habilidadesContainer" alignment="CENTER" prefHeight="92.0" prefWidth="349.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 3;" stylesheets="@../styles.css" visible="false">
+                        <GridPane fx:id="habilidadesContainer" alignment="CENTER" prefHeight="107.0" prefWidth="253.0" styleClass="GrillaHabilidades" visible="false">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -115,10 +125,14 @@
                               <Label fx:id="habilidadLabel2" alignment="CENTER_RIGHT" layoutX="15.0" layoutY="27.0" onMouseClicked="#handleHabilidadLabelClick" onMouseEntered="#hoverHabilidad" text="Habilidad 3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                               <Label fx:id="habilidadLabel3" layoutX="185.0" layoutY="27.0" onMouseClicked="#handleHabilidadLabelClick" onMouseEntered="#hoverHabilidad" text="Habilidad 4" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                            </children>
+                           <stylesheets>
+                              <URL value="@../styles.css" />
+                              <URL value="@../battleMain.css" />
+                           </stylesheets>
                         </GridPane>
-                        <Label fx:id="consola" ellipsisString="..fdh" prefHeight="97.0" prefWidth="389.0" style="-fx-border-color: Black; -fx-border-radius: 2; -fx-border-width: 3;" text="Lorem ipsum dolor sit amet consectetur adipiscing elit fermentum parturient ultrices enim" wrapText="true">
+                        <Label fx:id="consola" contentDisplay="RIGHT" ellipsisString="..fdh" prefHeight="107.0" prefWidth="346.0" styleClass="ParrafoFondo" stylesheets="@../battleMain.css" text="Que vas a hacer?" textFill="WHITE" wrapText="true">
                            <font>
-                              <Font name="Verdana" size="15.0" />
+                              <Font name="Verdana" size="22.0" />
                            </font>
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -128,9 +142,9 @@
                   </StackPane>
                </children>
             </Pane>
-            <StackPane prefHeight="92.0" prefWidth="292.0">
+            <StackPane prefHeight="107.0" prefWidth="254.0">
                <children>
-                  <GridPane fx:id="botonesContainer" alignment="CENTER" prefHeight="92.0" prefWidth="261.0" style="-fx-border-color: black; -fx-border-radius: 1; -fx-border-width: 3;" stylesheets="@../styles.css">
+                  <GridPane fx:id="botonesContainer" alignment="CENTER" prefHeight="107.0" prefWidth="200.0" styleClass="GrillaMenu" stylesheets="@../battleMain.css">
                      <columnConstraints>
                         <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -140,7 +154,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button fx:id="btn_ataque" alignment="CENTER" minWidth="110.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#handleAtaqueBtn" style="-fx-background-color: f9d0ce; -fx-border-color: black; -fx-background-radius: 10; -fx-border-width: 4; -fx-border-radius: 10;" stylesheets="@../styles.css" text="Ataque">
+                        <Button fx:id="btn_ataque" alignment="CENTER" minWidth="110.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#handleAtaqueBtn" styleClass="BotonesMenu" stylesheets="@../battleMain.css" text="Ataque">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
@@ -148,24 +162,24 @@
                               <Insets />
                            </opaqueInsets>
                         </Button>
-                        <Button fx:id="btn_mochila" minWidth="110.0" mnemonicParsing="false" onMouseClicked="#handleMochilaBtn" style="-fx-background-color: eee96d; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" stylesheets="@../styles.css" text="Mochila" GridPane.columnIndex="1">
+                        <Button fx:id="btn_mochila" minWidth="110.0" mnemonicParsing="false" onMouseClicked="#handleMochilaBtn" styleClass="BotonesMenu" stylesheets="@../battleMain.css" text="Mochila" GridPane.columnIndex="1">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_pokemon" minWidth="110.0" mnemonicParsing="false" onMouseClicked="#handlePokemonBtn" style="-fx-background-color: bff4a1; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" stylesheets="@../styles.css" text="Pokemon" GridPane.rowIndex="1">
+                        <Button fx:id="btn_pokemon" minWidth="110.0" mnemonicParsing="false" onMouseClicked="#handlePokemonBtn" styleClass="BotonesMenu" stylesheets="@../battleMain.css" text="Pokemon" GridPane.rowIndex="1">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_huir" minWidth="110.0" mnemonicParsing="false" onMouseClicked="#handleHuirBtn" style="-fx-background-color: cdcdf9; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" stylesheets="@../styles.css" text="Huir" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button fx:id="btn_huir" minWidth="110.0" mnemonicParsing="false" onMouseClicked="#handleHuirBtn" styleClass="BotonesMenu" stylesheets="@../battleMain.css" text="Huir" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Button>
                      </children>
                   </GridPane>
-                  <GridPane fx:id="descripcionHabilidadesContainer" style="-fx-border-color: black; -fx-border-width: 5; -fx-border-radius: 5;" stylesheets="@../styles.css" visible="false">
+                  <GridPane fx:id="descripcionHabilidadesContainer" styleClass="GrillaHabilidadInfo" visible="false">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -177,6 +191,10 @@
                         <Label fx:id="tipoLabel" text="Tipo: Agua" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <Label fx:id="usosRestantesLabel" text="Usos restantes: 3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                      </children>
+                     <stylesheets>
+                        <URL value="@../styles.css" />
+                        <URL value="@../battleMain.css" />
+                     </stylesheets>
                   </GridPane>
                </children>
             </StackPane>
