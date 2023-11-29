@@ -252,17 +252,17 @@ public class BattleMainController extends Controller {
         }
     }
     public int mostrarEstados(List<Estado> estados, Pokemon pokemon, List<Boolean> aplicados) throws InterruptedException {
-        int tiempo= 0;
+        int tiempo= 3;
         if (!estados.isEmpty()){
             for (int iterador = 0; iterador<estados.size(); iterador++){
                 int finalIterador = iterador;
                 Timeline timeline = new Timeline(
-                        new KeyFrame(Duration.seconds(2), e -> {
+                        new KeyFrame(Duration.seconds(tiempo), e -> {
                             consola.setText(viewControlador.mostrarEfectoEstado(estados.get(finalIterador), pokemon, aplicados.get(finalIterador)));
                         })
                 );
                 timeline.play();
-                tiempo +=2000;
+                tiempo +=3;
             }
         }
         return tiempo;
