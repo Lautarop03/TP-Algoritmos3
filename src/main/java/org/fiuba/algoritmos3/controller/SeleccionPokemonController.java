@@ -1,10 +1,8 @@
 package org.fiuba.algoritmos3.controller;
 
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -13,7 +11,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
-import org.fiuba.algoritmos3.controller.Eventos.SeleccionPokemonEvent;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
@@ -21,7 +18,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.CountDownLatch;
 
 public class SeleccionPokemonController extends Controller{
 
@@ -37,7 +33,6 @@ public class SeleccionPokemonController extends Controller{
         private Label nombre_actual;
         @FXML
         private Label vida_actual;
-        public JuegoController juegoController;
         private ArrayList<Pokemon> pokemones;
         private Pokemon pokemonActual;
         public VBox contenedorPrincipal;
@@ -50,9 +45,7 @@ public class SeleccionPokemonController extends Controller{
         private Pokemon pokemon;
         private String accion;
 
-        public void setJuegoController(JuegoController juegoController) {
-            this.juegoController = juegoController;
-        }
+
         public void setPokemones(ArrayList<Pokemon> pokemones, Stage stage, Pokemon pokemonActual) {
                 this.pokemones = pokemones;
                 this.pokemonActual = pokemonActual;
@@ -180,7 +173,7 @@ public class SeleccionPokemonController extends Controller{
 
                         this.contenedorPokemonActual.setOnMouseClicked(new EventHandler<MouseEvent>() {
                                 @Override
-                                public void handle(MouseEvent mouseEvent) { clickPokemon(mouseEvent, pokemon);
+                                public void handle(MouseEvent mouseEvent) { clickPokemon(mouseEvent, pokemonActual);
                                 }
                         });
                 }
@@ -206,7 +199,9 @@ public class SeleccionPokemonController extends Controller{
                 this.contenedorConfirmacion.setVisible(true);
                 this.pokemonConteiner.setVisible(false);
                 this.pokemon = pokemon;
-
+                if (this.accion == "mochila") {
+                        descripcionPokemon.setText("¿Desea aplicar el Item en " + pokemon.getNombre() + "?");
+                }
         }
 
         public void confirmarBtn() throws IOException {
@@ -250,7 +245,6 @@ public class SeleccionPokemonController extends Controller{
                 } else if  (controller.getClass().equals(MochilaController.class)) {
                         this.accion = "mochila";
                 }
-                System.out.println(this.accion);
                 setPokemones((ArrayList<Pokemon>) pokemones,stage,pokemones.get(0));
                 this.stage = stage;
         }
