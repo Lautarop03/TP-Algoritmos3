@@ -317,7 +317,7 @@ public class BattleMainController extends Controller {
 
     public void mostrarGanador(Jugador jugador){
         if (juego.terminado()){
-            this.consola.setText("Felisidades ganaste: " + jugador.getNombre());
+            this.consola.setText("Felicidades ganaste: " + jugador.getNombre());
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
                 Platform.exit();
             }));
