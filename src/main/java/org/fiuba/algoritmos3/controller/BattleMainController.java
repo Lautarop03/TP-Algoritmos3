@@ -433,6 +433,7 @@ public class BattleMainController extends Controller {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
+        controller.setJugadorActual(juego.getJugadorActual());
         controller.init(juego.getJugadorActual().getPokemones(),stage,this);
         stage.show();
         this.stage.close();
@@ -445,7 +446,7 @@ public class BattleMainController extends Controller {
     }
     public void  botonHuirCancelar(MouseEvent mouseEvent) {
         this.contenedorHuir.setVisible(false);
-
+        consola.setText("Qué debería hacer?");
     }
     public void  botonHuirConfirmar(MouseEvent mouseEvent){
         this.contenedorHuir.setVisible(false);

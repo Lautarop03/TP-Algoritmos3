@@ -208,6 +208,7 @@ public class MochilaController extends Controller {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
+        controller.setJugadorActual(juego.getJugadorActual());
         controller.init(juego.getJugadorActual().getPokemones(),stage,this);
         this.stage.close();
         stage.showAndWait();
