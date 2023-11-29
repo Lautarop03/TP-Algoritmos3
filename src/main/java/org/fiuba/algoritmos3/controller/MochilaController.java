@@ -181,6 +181,7 @@ public class MochilaController extends Controller {
                 descripcionContainer.setVisible(false);
                 itemsContainer.setDisable(true);
                 botonVolver.setDisable(true);
+                SingletonJuego.getInstancia().getJuegoController().handle(new CambioTurnoEvent());
             } else {
                 descripcionLabel.setText("El item no se pudo aplicar, elija otro pokemon u objeto.");
             }

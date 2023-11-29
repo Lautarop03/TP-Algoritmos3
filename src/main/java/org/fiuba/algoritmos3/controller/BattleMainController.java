@@ -297,16 +297,7 @@ public class BattleMainController extends Controller {
             transitionIzqFin.play();
         });
     }
-
-    private void lanzarEventocambiarDeTurno() {
-        tipoLabel.fireEvent(new CambioTurnoEvent());
-        try {
-            setJuego(juego);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
+    
     private PathTransition animacionCambioDeTurno(VBox vbox, double posInicial, double posFinal, double destino) {
         Path pathDerecho = new Path();
         pathDerecho.getElements().add(new MoveTo(posInicial, posFinal));
@@ -318,6 +309,15 @@ public class BattleMainController extends Controller {
         transicion.setPath(pathDerecho);
         transicion.setCycleCount(1);
         return transicion;
+    }
+
+    private void lanzarEventocambiarDeTurno() {
+        tipoLabel.fireEvent(new CambioTurnoEvent());
+        try {
+            setJuego(juego);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void hoverHabilidad(MouseEvent mouseEvent) {

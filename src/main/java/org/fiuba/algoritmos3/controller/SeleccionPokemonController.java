@@ -228,14 +228,14 @@ public class SeleccionPokemonController extends Controller {
 
         public void confirmarBtn() throws IOException {
                 this.contenedorConfirmacion.setVisible(false);
-                this.controller.show();
-                this.stage.close();
                 if (Objects.equals(accion, "main")) {
                         cambiarPokemon(pokemon);
                         handleMochilaBtn(null);
-                        stage.fireEvent(new CambioTurnoEvent());
-                        //TODO: Cambiar turno
+                        //stage.fireEvent(new CambioTurnoEvent());
+                        SingletonJuego.getInstancia().getJuegoController().handle(new CambioTurnoEvent());
                 }
+                this.controller.show();
+                this.stage.close();
         }
         public void cancelarBtn(){
                 this.pokemon = null;

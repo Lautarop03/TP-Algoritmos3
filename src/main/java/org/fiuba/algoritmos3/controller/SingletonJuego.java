@@ -7,6 +7,7 @@ import java.io.IOException;
 public class SingletonJuego {
     private static SingletonJuego instancia = null;
     private Juego juego;
+    private JuegoController juegoController;
     private SingletonJuego() {}
     public static SingletonJuego getInstancia() throws IOException {
         if (instancia == null) {
@@ -19,5 +20,13 @@ public class SingletonJuego {
     }
     public Juego getJuego() {
         return juego;
+    }
+
+    public JuegoController getJuegoController() {
+        return juegoController;
+    }
+
+    public void setJuegoController(JuegoController juegoController) {
+        this.juegoController = juegoController;
     }
 }

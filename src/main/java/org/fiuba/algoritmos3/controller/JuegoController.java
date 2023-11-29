@@ -31,6 +31,7 @@ public class JuegoController implements EventHandler<CambioTurnoEvent> {
         stage.show();
         root.addEventHandler(CambioTurnoEvent.CAMBIO_TURNO_EVENT, this);
         BattleMainController battleController = loader.getController();
+        SingletonJuego.getInstancia().setJuegoController(this);
         battleController.setJuego(juego);
         battleController.setStage(stage);
         this.battleController = battleController;
