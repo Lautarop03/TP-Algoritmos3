@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" stylesheets="@../fontStyle.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.BattleMainController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" stylesheets="@../fontStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.BattleMainController">
    <children>
       <HBox id="batalla" fx:id="fondoBattleMain" prefHeight="364.0" prefWidth="600.0" style="-fx-background-repeat: no-repeat; -fx-background-size: cover;">
          <children>
@@ -266,6 +266,24 @@
                <children>
                   <StackPane alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="107.0" prefWidth="343.0">
                      <children>
+                        <Pane fx:id="contenedorHuir" prefHeight="69.0" prefWidth="343.0" >
+                           <children>
+                              <HBox layoutX="104.0" layoutY="68.0" prefHeight="32.0" prefWidth="238.0">
+                                 <children>
+                                    <Button fx:id="huirCancelar" mnemonicParsing="false" onMouseClicked="#botonHuirCancelar"  prefHeight="59.0" prefWidth="119.0" stylesheets="@../battleMain.css" text="No">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="huirConfirmar" mnemonicParsing="false" onMouseClicked="#botonHuirConfirmar" prefHeight="58.0" prefWidth="119.0" stylesheets="@../battleMain.css" text="Si">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </Pane>
                         <GridPane fx:id="habilidadesContainer" alignment="CENTER" prefHeight="107.0" prefWidth="253.0" styleClass="GrillaHabilidades" visible="false">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
