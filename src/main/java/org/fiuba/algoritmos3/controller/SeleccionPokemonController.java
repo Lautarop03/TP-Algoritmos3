@@ -38,6 +38,7 @@ public class SeleccionPokemonController extends Controller {
         @FXML private Label estadoActual2;
         @FXML private Label estadoActual3;
         @FXML private Button salirSeleccionPokemon;
+        @FXML private Label nombreJugador;
         private ArrayList<Pokemon> pokemones;
         private Pokemon pokemonActual;
         public VBox contenedorPrincipal;
@@ -54,6 +55,7 @@ public class SeleccionPokemonController extends Controller {
 
 
         public void setPokemones(ArrayList<Pokemon> pokemones, Stage stage, Pokemon pokemonActual) {
+                nombreJugador.setText("Jugador " + jugadorActual.getNombre() + " seleccione un nuevo pokemon");
                 this.pokemones = pokemones;
                 this.pokemonActual = pokemonActual;
                 this.contenedorConfirmacion.setVisible(false);
