@@ -111,6 +111,7 @@ public class BattleMainController extends Controller {
     @FXML private Label estadoEnemigo1;
     @FXML private Label estadoEnemigo2;
     @FXML private Label estadoEnemigo3;
+    @FXML private Pane contenedorHuir;
 
 
     private Juego juego;
@@ -127,6 +128,7 @@ public class BattleMainController extends Controller {
 
     public Scene setJuego(Juego juego) throws IOException {
         this.juego = juego;
+        this.contenedorHuir.setVisible(false);
         chequearClima();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
@@ -233,6 +235,7 @@ public class BattleMainController extends Controller {
 
     public void handleAtaqueBtn(MouseEvent mouseEvent) {
         toggleMenuHabilidades();
+        this.contenedorHuir.setVisible(false);
 
         for (int i = 0; i < habilidades.size(); i++) {
             Label label = labelsHabilidades.get(i);
@@ -312,10 +315,9 @@ public class BattleMainController extends Controller {
         mostrarPokemonesRestantes(juego.getOponente().getCantidadPokemonVivos(), pokeballsEnemigas);
     }
 
-    public void mostrarGanador(){
+    public void mostrarGanador(Jugador jugador){
         if (juego.terminado()){
-            Jugador ganador =juego.getJugadorActual();
-            this.consola.setText("Felicidades ganaste: " + ganador.getNombre());
+            this.consola.setText("Felisidades ganaste: " + jugador.getNombre());
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
                 Platform.exit();
             }));
@@ -324,7 +326,7 @@ public class BattleMainController extends Controller {
         }
     }
     public void cambiarDeTurno() {
-        mostrarGanador();
+        mostrarGanador(juego.getJugadorActual());
         img_pk2.setEffect(null);
 
         PathTransition transitionDer = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2, vboxDerecho.getHeight()/2, 500);
@@ -409,9 +411,18 @@ public class BattleMainController extends Controller {
 
     public void handleHuirBtn(MouseEvent mouseEvent) {
         consola.setText("Eres un gallina McFly");
-        //TODO: BOTON PARA RENDIRSE
+        this.contenedorHuir.setVisible(true);
+        this.contenedorHuir.toFront();
     }
+    public void  botonHuirCancelar(MouseEvent mouseEvent) {
+        this.contenedorHuir.setVisible(false);
 
+    }
+    public void  botonHuirConfirmar(MouseEvent mouseEvent){
+        this.contenedorHuir.setVisible(false);
+        juego.getJugadorActual().rendirse();
+        mostrarGanador(juego.getOponente());
+    }
     public void actualizarEstados(){
         mostrarEstados(juego.getJugadorActual().getPokemonActual().getEstados(), estadosActuales);
         mostrarEstados(juego.getOponente().getPokemonActual().getEstados(), estadosEnemigos);
