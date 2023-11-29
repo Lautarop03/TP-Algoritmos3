@@ -13,7 +13,6 @@ import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.io.IOException;
-import java.util.List;
 
 
 public class JuegoController implements EventHandler<CambioTurnoEvent> {

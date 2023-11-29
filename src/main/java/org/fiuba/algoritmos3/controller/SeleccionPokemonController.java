@@ -10,7 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
@@ -257,8 +256,6 @@ public class SeleccionPokemonController extends Controller {
                 if (Objects.equals(accion, "main")) {
                         cambiarPokemon(pokemon);
                         handleConfirmarBtn(null);
-                        //stage.fireEvent(new CambioTurnoEvent());
-//                        SingletonJuego.getInstancia().getJuegoController().handle(new CambioTurnoEvent());
                         if (pokemonActual.estaVivo()) {
                                 controller.cambiarEscena = true;
                         }
@@ -272,16 +269,10 @@ public class SeleccionPokemonController extends Controller {
                 this.contenedorConfirmacion.setVisible(false);
         }
 
-        public void cambiarPokemon(Pokemon pokemon) throws IOException{
-                boolean realizado = jugadorActual.intercambiarPokemon(pokemon);
-                if (realizado){
-                        //TODO: Mostrar Mensaje de cambio
-                } else {
-                        //TODO: Mostrar Mensaje De error Pokemon sin vida
-                }
+        public void cambiarPokemon(Pokemon pokemon) {
+                jugadorActual.intercambiarPokemon(pokemon);
         }
-
-
+        
         public Pokemon getPokemonSeleccionado() {
                 return this.pokemon;
         }
