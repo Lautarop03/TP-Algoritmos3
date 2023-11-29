@@ -48,15 +48,25 @@ public class JuegoController implements EventHandler<CambioTurnoEvent> {
     @Override
     public void handle(CambioTurnoEvent cambioTurnoEvent) {
         juego.cambiarTurno();
-        comprobarPokemonActualEstaVivo();
+        try {
+            comprobarPokemonActualEstaVivo();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         juego.aplicarClima();
-        //TODO: ver si esta muerto?
-        //TODO: efectos se aplica antes en battlemain
     }
-    public void comprobarPokemonActualEstaVivo(){
+    public void comprobarPokemonActualEstaVivo() throws IOException {
         Pokemon pokemon = juego.getJugadorActual().getPokemonActual();
         if (!pokemon.estaVivo()) {
-            //seleccionPokemonController
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/seleccionPokemon.fxml"));
+            Parent root = loader.load();
+            SeleccionPokemonController controller = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            controller.init(juego.getJugadorActual().getPokemones(),stage,battleController);
+            stage.show();
+            this.stage.close();
             //TODO: Mandar a seleccionar pokemon y intercambiar (ahi? o aca?)
         }
     }

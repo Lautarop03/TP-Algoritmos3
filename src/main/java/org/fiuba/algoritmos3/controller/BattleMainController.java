@@ -1,7 +1,11 @@
 package org.fiuba.algoritmos3.controller;
 
+import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -145,8 +149,12 @@ public class BattleMainController extends Controller {
         this.vida_actual_max_pk1.setText(pk1.getVidaActual()+"/"+ pk1.getVidaMaxima());
         this.vida_actual_max_pk2.setText(pk2.getVidaActual()+"/" + pk2.getVidaMaxima());
         this.barra_vida_pk1.setProgress(porcentajeVidaPokemon(pk1));
+
+        // Animación para la ProgressBar de pk2
+        animateProgressBarProgresivamente(barra_vida_pk2, porcentajeVidaPokemon(pk2), 1000);
+
+
         this.barra_vida_pk1.setStyle(cambiarColorBarra(pk1));
-        this.barra_vida_pk2.setProgress(porcentajeVidaPokemon(pk2));
         this.barra_vida_pk2.setStyle(cambiarColorBarra(pk2));
         this.nivel_actual_pk1.setText("Nv:" + pk1.getNivel());
         this.nivel_actual_pk2.setText("Nv:" + pk2.getNivel());
@@ -160,6 +168,27 @@ public class BattleMainController extends Controller {
         this.pokeballsEnemigas = List.of(pokeballEnemiga0, pokeballEnemiga1, pokeballEnemiga2, pokeballEnemiga3, pokeballEnemiga4, pokeballEnemiga5);
         return scene;
         // TODO: aca seteo todos los datos de la pantalla
+    }
+
+    private void animateProgressBarProgresivamente(ProgressBar progressBar, double to, int durationMillis) {
+        double decremento = 0.04;
+        int maxCycles = (int) (durationMillis / 50 / decremento);
+
+        animate(progressBar, to, decremento, maxCycles);
+    }
+
+    private void animate(ProgressBar progressBar, double to, double decremento, int remainingCycles) {
+        double current = progressBar.getProgress();
+
+        if (current > to && remainingCycles > 0) {
+            progressBar.setProgress(current - decremento);
+
+            PauseTransition pause = new PauseTransition(Duration.millis(100));
+            pause.setOnFinished(event -> animate(progressBar, to, decremento, remainingCycles - 1));
+            pause.play();
+        } else {
+            progressBar.setProgress(to);
+        }
     }
 
     public double porcentajeVidaPokemon(Pokemon pokemon){

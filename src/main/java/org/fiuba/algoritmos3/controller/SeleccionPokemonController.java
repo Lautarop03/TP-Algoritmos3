@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
+import org.fiuba.algoritmos3.controller.Eventos.SeleccionPokemonEvent;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class SeleccionPokemonController extends Controller{
+public class SeleccionPokemonController extends Controller {
 
         @FXML
         private ProgressBar barra_vida_actual;

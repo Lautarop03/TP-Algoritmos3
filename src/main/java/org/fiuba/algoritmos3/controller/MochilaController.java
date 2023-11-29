@@ -166,16 +166,11 @@ public class MochilaController extends Controller implements EventHandler<Selecc
         if (pokemon!=null) {
             Boolean aplicado = item.aplicarItem(pokemon);
             if (!aplicado) {
-                AdministradorDeJuego administradorDeJuego = new AdministradorDeJuego(new Inputs(),new ViewControlador());
-                Juego juego = SingletonJuego.getInstancia().getJuego();
-                administradorDeJuego.mostrarUsoItem(juego.getJugadorActual(),item,pokemon);
+
                 //TODO: Mostrar que se uso el item
                 //TODO: Cambiar el turno
                 confirmacionContainer.fireEvent(new CambioTurnoEvent());
             } else {
-                AdministradorDeJuego administradorDeJuego = new AdministradorDeJuego(new Inputs(),new ViewControlador());
-                Juego juego = SingletonJuego.getInstancia().getJuego();
-                administradorDeJuego.errorUsoItem(item);
                 //TODO: Mostrar erros uso item
             }
             controller.show();
