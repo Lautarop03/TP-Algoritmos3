@@ -93,10 +93,11 @@ public class SeleccionPokemonController extends Controller {
 
                 Label labelNombre = new Label(pokemon.getNombre());
                 labelNombre.setLayoutX(80);
-                labelNombre.setStyle("-fx-font-size: 15px;");
+                labelNombre.setStyle("-fx-font-size: 25px; -fx-font-family: \"Pokemon Emerald\";");
 
                 Label labelNivel = new Label("Nv: " + pokemon.getNivel());
-                labelNivel.setTranslateY(15);
+                labelNivel.setStyle("-fx-font-size: 20px;-fx-font-family: \"Pokemon Emerald\";");
+                labelNivel.setTranslateY(18);
                 labelNivel.setLayoutX(80);
 
                 Label labelEstado = new Label();
@@ -170,8 +171,11 @@ public class SeleccionPokemonController extends Controller {
 
         private void mostrarPokemonActual(){
                 this.nombre_actual.setText(pokemonActual.getNombre());
+                nombre_actual.setStyle("-fx-font-size: 30px");
                 this.nivel_actual.setText("Nv: " + pokemonActual.getNivel());
+                nivel_actual.setStyle("-fx-font-size: 20px");
                 this.vida_actual.setText(pokemonActual.getVidaActual()+"/"+ pokemonActual.getVidaMaxima());
+                vida_actual.setStyle("-fx-font-size: 20px");
                 String estadosResumen="";
                 if(!pokemonActual.getEstados().isEmpty()){
                         for (int i = 0; i < (pokemonActual.getEstados()).size();i++){
