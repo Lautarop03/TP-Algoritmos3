@@ -14,14 +14,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.fiuba.algoritmos3.ControladorDeJuego;
+import org.fiuba.algoritmos3.Inputs;
 import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
+import org.fiuba.algoritmos3.model.AdministradorDeJuego;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.views.ViewControlador;
+import org.jline.terminal.TerminalBuilder;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class MochilaController extends Controller {
 
@@ -151,13 +157,13 @@ public class MochilaController extends Controller {
         Stage stage = (Stage) contenedorPrincipal.getScene().getWindow();
         confirmacionContainer.setVisible(true);
         descripcionContainer.setVisible(false);
-        itemsContainer.setVisible(false);
+        itemsContainer.setDisable(true);
         this.item = item;
     }
     public void cancelarBtn(){
         confirmacionContainer.setVisible(false);
         descripcionContainer.setVisible(true);
-        itemsContainer.setVisible(true);
+        itemsContainer.setDisable(false);
     }
 
 
@@ -171,19 +177,18 @@ public class MochilaController extends Controller {
     public void confirmarBtn() throws IOException{
         confirmacionContainer.setVisible(false);
         descripcionContainer.setVisible(true);
-        itemsContainer.setVisible(true);
+        itemsContainer.setDisable(false);
         Pokemon pokemon = cambiarAPokemon(); // Si solo vuelve a la mochila, pokemon es NULL
         if (pokemon!=null) {
             Boolean aplicado = item.aplicarItem(pokemon);
             if (!aplicado) {
-                LabelConfirmacion.setText("Se aplico correctamente en " + pokemon.getNombre() + " y su nueva vida es de " + pokemon.getVidaActual());
+                LabelConfirmacion.setText("El item " + item.getNombre() + " se aplico correctamente en " + pokemon.getNombre());
                 LabelConfirmacion.setVisible(true);
                 descripcionContainer.setVisible(false);
                 itemsContainer.setDisable(true);
                 botonVolver.setDisable(true);
-                SingletonJuego.getInstancia().getJuegoController().handle(new CambioTurnoEvent());
             } else {
-                descripcionLabel.setText("El item no se pudo aplicar, elija otro pokemon u objeto.");
+                descripcionLabel.setText("El item " + item.getNombre() + " no se pudo aplicar, elija otro pokemon u objeto.");
             }
         }
     }
@@ -215,5 +220,4 @@ public class MochilaController extends Controller {
         this.stage = stage;
         this.controller = controller;
     }
-
 }

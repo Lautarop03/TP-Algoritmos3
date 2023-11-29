@@ -44,6 +44,32 @@
     -fx-background-radius: 10;
 }
 
+.Estado{
+    -fx-background-insets: 1;
+    -fx-background-radius: 20;
+}
+
+.Paralizado{
+    -fx-background-color: #DAD228;
+
+}
+
+.Confundido{
+    -fx-background-color: #2146AF;
+
+}
+
+.Dormido{
+    -fx-background-color: #555555;
+
+}
+
+.Envenenado{
+    -fx-background-color:  #ad3ffc;
+}
+
+
+
 .GrillaHabilidadInfo{
     -fx-border-color: #1b1f1b ;
     -fx-border-width: 4;
