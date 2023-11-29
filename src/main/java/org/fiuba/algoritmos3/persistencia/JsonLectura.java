@@ -39,6 +39,8 @@ public class JsonLectura {
                 .registerTypeAdapter(MegaPocion.class, new MegaPocionDeserializer())
                 .registerTypeAdapter(PocionMolestaAlumnos.class, new MolestaAlumnosDeserializer())
                 .registerTypeAdapter(Pocion.class, new PocionDeserializer())
+                .registerTypeAdapter(Revivir.class, new RevivirDeserializer())
+                .registerTypeAdapter(CuraTodo.class, new CuraTodoDeserializer())
                 .setPrettyPrinting()
                 .excludeFieldsWithoutExposeAnnotation()
                 .create();

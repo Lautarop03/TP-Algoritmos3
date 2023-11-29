@@ -5,7 +5,7 @@
     "nivel": 50,
     "tipo": "Electrico",
     "historia": "asd",
-    "vidaMaxima": 50,
+    "vidaMaxima": 10,
     "velocidad": 35,
     "defensa": 90,
     "ataque": 40.0,

@@ -1,9 +1,6 @@
 package org.fiuba.algoritmos3.controller;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.PathTransition;
-import javafx.animation.PauseTransition;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
