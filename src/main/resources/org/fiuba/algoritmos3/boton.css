@@ -15,6 +15,25 @@
     text-decoration: none;
 }
 
+.btnSalir.button{
+    -fx-font-family: "Pokemon Emerald";
+    -fx-background-color: #8f51e0;
+    -fx-font-size: 22px;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+}
+
+.btnSalir.button:hover{
+    -fx-background-color: #512a7c,#8f51e0;
+    -fx-background-insets: 4,5;
+    -fx-border-width: 5;
+}
+.btnSalir.button:pressed{
+    -fx-border-width: 5;
+    -fx-font-size: 18px;
+
+}
+
 #salir_items:hover {
     background: #a77be0;
     text-decoration: none;
