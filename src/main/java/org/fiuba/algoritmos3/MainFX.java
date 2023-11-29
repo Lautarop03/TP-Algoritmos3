@@ -32,10 +32,6 @@ public class MainFX extends Application {
             } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
                 System.out.println("Error al reproducir el sonido.");
             }
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/org/fiuba/algoritmos3/music/Click.wav").getAbsoluteFile());
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioInputStream);
-        SingletonSonidoClick.getInstancia().setClip(clip);
 
         JsonLectura jsonLectura = new JsonLectura();
         List<Jugador> jugadores = jsonLectura.inicializarPartida();

@@ -61,9 +61,6 @@ public class MochilaController extends Controller {
     private Controller controller;
     private Item item;
 
-    private Clip clipTocar;
-
-
 
     public void mochilaController(){
     }
@@ -71,7 +68,6 @@ public class MochilaController extends Controller {
     public void setItems(List<Item> items, Stage stage) throws IOException {
         this.items = items;
 
-        this.clipTocar = SingletonSonidoClick.getInstancia().getClip();
 
         Image image = new Image(getClass().getResource("/org/fiuba/algoritmos3/background/mochila.png").toString());
         BackgroundImage bgImage = new BackgroundImage(
@@ -162,7 +158,6 @@ public class MochilaController extends Controller {
     }
 
     public void clickItem(MouseEvent mouseEvent, Item item) throws IOException {
-        sonidoTocarBoton();
         Stage stage = (Stage) contenedorPrincipal.getScene().getWindow();
         confirmacionContainer.setVisible(true);
         descripcionContainer.setVisible(false);
@@ -170,7 +165,6 @@ public class MochilaController extends Controller {
         this.item = item;
     }
     public void cancelarBtn() throws IOException {
-        sonidoTocarBoton();
         confirmacionContainer.setVisible(false);
         descripcionContainer.setVisible(true);
         itemsContainer.setDisable(false);
@@ -179,7 +173,6 @@ public class MochilaController extends Controller {
 
 
     public void handleConfirmarSalir() throws IOException {
-        sonidoTocarBoton();
 //        confirmacionContainer.fireEvent(new CambioTurnoEvent());
         controller.show();
         this.stage.close();
@@ -187,7 +180,6 @@ public class MochilaController extends Controller {
     }
 
     public void confirmarBtn() throws IOException{
-        sonidoTocarBoton();
         confirmacionContainer.setVisible(false);
         descripcionContainer.setVisible(true);
         itemsContainer.setDisable(false);
@@ -223,7 +215,6 @@ public class MochilaController extends Controller {
     }
 
     public void volverBtn() throws IOException {
-        sonidoTocarBoton();
         controller.show();
         this.stage.close();
     }
@@ -234,8 +225,5 @@ public class MochilaController extends Controller {
         setItems(items,stage);
         this.stage = stage;
         this.controller = controller;
-    }
-    public void sonidoTocarBoton() throws IOException {
-        SingletonSonidoClick.getInstancia().getClip().start();
     }
 }

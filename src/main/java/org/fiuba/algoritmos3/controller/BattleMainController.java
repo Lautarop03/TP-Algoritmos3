@@ -2,6 +2,7 @@ package org.fiuba.algoritmos3.controller;
 
 import javafx.animation.*;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -34,6 +35,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class BattleMainController extends Controller {
 
@@ -125,15 +129,15 @@ public class BattleMainController extends Controller {
     private  List<Label> estadosActuales;
     private  List<Label> estadosEnemigos;
 
+    private int tiempoMostrarTexto = 0;
     private ViewControladorJavaFX viewControlador;
     private Stage stage;
-    private Clip clipAtaque;
-    private Clip clipTocar;
 
     public Scene setJuego(Juego juego) throws IOException {
         this.juego = juego;
         this.contenedorHuir.setVisible(false);
         chequearClima();
+        delay(tiempoMostrarTexto,()->consola.setText("Que deberia hacer " + juego.getJugadorActual().getPokemonActual().getNombre()));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
         VBox root = loader.load();
@@ -141,16 +145,6 @@ public class BattleMainController extends Controller {
 
         setFondoBattleMain(fondo);
         this.viewControlador = new ViewControladorJavaFX();
-        clipTocar = SingletonSonidoClick.getInstancia().getClip();
-
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/org/fiuba/algoritmos3/music/PokemonSonido.wav").getAbsoluteFile());
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            this.clipAtaque = clip;
-        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
-            System.out.println("Error al reproducir el sonido.");
-        }
 
         List<Jugador> jugadores = juego.getJugadores();
         Jugador jugador1 = juego.getJugadorActual();
@@ -181,6 +175,7 @@ public class BattleMainController extends Controller {
         this.pokeballsEnemigas = List.of(pokeballEnemiga0, pokeballEnemiga1, pokeballEnemiga2, pokeballEnemiga3, pokeballEnemiga4, pokeballEnemiga5);
         this.estadosActuales = List.of(estadoActual0, estadoActual1, estadoActual2, estadoActual3);
         this.estadosEnemigos = List.of(estadoEnemigo0, estadoEnemigo1, estadoEnemigo2, estadoEnemigo3);
+        this.tiempoMostrarTexto=0;
         return scene;
     }
 
@@ -194,7 +189,6 @@ public class BattleMainController extends Controller {
     private void animateProgressBarProgresivamente(ProgressBar progressBar, double to, int durationMillis) {
         double decremento = 0.04;
         int maxCycles = (int) (durationMillis / 50 / decremento);
-
         animate(progressBar, to, decremento, maxCycles);
     }
 
@@ -257,7 +251,8 @@ public class BattleMainController extends Controller {
             label.setStyle("-fx-font-family: \"Pokemon Emerald\"; -fx-font-size:25px ");
         }
     }
-    public void mostrarEstados(List<Estado> estados, Pokemon pokemon, List<Boolean> aplicados){
+    public int mostrarEstados(List<Estado> estados, Pokemon pokemon, List<Boolean> aplicados) throws InterruptedException {
+        int tiempo= 0;
         if (!estados.isEmpty()){
             for (int iterador = 0; iterador<estados.size(); iterador++){
                 int finalIterador = iterador;
@@ -267,9 +262,23 @@ public class BattleMainController extends Controller {
                         })
                 );
                 timeline.play();
+                tiempo +=2000;
             }
         }
+        return tiempo;
+    }
 
+    public static void delay(long millis, Runnable continuation) {
+        Task<Void> sleeper = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try { Thread.sleep(millis); }
+                catch (InterruptedException e) { }
+                return null;
+            }
+        };
+        sleeper.setOnSucceeded(event -> continuation.run());
+        new Thread(sleeper).start();
     }
     @FXML
     public void handleHabilidadLabelClick(MouseEvent event) throws IOException, InterruptedException {
@@ -292,22 +301,32 @@ public class BattleMainController extends Controller {
         juego.atacar(new PaqueteDeRespuesta<>(true,habilidad));
         List<Boolean> aplicados = juego.aplicarEstados();
         List<Estado> estados = juego.getJugadorActual().getPokemonActual().getEstados();
+        int tiempoEstados;
+        int tiempoAtaque = 0;
         if (aplicados.isEmpty() || !aplicados.contains(true)){
             juego.realizarAtaque();
-            clipAtaque.start();
             consola.setText(viewControlador.mostrarAccion(habilidad, juego.getJugadorActual().getPokemonActual(), juego.getOponente().getPokemonActual()));
-            mostrarEstados(estados, juego.getJugadorActual().getPokemonActual(), aplicados);
+            tiempoEstados = mostrarEstados(estados, juego.getJugadorActual().getPokemonActual(), aplicados);
+            tiempoAtaque = 2000;
         } else {
-            mostrarEstados(estados, juego.getJugadorActual().getPokemonActual(), aplicados);
+            tiempoEstados = mostrarEstados(estados, juego.getJugadorActual().getPokemonActual(), aplicados);
         }
+        this.tiempoMostrarTexto = tiempoEstados + tiempoAtaque;
+
         setJuego(juego);
+
         if (habilidad.getClass() == HabilidadDeClima.class) {
             setFondoBattleMain(habilidad.getNombre());
             this.fondo = habilidad.getNombre();
         }
         actualizarPokemonesRestantes();
         actualizarEstados();
+        transicionAtaque();
+        mostrarPokemonesRestantes(juego.getJugadorActual().getCantidadPokemonVivos(), pokeballsActuales);
+        mostrarPokemonesRestantes(juego.getOponente().getCantidadPokemonVivos(), pokeballsEnemigas);
+    }
 
+    public void transicionAtaque(){
         PauseTransition animacionAtaque = new PauseTransition(Duration.seconds(1));
 
         animacionAtaque.setOnFinished((finalizado) -> {
@@ -324,15 +343,13 @@ public class BattleMainController extends Controller {
         animacionAtaque.playFromStart();
 
         toggleMenuHabilidades();
-
-        mostrarPokemonesRestantes(juego.getJugadorActual().getCantidadPokemonVivos(), pokeballsActuales);
-        mostrarPokemonesRestantes(juego.getOponente().getCantidadPokemonVivos(), pokeballsEnemigas);
     }
+
 
     public void mostrarGanador(Jugador jugador){
         if (juego.terminado()){
             this.consola.setText("Felicidades ganaste: " + jugador.getNombre());
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
                 Platform.exit();
             }));
             timeline.setCycleCount(1);
@@ -393,7 +410,6 @@ public class BattleMainController extends Controller {
     }
 
     private Habilidad getHabilidadDeMouseEvent(MouseEvent mouseEvent) {
-        sonidoTocarBoton();
         Label label = (Label) mouseEvent.getSource();
         int idHabilidad = Integer.parseInt(label.getId().replace("habilidadLabel", ""));
         return habilidades.get(idHabilidad);
@@ -401,7 +417,6 @@ public class BattleMainController extends Controller {
 
 
     public void handleMochilaBtn(MouseEvent mouseEvent) throws IOException {
-        sonidoTocarBoton();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/mochila.fxml"));
         Parent root = loader.load();
         MochilaController controller = loader.getController();
@@ -414,7 +429,6 @@ public class BattleMainController extends Controller {
     }
 
     public void handlePokemonBtn(MouseEvent mouseEvent) throws IOException{
-        sonidoTocarBoton();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/seleccionPokemon.fxml"));
         Parent root = loader.load();
         SeleccionPokemonController controller = loader.getController();
@@ -427,19 +441,15 @@ public class BattleMainController extends Controller {
     }
 
     public void handleHuirBtn(MouseEvent mouseEvent) {
-        sonidoTocarBoton();
-
         consola.setText("\uD83D\uDC14 ¿Eres un gallina McFly? \uD83D\uDC14"  );
         this.contenedorHuir.setVisible(true);
         this.contenedorHuir.toFront();
     }
     public void  botonHuirCancelar(MouseEvent mouseEvent) {
-        sonidoTocarBoton();
         this.contenedorHuir.setVisible(false);
 
     }
     public void  botonHuirConfirmar(MouseEvent mouseEvent){
-        sonidoTocarBoton();
         this.contenedorHuir.setVisible(false);
         juego.getJugadorActual().rendirse();
         mostrarGanador(juego.getOponente());
@@ -510,9 +520,6 @@ public class BattleMainController extends Controller {
                 new Insets(0));
         Background bg = new Background(Collections.singletonList(bgf), Collections.singletonList(bgImage));
         fondoBattleMain.setBackground(bg);
-    }
-    public void sonidoTocarBoton(){
-        this.clipTocar.start();
     }
 
 }
