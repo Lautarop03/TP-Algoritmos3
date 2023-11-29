@@ -223,6 +223,8 @@ public class SeleccionPokemonController extends Controller {
                 this.pokemon = pokemon;
                 if (this.accion == "mochila") {
                         descripcionPokemon.setText("¿Desea aplicar el Item en " + pokemon.getNombre() + "?");
+                }else {
+                        descripcionPokemon.setText("¿Intercambiar " + pokemonActual.getNombre() + " por " + pokemon.getNombre() + "?");
                 }
         }
 
