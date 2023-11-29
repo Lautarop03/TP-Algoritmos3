@@ -21,7 +21,7 @@
     "velocidad": 78,
     "defensa": 100,
     "ataque": 78.0,
-    "habilidades": [1,2,3,4]
+    "habilidades": [12,2,3,8]
   },
   {
     "nombre": "Venusaur",
@@ -33,7 +33,7 @@
     "velocidad": 80,
     "defensa": 80,
     "ataque": 83.0,
-    "habilidades": [1,2,3,4]
+    "habilidades": [17,2,3,9]
   },
   {
     "nombre": "Blastoise",
@@ -45,7 +45,7 @@
     "velocidad": 79,
     "defensa": 78,
     "ataque": 100.0,
-    "habilidades": [1,2,3,4]
+    "habilidades": [14,2,3,9]
   },
   {
     "nombre": "Pidgeot",
@@ -81,7 +81,7 @@
     "velocidad": 70,
     "defensa": 95,
     "ataque": 95.0,
-    "habilidades": [1,2,3,4]
+    "habilidades": [15,2,3,16]
   },
   {
     "nombre": "Alakazam",
@@ -93,7 +93,7 @@
     "velocidad": 120,
     "defensa": 45,
     "ataque": 50.0,
-    "habilidades": [1,2,3,7]
+    "habilidades": [11,2,3,7]
   },
   {
     "nombre": "Electrode",
@@ -105,7 +105,7 @@
     "velocidad": 140,
     "defensa": 70,
     "ataque": 50.0,
-    "habilidades": [1,2,3,4]
+    "habilidades": [14,2,3,4]
   },
   {
     "nombre": "Golem",
@@ -117,7 +117,7 @@
     "velocidad": 95,
     "defensa": 90,
     "ataque": 150.0,
-    "habilidades": [1,2,3,4]
+    "habilidades": [13,2,3,9]
   },
   {
     "nombre": "Charmander",
@@ -129,7 +129,7 @@
     "velocidad": 120,
     "defensa": 65,
     "ataque": 85.0,
-    "habilidades": [1,2,3,4]
+    "habilidades": [12,2,3,8]
   },
   {
     "nombre": "Eevee",
@@ -141,6 +141,6 @@
     "velocidad": 67,
     "defensa": 58,
     "ataque": 58.0,
-    "habilidades": [1,2,3,4]
+    "habilidades": [15,6,3,10]
   }
 ]

@@ -4,7 +4,7 @@
   "tipoDeHabilidad": "HabilidadDeDano",
   "cantidadDeUsos": "8",
   "tipo": "Electrico",
-  "potencia" : "70"
+  "potencia" : "30"
 },{
   "nombre": "Envenenar",
   "id": "2",
@@ -20,7 +20,7 @@
   "tipo": "Normal",
   "porcentajeDeModificacion" : "-10"
 },{
-  "nombre": "dormido",
+  "nombre": "Dormido",
   "id": "4",
   "tipoDeHabilidad": "HabilidadDeEstado",
   "cantidadDeUsos": "3",
@@ -68,5 +68,54 @@
   "cantidadDeUsos": "4",
   "tipo": "Electrico",
   "clima": "Huracan"
+},{
+  "nombre": "Fuerza mental",
+  "id": "11",
+  "tipoDeHabilidad": "HabilidadDeDano",
+  "cantidadDeUsos": "8",
+  "tipo": "Psiquico",
+  "potencia" : "20"
+},{
+  "nombre": "Bola Fuego",
+  "id": "12",
+  "tipoDeHabilidad": "HabilidadDeDano",
+  "cantidadDeUsos": "8",
+  "tipo": "Fuego",
+  "potencia" : "30"
+},{
+  "nombre": "Piedrazo",
+  "id": "13",
+  "tipoDeHabilidad": "HabilidadDeDano",
+  "cantidadDeUsos": "8",
+  "tipo": "Tierra",
+  "potencia" : "40"
+},{
+  "nombre": "Pokebolazo",
+  "id": "14",
+  "tipoDeHabilidad": "HabilidadDeDano",
+  "cantidadDeUsos": "8",
+  "tipo": "Electrico",
+  "potencia" : "30"
+},{
+  "nombre": "Hipnotizar",
+  "id": "15",
+  "tipoDeHabilidad": "HabilidadDeDano",
+  "cantidadDeUsos": "8",
+  "tipo": "Electrico",
+  "potencia" : "20"
+},{
+  "nombre": "Paralizar",
+  "id": "16",
+  "tipoDeHabilidad": "HabilidadDeEstado",
+  "cantidadDeUsos": "3",
+  "tipo": "Normal",
+  "estado":"Paralizado"
+},{
+  "nombre": "Espesura",
+  "id": "17",
+  "tipoDeHabilidad": "HabilidadDeDano",
+  "cantidadDeUsos": "5",
+  "tipo": "Planta",
+  "potencia" : "40"
 }
 ]
