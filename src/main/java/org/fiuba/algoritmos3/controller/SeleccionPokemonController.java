@@ -238,7 +238,9 @@ public class SeleccionPokemonController extends Controller {
                         handleConfirmarBtn(null);
                         //stage.fireEvent(new CambioTurnoEvent());
 //                        SingletonJuego.getInstancia().getJuegoController().handle(new CambioTurnoEvent());
-                        controller.cambiarEscena = true;
+                        if (pokemonActual.estaVivo()) {
+                                controller.cambiarEscena = true;
+                        }
                 }
                 this.controller.show();
                 this.stage.close();
