@@ -1,0 +1,44 @@
+[{
+  "nombre": "Trueno",
+  "id": "1",
+  "tipoDeHabilidad": "HabilidadDeDano",
+  "cantidadDeUsos": "8",
+  "tipo": "Electrico",
+  "potencia" : "70"
+},{
+  "nombre": "Envenenar",
+  "id": "2",
+  "tipoDeHabilidad": "HabilidadDeEstado",
+  "cantidadDeUsos": "6",
+  "tipo": "Veneno",
+  "estado" : "Envenenado"
+},{
+  "nombre": "debuff",
+  "id": "3",
+  "tipoDeHabilidad": "HabilidadDeEstadisticaAtaque",
+  "cantidadDeUsos": "4",
+  "tipo": "Normal",
+  "porcentajeDeModificacion" : "-10"
+},{
+  "nombre": "dormido",
+  "id": "4",
+  "tipoDeHabilidad": "HabilidadDeEstado",
+  "cantidadDeUsos": "3",
+  "tipo": "Normal",
+  "estado":"Dormido"
+},{
+  "nombre": "TormentaDeRayos",
+  "id": "5",
+  "tipoDeHabilidad": "HabilidadDeClima",
+  "cantidadDeUsos": "4",
+  "tipo": "Electrico",
+  "clima": "TormentaDeRayos"
+},{
+  "nombre": "Confundir",
+  "id": "6",
+  "tipoDeHabilidad": "HabilidadDeEstado",
+  "cantidadDeUsos": "4",
+  "tipo": "Normal",
+  "estado": "Confuso"
+}
+]

@@ -63,7 +63,8 @@ public class Juego {
         for (int i = 0; i<jugadores.size(); i++) {
             List<Pokemon> pokemones = jugadores.get(i).getPokemones();
             if (pokemones.isEmpty()) {
-                administradorDeJuego.mostrarGanador(jugadores.get((i+1)%2));
+                administradorDeJuego.mostrarGanador(jugadores.get((i+1)%2)); //TODO: MODELO ACOPLADO A LA VISTA
+                (jugadores.get((i+1)%2)).setGanador(true);
                 return true;
             }
             int contador = 1;
@@ -72,7 +73,8 @@ public class Juego {
                     break;
                 }
                 if (contador == jugadores.get(i).getPokemones().size()){
-                    administradorDeJuego.mostrarGanador(jugadores.get((i+1)%2));
+                    administradorDeJuego.mostrarGanador(jugadores.get((i+1)%2));  //TODO: MODELO ACOPLADO A LA VISTA
+                    (jugadores.get((i+1)%2)).setGanador(true);
                     return true;
                 }
                 contador++;
@@ -85,12 +87,12 @@ public class Juego {
         Pokemon pokemon = getJugadorActual().getPokemonActual();
         ArrayList<Pokemon> pokemones = getJugadorActual().getPokemones();
         if (!pokemon.estaVivo()){
-            administradorDeJuego.mostrarPokemonMuerto(pokemon);
+            administradorDeJuego.mostrarPokemonMuerto(pokemon);  //TODO: MODELO ACOPLADO A LA VISTA
             while(true){
-                int numeroPokemon = administradorDeJuego.pedirCambioPokemonMuerto(pokemones);
+                int numeroPokemon = administradorDeJuego.pedirCambioPokemonMuerto(pokemones);  //TODO: MODELO ACOPLADO A LA VISTA
                 boolean realizado = getJugadorActual().intercambiarPokemon(pokemones.get(numeroPokemon));
                 if (realizado) {
-                    administradorDeJuego.mostrarCambioPokemon(getJugadorActual().getPokemonActual());
+                    administradorDeJuego.mostrarCambioPokemon(getJugadorActual().getPokemonActual());  //TODO: MODELO ACOPLADO A LA VISTA
                     break;
                 }
                 administradorDeJuego.errorIntercambiarPokemonSinVida();
@@ -98,20 +100,20 @@ public class Juego {
         }
     }
 
-    public boolean aplicarEstados() {
+    public List<Boolean> aplicarEstados() {
         Pokemon pokemon = getJugadorActual().getPokemonActual();
-        List<Boolean> booleanEstados;
+        List<Boolean> booleanEstados = new ArrayList<Boolean>();
         List<Estado> estados = new ArrayList<>(pokemon.getEstados());
         boolean aplicado = false;
         if (!estados.isEmpty()){
             booleanEstados = pokemon.aplicarEstados();
-            administradorDeJuego.mostrarEstadosAplicados(booleanEstados, estados,pokemon);
+            administradorDeJuego.mostrarEstadosAplicados(booleanEstados, estados,pokemon);  //TODO: MODELO ACOPLADO A LA VISTA
             if (booleanEstados.contains(true) && !this.colaDeAtaques.isEmpty()){
                 this.colaDeAtaques.remove();
                 aplicado = true;
             }
         }
-        return aplicado;
+        return booleanEstados;
     }
 
     public boolean rendirse(){
@@ -121,59 +123,24 @@ public class Juego {
     }
 
     public boolean verCampo() {
-        administradorDeJuego.mostrarCampo(this.jugadores);
+        administradorDeJuego.mostrarCampo(this.jugadores,this.clima);
         return false;
     }
 
-    public boolean usarItem() {
+    public boolean usarItem(Item item, int nroPokemon){
         Jugador jugadorActual = getJugadorActual();
-        List<Item> items = jugadorActual.getItems();
-        ArrayList<Pokemon> pokemones = jugadorActual.getPokemones();
-        while(true){
-            PaqueteDeRespuesta<Integer> paqueteItem = administradorDeJuego.pedirItem(items);
-            if (!paqueteItem.getError()) {
-                return false;
-            }
-            PaqueteDeRespuesta<Integer> paquetePokemon = administradorDeJuego.pedirPokemon(pokemones);
-            if (!paquetePokemon.getError()) {
-                return false;
-            }
-            Item item = items.get(paqueteItem.getGenerico());
-            if (item.aplicarItem(jugadorActual.getPokemones().get(paquetePokemon.getGenerico()))) {
-                administradorDeJuego.errorUsoItem(item);
-            } else {
-                  administradorDeJuego.mostrarUsoItem(jugadorActual, item, pokemones.get((int) paquetePokemon.getGenerico()));
-                return true;
-            }
-        }
+        return !item.aplicarItem(jugadorActual.getPokemones().get(nroPokemon));
     }
 
 
-    public boolean cambiarPokemon(){
+
+    public boolean cambiarPokemon(int nroPokemon){
         Jugador jugadorActual = getJugadorActual();
         ArrayList<Pokemon> pokemones = jugadorActual.getPokemones();
-        while (true) {
-            PaqueteDeRespuesta<Integer> paquetePokemon = administradorDeJuego.pedirPokemon(pokemones);
-            if (!paquetePokemon.getError()) {
-                return false;
-            }
-            if (jugadorActual.getPokemonActual() == pokemones.get(paquetePokemon.getGenerico())){
-                administradorDeJuego.errorPokemonActual();
-                continue;
-            }
-            boolean realizado = jugadorActual.intercambiarPokemon(pokemones.get(paquetePokemon.getGenerico()));
-            if (realizado) {
-                administradorDeJuego.mostrarCambioPokemon(jugadorActual.getPokemonActual());
-                return true;
-            }
-            administradorDeJuego.errorIntercambiarPokemonSinVida();
-        }
+        return jugadorActual.intercambiarPokemon(pokemones.get(nroPokemon));
     }
 
-    public boolean atacar() {
-        Jugador jugadorActual = getJugadorActual();
-        Pokemon pokemonActual = jugadorActual.getPokemonActual();
-        PaqueteDeRespuesta<Habilidad> paqueteHabilidad = administradorDeJuego.pedirHabilidad(pokemonActual);
+    public boolean atacar(PaqueteDeRespuesta<Habilidad> paqueteHabilidad) {
         if(!paqueteHabilidad.getError()){
             return false;
         }
@@ -189,12 +156,12 @@ public class Juego {
         if (!colaDeAtaques.isEmpty()){
             Habilidad habilidad = colaDeAtaques.poll();
             if (habilidad.usarHabilidad(pokemonActual, pokemonEnemigo)){
-                administradorDeJuego.errorHabilidadEstado();
+                administradorDeJuego.errorHabilidadEstado();  //TODO: MODELO ACOPLADO A LA VISTA
             } else {
                 if(habilidad instanceof HabilidadDeClima){
                     setClima(((HabilidadDeClima) habilidad).getClima());
                 }
-                administradorDeJuego.mostrarAccion(habilidad,pokemonActual,pokemonEnemigo);
+                administradorDeJuego.mostrarAccion(habilidad,pokemonActual,pokemonEnemigo);  //TODO: MODELO ACOPLADO A LA VISTA
             }
         }
     }
@@ -222,7 +189,15 @@ public class Juego {
         this.administradorDeJuego = administradorDeJuego;
     }
 
+    public AdministradorDeJuego getAdministradorDeJuego() {
+        return administradorDeJuego;
+    }
+
     public Clima getClima() {
         return clima;
+    }
+
+    public List<Jugador> getJugadores(){
+        return jugadores;
     }
 }

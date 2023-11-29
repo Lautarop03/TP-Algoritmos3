@@ -6,5 +6,6 @@ public class Pocion extends ItemRestauradorDeVida {
         super(cantidadDeItems);
         this.cantidadDeCura = 20;
         this.nombre = "Pocion";
+        this.descripcion = "Restaura 20 de vida.";
     }
 }

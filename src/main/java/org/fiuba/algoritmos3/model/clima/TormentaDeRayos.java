@@ -7,6 +7,7 @@ import java.util.List;
 public class TormentaDeRayos extends ClimaDeDano{
     public TormentaDeRayos() {
         super();
+        setNombre("Tormenta de rayos");
         this.tiposBeneficiados = List.of(Tipo.Electrico);
     }
 }

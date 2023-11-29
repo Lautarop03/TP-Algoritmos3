@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model.pokemon;
 
+import com.google.gson.annotations.JsonAdapter;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 
@@ -17,7 +18,8 @@ public class Pokemon {
     private Double defensa;
     private Double ataque;
     private List<Estado> estados;
-    private final List<Habilidad> habilidades;
+    private List<Habilidad> habilidades;
+    private int ID;
 
     public Pokemon(String nombre, Integer nivel, Tipo tipo, String historia, Integer vidaMaxima, Integer vidaActual, Integer velocidad, Double defensa, Double ataque, List<Habilidad> habilidades) {
         this.nombre = nombre;
@@ -33,6 +35,18 @@ public class Pokemon {
         this.habilidades = habilidades;
     }
 
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setHabilidades(List<Habilidad> habilidades) {
+        this.habilidades = habilidades;
+    }
+    
     public String getNombre() {
         return nombre;
     }

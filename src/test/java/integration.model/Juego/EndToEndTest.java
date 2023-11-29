@@ -64,9 +64,8 @@ public class EndToEndTest {
         AdministradorDeJuego administradorDeJuego = mock(AdministradorDeJuego.class);
         juego.setAdministradorDeJuego(administradorDeJuego);
 
-        when(administradorDeJuego.pedirHabilidad(p1)).thenReturn(new PaqueteDeRespuesta<>(true,h2));
         //Arranca j1, Ataca con "Dormir"
-        juego.atacar();
+        juego.atacar(new PaqueteDeRespuesta<>(true,h2));
         juego.realizarAtaque();
 
         //Assert
@@ -77,9 +76,8 @@ public class EndToEndTest {
         //Turno de j2
         juego.cambiarTurno();
 
-        when(administradorDeJuego.pedirHabilidad(p3)).thenReturn(new PaqueteDeRespuesta<>(true,h5));
         // Ataca j2, Con habilidadDeDano
-        juego.atacar();
+        juego.atacar(new PaqueteDeRespuesta<>(true,h5));
         juego.realizarAtaque();
 
 
@@ -90,11 +88,13 @@ public class EndToEndTest {
         juego.cambiarTurno();
 
         when(administradorDeJuego.pedirPokemon(pokemons)).thenReturn(new PaqueteDeRespuesta<>(true,1));
-        juego.cambiarPokemon();// cambio pokemon p1 por el p2
+        juego.cambiarPokemon(1);// cambio pokemon p1 por el p2
 
         when(administradorDeJuego.pedirItem(items1)).thenReturn(new PaqueteDeRespuesta<>(true,1)); // Pocion revivir
         when(administradorDeJuego.pedirPokemon(pokemons)).thenReturn(new PaqueteDeRespuesta<>(true,1)); // Pokemon muerto
-        juego.usarItem(); // Revivo al pokemon p1
+        List<Item> items = juego.getJugadorActual().getItems();
+        Item item = items.get(1);
+        juego.usarItem(item,1); // Revivo al pokemon p1
 
         //Assert
         assertTrue(p1.estaVivo());
@@ -102,8 +102,7 @@ public class EndToEndTest {
         //Turno de j2
         juego.cambiarTurno();
 
-        when(administradorDeJuego.pedirHabilidad(p3)).thenReturn(new PaqueteDeRespuesta<>(true,h6)); // Habilidad Envenenar
-        juego.atacar(); // p3 ataca a p2 con Envenenar
+        juego.atacar(new PaqueteDeRespuesta<>(true,h6)); // p3 ataca a p2 con Envenenar
         juego.realizarAtaque();
 
         //Assert
@@ -120,8 +119,7 @@ public class EndToEndTest {
         //Assert
         assertTrue(vidaPrevia > vidaAfter);
 
-        when(administradorDeJuego.pedirHabilidad(p2)).thenReturn(new PaqueteDeRespuesta<>(true,h3)); // Habilidad Clima Lluvia
-        juego.atacar();
+        juego.atacar(new PaqueteDeRespuesta<>(true,h3));
         juego.realizarAtaque(); // Ataco con p2, ataque de clima
 
         //Assert
@@ -130,8 +128,7 @@ public class EndToEndTest {
         //Turno de j2
         juego.cambiarTurno();
 
-        when(administradorDeJuego.pedirHabilidad(p3)).thenReturn(new PaqueteDeRespuesta<>(true,h5));
-        juego.atacar();
+        juego.atacar(new PaqueteDeRespuesta<>(true,h5));
         juego.realizarAtaque();
 
         //Assert
@@ -140,8 +137,7 @@ public class EndToEndTest {
         //Turno de j1
         juego.cambiarTurno();
 
-        when(administradorDeJuego.pedirPokemon(pokemons)).thenReturn(new PaqueteDeRespuesta<>(true,1));
-        juego.cambiarPokemon();// cambio pokemon p2 por el p1
+        juego.cambiarPokemon(1);// cambio pokemon p2 por el p1
 
         //Assert
         Pokemon Actual = juego.getJugadorActual().getPokemonActual();
@@ -150,8 +146,7 @@ public class EndToEndTest {
         //Turno de j2
         juego.cambiarTurno();
 
-        when(administradorDeJuego.pedirHabilidad(p3)).thenReturn(new PaqueteDeRespuesta<>(true,h5));
-        juego.atacar();
+        juego.atacar(new PaqueteDeRespuesta<>(true,h5));
         juego.realizarAtaque();
 
         //Assert

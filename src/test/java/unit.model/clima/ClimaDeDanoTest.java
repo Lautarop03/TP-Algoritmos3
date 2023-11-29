@@ -41,7 +41,7 @@ public class ClimaDeDanoTest {
         assertEquals(lombriz.getVidaMaxima(),lombriz.getVidaActual());
 
         Double DanoActual = lombriz.getAtaque();
-        Double DanoNuevo = (DanoPrevio+(DanoPrevio*0.01));
+        Double DanoNuevo = (DanoPrevio+(DanoPrevio*0.1));
         assertEquals(DanoActual,DanoNuevo);//Dano nuevo == Dano previo + 10%
     }
 

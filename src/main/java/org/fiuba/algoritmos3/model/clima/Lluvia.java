@@ -7,6 +7,7 @@ import java.util.List;
 public class Lluvia extends Clima{
     public Lluvia() {
         super();
+        setNombre("Lluvia");
         this.tiposBeneficiados = List.of(Tipo.Agua,Tipo.Planta);
     }
 }

@@ -10,6 +10,8 @@ public class PocionMolestaAlumnos extends ItemRestauradorDeVidaPorcentual{
         super(cantidad);
         this.porcentajeDeCura = 1/3f;
         this.nombre = "Pocion Molesta Alumnos";
+        this.descripcion = "Restaura un 33% de la vida maxima.";
+
     }
 
 }

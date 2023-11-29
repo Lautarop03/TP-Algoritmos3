@@ -62,7 +62,7 @@ public class CargarPokemons {
     public List<Item> asignarItems(){
         Pocion pocion = new Pocion(1);
         MegaPocion megaPocion = new MegaPocion(1);
-        Hiperpocion hiperPocion = new Hiperpocion(10);
+        Hiperpocion hiperPocion = new Hiperpocion(1);
         PocionMolestaAlumnos posicionMolestaAlumnos = new PocionMolestaAlumnos(1);
         Revivir revivir = new Revivir(1);
         CuraTodo curaTodo = new CuraTodo(1);

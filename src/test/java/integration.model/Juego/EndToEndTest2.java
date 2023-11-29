@@ -96,7 +96,7 @@ public class EndToEndTest2 {
 
         //Atacamos con habilidad de daño
         Integer vidaAntesDeAtaque = j2.getPokemonActual().getVidaActual();
-        juego.atacar();
+        juego.atacar(new PaqueteDeRespuesta<>(true,habilidadDeDano1));
         juego.realizarAtaque();
         double danio = calcularDano(habilidadDeDano1, p1, p3, random);
 
@@ -110,7 +110,7 @@ public class EndToEndTest2 {
         //Usamos habiladad de estado en el j1
         when(administradorDeJuego.pedirHabilidad(p3)).thenReturn(new PaqueteDeRespuesta<>(true, habilidadDeEstado2));
 
-        juego.atacar();
+        juego.atacar(new PaqueteDeRespuesta<>(true, habilidadDeEstado2));
         juego.realizarAtaque();
 
         //Assert de estado envenenado a j1
@@ -123,7 +123,7 @@ public class EndToEndTest2 {
         when(administradorDeJuego.pedirHabilidad(p1)).thenReturn(new PaqueteDeRespuesta<>(true, habilidadDeClima1));
 
         Integer vidaAntesDeEnvenenmiento = j1.getPokemonActual().getVidaActual();
-        juego.atacar();
+        juego.atacar(new PaqueteDeRespuesta<>(true, habilidadDeClima1));
         juego.realizarAtaque();
         juego.aplicarEstados();
 
@@ -146,7 +146,9 @@ public class EndToEndTest2 {
 
         when(administradorDeJuego.pedirPokemon(j2.getPokemones())).thenReturn(new PaqueteDeRespuesta<>(true, 0));
         when(administradorDeJuego.pedirItem(items2)).thenReturn(new PaqueteDeRespuesta<>(true,1));
-        Boolean seUsoElItem = juego.usarItem();
+        List<Item> items = juego.getJugadorActual().getItems();
+        Item item = items.get(1);
+        Boolean seUsoElItem = juego.usarItem(item,0);
 
         //Assert uso Item
         Integer vidaResultado3 = vidaResultado2 + item4.getcantidadDeCura();
@@ -167,7 +169,9 @@ public class EndToEndTest2 {
         when(administradorDeJuego.pedirItem(items1)).thenReturn(new PaqueteDeRespuesta<>(true, 0));
         when(administradorDeJuego.pedirPokemon(j1.getPokemones())).thenReturn(new PaqueteDeRespuesta<>(true, 0));
 
-        Boolean seUsoElItem2 = juego.usarItem();
+        List<Item> itemss = juego.getJugadorActual().getItems();
+        Item item99 = itemss.get(0);
+        Boolean seUsoElItem2 = juego.usarItem(item99,0);
 
         //Assert uso Item
         assertTrue(seUsoElItem2);

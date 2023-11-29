@@ -1,0 +1,21 @@
+@font-face {
+    src: url('fonts/pokemon-emerald.otf');
+}
+#salir_items {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-shadow: 2px 1px 1px #000000;
+    -fx-font-family: "Pokemon Emerald";
+    color: #ffffff;
+    font-size: 38px;
+    background: #8f51e0;
+    padding: 10px 25px 10px 25px;
+    border: solid #6e6e6e 4px;
+    text-decoration: none;
+}
+
+#salir_items:hover {
+    background: #a77be0;
+    text-decoration: none;
+}

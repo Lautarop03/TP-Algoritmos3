@@ -1,6 +1,7 @@
 package org.fiuba.algoritmos3.model;
 
 import org.fiuba.algoritmos3.Inputs;
+import org.fiuba.algoritmos3.model.clima.Clima;
 import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
@@ -18,7 +19,6 @@ public class AdministradorDeJuego {
     public AdministradorDeJuego(Inputs inputs, ViewControlador viewControlador) {
         this.inputs = inputs;
         this.viewControlador = viewControlador;
-
     }
 
     public PaqueteDeRespuesta<Habilidad> pedirHabilidad(Pokemon pokemonActual){
@@ -61,8 +61,8 @@ public class AdministradorDeJuego {
         }
 
     }
-    public void mostrarCampo(List<Jugador> jugadores) {
-        viewControlador.mostrarCampo(jugadores);
+    public void mostrarCampo(List<Jugador> jugadores, Clima clima) {
+        viewControlador.mostrarCampo(jugadores,clima);
     }
 
     public int pedirCambioPokemonMuerto(ArrayList<Pokemon> pokemones) {

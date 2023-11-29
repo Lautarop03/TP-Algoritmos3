@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="contenedorPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" stylesheets="@../fontStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.MochilaController">
+   <children>
+      <HBox fx:id="fondoMochila" alignment="TOP_RIGHT" prefHeight="419.0" prefWidth="600.0">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="botonVolver" layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#volverBtn" prefHeight="39.0" prefWidth="192.0" styleClass="btnSalir" stylesheets="@../mochila.css" text="Volver al campo">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Button>
+               </children>
+            </Pane>
+            <Pane prefHeight="322.0" prefWidth="391.0">
+               <children>
+                  <ScrollPane fx:id="contenedorItems" layoutX="20.0" layoutY="24.0" prefHeight="275.0" prefWidth="364.0" stylesheets="@../mochila.css">
+                     <content>
+                        <VBox fx:id="itemsContainer" alignment="TOP_RIGHT" prefHeight="261.0" prefWidth="345.0" style="-fx-padding: 10;">
+                           <children>
+                              <HBox alignment="TOP_RIGHT" centerShape="false" minHeight="50.0" prefHeight="50.0" prefWidth="280.0" style="-fx-background-color: transparent" styleClass="hileraItem">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="50.0" prefWidth="230.0" text="Objeto" />
+                                    <Pane prefHeight="47.0" prefWidth="80.0" style="-fx-background-color: transparent;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutY="6.0" prefHeight="37.0" prefWidth="73.0" text="Cantidad" />
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="225.0" prefWidth="600.0" style="-fx-background-color: #2b639e; -fx-border-color: #203d57; -fx-border-width: 5;">
+         <children>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="118.0" prefWidth="129.0">
+               <children>
+                  <ImageView fx:id="imagenItem" fitHeight="89.0" fitWidth="97.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../items/HiperPocion.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <StackPane prefHeight="118.0" prefWidth="473.0">
+               <children>
+                  <VBox fx:id="confirmacionContainer" prefHeight="200.0" prefWidth="100.0" visible="false">
+                     <children>
+                        <Label prefHeight="133.0" prefWidth="578.0" styleClass="parrafo" stylesheets="@../mochila.css" text="Desea usar el item?">
+                           <font>
+                              <Font name="Monospaced Regular" size="24.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="63.0" prefWidth="467.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#cancelarBtn" prefHeight="25.0" prefWidth="411.0" styleClass="btnInferior" stylesheets="@../mochila.css" text="Cancelar">
+                                 <font>
+                                    <Font name="Monospaced Bold" size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#confirmarBtn" prefHeight="25.0" prefWidth="412.0" styleClass="btnInferior" stylesheets="@../mochila.css" text="Confirmar">
+                                 <font>
+                                    <Font name="Monospaced Bold" size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Label fx:id="LabelConfirmacion" onMouseClicked="#handleConfirmarSalir" prefHeight="118.0" prefWidth="504.0" stylesheets="@../mochila.css" text="Texto de confirmacion" visible="false" wrapText="true" StackPane.alignment="TOP_CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="parrafo" />
+                        <String fx:value="LabelConfirmacion" />
+                     </styleClass>
+                  </Label>
+                  <Pane fx:id="descripcionContainer" prefHeight="128.0" prefWidth="476.0">
+                     <children>
+                        <Label fx:id="descripcionLabel" prefHeight="118.0" prefWidth="467.0" styleClass="parrafo" text="Descripcion" wrapText="true">
+                           <font>
+                              <Font name="Monospaced Regular" size="24.0" />
+                           </font>
+                           <stylesheets>
+                              <URL value="@../styles.css" />
+                              <URL value="@../mochila.css" />
+                           </stylesheets>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>

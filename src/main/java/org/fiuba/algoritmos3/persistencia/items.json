@@ -1,0 +1,34 @@
+[
+  {
+    "nombre": "CuraTodo",
+    "id": "1"
+  },
+  {
+    "nombre": "HiperPocion",
+    "id": "2"
+  },
+  {
+    "nombre": "MegaPocion",
+    "id": "3"
+  },
+  {
+    "nombre": "Pocion",
+    "id": "4"
+  },
+  {
+    "nombre": "PocionMolestaAlumnos",
+    "id": "5"
+  },
+  {
+    "nombre": "Revivir",
+    "id": "6"
+  },
+  {
+    "nombre": "ItemModificadorAtaque",
+    "id": "7"
+  },
+  {
+    "nombre": "ItemModificadorDefensa",
+    "id": "8"
+  }
+]

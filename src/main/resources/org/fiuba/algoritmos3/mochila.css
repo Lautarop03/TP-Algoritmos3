@@ -1,0 +1,109 @@
+.scroll-pane{
+    -fx-background-color:transparent;
+}
+
+.scroll-pane > .viewport {
+-fx-background-color: transparent;
+}
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-opacity: 0;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.parrafo{
+    -fx-font-family: "Pokemon Emerald";
+    -fx-font-size: 28px;
+    -fx-text-fill: white;
+}
+
+.LabelConfirmacion{
+    -fx-label-padding: 10;
+}
+
+.LabelConfirmacion:hover{
+    -fx-background-color:  #244DC4;
+    -fx-label-padding: 10;
+}
+
+.LabelConfirmacion:pressed{
+    -fx-background-color:  #142C6F,#244DC4;
+    -fx-background-insets: 0,8;
+    -fx-label-padding: 10;
+    -fx-font-size: 30;
+}
+
+
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #F0F387;
+    -fx-background-radius: 5em;
+}
+
+
+.btnSalir.button{
+    -fx-font-family: "Pokemon Emerald";
+    -fx-background-color: transparent;
+    -fx-font-size: 22px;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+}
+
+.btnSalir.button:hover{
+    -fx-background-color: #F7AD47;
+    -fx-border-width: 5;
+}
+.btnSalir.button:pressed{
+    -fx-border-width: 5;
+    -fx-font-size: 18px;
+
+}
+
+.btnInferior.button{
+    -fx-font-family: "Pokemon Emerald";
+    -fx-background-color: #73D6BE;
+    -fx-font-size: 24px;
+    -fx-border-radius: 2;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-background-radius: 2;
+    -fx-background-insets: 2;
+}
+
+.btnInferior.button:hover{
+    -fx-background-color: #265676;
+}
+
+.btnInferior.button:pressed {
+    -fx-border-width: 5;
+    -fx-font-size: 21px;
+}
+
+.hileraItem {
+    -fx-alignment: TOP_RIGHT;
+}
+
+.hileraItem .label {
+    -fx-font-family: "Pokemon Emerald";
+    -fx-font-size: 20px;
+}
+
+.hileraItem:hover {
+    -fx-background-color: #d0b050;
+}
+.hileraItem:hover .label {
+    /*-fx-background-color: #d0b050;*/
+    -fx-font-weight: bold;
+    -fx-font-family: "Pokemon Emerald";
+    -fx-font-size: 20px;
+}
+.hileraItem:hover .button {
+    /*-fx-background-color: #d0b050;*/
+    -fx-font-weight: bold;
+    -fx-font-family: "Pokemon Emerald";
+    -fx-font-size: 20px;
+}

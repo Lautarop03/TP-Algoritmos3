@@ -1,0 +1,82 @@
+@font-face {
+    src: url('fonts/pokemon-emerald.otf');
+}
+
+.datos{
+    -fx-background-color: #455c42 ,  #19340c, #dcd4bc;;
+    -fx-background-insets: 0, 2, 6 ;
+    -fx-background-radius: 10;
+}
+
+.ParrafoFondo{
+    -fx-background-color: transparent;
+    -fx-label-padding: 5;
+}
+
+.FondoInferior{
+    -fx-border-color: #1b1f1b;
+    -fx-border-width: 5;
+    -fx-background-color: #1b1f1b, #a4822d , #B6B6B4 ,  #14364e ;
+    -fx-background-insets: 0, 4, 9, 12 ;
+    -fx-background-radius: 6;
+}
+
+.GrillaMenu{
+    -fx-background-color: #a4822d, #7271a3,#F2F2F2 ;
+    -fx-background-insets: 0, 3, 7 ;
+    -fx-background-radius: 6;
+}
+
+.BotonesMenu{
+    -fx-background-color: transparent;
+    -fx-font-size: 25;
+}
+.BotonesMenu:hover{
+    -fx-background-color: grey;
+}
+
+.BotonesMenu:pressed{
+    -fx-background-color: black, #F2F2F2, grey ;
+    -fx-background-insets: 1,5 ;
+}
+
+.GrillaHabilidades{
+    -fx-border-color: #1b1f1b ;
+    -fx-border-width: 4;
+    -fx-background-color: #7271a3,#F2F2F2 ;
+    -fx-background-insets: 0, 9;
+    -fx-background-radius: 10;
+}
+
+.Estado{
+    -fx-background-insets: 1;
+    -fx-background-radius: 20;
+    -fx-font-family: "Pokemon Emerald";
+}
+
+.Paralizado{
+    -fx-background-color: #DAD228;
+}
+
+.Confundido{
+    -fx-background-color: #2146AF;
+}
+
+.Dormido{
+    -fx-background-color: #555555;
+}
+
+.Envenenado{
+    -fx-background-color:  #ad3ffc;
+}
+
+
+
+.GrillaHabilidadInfo{
+    -fx-border-color: #1b1f1b ;
+    -fx-border-width: 4;
+    -fx-background-color: #7271a3,#F2F2F2 ;
+    -fx-background-insets: 0, 9;
+    -fx-background-radius: 10;
+}
+

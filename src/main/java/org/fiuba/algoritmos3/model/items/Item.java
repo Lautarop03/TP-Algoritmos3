@@ -5,11 +5,15 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 public abstract class Item{
     protected Integer cantidadDeItems;
-
     protected String nombre;
+    protected String descripcion;
+    private int ID;
 
     public Item(Integer cantidadDeItems){
-        this.cantidadDeItems = cantidadDeItems;
+        if (cantidadDeItems > 0) {
+            this.cantidadDeItems = cantidadDeItems;
+        }
+        this.descripcion = "Esto es un ítem.";
     }
 
     public boolean aplicarItem(Pokemon pokemon){
@@ -25,5 +29,25 @@ public abstract class Item{
     }
     public String getNombre() {
         return nombre;
+    }
+
+    public void setCantidadDeItems(Integer cantidadDeItems) {
+        this.cantidadDeItems = cantidadDeItems;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
     }
 }
