@@ -13,7 +13,7 @@
          <children>
             <VBox fx:id="vboxIzquierdo" alignment="BOTTOM_CENTER" prefHeight="358.0" prefWidth="325.0">
                <children>
-                  <Pane prefHeight="225.0" prefWidth="305.0">
+                  <Pane prefHeight="225.0" prefWidth="300.0">
                      <children>
                         <Pane layoutX="33.0" layoutY="53.0" prefHeight="85.0" prefWidth="267.0" styleClass="datos" stylesheets="@../battleMain.css">
                            <children>
@@ -44,6 +44,40 @@
                               </Label>
                            </children>
                         </Pane>
+                        <HBox alignment="CENTER" layoutX="33.0" layoutY="135.0" prefHeight="32.0" prefWidth="267.0">
+                           <children>
+                              <ImageView fx:id="pokeballEnemiga0" fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../background/pokeball.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="pokeballEnemiga1" fitHeight="28.0" fitWidth="29.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../background/pokeball.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="pokeballEnemiga2" fitHeight="28.0" fitWidth="29.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../background/pokeball.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="pokeballEnemiga3" fitHeight="28.0" fitWidth="29.0" layoutX="39.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../background/pokeball.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="pokeballEnemiga4" fitHeight="28.0" fitWidth="29.0" layoutX="97.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../background/pokeball.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="pokeballEnemiga5" fitHeight="28.0" fitWidth="29.0" layoutX="152.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../background/pokeball.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
                      </children></Pane>
                   <ImageView fx:id="img_pk1" fitHeight="182.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -90,6 +124,40 @@
                               </Label>
                            </children>
                         </Pane>
+                        <HBox alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="267.0">
+                           <children>
+                              <ImageView fx:id="pokeballActual0" fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../background/pokeball.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="pokeballActual1" fitHeight="28.0" fitWidth="29.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../background/pokeball.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="pokeballActual2" fitHeight="28.0" fitWidth="29.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../background/pokeball.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="pokeballActual3" fitHeight="28.0" fitWidth="29.0" layoutX="39.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../background/pokeball.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="pokeballActual4" fitHeight="28.0" fitWidth="29.0" layoutX="97.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../background/pokeball.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="pokeballActual5" fitHeight="28.0" fitWidth="29.0" layoutX="152.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../background/pokeball.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
                      </children></Pane>
                </children>
             </VBox>

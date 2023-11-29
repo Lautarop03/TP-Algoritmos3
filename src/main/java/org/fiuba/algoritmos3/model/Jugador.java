@@ -52,4 +52,14 @@ public class Jugador {
     public Boolean getGanador(){
         return ganador;
     }
+
+    public int getCantidadPokemonVivos(){
+        int contador = 0;
+        for (Pokemon pokemon : this.pokemones) {
+            if (pokemon.estaVivo()) {
+                contador += 1;
+            }
+        }
+        return contador;
+    }
 }

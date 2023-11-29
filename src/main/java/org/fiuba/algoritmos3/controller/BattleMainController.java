@@ -87,12 +87,27 @@ public class BattleMainController extends Controller {
     private VBox vboxDerecho;
     @FXML
     private VBox vboxIzquierdo;
+    @FXML private ImageView pokeballActual0;
+    @FXML private ImageView pokeballActual1;
+    @FXML private ImageView pokeballActual2;
+    @FXML private ImageView pokeballActual3;
+    @FXML private ImageView pokeballActual4;
+    @FXML private ImageView pokeballActual5;
+    @FXML private ImageView pokeballEnemiga0;
+    @FXML private ImageView pokeballEnemiga1;
+    @FXML private ImageView pokeballEnemiga2;
+    @FXML private ImageView pokeballEnemiga3;
+    @FXML private ImageView pokeballEnemiga4;
+    @FXML private ImageView pokeballEnemiga5;
+
 
     private Juego juego;
 
 
     private List<Habilidad> habilidades;
     private List<Label> labelsHabilidades;
+    private List<ImageView> pokeballsEnemigas;
+    private List<ImageView> pokeballsActuales;
     private Stage stage;
 
     public Scene setJuego(Juego juego) throws IOException {
@@ -100,7 +115,6 @@ public class BattleMainController extends Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
         VBox root = loader.load();
         Scene scene = new Scene(root, 600, 450);
-
 
         Image image = new Image(getClass().getResource("/org/fiuba/algoritmos3/background/battlebgroute.jpg").toString());
         BackgroundImage bgImage = new BackgroundImage(
@@ -142,6 +156,8 @@ public class BattleMainController extends Controller {
         this.img_pk2.setImage(pk2Image);
         this.habilidades = juego.getJugadorActual().getPokemonActual().getHabilidades();
         this.labelsHabilidades = List.of(habilidadLabel0, habilidadLabel1, habilidadLabel2, habilidadLabel3);
+        this.pokeballsActuales = List.of(pokeballActual0, pokeballActual1, pokeballActual2, pokeballActual3, pokeballActual4, pokeballActual5);
+        this.pokeballsEnemigas = List.of(pokeballEnemiga0, pokeballEnemiga1, pokeballEnemiga2, pokeballEnemiga3, pokeballEnemiga4, pokeballEnemiga5);
         return scene;
         // TODO: aca seteo todos los datos de la pantalla
     }
@@ -196,49 +212,58 @@ public class BattleMainController extends Controller {
 
         if (habilidad.getCantidadDeUsos() == 0) {
             //TODO: Imprimir en la pantalla habilidad sin usos
-        } else {
-            botonesContainer.setDisable(true);
-
-            juego.atacar(new PaqueteDeRespuesta<>(true,habilidad));
-            if (!juego.aplicarEstados()){
-                juego.realizarAtaque();
-            }
-            setJuego(juego);
-
-            PauseTransition animacionAtaque = new PauseTransition(Duration.seconds(1));
-
-            animacionAtaque.setOnFinished((finalizado) -> {
-                img_pk2.setEffect(null);
-
-                PathTransition transitionDer = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2, vboxDerecho.getHeight()/2, 500);
-                PathTransition transitionIzq = animacionCambioDeTurno(vboxIzquierdo, vboxIzquierdo.getWidth()/2, vboxIzquierdo.getHeight()/2, -500);
-                transitionDer.play();
-                transitionIzq.play();
-
-                transitionIzq.setOnFinished((finalizado2) -> {
-                    cambiarDeTurno();
-                    botonesContainer.setDisable(false);
-
-                    PathTransition transitionDerFin = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2 + 500, vboxDerecho.getHeight()/2, 150);
-                    PathTransition transitionIzqFin = animacionCambioDeTurno(vboxIzquierdo, vboxIzquierdo.getWidth()/2 - 500, vboxIzquierdo.getHeight()/2, 150);
-                    transitionDerFin.play();
-                    transitionIzqFin.play();
-                });
-            });
-
-            MotionBlur motionBlur = new MotionBlur();
-            Blend blend = new Blend();
-            blend.setMode(BlendMode.RED);
-            blend.setBottomInput(motionBlur);
-
-            img_pk2.setEffect(blend);
-            animacionAtaque.playFromStart();
+            toggleMenuHabilidades();
+            return;
         }
 
+        botonesContainer.setDisable(true);
+
+        juego.atacar(new PaqueteDeRespuesta<>(true,habilidad));
+        if (!juego.aplicarEstados()){
+            juego.realizarAtaque();
+        }
+        setJuego(juego);
+
+        PauseTransition animacionAtaque = new PauseTransition(Duration.seconds(1));
+
+        animacionAtaque.setOnFinished((finalizado) -> {
+            cambiarDeTurno();
+        });
+
+        MotionBlur motionBlur = new MotionBlur();
+        Blend blend = new Blend();
+        blend.setMode(BlendMode.RED);
+        blend.setBottomInput(motionBlur);
+
+        img_pk2.setEffect(blend);
+        animacionAtaque.playFromStart();
+
         toggleMenuHabilidades();
+
+        mostrarPokemonesVivos(juego.getJugadorActual().getCantidadPokemonVivos(), pokeballsActuales);
+        mostrarPokemonesVivos(juego.getOponente().getCantidadPokemonVivos(), pokeballsEnemigas);
     }
 
-    private void cambiarDeTurno() {
+    public void cambiarDeTurno() {
+        img_pk2.setEffect(null);
+
+        PathTransition transitionDer = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2, vboxDerecho.getHeight()/2, 500);
+        PathTransition transitionIzq = animacionCambioDeTurno(vboxIzquierdo, vboxIzquierdo.getWidth()/2, vboxIzquierdo.getHeight()/2, -500);
+        transitionDer.play();
+        transitionIzq.play();
+
+        transitionIzq.setOnFinished((finalizado2) -> {
+            lanzarEventocambiarDeTurno();
+            botonesContainer.setDisable(false);
+
+            PathTransition transitionDerFin = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2 + 500, vboxDerecho.getHeight()/2, 150);
+            PathTransition transitionIzqFin = animacionCambioDeTurno(vboxIzquierdo, vboxIzquierdo.getWidth()/2 - 500, vboxIzquierdo.getHeight()/2, 150);
+            transitionDerFin.play();
+            transitionIzqFin.play();
+        });
+    }
+
+    private void lanzarEventocambiarDeTurno() {
         tipoLabel.fireEvent(new CambioTurnoEvent());
         try {
             setJuego(juego);
@@ -303,9 +328,26 @@ public class BattleMainController extends Controller {
         //TODO: BOTON PARA RENDIRSE
     }
 
+    private void mostrarPokemonesVivos(int cantidad, List<ImageView> pokeballs) {
+        for (int i=0; i < pokeballs.size(); i++) {
+            if (cantidad > i) {
+                ImageView pokeballImageView = pokeballs.get(i);
+                Image pokeballImage = new Image(getClass().getResource("/org/fiuba/algoritmos3/background/pokeball.png").toString());
+                pokeballImageView.setImage(pokeballImage);
+            } else {
+                ImageView pokeballImageView = pokeballs.get(i);
+                Image pokeballImage = new Image(getClass().getResource("/org/fiuba/algoritmos3/background/pokeballGris.png").toString());
+                pokeballImageView.setImage(pokeballImage);
+            }
+        }
+    }
+
     public void show() throws IOException {
         this.stage.show();
         setJuego(SingletonJuego.getInstancia().getJuego());
+
+        mostrarPokemonesVivos(juego.getJugadorActual().getCantidadPokemonVivos(), pokeballsActuales);
+        mostrarPokemonesVivos(juego.getOponente().getCantidadPokemonVivos(), pokeballsEnemigas);
     }
 
 }
