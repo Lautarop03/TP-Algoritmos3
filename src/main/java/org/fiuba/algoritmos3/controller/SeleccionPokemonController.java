@@ -121,8 +121,9 @@ public class SeleccionPokemonController extends Controller {
                 imageView.setLayoutX(35);
 
                 Label labelVida = new Label(pokemon.getVidaActual() +" / "+ pokemon.getVidaMaxima() );
+                labelVida.setStyle("-fx-font-size: 20px;-fx-font-family: \"Pokemon Emerald\";");
                 labelVida.setLayoutX(120);
-                labelVida.setLayoutY(15);
+                labelVida.setLayoutY(20);
 
                 ProgressBar progressBar = new ProgressBar(porcentajeVidaPokemon(pokemon));
                 progressBar.setStyle(cambiarColorBarra(pokemon));
@@ -215,7 +216,7 @@ public class SeleccionPokemonController extends Controller {
                 }else {
                         Pokemon pokemon = pokemones.get(id);
                         descripcionPokemon.setText(" Vas a seleccionar a " + pokemon.getNombre());
-                        descripcionPokemon.setStyle(" -fx-font-family: 'Arial'; -fx-font-size: 25; ");
+                        descripcionPokemon.setStyle("-fx-font-size: 30px;-fx-font-family: \"Pokemon Emerald\";");
                 }
         }
 
