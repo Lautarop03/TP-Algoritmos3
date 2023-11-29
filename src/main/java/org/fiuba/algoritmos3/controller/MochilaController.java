@@ -169,9 +169,10 @@ public class MochilaController extends Controller {
 
 
     public void handleConfirmarSalir() throws IOException {
-        confirmacionContainer.fireEvent(new CambioTurnoEvent());
+//        confirmacionContainer.fireEvent(new CambioTurnoEvent());
         controller.show();
         this.stage.close();
+        controller.cambiarEscena = true;
     }
 
     public void confirmarBtn() throws IOException{
@@ -187,6 +188,7 @@ public class MochilaController extends Controller {
                 descripcionContainer.setVisible(false);
                 itemsContainer.setDisable(true);
                 botonVolver.setDisable(true);
+                controller.cambiarEscena = true;
             } else {
                 descripcionLabel.setText("El item " + item.getNombre() + " no se pudo aplicar, elija otro pokemon u objeto.");
             }

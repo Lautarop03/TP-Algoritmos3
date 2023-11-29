@@ -10,7 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
@@ -236,9 +235,10 @@ public class SeleccionPokemonController extends Controller {
                 this.contenedorConfirmacion.setVisible(false);
                 if (Objects.equals(accion, "main")) {
                         cambiarPokemon(pokemon);
-                        handleMochilaBtn(null);
+                        handleConfirmarBtn(null);
                         //stage.fireEvent(new CambioTurnoEvent());
-                        SingletonJuego.getInstancia().getJuegoController().handle(new CambioTurnoEvent());
+//                        SingletonJuego.getInstancia().getJuegoController().handle(new CambioTurnoEvent());
+                        controller.cambiarEscena = true;
                 }
                 this.controller.show();
                 this.stage.close();
@@ -277,7 +277,7 @@ public class SeleccionPokemonController extends Controller {
                 this.stage = stage;
         }
         @FXML
-        void handleMochilaBtn(MouseEvent evento) throws IOException {
+        void handleConfirmarBtn(MouseEvent evento) throws IOException {
                 controller.show();
                 this.stage.close();
         }

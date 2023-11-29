@@ -106,7 +106,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="96.0" prefWidth="173.0">
                <children>
-                  <Button fx:id="salir_items" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#handleMochilaBtn" prefHeight="53.0" prefWidth="87.0" stylesheets="@../boton.css" text="Salir" />
+                  <Button fx:id="salir_items" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#handleConfirmarBtn" prefHeight="53.0" prefWidth="87.0" stylesheets="@../boton.css" text="Salir" />
                </children>
             </HBox>
          </children>

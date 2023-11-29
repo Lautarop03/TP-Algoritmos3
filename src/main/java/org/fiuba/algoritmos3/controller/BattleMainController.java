@@ -458,6 +458,11 @@ public class BattleMainController extends Controller {
         this.stage.show();
         setJuego(SingletonJuego.getInstancia().getJuego());
         actualizarPokemonesRestantes();
+
+        if (this.cambiarEscena == true) {
+            cambiarDeTurno();
+            cambiarEscena = false;
+        }
     }
 
     public void setFondoBattleMain(String ruta) {
