@@ -266,16 +266,16 @@
                <children>
                   <StackPane alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="107.0" prefWidth="343.0">
                      <children>
-                        <Pane fx:id="contenedorHuir" prefHeight="69.0" prefWidth="343.0" >
+                        <Pane fx:id="contenedorHuir" prefHeight="69.0" prefWidth="343.0">
                            <children>
-                              <HBox layoutX="104.0" layoutY="68.0" prefHeight="32.0" prefWidth="238.0">
+                              <HBox layoutX="104.0" layoutY="57.0" prefHeight="41.0" prefWidth="238.0" styleClass="BotonesMenu">
                                  <children>
-                                    <Button fx:id="huirCancelar" mnemonicParsing="false" onMouseClicked="#botonHuirCancelar"  prefHeight="59.0" prefWidth="119.0" stylesheets="@../battleMain.css" text="No">
+                                    <Button fx:id="huirCancelar" mnemonicParsing="false" onMouseClicked="#botonHuirCancelar" prefHeight="59.0" prefWidth="119.0" styleClass="label" text="No">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="huirConfirmar" mnemonicParsing="false" onMouseClicked="#botonHuirConfirmar" prefHeight="58.0" prefWidth="119.0" stylesheets="@../battleMain.css" text="Si">
+                                    <Button fx:id="huirConfirmar" mnemonicParsing="false" onMouseClicked="#botonHuirConfirmar" prefHeight="58.0" prefWidth="119.0" styleClass="label" stylesheets="@../battleMain.css" text="Si">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -304,7 +304,7 @@
                               <URL value="@../battleMain.css" />
                            </stylesheets>
                         </GridPane>
-                        <Label fx:id="consola" contentDisplay="RIGHT" ellipsisString="..fdh" prefHeight="107.0" prefWidth="346.0" styleClass="ParrafoFondo" stylesheets="@../battleMain.css" text="Que vas a hacer?" textFill="WHITE" wrapText="true">
+                        <Label fx:id="consola" contentDisplay="RIGHT" ellipsisString="..fdh" prefHeight="71.0" prefWidth="333.0" text="Que vas a hacer?" textFill="WHITE" wrapText="true">
                            <font>
                               <Font name="Verdana" size="22.0" />
                            </font>

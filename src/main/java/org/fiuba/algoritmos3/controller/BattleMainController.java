@@ -410,7 +410,7 @@ public class BattleMainController extends Controller {
     }
 
     public void handleHuirBtn(MouseEvent mouseEvent) {
-        consola.setText("Eres un gallina McFly");
+        consola.setText("\uD83D\uDC14 ¿Eres un gallina McFly? \uD83D\uDC14"  );
         this.contenedorHuir.setVisible(true);
         this.contenedorHuir.toFront();
     }
