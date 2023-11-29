@@ -1,3 +1,7 @@
+@font-face {
+    src: url('fonts/pokemon-emerald.otf');
+}
+
 .datos{
     -fx-background-color: #455c42 ,  #19340c, #dcd4bc;;
     -fx-background-insets: 0, 2, 6 ;
@@ -47,21 +51,19 @@
 .Estado{
     -fx-background-insets: 1;
     -fx-background-radius: 20;
+    -fx-font-family: "Pokemon Emerald";
 }
 
 .Paralizado{
     -fx-background-color: #DAD228;
-
 }
 
 .Confundido{
     -fx-background-color: #2146AF;
-
 }
 
 .Dormido{
     -fx-background-color: #555555;
-
 }
 
 .Envenenado{

@@ -389,7 +389,7 @@ public class BattleMainController extends Controller {
                 String nombreEstado = estados.get(i).getNombre();
                 label.setVisible(true);
                 label.getStyleClass().clear();
-                label.getStyleClass().add(nombreEstado);
+                label.getStyleClass().addAll(nombreEstado, "Estado");
                 label.setText(nombreEstado.substring(0,3).toUpperCase());
             } else {
                 label.setVisible(false);
