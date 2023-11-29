@@ -19,7 +19,7 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#volverBtn" prefHeight="39.0" prefWidth="192.0" styleClass="btnSalir" stylesheets="@../mochila.css" text="Volver al campo">
+                  <Button fx:id="botonVolver" layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#volverBtn" prefHeight="39.0" prefWidth="192.0" styleClass="btnSalir" stylesheets="@../mochila.css" text="Volver al campo">
                      <font>
                         <Font size="24.0" />
                      </font></Button>
@@ -88,9 +88,14 @@
                         </HBox>
                      </children>
                   </VBox>
+                  <Label fx:id="LabelConfirmacion" onMouseClicked="#handleConfirmarSalir" prefHeight="118.0" prefWidth="504.0" styleClass="parrafo" stylesheets="@../mochila.css" text="Texto de confirmacion" visible="false" StackPane.alignment="TOP_CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                   <Pane fx:id="descripcionContainer" prefHeight="128.0" prefWidth="476.0">
                      <children>
-                        <Label fx:id="descripcionLabel" layoutX="-1.0" layoutY="5.0" prefHeight="118.0" prefWidth="467.0" styleClass="parrafo" text="Descripcion" wrapText="true">
+                        <Label fx:id="descripcionLabel" prefHeight="118.0" prefWidth="467.0" styleClass="parrafo" text="Descripcion" wrapText="true">
                            <font>
                               <Font name="Monospaced Regular" size="24.0" />
                            </font>

@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.fiuba.algoritmos3.ControladorDeJuego;
 import org.fiuba.algoritmos3.Inputs;
 import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
 import org.fiuba.algoritmos3.controller.Eventos.SeleccionPokemonEvent;
@@ -22,10 +23,12 @@ import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.views.ViewControlador;
+import org.jline.terminal.TerminalBuilder;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class MochilaController extends Controller implements EventHandler<SeleccionPokemonEvent> {
 
@@ -47,11 +50,17 @@ public class MochilaController extends Controller implements EventHandler<Selecc
     public Label descripcionLabel;
     @FXML
     public ImageView imagenItem;
+    @FXML
+    public Label LabelConfirmacion;
+
+    @FXML
+    public Button botonVolver;
 
     private List<Item> items;
     private Stage stage;
     private Controller controller;
     private Item item;
+
 
 
 
@@ -80,12 +89,13 @@ public class MochilaController extends Controller implements EventHandler<Selecc
         int altura = 50;
         for (Integer i = 0; i < items.size(); i++) {
             Item item = items.get(i);
+            if (item.getCantidad() ==0){
+                continue;
+            }
             mostrarHileraItem(item, i);
             altura += 50;
         }
         itemsContainer.setPrefHeight(altura);
-
-
         VBox newContenedorPrincipal = new VBox();
         newContenedorPrincipal.getChildren().addAll(contenedorPrincipal.getChildren());
         newContenedorPrincipal.setPrefSize(contenedorPrincipal.getPrefWidth(), contenedorPrincipal.getPrefHeight());
@@ -155,10 +165,17 @@ public class MochilaController extends Controller implements EventHandler<Selecc
         confirmacionContainer.setVisible(false);
         descripcionContainer.setVisible(true);
         itemsContainer.setVisible(true);
-
     }
 
-    public void confirmarBtn() throws IOException {
+
+
+    public void handleConfirmarSalir() throws IOException {
+        confirmacionContainer.fireEvent(new CambioTurnoEvent());
+        controller.show();
+        this.stage.close();
+    }
+
+    public void confirmarBtn() throws IOException{
         confirmacionContainer.setVisible(false);
         descripcionContainer.setVisible(true);
         itemsContainer.setVisible(true);
@@ -166,21 +183,19 @@ public class MochilaController extends Controller implements EventHandler<Selecc
         if (pokemon!=null) {
             Boolean aplicado = item.aplicarItem(pokemon);
             if (!aplicado) {
-
-                //TODO: Mostrar que se uso el item
-                //TODO: Cambiar el turno
-                confirmacionContainer.fireEvent(new CambioTurnoEvent());
+                LabelConfirmacion.setText("Se aplico correctamente en " + pokemon.getNombre() + " y su nueva vida es de " + pokemon.getVidaActual());
+                LabelConfirmacion.setVisible(true);
+                descripcionContainer.setVisible(false);
+                itemsContainer.setDisable(true);
+                botonVolver.setDisable(true);
             } else {
-                //TODO: Mostrar erros uso item
+                descripcionLabel.setText("El item no se pudo aplicar, elija otro pokemon u objeto.");
             }
-            controller.show();
-            this.stage.close();
         }
-
     }
 
 
-    public Pokemon cambiarAPokemon() throws IOException {
+    public Pokemon cambiarAPokemon() throws IOException{
         Juego juego = SingletonJuego.getInstancia().getJuego();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/seleccionPokemon.fxml"));
         Parent root = loader.load();

@@ -26,8 +26,10 @@ public class MainFX extends Application {
         List<Jugador> jugadores = jsonLectura.inicializarPartida();
         Juego juego = new Juego(jugadores);
         SingletonJuego.getInstancia().setJuego(juego);
-        Font.loadFont(getClass().getResourceAsStream("/org/fiuba/algoritmos3/fonts/pokemon-emerald.otf"),14);
         JuegoController juegoController = new JuegoController();
+        stage.setResizable(false);
+        stage.setTitle("Pokemon");
+        stage.getIcons().add(new Image(getClass().getResource("/org/fiuba/algoritmos3/pokemonFront/Pikachu_front.png").toString()));
         juegoController.setStage(stage);
         juegoController.setJuego(juego);
     }
