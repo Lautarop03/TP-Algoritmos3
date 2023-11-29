@@ -24,9 +24,9 @@ public class JsonEscritura {
                 .create();
         String json = gson.toJson(jugadores);
 
-        String nombreArchivo = getNombreArchivo();
+//        String nombreArchivo = getNombreArchivo();
 
-        try (FileWriter writer = new FileWriter(nombreArchivo)) {
+        try (FileWriter writer = new FileWriter("informe.json")) {
             writer.write(json);
         } catch (IOException e) {
             e.printStackTrace();

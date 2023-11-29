@@ -28,6 +28,7 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeClima;
+import org.fiuba.algoritmos3.persistencia.JsonEscritura;
 import org.fiuba.algoritmos3.viewsJavaFX.ViewControladorJavaFX;
 
 import javax.sound.sampled.*;
@@ -347,6 +348,9 @@ public class BattleMainController extends Controller {
     public void mostrarGanador(Jugador jugador){
         if (juego.terminado()){
             this.consola.setText("Felicidades ganaste: " + jugador.getNombre());
+            jugador.setGanador(true);
+            JsonEscritura jsonEscritura = new JsonEscritura();
+            jsonEscritura.escribirInforme(juego);
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
                 Platform.exit();
             }));

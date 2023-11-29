@@ -93,7 +93,7 @@
     "velocidad": 120,
     "defensa": 45,
     "ataque": 50.0,
-    "habilidades": [1,2,3,4]
+    "habilidades": [1,2,3,7]
   },
   {
     "nombre": "Electrode",

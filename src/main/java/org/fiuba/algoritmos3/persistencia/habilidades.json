@@ -40,5 +40,33 @@
   "cantidadDeUsos": "4",
   "tipo": "Normal",
   "estado": "Confuso"
+},{
+  "nombre": "TormentaDeArena",
+  "id": "7",
+  "tipoDeHabilidad": "HabilidadDeClima",
+  "cantidadDeUsos": "4",
+  "tipo": "Electrico",
+  "clima": "TormentaDeArena"
+},{
+  "nombre": "Soleado",
+  "id": "8",
+  "tipoDeHabilidad": "HabilidadDeClima",
+  "cantidadDeUsos": "4",
+  "tipo": "Electrico",
+  "clima": "Soleado"
+},{
+  "nombre": "Lluvia",
+  "id": "9",
+  "tipoDeHabilidad": "HabilidadDeClima",
+  "cantidadDeUsos": "4",
+  "tipo": "Electrico",
+  "clima": "Lluvia"
+},{
+  "nombre": "Huracan",
+  "id": "10",
+  "tipoDeHabilidad": "HabilidadDeClima",
+  "cantidadDeUsos": "4",
+  "tipo": "Electrico",
+  "clima": "Huracan"
 }
 ]
