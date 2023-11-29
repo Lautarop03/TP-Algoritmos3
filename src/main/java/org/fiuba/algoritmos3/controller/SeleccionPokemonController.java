@@ -141,10 +141,15 @@ public class SeleccionPokemonController extends Controller {
 
                 Pane paneDerecho = new Pane();
 
-                ImageView imageView = new ImageView(getClass().getResource("/org/fiuba/algoritmos3/background/ps.png").toString());
+/*                ImageView imageView = new ImageView(getClass().getResource("/org/fiuba/algoritmos3/background/ps.png").toString());
                 imageView.setFitWidth(25);
                 imageView.setPreserveRatio(true);
-                imageView.setLayoutX(35);
+                imageView.setLayoutX(35);*/
+                Label label = new Label();
+                label.setText("PS");
+                label.setStyle("-fx-text-fill: #deff08; -fx-font-size: 18");
+                label.setLayoutX(38);
+                label.setLayoutY(-8);
 
                 Label labelVida = new Label(pokemon.getVidaActual() +" / "+ pokemon.getVidaMaxima() );
                 labelVida.setStyle("-fx-font-size: 20px;-fx-font-family: \"Pokemon Emerald\";");
@@ -154,8 +159,10 @@ public class SeleccionPokemonController extends Controller {
                 ProgressBar progressBar = new ProgressBar(porcentajeVidaPokemon(pokemon));
                 progressBar.setStyle(cambiarColorBarra(pokemon));
                 progressBar.setLayoutX(60);
+                progressBar.setMaxWidth(100);
+                progressBar.setMaxHeight(11);
 
-                paneDerecho.getChildren().addAll(imageView, progressBar, labelVida);
+                paneDerecho.getChildren().addAll(label, progressBar, labelVida);
 
                 
                 HBox hbox = new HBox(10);
@@ -242,7 +249,7 @@ public class SeleccionPokemonController extends Controller {
         public void clickPokemon(MouseEvent mouseEvent, Pokemon pokemon){
                 Stage stage = (Stage) contenedorPrincipal.getScene().getWindow();
                 this.contenedorConfirmacion.setVisible(true);
-                this.pokemonConteiner.setVisible(false);
+                this.pokemonConteiner.setDisable(true);
                 this.pokemon = pokemon;
                 if (this.accion == "mochila") {
                         descripcionPokemon.setText("¿Desea aplicar el Item en " + pokemon.getNombre() + "?");
@@ -265,7 +272,7 @@ public class SeleccionPokemonController extends Controller {
         }
         public void cancelarBtn(){
                 this.pokemon = null;
-                this.pokemonConteiner.setVisible(true);
+                this.pokemonConteiner.setDisable(false);
                 this.contenedorConfirmacion.setVisible(false);
         }
 

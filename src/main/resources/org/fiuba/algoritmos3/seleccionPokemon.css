@@ -1,0 +1,38 @@
+.SalirItems {
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+
+    -fx-font-family: "Pokemon Emerald";
+    -fx-background-color:  #424961, #8f51e0;
+    -fx-background-insets: 6,12;
+    -fx-background-radius: 20;
+}
+
+.SalirItems:hover {
+    -fx-font-family: "Pokemon Emerald";
+    -fx-background-color:  #424961;
+    -fx-background-insets: 6;
+    -fx-background-radius: 20;
+}
+
+.FondoGeneral{
+    -fx-background-color:  #346464, #5c9ca4,
+    linear-gradient(from 0.0px 0.5px to  0.0px 3.5px, repeat, #487c84  5%, transparent 5%);
+    -fx-background-insets: -5,15;
+    -fx-background-radius: 15;
+
+}
+
+.progress-bar > .bar, .progress-bar > .track {
+    -fx-background-insets: 0;
+    -fx-border-width: 2;
+    -fx-border-color: white;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.TextoFondo{
+    -fx-background-color: grey, #F2F2F2;
+    -fx-background-insets: 0,5;
+
+}
