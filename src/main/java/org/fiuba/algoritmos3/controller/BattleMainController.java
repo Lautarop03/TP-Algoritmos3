@@ -26,6 +26,7 @@ import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.PaqueteDeRespuesta;
 import org.fiuba.algoritmos3.model.clima.Clima;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeClima;
 
@@ -103,6 +104,14 @@ public class BattleMainController extends Controller {
     @FXML private ImageView pokeballEnemiga3;
     @FXML private ImageView pokeballEnemiga4;
     @FXML private ImageView pokeballEnemiga5;
+    @FXML private Label estadoActual0;
+    @FXML private Label estadoActual1;
+    @FXML private Label estadoActual2;
+    @FXML private Label estadoActual3;
+    @FXML private Label estadoEnemigo0;
+    @FXML private Label estadoEnemigo1;
+    @FXML private Label estadoEnemigo2;
+    @FXML private Label estadoEnemigo3;
 
 
     private Juego juego;
@@ -111,6 +120,8 @@ public class BattleMainController extends Controller {
     private List<Label> labelsHabilidades;
     private List<ImageView> pokeballsEnemigas;
     private List<ImageView> pokeballsActuales;
+    private  List<Label> estadosActuales;
+    private  List<Label> estadosEnemigos;
     private Stage stage;
 
     public Scene setJuego(Juego juego) throws IOException {
@@ -150,6 +161,8 @@ public class BattleMainController extends Controller {
         this.labelsHabilidades = List.of(habilidadLabel0, habilidadLabel1, habilidadLabel2, habilidadLabel3);
         this.pokeballsActuales = List.of(pokeballActual0, pokeballActual1, pokeballActual2, pokeballActual3, pokeballActual4, pokeballActual5);
         this.pokeballsEnemigas = List.of(pokeballEnemiga0, pokeballEnemiga1, pokeballEnemiga2, pokeballEnemiga3, pokeballEnemiga4, pokeballEnemiga5);
+        this.estadosActuales = List.of(estadoActual0, estadoActual1, estadoActual2, estadoActual3);
+        this.estadosEnemigos = List.of(estadoEnemigo0, estadoEnemigo1, estadoEnemigo2, estadoEnemigo3);
         return scene;
     }
 
@@ -254,12 +267,14 @@ public class BattleMainController extends Controller {
             this.fondo = habilidad.getNombre();
         }
         actualizarPokemonesRestantes();
+        actualizarEstados();
 
         PauseTransition animacionAtaque = new PauseTransition(Duration.seconds(1));
 
         animacionAtaque.setOnFinished((finalizado) -> {
             cambiarDeTurno();
         });
+        actualizarEstados();
 
         MotionBlur motionBlur = new MotionBlur();
         Blend blend = new Blend();
@@ -287,6 +302,7 @@ public class BattleMainController extends Controller {
             lanzarEventocambiarDeTurno();
             botonesContainer.setDisable(false);
             actualizarPokemonesRestantes();
+            actualizarEstados();
 
             PathTransition transitionDerFin = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2 + 500, vboxDerecho.getHeight()/2, 150);
             PathTransition transitionIzqFin = animacionCambioDeTurno(vboxIzquierdo, vboxIzquierdo.getWidth()/2 - 500, vboxIzquierdo.getHeight()/2, 150);
@@ -361,6 +377,26 @@ public class BattleMainController extends Controller {
         consola.setText("Eres un gallina McFly");
         //TODO: BOTON PARA RENDIRSE
     }
+
+    public void actualizarEstados(){
+        mostrarEstados(juego.getJugadorActual().getPokemonActual().getEstados(), estadosActuales);
+        mostrarEstados(juego.getOponente().getPokemonActual().getEstados(), estadosEnemigos);
+    }
+    public void mostrarEstados(List<Estado> estados, List<Label> labelsEstados){
+        for (int i = 0; i < labelsEstados.size(); i++) {
+            Label label = labelsEstados.get(i);
+            if (i < estados.size()) {
+                String nombreEstado = estados.get(i).getNombre();
+                label.setVisible(true);
+                label.getStyleClass().clear();
+                label.getStyleClass().add(nombreEstado);
+                label.setText(nombreEstado.substring(0,3).toUpperCase());
+            } else {
+                label.setVisible(false);
+            }
+        }
+    }
+
 
     private void actualizarPokemonesRestantes(){
         mostrarPokemonesRestantes(juego.getJugadorActual().getCantidadPokemonVivos(), pokeballsActuales);
