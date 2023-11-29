@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" stylesheets="@../fontStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.BattleMainController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" stylesheets="@../fontStyle.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.BattleMainController">
    <children>
       <HBox id="batalla" fx:id="fondoBattleMain" prefHeight="364.0" prefWidth="600.0" style="-fx-background-repeat: no-repeat; -fx-background-size: cover;">
          <children>
@@ -62,7 +53,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label fx:id="Paralizado_pk2" alignment="CENTER" prefHeight="48.0" prefWidth="34.0" stylesheets="@../battleMain.css" text="PAR" textAlignment="CENTER" textFill="WHITE">
+                                    <Label fx:id="estadoEnemigo0" alignment="CENTER" prefHeight="48.0" prefWidth="34.0" stylesheets="@../battleMain.css" text="PAR" textAlignment="CENTER" textFill="WHITE" visible="false">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -71,7 +62,7 @@
                                           <String fx:value="Estado" />
                                        </styleClass>
                                     </Label>
-                                    <Label fx:id="Dormido_pk2" alignment="CENTER" prefHeight="29.0" prefWidth="35.0" stylesheets="@../battleMain.css" text="DOR" textFill="WHITE" GridPane.columnIndex="1">
+                                    <Label fx:id="estadoEnemigo1" alignment="CENTER" prefHeight="29.0" prefWidth="35.0" stylesheets="@../battleMain.css" text="DOR" textFill="WHITE" visible="false" GridPane.columnIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -80,7 +71,7 @@
                                           <String fx:value="Estado" />
                                        </styleClass>
                                     </Label>
-                                    <Label fx:id="Confuso_pk2" alignment="CENTER" prefHeight="44.0" prefWidth="34.0" stylesheets="@../battleMain.css" text="CON" textFill="WHITE" GridPane.rowIndex="1">
+                                    <Label fx:id="estadoEnemigo2" alignment="CENTER" prefHeight="44.0" prefWidth="34.0" stylesheets="@../battleMain.css" text="CON" textFill="WHITE" visible="false" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -89,7 +80,7 @@
                                           <String fx:value="Estado" />
                                        </styleClass>
                                     </Label>
-                                    <Label fx:id="Envenenado_pk2" alignment="CENTER" prefHeight="24.0" prefWidth="35.0" stylesheets="@../battleMain.css" text="ENV" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label fx:id="estadoEnemigo3" alignment="CENTER" prefHeight="24.0" prefWidth="35.0" stylesheets="@../battleMain.css" text="ENV" textFill="WHITE" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -190,7 +181,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Label fx:id="Paralizado_pk1" alignment="CENTER" prefHeight="46.0" prefWidth="34.0" stylesheets="@../battleMain.css" text="PAR" textAlignment="CENTER" textFill="WHITE">
+                                    <Label fx:id="estadoActual0" alignment="CENTER" prefHeight="46.0" prefWidth="34.0" stylesheets="@../battleMain.css" text="PAR" textAlignment="CENTER" textFill="WHITE" visible="false">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -199,7 +190,7 @@
                                           <String fx:value="Estado" />
                                        </styleClass>
                                     </Label>
-                                    <Label fx:id="Dormido_pk1" alignment="CENTER" prefHeight="41.0" prefWidth="35.0" stylesheets="@../battleMain.css" text="DOR" textFill="WHITE" GridPane.columnIndex="1">
+                                    <Label fx:id="estadoActual1" alignment="CENTER" prefHeight="41.0" prefWidth="35.0" stylesheets="@../battleMain.css" text="DOR" textFill="WHITE" visible="false" GridPane.columnIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -208,7 +199,7 @@
                                           <String fx:value="Estado" />
                                        </styleClass>
                                     </Label>
-                                    <Label fx:id="Confuso_pk1" alignment="CENTER" prefHeight="57.0" prefWidth="34.0" stylesheets="@../battleMain.css" text="CON" textFill="WHITE" GridPane.rowIndex="1">
+                                    <Label fx:id="estadoActual2" alignment="CENTER" prefHeight="57.0" prefWidth="34.0" stylesheets="@../battleMain.css" text="CON" textFill="WHITE" visible="false" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -217,7 +208,7 @@
                                           <String fx:value="Estado" />
                                        </styleClass>
                                     </Label>
-                                    <Label fx:id="Envenenado_pk1" alignment="CENTER" prefHeight="47.0" prefWidth="35.0" stylesheets="@../battleMain.css" text="ENV" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label fx:id="estadoActual3" alignment="CENTER" prefHeight="47.0" prefWidth="35.0" stylesheets="@../battleMain.css" text="ENV" textFill="WHITE" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
