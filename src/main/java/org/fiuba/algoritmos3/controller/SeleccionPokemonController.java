@@ -57,7 +57,7 @@ public class SeleccionPokemonController extends Controller {
                 this.contenedorConfirmacion.setVisible(false);
                 this.estadosActuales = List.of(estadoActual0, estadoActual1, estadoActual2, estadoActual3);
                 for (Integer i = 0; i <pokemones.size(); i++) {
-                        if (pokemones.get(i) != pokemonActual && pokemones.get(i).estaVivo()) {
+                        if (pokemones.get(i) != pokemonActual && (pokemones.get(i).estaVivo() || accion == "mochila")) {
                                 Pokemon pokemon = pokemones.get(i);
                                 mostrarPokemones(pokemon, i);
                         }
