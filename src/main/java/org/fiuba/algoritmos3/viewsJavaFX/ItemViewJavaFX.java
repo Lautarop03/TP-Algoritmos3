@@ -14,7 +14,7 @@ public class ItemViewJavaFX {
         System.out.println("El jugador " + jugador.getNombre() + " uso el item " + item.getNombre() + " en el pokemon " + pokemon.getNombre());
     }
 
-    public void mostrarErrorUsoItem(Item item){
-        System.out.println("No se pudo aplicar el item: " + item.getNombre());
+    public String mostrarErrorUsoItem(Item item){
+        return ("No se pudo aplicar el item: " + item.getNombre());
     }
 }

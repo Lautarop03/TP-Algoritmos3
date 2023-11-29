@@ -36,8 +36,8 @@ public class ViewControladorJavaFX {
         itemView.mostrarUsoItem(jugador, item, pokemon);
     }
 
-    public void errorUsoItem (Item item) {
-        itemView.mostrarErrorUsoItem(item);
+    public String errorUsoItem (Item item) {
+        return itemView.mostrarErrorUsoItem(item);
     }
 
     public void errorIntercambiarPokemonSinVida(){
@@ -46,8 +46,8 @@ public class ViewControladorJavaFX {
 
     public void  errorPokemonActual(){ pokemonView.mostrarErrorIntercambiarMismo(); }
 
-    public void mostrarCambioPokemon(Pokemon pokemon){
-        pokemonView.mostrarCambioPokemon(pokemon);
+    public String mostrarCambioPokemon(Pokemon pokemon){
+         return pokemonView.mostrarCambioPokemon(pokemon);
     }
 
     public void mostrarPokemon(Pokemon pokemon) {
@@ -59,22 +59,22 @@ public class ViewControladorJavaFX {
         habilidadView.mostrarHabilidad(habilidad);
     }
 
-    public void mostrarAccion(Habilidad habilidad,Pokemon pokemonActual, Pokemon pokemonEnemigo){
+    public String mostrarAccion(Habilidad habilidad,Pokemon pokemonActual, Pokemon pokemonEnemigo){
         HabilidadViewJavaFX habilidadView = habilidadFactory.createHabilidadView(habilidad);
-        habilidadView.mostrarAccion(habilidad,pokemonActual,pokemonEnemigo);
+        return habilidadView.mostrarAccion(habilidad,pokemonActual,pokemonEnemigo);
     }
 
     public void opcionVolverAMenu(){
         System.out.println("0. Volver al menu de acciones");
     }
 
-    public void mostrarEfectoEstado(Estado estado, Pokemon pokemon, Boolean aplicado){
+    public String mostrarEfectoEstado(Estado estado, Pokemon pokemon, Boolean aplicado){
         EstadoViewJavaFX estadoView = estadoFactory.createEstadoView(estado);
-        estadoView.mostrarEstado(pokemon,estado,aplicado);
+        return estadoView.mostrarEstado(pokemon,estado,aplicado);
     }
 
-    public void mostrarPokemonMuerto(Pokemon pokemon){
-        System.out.println(pokemon.getNombre() + " la quedo");
+    public String mostrarPokemonMuerto(Pokemon pokemon){
+        return pokemon.getNombre() + " la quedo";
     }
 
     public void mostrarCampo(List<Jugador> jugadores, Clima clima) {
@@ -92,10 +92,10 @@ public class ViewControladorJavaFX {
         System.out.println("El ganador es: " + jugador.getNombre());
     }
 
-    public void errorHabilidadEstado() {
-        System.out.println("No se puede aplicar el estado, el pokemon ya tiene uno de la misma clase");
+    public String errorHabilidadEstado() {
+        return ("No se puede aplicar el estado, el pokemon ya tiene uno de la misma clase");
     }
-    public void errorHabilidadSinUsos() {
-        System.out.println("Habilidad sin usos, elegir otra");
+    public String errorHabilidadSinUsos() {
+        return ("Habilidad sin usos, elegir otra");
     }
 }

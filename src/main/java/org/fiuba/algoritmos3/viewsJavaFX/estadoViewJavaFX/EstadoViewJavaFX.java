@@ -5,6 +5,6 @@ import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 
 
 public abstract class EstadoViewJavaFX {
-    public abstract void mostrarEstado(Pokemon pokemon, Estado estado, boolean aplicado);
+    public abstract String mostrarEstado(Pokemon pokemon, Estado estado, boolean aplicado);
 
 }

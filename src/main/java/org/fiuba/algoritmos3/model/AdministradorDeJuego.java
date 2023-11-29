@@ -19,7 +19,6 @@ public class AdministradorDeJuego {
     public AdministradorDeJuego(Inputs inputs, ViewControlador viewControlador) {
         this.inputs = inputs;
         this.viewControlador = viewControlador;
-
     }
 
     public PaqueteDeRespuesta<Habilidad> pedirHabilidad(Pokemon pokemonActual){

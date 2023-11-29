@@ -9,5 +9,6 @@ public abstract class HabilidadViewJavaFX {
         System.out.println("Habilidad:" + habilidad.getNombre() + " Usos:" + habilidad.getCantidadDeUsos());
     }
 
-    public abstract void mostrarAccion(Habilidad habilidad, Pokemon pokemonActual, Pokemon pokemonTarget);
+    public abstract String mostrarAccion(Habilidad habilidad, Pokemon pokemonActual, Pokemon pokemonTarget);
 }
+

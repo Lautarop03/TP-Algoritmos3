@@ -100,9 +100,9 @@ public class Juego {
         }
     }
 
-    public boolean aplicarEstados() {
+    public List<Boolean> aplicarEstados() {
         Pokemon pokemon = getJugadorActual().getPokemonActual();
-        List<Boolean> booleanEstados;
+        List<Boolean> booleanEstados = new ArrayList<Boolean>();
         List<Estado> estados = new ArrayList<>(pokemon.getEstados());
         boolean aplicado = false;
         if (!estados.isEmpty()){
@@ -113,7 +113,7 @@ public class Juego {
                 aplicado = true;
             }
         }
-        return aplicado;
+        return booleanEstados;
     }
 
     public boolean rendirse(){

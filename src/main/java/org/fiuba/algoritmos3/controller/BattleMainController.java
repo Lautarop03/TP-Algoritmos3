@@ -30,6 +30,7 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeClima;
+import org.fiuba.algoritmos3.viewsJavaFX.ViewControladorJavaFX;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -123,6 +124,8 @@ public class BattleMainController extends Controller {
     private List<ImageView> pokeballsActuales;
     private  List<Label> estadosActuales;
     private  List<Label> estadosEnemigos;
+
+    private ViewControladorJavaFX viewControlador;
     private Stage stage;
 
     public Scene setJuego(Juego juego) throws IOException {
@@ -134,6 +137,8 @@ public class BattleMainController extends Controller {
         Scene scene = new Scene(root, 600, 450);
 
         setFondoBattleMain(fondo);
+        this.viewControlador = new ViewControladorJavaFX();
+
 
         List<Jugador> jugadores = juego.getJugadores();
         Jugador jugador1 = juego.getJugadorActual();
@@ -239,7 +244,20 @@ public class BattleMainController extends Controller {
             label.setStyle("-fx-font-family: \"Pokemon Emerald\"; -fx-font-size:25px ");
         }
     }
+    public void mostrarEstados(List<Estado> estados, Pokemon pokemon, List<Boolean> aplicados){
+        if (!estados.isEmpty()){
+            for (int iterador = 0; iterador<estados.size(); iterador++){
+                int finalIterador = iterador;
+                Timeline timeline = new Timeline(
+                        new KeyFrame(Duration.seconds(2), e -> {
+                            consola.setText(viewControlador.mostrarEfectoEstado(estados.get(finalIterador), pokemon, aplicados.get(finalIterador)));
+                        })
+                );
+                timeline.play();
+            }
+        }
 
+    }
     @FXML
     public void handleHabilidadLabelClick(MouseEvent event) throws IOException, InterruptedException {
         Habilidad habilidad = getHabilidadDeMouseEvent(event);;
@@ -259,8 +277,14 @@ public class BattleMainController extends Controller {
         botonesContainer.setDisable(true);
 
         juego.atacar(new PaqueteDeRespuesta<>(true,habilidad));
-        if (!juego.aplicarEstados()){
+        List<Boolean> aplicados = juego.aplicarEstados();
+        List<Estado> estados = juego.getJugadorActual().getPokemonActual().getEstados();
+        if (aplicados.isEmpty() || !aplicados.contains(true)){
             juego.realizarAtaque();
+            consola.setText(viewControlador.mostrarAccion(habilidad, juego.getJugadorActual().getPokemonActual(), juego.getOponente().getPokemonActual()));
+            mostrarEstados(estados, juego.getJugadorActual().getPokemonActual(), aplicados);
+        } else {
+            mostrarEstados(estados, juego.getJugadorActual().getPokemonActual(), aplicados);
         }
         setJuego(juego);
         if (habilidad.getClass() == HabilidadDeClima.class) {
@@ -294,7 +318,7 @@ public class BattleMainController extends Controller {
     public void mostrarGanador(){
         if (juego.terminado()){
             Jugador ganador =juego.getJugadorActual();
-            this.consola.setText("Felisidades ganaste: " + ganador.getNombre());
+            this.consola.setText("Felicidades ganaste: " + ganador.getNombre());
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
                 Platform.exit();
             }));

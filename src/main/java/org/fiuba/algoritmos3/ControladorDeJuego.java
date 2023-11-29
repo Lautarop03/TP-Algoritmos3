@@ -32,7 +32,7 @@ public class ControladorDeJuego {
             this.setAccion(accion);
             repetir = this.accion.realizarAccion(juego);
         } while (!repetir);
-        if (!juego.aplicarEstados()){
+        if (!juego.aplicarEstados().contains(true)){
             juego.realizarAtaque();
         }
         juego.comprobarPokemonActualEstaVivo();

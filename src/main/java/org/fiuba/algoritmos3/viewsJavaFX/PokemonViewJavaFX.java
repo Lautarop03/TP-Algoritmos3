@@ -33,7 +33,7 @@ public class PokemonViewJavaFX {
         System.out.println("Error, es el mismo pokemon.");
     }
 
-    public void mostrarCambioPokemon(Pokemon pokemon){
-        System.out.println("El pokemon se cambio por: "+ pokemon.getNombre());
+    public String mostrarCambioPokemon(Pokemon pokemon){
+        return ("El pokemon se cambio por: "+ pokemon.getNombre());
     }
 }
