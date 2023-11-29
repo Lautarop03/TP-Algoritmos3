@@ -1,11 +1,7 @@
 package org.fiuba.algoritmos3.controller;
 
-import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.PauseTransition;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -252,6 +248,7 @@ public class BattleMainController extends Controller {
             juego.realizarAtaque();
         }
         setJuego(juego);
+        actualizarPokemonesRestantes();
 
         PauseTransition animacionAtaque = new PauseTransition(Duration.seconds(1));
 
@@ -269,8 +266,8 @@ public class BattleMainController extends Controller {
 
         toggleMenuHabilidades();
 
-        mostrarPokemonesVivos(juego.getJugadorActual().getCantidadPokemonVivos(), pokeballsActuales);
-        mostrarPokemonesVivos(juego.getOponente().getCantidadPokemonVivos(), pokeballsEnemigas);
+        mostrarPokemonesRestantes(juego.getJugadorActual().getCantidadPokemonVivos(), pokeballsActuales);
+        mostrarPokemonesRestantes(juego.getOponente().getCantidadPokemonVivos(), pokeballsEnemigas);
     }
 
     public void cambiarDeTurno() {
@@ -284,6 +281,7 @@ public class BattleMainController extends Controller {
         transitionIzq.setOnFinished((finalizado2) -> {
             lanzarEventocambiarDeTurno();
             botonesContainer.setDisable(false);
+            actualizarPokemonesRestantes();
 
             PathTransition transitionDerFin = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2 + 500, vboxDerecho.getHeight()/2, 150);
             PathTransition transitionIzqFin = animacionCambioDeTurno(vboxIzquierdo, vboxIzquierdo.getWidth()/2 - 500, vboxIzquierdo.getHeight()/2, 150);
@@ -357,7 +355,12 @@ public class BattleMainController extends Controller {
         //TODO: BOTON PARA RENDIRSE
     }
 
-    private void mostrarPokemonesVivos(int cantidad, List<ImageView> pokeballs) {
+    private void actualizarPokemonesRestantes(){
+        mostrarPokemonesRestantes(juego.getJugadorActual().getCantidadPokemonVivos(), pokeballsActuales);
+        mostrarPokemonesRestantes(juego.getOponente().getCantidadPokemonVivos(), pokeballsEnemigas);
+    }
+
+    private void mostrarPokemonesRestantes(int cantidad, List<ImageView> pokeballs) {
         for (int i=0; i < pokeballs.size(); i++) {
             if (cantidad > i) {
                 ImageView pokeballImageView = pokeballs.get(i);
@@ -375,8 +378,7 @@ public class BattleMainController extends Controller {
         this.stage.show();
         setJuego(SingletonJuego.getInstancia().getJuego());
 
-        mostrarPokemonesVivos(juego.getJugadorActual().getCantidadPokemonVivos(), pokeballsActuales);
-        mostrarPokemonesVivos(juego.getOponente().getCantidadPokemonVivos(), pokeballsEnemigas);
+        actualizarPokemonesRestantes();
     }
 
 }
