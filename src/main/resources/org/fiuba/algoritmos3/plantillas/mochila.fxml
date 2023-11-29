@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -88,10 +89,14 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <Label fx:id="LabelConfirmacion" onMouseClicked="#handleConfirmarSalir" prefHeight="118.0" prefWidth="504.0" styleClass="parrafo" stylesheets="@../mochila.css" text="Texto de confirmacion" visible="false" StackPane.alignment="TOP_CENTER">
+                  <Label fx:id="LabelConfirmacion" onMouseClicked="#handleConfirmarSalir" prefHeight="118.0" prefWidth="504.0" stylesheets="@../mochila.css" text="Texto de confirmacion" visible="false" wrapText="true" StackPane.alignment="TOP_CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <styleClass>
+                        <String fx:value="parrafo" />
+                        <String fx:value="LabelConfirmacion" />
+                     </styleClass>
                   </Label>
                   <Pane fx:id="descripcionContainer" prefHeight="128.0" prefWidth="476.0">
                      <children>

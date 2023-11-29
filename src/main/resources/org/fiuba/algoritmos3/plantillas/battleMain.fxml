@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" stylesheets="@../fontStyle.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.BattleMainController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" stylesheets="@../fontStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.BattleMainController">
    <children>
       <HBox id="batalla" fx:id="fondoBattleMain" prefHeight="364.0" prefWidth="600.0" style="-fx-background-repeat: no-repeat; -fx-background-size: cover;">
          <children>
@@ -42,6 +52,54 @@
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
+                              <GridPane alignment="CENTER" layoutX="12.0" layoutY="33.0" prefHeight="41.0" prefWidth="69.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label fx:id="Paralizado_pk2" alignment="CENTER" prefHeight="48.0" prefWidth="34.0" stylesheets="@../battleMain.css" text="PAR" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="Paralizado" />
+                                          <String fx:value="Estado" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="Dormido_pk2" alignment="CENTER" prefHeight="29.0" prefWidth="35.0" stylesheets="@../battleMain.css" text="DOR" textFill="WHITE" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="Dormido" />
+                                          <String fx:value="Estado" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="Confuso_pk2" alignment="CENTER" prefHeight="44.0" prefWidth="34.0" stylesheets="@../battleMain.css" text="CON" textFill="WHITE" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="Confundido" />
+                                          <String fx:value="Estado" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="Envenenado_pk2" alignment="CENTER" prefHeight="24.0" prefWidth="35.0" stylesheets="@../battleMain.css" text="ENV" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="Envenenado" />
+                                          <String fx:value="Estado" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </GridPane>
                            </children>
                         </Pane>
                         <HBox alignment="CENTER" layoutX="33.0" layoutY="135.0" prefHeight="32.0" prefWidth="267.0">
@@ -122,6 +180,54 @@
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
+                              <GridPane alignment="CENTER" layoutX="12.0" layoutY="33.0" prefHeight="41.0" prefWidth="69.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label fx:id="Paralizado_pk1" alignment="CENTER" prefHeight="46.0" prefWidth="34.0" stylesheets="@../battleMain.css" text="PAR" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="Paralizado" />
+                                          <String fx:value="Estado" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="Dormido_pk1" alignment="CENTER" prefHeight="41.0" prefWidth="35.0" stylesheets="@../battleMain.css" text="DOR" textFill="WHITE" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="Dormido" />
+                                          <String fx:value="Estado" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="Confuso_pk1" alignment="CENTER" prefHeight="57.0" prefWidth="34.0" stylesheets="@../battleMain.css" text="CON" textFill="WHITE" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="Confundido" />
+                                          <String fx:value="Estado" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="Envenenado_pk1" alignment="CENTER" prefHeight="47.0" prefWidth="35.0" stylesheets="@../battleMain.css" text="ENV" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="Envenenado" />
+                                          <String fx:value="Estado" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </GridPane>
                            </children>
                         </Pane>
                         <HBox alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="267.0">
