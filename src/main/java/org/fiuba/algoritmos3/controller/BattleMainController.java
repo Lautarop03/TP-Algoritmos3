@@ -229,6 +229,7 @@ public class BattleMainController extends Controller {
             Label label = labelsHabilidades.get(i);
             Habilidad habilidad = habilidades.get(i);
             label.setText(habilidad.getNombre());
+            label.setStyle("-fx-font-family: \"Pokemon Emerald\"; -fx-font-size:25px ");
         }
     }
 
@@ -318,6 +319,8 @@ public class BattleMainController extends Controller {
 
         tipoLabel.setText("Tipo: " + habilidad.getTipo().toString());
         usosRestantesLabel.setText("Usos restantes: " + habilidad.getCantidadDeUsos().toString());
+        tipoLabel.setStyle("-fx-font-family: \"Pokemon Emerald\"; -fx-font-size:25px ");
+        usosRestantesLabel.setStyle("-fx-font-family: \"Pokemon Emerald\"; -fx-font-size:25px ");
     }
 
     private Habilidad getHabilidadDeMouseEvent(MouseEvent mouseEvent) {
