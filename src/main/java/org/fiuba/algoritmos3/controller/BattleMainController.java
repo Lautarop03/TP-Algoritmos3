@@ -138,7 +138,7 @@ public class BattleMainController extends Controller {
         this.juego = juego;
         this.contenedorHuir.setVisible(false);
         chequearClima();
-        delay(tiempoMostrarTexto,()->consola.setText("Que deberia hacer " + juego.getJugadorActual().getPokemonActual().getNombre()));
+        delay(tiempoMostrarTexto+500,()->consola.setText("Que deberia hacer " + juego.getJugadorActual().getPokemonActual().getNombre()));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
         VBox root = loader.load();
@@ -351,7 +351,7 @@ public class BattleMainController extends Controller {
             jugador.setGanador(true);
             JsonEscritura jsonEscritura = new JsonEscritura();
             jsonEscritura.escribirInforme(juego);
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
                 Platform.exit();
             }));
             timeline.setCycleCount(1);

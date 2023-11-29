@@ -2,7 +2,7 @@
   {
     "nombre": "Pikachu",
     "id": 1,
-    "nivel": 50,
+    "nivel": 54,
     "tipo": "Electrico",
     "historia": "asd",
     "vidaMaxima": 30,
@@ -14,7 +14,7 @@
   {
     "nombre": "Charizard",
     "id": 2,
-    "nivel": 50,
+    "nivel": 76,
     "tipo": "Fuego",
     "historia": "asd",
     "vidaMaxima": 78,
@@ -26,7 +26,7 @@
   {
     "nombre": "Venusaur",
     "id": 3,
-    "nivel": 50,
+    "nivel": 56,
     "tipo": "Planta",
     "historia": "asd",
     "vidaMaxima": 80,
@@ -38,7 +38,7 @@
   {
     "nombre": "Blastoise",
     "id": 4,
-    "nivel": 50,
+    "nivel": 54,
     "tipo": "Agua",
     "historia": "asd",
     "vidaMaxima": 79,
@@ -62,7 +62,7 @@
   {
     "nombre": "Nidoqueen",
     "id": 6,
-    "nivel": 50,
+    "nivel": 65,
     "tipo": "Veneno",
     "historia": "asd",
     "vidaMaxima": 90,
@@ -74,7 +74,7 @@
   {
     "nombre": "Poliwrath",
     "id": 7,
-    "nivel": 50,
+    "nivel": 61,
     "tipo": "Agua",
     "historia": "asd",
     "vidaMaxima": 70,
@@ -86,7 +86,7 @@
   {
     "nombre": "Alakazam",
     "id": 8,
-    "nivel": 50,
+    "nivel": 45,
     "tipo": "Psiquico",
     "historia": "asd",
     "vidaMaxima": 55,
@@ -98,7 +98,7 @@
   {
     "nombre": "Electrode",
     "id": 9,
-    "nivel": 50,
+    "nivel": 56,
     "tipo": "Electrico",
     "historia": "asd",
     "vidaMaxima": 60,
@@ -110,7 +110,7 @@
   {
     "nombre": "Golem",
     "id": 10,
-    "nivel": 50,
+    "nivel": 58,
     "tipo": "Dragon",
     "historia": "asd",
     "vidaMaxima": 105,
@@ -122,7 +122,7 @@
   {
     "nombre": "Charmander",
     "id": 11,
-    "nivel": 50,
+    "nivel": 43,
     "tipo": "Fuego",
     "historia": "asd",
     "vidaMaxima": 70,
@@ -134,7 +134,7 @@
   {
     "nombre": "Eevee",
     "id": 12,
-    "nivel": 50,
+    "nivel": 40,
     "tipo": "Agua",
     "historia": "asd",
     "vidaMaxima": 125,
