@@ -27,29 +27,20 @@ public class SeleccionPokemonController extends Controller{
 
         @FXML
         private ProgressBar barra_vida_actual;
-
-
+        @FXML
+        private  Pane contenedorPokemonActual;
         @FXML
         private ImageView img_actual;
-
-
-
         @FXML
         private Label nivel_actual;
-
         @FXML
         private Label nombre_actual;
-
-
-
         @FXML
         private Label vida_actual;
         public JuegoController juegoController;
         private ArrayList<Pokemon> pokemones;
         private Pokemon pokemonActual;
-
         public VBox contenedorPrincipal;
-
         public HBox seleccionPokemon;
         public HBox contenedorConfirmacion;
         public VBox pokemonConteiner;
@@ -179,6 +170,20 @@ public class SeleccionPokemonController extends Controller{
                 String ruta = "/org/fiuba/algoritmos3/pokemonMiniSprite/"+pokemonActual.getNombre()+"_mini.gif";
                 Image image = new Image(getClass().getResource(ruta).toString());
                 this.img_actual.setImage(image);
+
+                if (this.accion == "mochila") {
+                        this.contenedorPokemonActual.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent mouseEvent) {hoverPokemon(mouseEvent, 0);
+                        }
+                });
+
+                        this.contenedorPokemonActual.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                @Override
+                                public void handle(MouseEvent mouseEvent) { clickPokemon(mouseEvent, pokemon);
+                                }
+                        });
+                }
         }
 
         public double porcentajeVidaPokemon(Pokemon pokemon){
@@ -187,15 +192,21 @@ public class SeleccionPokemonController extends Controller{
         }
 
         public void hoverPokemon(MouseEvent mouseEvent, Integer id){
-                Pokemon pokemon = pokemones.get(id);
-                descripcionPokemon.setText(" Vas a seleccionar a "+ pokemon.getNombre());
-                descripcionPokemon.setStyle(" -fx-font-family: 'Arial'; -fx-font-size: 25; ");
+                if (id == 0){
+                        descripcionPokemon.setText("Es tu pokemon actual "+ pokemonActual.getNombre()+"!!");
+                }else {
+                        Pokemon pokemon = pokemones.get(id);
+                        descripcionPokemon.setText(" Vas a seleccionar a " + pokemon.getNombre());
+                        descripcionPokemon.setStyle(" -fx-font-family: 'Arial'; -fx-font-size: 25; ");
+                }
         }
 
         public void clickPokemon(MouseEvent mouseEvent, Pokemon pokemon){
                 Stage stage = (Stage) contenedorPrincipal.getScene().getWindow();
                 this.contenedorConfirmacion.setVisible(true);
+                this.pokemonConteiner.setVisible(false);
                 this.pokemon = pokemon;
+
         }
 
         public void confirmarBtn() throws IOException {
@@ -211,6 +222,7 @@ public class SeleccionPokemonController extends Controller{
         }
         public void cancelarBtn(){
                 this.pokemon = null;
+                this.pokemonConteiner.setVisible(true);
                 this.contenedorConfirmacion.setVisible(false);
         }
 
@@ -232,14 +244,15 @@ public class SeleccionPokemonController extends Controller{
         }
 
         public void init(List<Pokemon> pokemones, Stage stage, Controller controller) {
-                setPokemones((ArrayList<Pokemon>) pokemones,stage,pokemones.get(0));
-                if (controller.getClass()==MochilaController.class) {
-                        this.accion = "mochila";
-                } else if (controller.getClass() == BattleMainController.class) {
-                        this.accion = "main";
-                }
-                this.stage = stage;
                 this.controller = controller;
+                if (controller.getClass().equals(BattleMainController.class)){
+                        this.accion = "main";
+                } else if  (controller.getClass().equals(MochilaController.class)) {
+                        this.accion = "mochila";
+                }
+                System.out.println(this.accion);
+                setPokemones((ArrayList<Pokemon>) pokemones,stage,pokemones.get(0));
+                this.stage = stage;
         }
         @FXML
         void handleMochilaBtn(MouseEvent evento) throws IOException {
