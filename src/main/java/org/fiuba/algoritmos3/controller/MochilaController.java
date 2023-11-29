@@ -14,23 +14,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.fiuba.algoritmos3.ControladorDeJuego;
-import org.fiuba.algoritmos3.Inputs;
 import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
-import org.fiuba.algoritmos3.controller.Eventos.SeleccionPokemonEvent;
-import org.fiuba.algoritmos3.model.AdministradorDeJuego;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.items.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
-import org.fiuba.algoritmos3.views.ViewControlador;
-import org.jline.terminal.TerminalBuilder;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
-public class MochilaController extends Controller implements EventHandler<SeleccionPokemonEvent> {
+public class MochilaController extends Controller {
 
     @FXML
     public Label labelItem1;
@@ -222,8 +215,4 @@ public class MochilaController extends Controller implements EventHandler<Selecc
         this.controller = controller;
     }
 
-    @Override
-    public void handle(SeleccionPokemonEvent seleccionPokemonEvent) {
-
-    }
 }

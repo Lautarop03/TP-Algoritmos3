@@ -2,6 +2,7 @@ package org.fiuba.algoritmos3.controller;
 
 import javafx.animation.PathTransition;
 import javafx.animation.PauseTransition;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -321,7 +322,7 @@ public class BattleMainController extends Controller {
 
     private Habilidad getHabilidadDeMouseEvent(MouseEvent mouseEvent) {
         Label label = (Label) mouseEvent.getSource();
-        Integer idHabilidad = Integer.parseInt(label.getId().replace("habilidadLabel", ""));
+        int idHabilidad = Integer.parseInt(label.getId().replace("habilidadLabel", ""));
         return habilidades.get(idHabilidad);
     }
 
@@ -377,7 +378,6 @@ public class BattleMainController extends Controller {
     public void show() throws IOException {
         this.stage.show();
         setJuego(SingletonJuego.getInstancia().getJuego());
-
         actualizarPokemonesRestantes();
     }
 
