@@ -37,6 +37,7 @@ public class SeleccionPokemonController extends Controller {
         @FXML private Label estadoActual1;
         @FXML private Label estadoActual2;
         @FXML private Label estadoActual3;
+        @FXML private Button salirSeleccionPokemon;
         private ArrayList<Pokemon> pokemones;
         private Pokemon pokemonActual;
         public VBox contenedorPrincipal;
@@ -56,6 +57,7 @@ public class SeleccionPokemonController extends Controller {
                 this.pokemonActual = pokemonActual;
                 this.contenedorConfirmacion.setVisible(false);
                 this.estadosActuales = List.of(estadoActual0, estadoActual1, estadoActual2, estadoActual3);
+                if (pokemonActual.estaMuerto()){this.salirSeleccionPokemon.setVisible(false);}
                 for (Integer i = 0; i <pokemones.size(); i++) {
                         if (pokemones.get(i) != pokemonActual && (pokemones.get(i).estaVivo() || accion == "mochila")) {
                                 Pokemon pokemon = pokemones.get(i);
@@ -95,7 +97,6 @@ public class SeleccionPokemonController extends Controller {
                 vbox.setPadding(new Insets(1));
                 vbox.getChildren().add(crearHbox(pokemon,id));
                 this.pokemonConteiner.getChildren().add(vbox);
-
         }
 
         public HBox crearHbox(Pokemon pokemon,Integer id){
@@ -273,7 +274,6 @@ public class SeleccionPokemonController extends Controller {
                 } else {
                         //TODO: Mostrar Mensaje De error Pokemon sin vida
                 }
-
                 return;
         }
 
@@ -297,5 +297,4 @@ public class SeleccionPokemonController extends Controller {
                 controller.show();
                 this.stage.close();
         }
-
 }
