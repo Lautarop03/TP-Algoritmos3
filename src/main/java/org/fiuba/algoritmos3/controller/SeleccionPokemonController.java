@@ -14,6 +14,7 @@ import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
 import org.fiuba.algoritmos3.controller.Eventos.SeleccionPokemonEvent;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,6 +35,8 @@ public class SeleccionPokemonController extends Controller {
         private Label nombre_actual;
         @FXML
         private Label vida_actual;
+        @FXML
+        private Label estadoActual;
         private ArrayList<Pokemon> pokemones;
         private Pokemon pokemonActual;
         public VBox contenedorPrincipal;
@@ -97,7 +100,18 @@ public class SeleccionPokemonController extends Controller {
                 labelNivel.setTranslateY(15);
                 labelNivel.setLayoutX(80);
 
-                paneIzquierdo.getChildren().addAll(imagePokemon, labelNombre, labelNivel);
+                Label labelEstado = new Label();
+                String estadosResumen="";
+                if(!pokemon.getEstados().isEmpty()){
+                        for (int i = 0; i < (pokemon.getEstados()).size();i++){
+                                List<Estado> estados = pokemon.getEstados();
+                                estadosResumen += estados.get(i).getNombre()+" ";
+                        }
+                }
+                labelEstado.setText(estadosResumen);
+                labelEstado.setLayoutX(80);
+                labelEstado.setTranslateY(26);
+                paneIzquierdo.getChildren().addAll(imagePokemon, labelNombre, labelNivel,labelEstado);
 
 
                 Pane paneDerecho = new Pane();
@@ -159,6 +173,14 @@ public class SeleccionPokemonController extends Controller {
                 this.nombre_actual.setText(pokemonActual.getNombre());
                 this.nivel_actual.setText("Nv: " + pokemonActual.getNivel());
                 this.vida_actual.setText(pokemonActual.getVidaActual()+"/"+ pokemonActual.getVidaMaxima());
+                String estadosResumen="";
+                if(!pokemonActual.getEstados().isEmpty()){
+                        for (int i = 0; i < (pokemonActual.getEstados()).size();i++){
+                                List<Estado> estados = pokemonActual.getEstados();
+                                estadosResumen += estados.get(i).getNombre()+" ";
+                        }
+                }
+                this.estadoActual.setText(estadosResumen);
                 this.barra_vida_actual.setProgress(porcentajeVidaPokemon(pokemonActual));
                 this.barra_vida_actual.setStyle(cambiarColorBarra(pokemonActual));
                 String ruta = "/org/fiuba/algoritmos3/pokemonMiniSprite/"+pokemonActual.getNombre()+"_mini.gif";
