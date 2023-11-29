@@ -1,8 +1,9 @@
 package org.fiuba.algoritmos3.controller;
 
+import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.PauseTransition;
-import javafx.event.EventHandler;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -164,7 +165,6 @@ public class BattleMainController extends Controller {
         this.pokeballsActuales = List.of(pokeballActual0, pokeballActual1, pokeballActual2, pokeballActual3, pokeballActual4, pokeballActual5);
         this.pokeballsEnemigas = List.of(pokeballEnemiga0, pokeballEnemiga1, pokeballEnemiga2, pokeballEnemiga3, pokeballEnemiga4, pokeballEnemiga5);
         return scene;
-        // TODO: aca seteo todos los datos de la pantalla
     }
 
     private void animateProgressBarProgresivamente(ProgressBar progressBar, double to, int durationMillis) {
@@ -238,7 +238,13 @@ public class BattleMainController extends Controller {
         Habilidad habilidad = getHabilidadDeMouseEvent(event);;
 
         if (habilidad.getCantidadDeUsos() == 0) {
-            //TODO: Imprimir en la pantalla habilidad sin usos
+            consola.setText("Habilidad sin usos, elija otra");
+            Timeline timeline = new Timeline(
+                    new KeyFrame(Duration.seconds(2), e -> {
+                        consola.setText("Que desea hacer?");
+                    })
+            );
+            timeline.play();
             toggleMenuHabilidades();
             return;
         }

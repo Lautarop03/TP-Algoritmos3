@@ -2,7 +2,7 @@
   "nombre": "Trueno",
   "id": "1",
   "tipoDeHabilidad": "HabilidadDeDano",
-  "cantidadDeUsos": "8",
+  "cantidadDeUsos": "1",
   "tipo": "Electrico",
   "potencia" : "70"
 },{
