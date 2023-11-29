@@ -33,8 +33,10 @@ public class SeleccionPokemonController extends Controller {
         private Label nombre_actual;
         @FXML
         private Label vida_actual;
-        @FXML
-        private Label estadoActual;
+        @FXML private Label estadoActual0;
+        @FXML private Label estadoActual1;
+        @FXML private Label estadoActual2;
+        @FXML private Label estadoActual3;
         private ArrayList<Pokemon> pokemones;
         private Pokemon pokemonActual;
         public VBox contenedorPrincipal;
@@ -46,12 +48,14 @@ public class SeleccionPokemonController extends Controller {
         private Stage stage;
         private Pokemon pokemon;
         private String accion;
+        private List<Label> estadosActuales;
 
 
         public void setPokemones(ArrayList<Pokemon> pokemones, Stage stage, Pokemon pokemonActual) {
                 this.pokemones = pokemones;
                 this.pokemonActual = pokemonActual;
                 this.contenedorConfirmacion.setVisible(false);
+                this.estadosActuales = List.of(estadoActual0, estadoActual1, estadoActual2, estadoActual3);
                 for (Integer i = 0; i <pokemones.size(); i++) {
                         if (pokemones.get(i) != pokemonActual && pokemones.get(i).estaVivo()) {
                                 Pokemon pokemon = pokemones.get(i);
@@ -66,6 +70,22 @@ public class SeleccionPokemonController extends Controller {
                         Scene scene = new Scene(contenedorPrincipal);
                         stage.setScene(scene);
                         stage.show();
+                }
+                mostrarEstados(pokemonActual.getEstados(),estadosActuales);
+        }
+
+        public void mostrarEstados(List<Estado> estados, List<Label> labelsEstados){
+                for (int i = 0; i < labelsEstados.size(); i++) {
+                        Label label = labelsEstados.get(i);
+                        if (i < estados.size()) {
+                                String nombreEstado = estados.get(i).getNombre();
+                                label.setVisible(true);
+                                label.getStyleClass().clear();
+                                label.getStyleClass().addAll(nombreEstado, "Estado");
+                                label.setText(nombreEstado.substring(0,3).toUpperCase());
+                        } else {
+                                label.setVisible(false);
+                        }
                 }
         }
 
@@ -176,14 +196,7 @@ public class SeleccionPokemonController extends Controller {
                 nivel_actual.setStyle("-fx-font-size: 20px");
                 this.vida_actual.setText(pokemonActual.getVidaActual()+"/"+ pokemonActual.getVidaMaxima());
                 vida_actual.setStyle("-fx-font-size: 20px");
-                String estadosResumen="";
-                if(!pokemonActual.getEstados().isEmpty()){
-                        for (int i = 0; i < (pokemonActual.getEstados()).size();i++){
-                                List<Estado> estados = pokemonActual.getEstados();
-                                estadosResumen += estados.get(i).getNombre()+" ";
-                        }
-                }
-                this.estadoActual.setText(estadosResumen);
+                mostrarEstados(pokemonActual.getEstados(),estadosActuales);
                 this.barra_vida_actual.setProgress(porcentajeVidaPokemon(pokemonActual));
                 this.barra_vida_actual.setStyle(cambiarColorBarra(pokemonActual));
                 String ruta = "/org/fiuba/algoritmos3/pokemonMiniSprite/"+pokemonActual.getNombre()+"_mini.gif";
