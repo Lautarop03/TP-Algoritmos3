@@ -24,8 +24,10 @@ import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.PaqueteDeRespuesta;
+import org.fiuba.algoritmos3.model.clima.Clima;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
+import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeClima;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -104,8 +106,7 @@ public class BattleMainController extends Controller {
 
 
     private Juego juego;
-
-
+    private String fondo = "battlebgroute";
     private List<Habilidad> habilidades;
     private List<Label> labelsHabilidades;
     private List<ImageView> pokeballsEnemigas;
@@ -118,23 +119,7 @@ public class BattleMainController extends Controller {
         VBox root = loader.load();
         Scene scene = new Scene(root, 600, 450);
 
-        Image image = new Image(getClass().getResource("/org/fiuba/algoritmos3/background/battlebgroute.jpg").toString());
-        BackgroundImage bgImage = new BackgroundImage(
-                image,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                new BackgroundSize(
-                        BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true)
-        );
-        BackgroundFill bgf = new BackgroundFill(
-                Color.WHITE,
-                new CornerRadii(0),
-                new Insets(0));
-        Background bg = new Background(Collections.singletonList(bgf), Collections.singletonList(bgImage));
-        fondoBattleMain.setBackground(bg);
-
-
+        setFondoBattleMain(fondo);
 
         this.juego = juego;
         List<Jugador> jugadores = juego.getJugadores();
@@ -256,6 +241,10 @@ public class BattleMainController extends Controller {
             juego.realizarAtaque();
         }
         setJuego(juego);
+        if (habilidad.getClass() == HabilidadDeClima.class) {
+            setFondoBattleMain(habilidad.getNombre());
+            this.fondo = habilidad.getNombre();
+        }
         actualizarPokemonesRestantes();
 
         PauseTransition animacionAtaque = new PauseTransition(Duration.seconds(1));
@@ -390,4 +379,21 @@ public class BattleMainController extends Controller {
         actualizarPokemonesRestantes();
     }
 
+    public void setFondoBattleMain(String ruta) {
+        Image image = new Image(getClass().getResource("/org/fiuba/algoritmos3/background/"+ruta+".jpg").toString());
+        BackgroundImage bgImage = new BackgroundImage(
+                image,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(
+                        BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true)
+        );
+        BackgroundFill bgf = new BackgroundFill(
+                Color.WHITE,
+                new CornerRadii(0),
+                new Insets(0));
+        Background bg = new Background(Collections.singletonList(bgf), Collections.singletonList(bgImage));
+        fondoBattleMain.setBackground(bg);
+    }
 }

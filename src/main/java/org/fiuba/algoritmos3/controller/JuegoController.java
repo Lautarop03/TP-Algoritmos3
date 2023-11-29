@@ -47,7 +47,6 @@ public class JuegoController implements EventHandler<CambioTurnoEvent> {
     @Override
     public void handle(CambioTurnoEvent cambioTurnoEvent) {
         juego.cambiarTurno();
-
         try {
             comprobarPokemonActualEstaVivo();
         } catch (IOException e) {
