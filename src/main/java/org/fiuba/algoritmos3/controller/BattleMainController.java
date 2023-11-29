@@ -4,6 +4,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -290,7 +291,19 @@ public class BattleMainController extends Controller {
         mostrarPokemonesRestantes(juego.getOponente().getCantidadPokemonVivos(), pokeballsEnemigas);
     }
 
+    public void mostrarGanador(){
+        if (juego.terminado()){
+            Jugador ganador =juego.getJugadorActual();
+            this.consola.setText("Felisidades ganaste: " + ganador.getNombre());
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+                Platform.exit();
+            }));
+            timeline.setCycleCount(1);
+            timeline.play();
+        }
+    }
     public void cambiarDeTurno() {
+        mostrarGanador();
         img_pk2.setEffect(null);
 
         PathTransition transitionDer = animacionCambioDeTurno(vboxDerecho, vboxDerecho.getWidth()/2, vboxDerecho.getHeight()/2, 500);
