@@ -322,8 +322,6 @@ public class BattleMainController extends Controller {
         actualizarPokemonesRestantes();
         actualizarEstados();
         transicionAtaque();
-        mostrarPokemonesRestantes(juego.getJugadorActual().getCantidadPokemonVivos(), pokeballsActuales);
-        mostrarPokemonesRestantes(juego.getOponente().getCantidadPokemonVivos(), pokeballsEnemigas);
     }
 
     public void transicionAtaque(){

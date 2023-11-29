@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.model.Juego;
+import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.estados.Estado;
 
@@ -50,6 +51,7 @@ public class SeleccionPokemonController extends Controller {
         private Pokemon pokemon;
         private String accion;
         private List<Label> estadosActuales;
+        private Jugador jugadorActual;
 
 
         public void setPokemones(ArrayList<Pokemon> pokemones, Stage stage, Pokemon pokemonActual) {
@@ -74,6 +76,10 @@ public class SeleccionPokemonController extends Controller {
                         stage.show();
                 }
                 mostrarEstados(pokemonActual.getEstados(),estadosActuales);
+        }
+
+        public void setJugadorActual(Jugador jugadorActual) {
+                this.jugadorActual = jugadorActual;
         }
 
         public void mostrarEstados(List<Estado> estados, List<Label> labelsEstados){
@@ -267,14 +273,12 @@ public class SeleccionPokemonController extends Controller {
         }
 
         public void cambiarPokemon(Pokemon pokemon) throws IOException{
-                Juego juego = SingletonJuego.getInstancia().getJuego();
-                boolean realizado = juego.getJugadorActual().intercambiarPokemon(pokemon);
+                boolean realizado = jugadorActual.intercambiarPokemon(pokemon);
                 if (realizado){
                         //TODO: Mostrar Mensaje de cambio
                 } else {
                         //TODO: Mostrar Mensaje De error Pokemon sin vida
                 }
-                return;
         }
 
 

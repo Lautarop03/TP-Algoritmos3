@@ -9,9 +9,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.controller.Eventos.CambioTurnoEvent;
 import org.fiuba.algoritmos3.model.Juego;
+import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public class JuegoController implements EventHandler<CambioTurnoEvent> {
@@ -47,7 +49,12 @@ public class JuegoController implements EventHandler<CambioTurnoEvent> {
     public void handle(CambioTurnoEvent cambioTurnoEvent) {
         juego.cambiarTurno();
         try {
-            comprobarPokemonActualEstaVivo();
+            comprobarPokemonActualEstaVivo();   // Si el pokemon que comienza el turno está muerto
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            comprobarPokemonEnemigoEstaVivo();   // Si el pokemon que teminó el turno murió por un estado
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -59,11 +66,17 @@ public class JuegoController implements EventHandler<CambioTurnoEvent> {
     public void comprobarPokemonActualEstaVivo() throws IOException {
         Pokemon pokemon = juego.getJugadorActual().getPokemonActual();
         if (pokemon.estaMuerto()){
-            handlePokemonMuerto();
+            handlePokemonMuerto(juego.getJugadorActual());
+        }
+    }
+    public void comprobarPokemonEnemigoEstaVivo() throws IOException {
+        Pokemon pokemon = juego.getOponente().getPokemonActual();
+        if (pokemon.estaMuerto()){
+            handlePokemonMuerto(juego.getOponente());
         }
     }
 
-    public void handlePokemonMuerto() {
+    public void handlePokemonMuerto(Jugador jugador) {
         Platform.runLater(() -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/seleccionPokemon.fxml"));
             try {
@@ -73,7 +86,8 @@ public class JuegoController implements EventHandler<CambioTurnoEvent> {
 
                 SeleccionPokemonController controladorSeleccionPokemon = loader.getController();
 
-                controladorSeleccionPokemon.init(juego.getJugadorActual().getPokemones(), stage,battleController);
+                controladorSeleccionPokemon.setJugadorActual(jugador);
+                controladorSeleccionPokemon.init(jugador.getPokemones(), stage,battleController);
                 this.stage.close();
                 stage.showAndWait();
                 this.stage.show();
