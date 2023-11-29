@@ -114,6 +114,8 @@ public class BattleMainController extends Controller {
     private Stage stage;
 
     public Scene setJuego(Juego juego) throws IOException {
+        this.juego = juego;
+        chequearClima();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/battleMain.fxml"));
         VBox root = loader.load();
@@ -121,7 +123,6 @@ public class BattleMainController extends Controller {
 
         setFondoBattleMain(fondo);
 
-        this.juego = juego;
         List<Jugador> jugadores = juego.getJugadores();
         Jugador jugador1 = juego.getJugadorActual();
         Jugador jugador2 = juego.getOponente();
@@ -150,6 +151,13 @@ public class BattleMainController extends Controller {
         this.pokeballsActuales = List.of(pokeballActual0, pokeballActual1, pokeballActual2, pokeballActual3, pokeballActual4, pokeballActual5);
         this.pokeballsEnemigas = List.of(pokeballEnemiga0, pokeballEnemiga1, pokeballEnemiga2, pokeballEnemiga3, pokeballEnemiga4, pokeballEnemiga5);
         return scene;
+    }
+
+    public void chequearClima() {
+        Clima clima = juego.getClima();
+        if (clima == null) {
+            fondo = "battlebgroute";
+        }
     }
 
     private void animateProgressBarProgresivamente(ProgressBar progressBar, double to, int durationMillis) {

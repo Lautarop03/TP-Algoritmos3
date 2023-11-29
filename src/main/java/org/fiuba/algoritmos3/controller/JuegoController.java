@@ -54,7 +54,9 @@ public class JuegoController implements EventHandler<CambioTurnoEvent> {
         }
 
         juego.aplicarClima();
-    }
+
+        }
+
     public void comprobarPokemonActualEstaVivo() throws IOException {
         Pokemon pokemon = juego.getJugadorActual().getPokemonActual();
         if (pokemon.estaMuerto()){
