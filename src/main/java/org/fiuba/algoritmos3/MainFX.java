@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.controller.JuegoController;
 import org.fiuba.algoritmos3.controller.SingletonJuego;
+import org.fiuba.algoritmos3.controller.SingletonSonidoClick;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.persistencia.JsonLectura;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class MainFX extends Application {
     @Override
-    public void start(Stage stage) throws IOException{
+    public void start(Stage stage) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
             try {
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/org/fiuba/algoritmos3/music/MusicaFondo.wav").getAbsoluteFile());
                 Clip clip = AudioSystem.getClip();
@@ -31,7 +32,10 @@ public class MainFX extends Application {
             } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
                 System.out.println("Error al reproducir el sonido.");
             }
-
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/org/fiuba/algoritmos3/music/Click.wav").getAbsoluteFile());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        SingletonSonidoClick.getInstancia().setClip(clip);
 
         JsonLectura jsonLectura = new JsonLectura();
         List<Jugador> jugadores = jsonLectura.inicializarPartida();

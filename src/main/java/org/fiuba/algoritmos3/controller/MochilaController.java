@@ -24,6 +24,7 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.views.ViewControlador;
 import org.jline.terminal.TerminalBuilder;
 
+import javax.sound.sampled.Clip;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -60,6 +61,7 @@ public class MochilaController extends Controller {
     private Controller controller;
     private Item item;
 
+    private Clip clipTocar;
 
 
 
@@ -68,6 +70,8 @@ public class MochilaController extends Controller {
 
     public void setItems(List<Item> items, Stage stage) throws IOException {
         this.items = items;
+
+        this.clipTocar = SingletonSonidoClick.getInstancia().getClip();
 
         Image image = new Image(getClass().getResource("/org/fiuba/algoritmos3/background/mochila.png").toString());
         BackgroundImage bgImage = new BackgroundImage(
@@ -119,7 +123,11 @@ public class MochilaController extends Controller {
         hbox.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                clickItem(mouseEvent, item);
+                try {
+                    clickItem(mouseEvent, item);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -153,14 +161,16 @@ public class MochilaController extends Controller {
         this.imagenItem.setImage(itemImage);
     }
 
-    public void clickItem(MouseEvent mouseEvent, Item item) {
+    public void clickItem(MouseEvent mouseEvent, Item item) throws IOException {
+        sonidoTocarBoton();
         Stage stage = (Stage) contenedorPrincipal.getScene().getWindow();
         confirmacionContainer.setVisible(true);
         descripcionContainer.setVisible(false);
         itemsContainer.setDisable(true);
         this.item = item;
     }
-    public void cancelarBtn(){
+    public void cancelarBtn() throws IOException {
+        sonidoTocarBoton();
         confirmacionContainer.setVisible(false);
         descripcionContainer.setVisible(true);
         itemsContainer.setDisable(false);
@@ -169,6 +179,7 @@ public class MochilaController extends Controller {
 
 
     public void handleConfirmarSalir() throws IOException {
+        sonidoTocarBoton();
 //        confirmacionContainer.fireEvent(new CambioTurnoEvent());
         controller.show();
         this.stage.close();
@@ -176,6 +187,7 @@ public class MochilaController extends Controller {
     }
 
     public void confirmarBtn() throws IOException{
+        sonidoTocarBoton();
         confirmacionContainer.setVisible(false);
         descripcionContainer.setVisible(true);
         itemsContainer.setDisable(false);
@@ -211,8 +223,9 @@ public class MochilaController extends Controller {
     }
 
     public void volverBtn() throws IOException {
-           controller.show();
-           this.stage.close();
+        sonidoTocarBoton();
+        controller.show();
+        this.stage.close();
     }
     public void show() {
         this.stage.show();
@@ -221,5 +234,8 @@ public class MochilaController extends Controller {
         setItems(items,stage);
         this.stage = stage;
         this.controller = controller;
+    }
+    public void sonidoTocarBoton() throws IOException {
+        SingletonSonidoClick.getInstancia().getClip().start();
     }
 }

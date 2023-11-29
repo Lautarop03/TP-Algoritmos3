@@ -29,6 +29,8 @@ import org.fiuba.algoritmos3.model.pokemon.habilidades.Habilidad;
 import org.fiuba.algoritmos3.model.pokemon.habilidades.HabilidadDeClima;
 import org.fiuba.algoritmos3.viewsJavaFX.ViewControladorJavaFX;
 
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -125,6 +127,8 @@ public class BattleMainController extends Controller {
 
     private ViewControladorJavaFX viewControlador;
     private Stage stage;
+    private Clip clipAtaque;
+    private Clip clipTocar;
 
     public Scene setJuego(Juego juego) throws IOException {
         this.juego = juego;
@@ -137,7 +141,16 @@ public class BattleMainController extends Controller {
 
         setFondoBattleMain(fondo);
         this.viewControlador = new ViewControladorJavaFX();
+        clipTocar = SingletonSonidoClick.getInstancia().getClip();
 
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/org/fiuba/algoritmos3/music/PokemonSonido.wav").getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            this.clipAtaque = clip;
+        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+            System.out.println("Error al reproducir el sonido.");
+        }
 
         List<Jugador> jugadores = juego.getJugadores();
         Jugador jugador1 = juego.getJugadorActual();
@@ -281,6 +294,7 @@ public class BattleMainController extends Controller {
         List<Estado> estados = juego.getJugadorActual().getPokemonActual().getEstados();
         if (aplicados.isEmpty() || !aplicados.contains(true)){
             juego.realizarAtaque();
+            clipAtaque.start();
             consola.setText(viewControlador.mostrarAccion(habilidad, juego.getJugadorActual().getPokemonActual(), juego.getOponente().getPokemonActual()));
             mostrarEstados(estados, juego.getJugadorActual().getPokemonActual(), aplicados);
         } else {
@@ -379,6 +393,7 @@ public class BattleMainController extends Controller {
     }
 
     private Habilidad getHabilidadDeMouseEvent(MouseEvent mouseEvent) {
+        sonidoTocarBoton();
         Label label = (Label) mouseEvent.getSource();
         int idHabilidad = Integer.parseInt(label.getId().replace("habilidadLabel", ""));
         return habilidades.get(idHabilidad);
@@ -386,6 +401,7 @@ public class BattleMainController extends Controller {
 
 
     public void handleMochilaBtn(MouseEvent mouseEvent) throws IOException {
+        sonidoTocarBoton();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/mochila.fxml"));
         Parent root = loader.load();
         MochilaController controller = loader.getController();
@@ -398,6 +414,7 @@ public class BattleMainController extends Controller {
     }
 
     public void handlePokemonBtn(MouseEvent mouseEvent) throws IOException{
+        sonidoTocarBoton();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/fiuba/algoritmos3/plantillas/seleccionPokemon.fxml"));
         Parent root = loader.load();
         SeleccionPokemonController controller = loader.getController();
@@ -410,15 +427,19 @@ public class BattleMainController extends Controller {
     }
 
     public void handleHuirBtn(MouseEvent mouseEvent) {
+        sonidoTocarBoton();
+
         consola.setText("\uD83D\uDC14 ¿Eres un gallina McFly? \uD83D\uDC14"  );
         this.contenedorHuir.setVisible(true);
         this.contenedorHuir.toFront();
     }
     public void  botonHuirCancelar(MouseEvent mouseEvent) {
+        sonidoTocarBoton();
         this.contenedorHuir.setVisible(false);
 
     }
     public void  botonHuirConfirmar(MouseEvent mouseEvent){
+        sonidoTocarBoton();
         this.contenedorHuir.setVisible(false);
         juego.getJugadorActual().rendirse();
         mostrarGanador(juego.getOponente());
@@ -490,4 +511,8 @@ public class BattleMainController extends Controller {
         Background bg = new Background(Collections.singletonList(bgf), Collections.singletonList(bgImage));
         fondoBattleMain.setBackground(bg);
     }
+    public void sonidoTocarBoton(){
+        this.clipTocar.start();
+    }
+
 }
