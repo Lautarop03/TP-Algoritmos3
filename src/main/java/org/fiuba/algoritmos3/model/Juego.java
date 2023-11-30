@@ -158,7 +158,7 @@ public class Juego {
             if (habilidad.usarHabilidad(pokemonActual, pokemonEnemigo)){
                 administradorDeJuego.errorHabilidadEstado();
             } else {
-                if(habilidad instanceof HabilidadDeClima){
+                if(habilidad.getClass() == HabilidadDeClima.class){
                     setClima(((HabilidadDeClima) habilidad).getClima());
                 }
                 administradorDeJuego.mostrarAccion(habilidad,pokemonActual,pokemonEnemigo);

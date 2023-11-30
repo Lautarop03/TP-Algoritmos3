@@ -5,7 +5,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.controller.JuegoController;
 import org.fiuba.algoritmos3.controller.SingletonJuego;
-import org.fiuba.algoritmos3.controller.SingletonSonidoClick;
 import org.fiuba.algoritmos3.model.Juego;
 import org.fiuba.algoritmos3.model.Jugador;
 import org.fiuba.algoritmos3.persistencia.JsonLectura;
@@ -22,7 +21,7 @@ import java.util.List;
 
 public class MainFX extends Application {
     @Override
-    public void start(Stage stage) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+    public void start(Stage stage) throws IOException {
             try {
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/org/fiuba/algoritmos3/music/MusicaFondo.wav").getAbsoluteFile());
                 Clip clip = AudioSystem.getClip();
